@@ -1,4 +1,4 @@
-See http://www.concrete5.org/community/forums/customizing_c5/check-it-out-custom-block-creator/ for details.
+See <http://www.concrete5.org/community/forums/customizing_c5/check-it-out-custom-block-creator/> for details.
 
 #HOW TO INSTALL:
 1. Click the "Downloads" button up above (way up near the top of this page, over to the right).
