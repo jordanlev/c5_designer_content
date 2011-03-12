@@ -35,7 +35,7 @@ class [[[GENERATOR_REPLACE_CLASSNAME]]] extends BlockController {
 [[[GENERATOR_REPLACE_VIEW]]]
 	}
 	
-	private function get_image_object($fID, $max_width, $max_height) {
+	private function get_image_object($fID, $max_width = 0, $max_height = 0) {
 		if (empty($fID)) {
 			$image = null;
 		} else if (empty($max_width) && empty($max_height)) {
