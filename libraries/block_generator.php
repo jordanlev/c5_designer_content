@@ -48,7 +48,15 @@ class DesignerContentBlockGenerator {
 			'suffix' => $suffix,
 		);
 	}
-		
+
+	public function add_static_field($static_content) {
+		$this->fields[] = array(
+			'num' => count($this->fields) + 1,
+			'type' => 'static',
+			'static' => $static_content,
+		);
+	}
+
 	public function generate($handle, $name, $description = '', $package_version) {
 		$this->handle = $handle;
 		$this->name = $name;
@@ -351,6 +359,10 @@ class DesignerContentBlockGenerator {
 				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLink)) { ?></a><?php } ?>\n";
 				$code .= empty($field['suffix']) ? '' : $field['suffix'] . "\n";
 				$code .= "<?php endif; ?>\n\n";
+			}
+			
+			if ($field['type'] == 'static') {
+				$code .= $field['static'];
 			}
 		}
 		$token = '[[[GENERATOR_REPLACE_HTML]]]';

@@ -38,6 +38,7 @@ class DashboardDesignerContentController extends Controller {
 		$field_labels = $this->post('fieldLabels');
 		$field_prefixes = $this->post('fieldPrefixes');
 		$field_suffixes = $this->post('fieldSuffixes');
+		$field_static_html = $this->post('fieldStaticHtml');
 		$fields_required = $this->post('fieldsRequired');
 		$field_widths = $this->post('fieldWidths');
 		$field_heights = $this->post('fieldHeights');
@@ -47,7 +48,9 @@ class DashboardDesignerContentController extends Controller {
 		$block = new DesignerContentBlockGenerator();
 		foreach ($field_ids as $id) {
 			$type = $field_types[$id];
-			if ($type == 'text') {
+			if ($type == 'static') {
+				$block->add_static_field($field_static_html[$id]);
+			} else if ($type == 'text') {
 				$block->add_text_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]));
 			} else if ($type == 'image') {
 				$block->add_image_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]), $field_widths[$id], $field_heights[$id]);

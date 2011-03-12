@@ -143,7 +143,7 @@ function validate_form() {
 	//Handle can only contain lowercase letters and underscores (note that for some reason, having numbers in the handle can totally mess things up -- any page that the block is on won't load (some error with the autoloader?).
 	//must have at least 1 field
 	//no more than 1 wysiwyg field
-	//each field: label is required
+	//check that a label is provided for each field (except 'static html' fields)
 	//check that width+height are valid integers if entered
 	
 	var errors = [];

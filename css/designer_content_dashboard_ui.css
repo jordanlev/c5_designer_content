@@ -50,6 +50,10 @@ input#name {
 	padding: 5px;
 }
 
+.static-html-field {
+	width: 100%;
+}
+
 .designer-content-field-editorlabel{
 	width: 95%;
 	margin-bottom: 10px;

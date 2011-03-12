@@ -81,6 +81,14 @@
 					</div>
 				</div>
 			
+				{{if type == 'static'}}
+				<div class="designer-content-field-options static-html-field">
+					<textarea rows="2" cols="80" name="fieldStaticHtml[${id}]" id="fieldStaticHtml[${id}]"></textarea>
+					<br />
+					<span style="font-style: italic;"><?php echo t('Anything entered here will be directly outputted to the block view &mdash; users will not be able to edit it.'); ?></i>
+				</div>
+				{{else}}
+
 				<div class="designer-content-field-options">
 					<label for="fieldLabels[${id}]"><?php echo t('Editor Label'); ?></label><br />
 					<input type="text" class="designer-content-field-editorlabel" name="fieldLabels[${id}]" id="fieldLabels[${id}]" />
@@ -95,6 +103,7 @@
 						<label for="fieldHeights[${id}]"><?php echo t('Height'); ?>:</label> <input type="text" name="fieldHeights[${id}]" id="fieldHeights[${id}]" class="designer-content-field-height" size="3" maxlength="4" />px
 					{{/if}}
 				</div>
+
 				<div class="designer-content-field-html">
 					<label for="fieldPrefixes[${id}]"><?php echo t('Opening HTML'); ?></label><br />
 					<textarea rows="6" name="fieldPrefixes[${id}]" id="fieldPrefixes[${id}]"></textarea>
@@ -103,6 +112,7 @@
 					<label for="fieldSuffixes[${id}]"><?php echo t('Closing HTML'); ?></label><br />
 					<textarea rows="6" name="fieldSuffixes[${id}]" id="fieldSuffixes[${id}]"></textarea>
 				</div>
+				{{/if}}
 	        </div>
 		    </script>
 		</div>
@@ -114,6 +124,8 @@
 			</div>
 			<script id="add-field-types-template" type="text/x-jQuery-tmpl">
 				&nbsp;
+				[<a href="#" class="add-field-type" data-type="static"><?php echo t('Static HTML'); ?></a>]
+				&nbsp;&nbsp;
 				[<a href="#" class="add-field-type" data-type="text"><?php echo t('Textbox'); ?></a>]
 				&nbsp;&nbsp;
 				[<a href="#" class="add-field-type" data-type="image"><?php echo t('Image'); ?></a>]
@@ -146,7 +158,8 @@
 	var FIELDTYPE_LABELS = {
 		'text': '<?php echo t("Textbox Field"); ?>',
 		'image': '<?php echo t("Image Field"); ?>',
-		'wysiwyg': '<?php echo t("WYSIWYG Editor"); ?>'
+		'wysiwyg': '<?php echo t("WYSIWYG Editor"); ?>',
+		'static': '<?php echo t("Static HTML"); ?>'
 	};
 	var ERROR_MESSAGES = {
 		'name_required': '<?php echo t("Block Name is required."); ?>',
