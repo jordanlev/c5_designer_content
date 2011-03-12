@@ -36,7 +36,7 @@
 				<td align="right"><h2><label for="handle"><?php echo t('Block Handle'); ?>:</label></h2></td>
 				<td align="left">
 					<?php echo $form->text('handle', $handle); ?>
-					<i><?php echo t('lowercase letters, numbers, and underscores only'); ?></i>
+					<i><?php echo t('lowercase letters and underscores only'); ?></i>
 				</td>
 			</tr>
 			<tr>
@@ -152,7 +152,7 @@
 	var ERROR_MESSAGES = {
 		'name_required': '<?php echo t("Block Name is required."); ?>',
 		'handle_required': '<?php echo t("Block Handle is required."); ?>',
-		'handle_lowercase': '<?php echo t("Block Handle can only contain lowercase letters, numbers and underscores."); ?>',
+		'handle_lowercase': '<?php echo t("Block Handle can only contain lowercase letters and underscores."); ?>',
 		'handle_exists': '<?php echo t("Block Handle is already in use (either by another package, block, or database table)."); ?>',
 		'fields_required': '<?php echo t("You must add at least 1 field."); ?>',
 		'one_wysiwyg': '<?php echo t("You cannot have more than 1 WYSIWYG Editor in a block."); ?>',

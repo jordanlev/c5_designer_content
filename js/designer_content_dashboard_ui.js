@@ -138,8 +138,9 @@ function delete_field() {
 }
 
 function validate_form() {
-	//Pckg name and handle are required
+	//Name and handle are required
 	//Handle must not already exist in the system (anywhere -- package, block, etc.)
+	//Handle can only contain lowercase letters and underscores (note that for some reason, having numbers in the handle can totally mess things up -- any page that the block is on won't load (some error with the autoloader?).
 	//must have at least 1 field
 	//no more than 1 wysiwyg field
 	//each field: label is required
@@ -157,7 +158,7 @@ function validate_form() {
 	
 	if (handle.length == 0) {
 		errors.push(ERROR_MESSAGES['handle_required']);
-	} else if (!/^[a-z0-9_]+$/.test(handle)) {
+	} else if (!/^[a-z_]+$/.test(handle)) {
 		errors.push(ERROR_MESSAGES['handle_lowercase']);
 	} else if (!validate_handle(handle)) {
 		errors.push(ERROR_MESSAGES['handle_exists']);
