@@ -33,7 +33,7 @@ class DashboardDesignerContentController extends Controller {
 		}
 		
 		//Gather all field data
-		$field_ids = $this->post('fieldIds'); //The order of id's in this array reflects the user's chosen sort order for the fields.
+		$field_ids = $this->post('fieldIds'); //The order of id's in this array reflects the user's chosen output order of the fields.
 		$field_types = $this->post('fieldTypes');
 		$field_labels = $this->post('fieldLabels');
 		$field_prefixes = $this->post('fieldPrefixes');
@@ -56,8 +56,9 @@ class DashboardDesignerContentController extends Controller {
 			}
 		}
 		
-		//Make it so
+		//Make+install block
 		$block->generate($handle, $name, $this->post('description'));
+		BlockType::installBlockType($handle);
 		
 		//Redirect back to view page so browser refresh doesn't trigger a re-generation
 		header('Location: ' . View::url('/dashboard/designer_content/?generated=1'));

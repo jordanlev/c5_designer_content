@@ -5,12 +5,11 @@
 <?php if ($generated): ?>
 
 <div class="ccm-dashboard-inner">
-	<?php echo t('Congratulations!'); ?><br />
+	<?php echo t('Success!'); ?><br />
 	<br />
-	<?php echo t("Your new block has been created in your site's blocks directory."); ?><br />
-	<?php echo t('To install this new block, click "Add Functionality" in the sidebar and then click the "Install" button next to your new block.'); ?><br />
+	<?php echo t("The new block has been created and installed, and is ready to be added to pages."); ?><br />
 	<br />
-	<?php echo t('To create another block, click "Designer Content" in the sidebar.'); ?>
+	<a href="<?php echo View::url('/dashboard/designer_content'); ?>"><?php echo t('Create another block &raquo;'); ?></a><br />
 </div>
 
 <?php else: ?>
