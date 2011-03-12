@@ -69,7 +69,7 @@ class [[[GENERATOR_REPLACE_CLASSNAME]]] extends BlockController {
 
 	public function getJavaScriptStrings() {
 		return array(
-			'text-required' => t('Mising required text'),
+			'text-required' => t('Missing required text'),
 			'image-required' => t('Missing required image'),
 		);
 	}

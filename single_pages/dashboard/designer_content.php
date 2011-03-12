@@ -5,21 +5,19 @@
 <?php if ($generated): ?>
 
 <div class="ccm-dashboard-inner">
-	Congratulations!<br />
+	<?php echo t('Congratulations!'); ?><br />
 	<br />
-	Your new block has been created in your site's blocks directory.<br />
-	To install this new block, click "Add Functionality" in the sidebar and then click the "Install" button next to your new block.<br />
+	<?php echo t("Your new block has been created in your site's blocks directory."); ?><br />
+	<?php echo t('To install this new block, click "Add Functionality" in the sidebar and then click the "Install" button next to your new block.'); ?><br />
 	<br />
-	To create another block, click "Designer Content" in the sidebar.
+	<?php echo t('To create another block, click "Designer Content" in the sidebar.'); ?>
 </div>
 
 <?php else: ?>
 
 <div class="ccm-dashboard-inner">
 	<div>
-		Designer Content is a tool for creating your own custom content blocks.
-		These blocks can contain any combination of textboxes, images, and a rich text editor.<br />
-		You can also specify the HTML surrounding each element to ensure that content will be displayed correctly.
+		<h4><?php echo t('Create a new block by entering some basic info and adding one or more fields.'); ?></h4>
 	</div>
 
 	<?php if (!$can_write): ?>

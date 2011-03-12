@@ -96,7 +96,7 @@ class DesignerContentBlockGenerator {
 			}
 			
 			if ($field['type'] == 'image' && $field['required']) {
-				$code .= "\tif (\$('#field_{$field['num']}_image_fID').val() == '' || \$('#field_{$field['num']}_image_fID').val() == 0) {\n";
+				$code .= "\tif (\$('#field_{$field['num']}_image_fID-fm-value').val() == '' || \$('#field_{$field['num']}_image_fID-fm-value').val() == 0) {\n";
 				$code .= "\t\tccm_addError(ccm_t('image-required') + ': ".$this->addslashes_single($field['label'])."');\n";
 				$code .= "\t}\n\n";
 			}
