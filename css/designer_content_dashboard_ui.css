@@ -68,6 +68,20 @@ input#name {
 	width: 95%;
 }
 
+.static-html-field textarea {
+	display: block;
+	float: left;
+	width: 65%;
+}
+
+.static-html-field label {
+	display: block;
+	float: left;
+	width: 28%;
+	margin: 3px 0 0 7px;
+	font-style: italic;
+}
+
 .designer-content-fields-add {
 	clear: both;
 	padding-top: 10px;

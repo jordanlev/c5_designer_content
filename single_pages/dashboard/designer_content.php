@@ -83,9 +83,8 @@
 			
 				{{if type == 'static'}}
 				<div class="designer-content-field-options static-html-field">
-					<textarea rows="2" cols="80" name="fieldStaticHtml[${id}]" id="fieldStaticHtml[${id}]"></textarea>
-					<br />
-					<span style="font-style: italic;"><?php echo t('Anything entered here will be directly outputted to the block view &mdash; users will not be able to edit it.'); ?></i>
+					<textarea rows="2" name="fieldStaticHtml[${id}]" id="fieldStaticHtml[${id}]"></textarea>
+					<label><?php echo t('Anything entered here will be directly outputted to the block view &mdash; users will not be able to edit it.'); ?></label>
 				</div>
 				{{else}}
 
@@ -106,11 +105,11 @@
 
 				<div class="designer-content-field-html">
 					<label for="fieldPrefixes[${id}]"><?php echo t('Opening HTML'); ?></label><br />
-					<textarea rows="6" name="fieldPrefixes[${id}]" id="fieldPrefixes[${id}]"></textarea>
+					<textarea rows="3" name="fieldPrefixes[${id}]" id="fieldPrefixes[${id}]"></textarea>
 				</div>
 				<div class="designer-content-field-html">
 					<label for="fieldSuffixes[${id}]"><?php echo t('Closing HTML'); ?></label><br />
-					<textarea rows="6" name="fieldSuffixes[${id}]" id="fieldSuffixes[${id}]"></textarea>
+					<textarea rows="3" name="fieldSuffixes[${id}]" id="fieldSuffixes[${id}]"></textarea>
 				</div>
 				{{/if}}
 	        </div>
