@@ -1,0 +1,282 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Designer Content 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-12 15:03-0800\n"
+"PO-Revision-Date: 2011-03-12 15:04-0800\n"
+"Last-Translator: Jordan Lev <concrete@jordanlev.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;t\n"
+"X-Poedit-Basepath: /Users/jordanlev/Sites/concrete5411/packages/designer_content/\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: controller.php:2
+#: controllers/dashboard/designer_content.php:2
+#: libraries/block_generator.php:2
+#: single_pages/dashboard/designer_content.php:1
+#: tools/validate_handle.php:2
+msgid "Access Denied."
+msgstr ""
+
+#: controller.php:11
+#: single_pages/dashboard/designer_content.php:3
+msgid "Designer Content"
+msgstr ""
+
+#: controller.php:15
+msgid "A content block generator for designers and developers. Allows you to easily create blocks which display rich content, images, and/or text in just the right way."
+msgstr ""
+
+#: controller.php:38
+msgid "Create custom content blocks"
+msgstr ""
+
+#: controllers/dashboard/designer_content.php:28
+msgid "Error: Blocks directory is not writeable!"
+msgstr ""
+
+#: controllers/dashboard/designer_content.php:30
+msgid "Error: Block handle or name is missing!"
+msgstr ""
+
+#: controllers/dashboard/designer_content.php:32
+msgid "Error: Block Handle is already in use (either by another package, block, or database table)!"
+msgstr ""
+
+#: generator_templates/controller.php:72
+msgid "Missing required text"
+msgstr ""
+
+#: generator_templates/controller.php:73
+msgid "Missing required image"
+msgstr ""
+
+#: generator_templates/editor_controls.php:5
+msgid "Add Image"
+msgstr ""
+
+#: generator_templates/editor_controls.php:6
+msgid "Add File"
+msgstr ""
+
+#: generator_templates/editor_controls.php:8
+#: generator_templates/editor_controls.php:10
+msgid "Insert Link to Page"
+msgstr ""
+
+#: generator_templates/editor_controls.php:12
+msgid "Customize Toolbar"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:8
+msgid "Success!"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:10
+msgid "The new block has been created and installed, and is ready to be added to pages."
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:12
+msgid "Create another block &raquo;"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:19
+msgid "Create a new block by entering some basic info and adding one or more fields."
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:35
+msgid "Block Handle"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:38
+msgid "lowercase letters and underscores only"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:42
+msgid "Block Name"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:45
+msgid "human-readable name (appears in the \"Add Block\" list)"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:49
+msgid "Block Description"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:52
+msgid "human-readable description (only appears in the dashboard \"Add Functionality\" page)"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:69
+msgid "delete"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:69
+msgid "Yes"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:69
+msgid "No"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:73
+msgid "Move Up"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:79
+msgid "Move Down"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:87
+msgid "Anything entered here will be directly outputted to the block view &mdash; users will not be able to edit it."
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:92
+msgid "Editor Label"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:96
+#: single_pages/dashboard/designer_content.php:98
+msgid "Required?"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:100
+msgid "Width"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:102
+msgid "Height"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:107
+msgid "Opening HTML"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:111
+msgid "Closing HTML"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:120
+msgid "Add Field"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:126
+#: single_pages/dashboard/designer_content.php:161
+msgid "Static HTML"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:128
+msgid "Textbox"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:130
+msgid "Image"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:133
+#: single_pages/dashboard/designer_content.php:160
+msgid "WYSIWYG Editor"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:143
+msgid "Make The Block!"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:146
+msgid "Processing..."
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:158
+msgid "Textbox Field"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:159
+msgid "Image Field"
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:164
+msgid "Block Name is required."
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:165
+msgid "Block Handle is required."
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:166
+msgid "Block Handle can only contain lowercase letters and underscores."
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:167
+msgid "Block Handle is already in use (either by another package, block, or database table)."
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:168
+msgid "You must add at least 1 field."
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:169
+msgid "You cannot have more than 1 WYSIWYG Editor in a block."
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:170
+msgid "All fields must have an Editor Label."
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:171
+msgid "Image Widths must be valid numbers."
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:172
+msgid "Image heights must be valid numbers."
+msgstr ""
+
+#: single_pages/dashboard/designer_content.php:173
+msgid "Cannot proceed! Please correct the following errors:"
+msgstr ""
+
+
+### Generated block messages...
+
+#: controller.php
+msgid "Missing required text"
+msgstr ""
+
+#: controller.php
+msgid "Missing required image"
+msgstr ""
+
+#: edit.php
+msgid "Choose Image"
+msgstr ""
+
+#: edit.php
+msgid "Image Links to URL"
+msgstr ""
+
+#: edit.php
+msgid "Alt Text"
+msgstr ""
+
+#: editor_controls.php
+msgid "Add Image"
+msgstr ""
+
+#: editor_controls.php
+msgid "Add File"
+msgstr ""
+
+#: editor_controls.php
+msgid "Insert Link to Page"
+msgstr ""
+
+#: editor_controls.php
+msgid "Customize Toolbar"
+msgstr ""
+
