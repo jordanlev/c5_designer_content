@@ -12,7 +12,7 @@ class DesignerContentPackage extends Package {
 	}	
 	
 	public function getPackageDescription() {
-		return t('A content block generator for designers and developers. Allows you to easily create blocks which display rich content, images, and/or text in just the right way.');
+		return t('A block type generator for designers and developers. Allows you to easily create block types which display rich content, images, links and text in just the right way.');
 	}
 
 	public function on_start() {
@@ -35,7 +35,7 @@ class DesignerContentPackage extends Package {
 		//Install dashboard page
 		Loader::model('single_page');
 		$p = SinglePage::add('/dashboard/designer_content', $pkg);
-		$p->update(array('cDescription' => t('Create custom content blocks')));
+		$p->update(array('cDescription' => t('Create custom content block types')));
 	}
 	
 }

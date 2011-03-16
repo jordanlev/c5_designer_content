@@ -29,7 +29,7 @@ class DashboardDesignerContentController extends Controller {
 		} else if (empty($handle) || empty($name)) {
 			die(t('Error: Block handle or name is missing!'));
 		} else if (!$this->validate_unique_handle($handle)) {
-			die(t('Error: Block Handle is already in use (either by another package, block, or database table)!'));
+			die(t('Error: Block Handle is already in use (either by another package, block type, or database table)!'));
 		}
 		
 		//Gather all field data

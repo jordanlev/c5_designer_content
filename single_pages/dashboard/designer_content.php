@@ -7,21 +7,21 @@
 <div class="ccm-dashboard-inner">
 	<?php echo t('Success!'); ?><br />
 	<br />
-	<?php echo t("The new block has been created and installed, and is ready to be added to pages."); ?><br />
+	<?php echo t("The new block type has been created and installed, and is ready to be added to pages."); ?><br />
 	<br />
-	<a href="<?php echo View::url('/dashboard/designer_content'); ?>"><?php echo t('Create another block &raquo;'); ?></a><br />
+	<a href="<?php echo View::url('/dashboard/designer_content'); ?>"><?php echo t('Create another block type &raquo;'); ?></a><br />
 </div>
 
 <?php else: ?>
 
 <div class="ccm-dashboard-inner">
 	<div>
-		<h4><?php echo t('Create a new block by entering some basic info and adding one or more fields.'); ?></h4>
+		<h4><?php echo t('Create a new block type by entering some basic info and adding one or more fields.'); ?></h4>
 	</div>
 
 	<?php if (!$can_write): ?>
 	<div id="write_permissions_warning">
-		Warning: The blocks directory is not writeable. Blocks cannot be created until this is fixed!
+		<?php echo t('Warning: The blocks directory is not writeable. Block types cannot be created until this is fixed!'); ?>
 	</div>
 	<?php endif; ?>
 
@@ -140,7 +140,7 @@
 		<?php if ($can_write): ?>
 		<center>
 			<div id="designer-content-submit" class="button white">
-				<?php echo t('Make The Block!'); ?>
+				<?php echo t('Make The Block Type!'); ?>
 			</div>
 			<div id="designer-content-submit-loading" class="button white" style="display: none;">
 				<?php echo t('Processing...'); ?>
@@ -164,9 +164,9 @@
 		'name_required': '<?php echo t("Block Name is required."); ?>',
 		'handle_required': '<?php echo t("Block Handle is required."); ?>',
 		'handle_lowercase': '<?php echo t("Block Handle can only contain lowercase letters and underscores."); ?>',
-		'handle_exists': '<?php echo t("Block Handle is already in use (either by another package, block, or database table)."); ?>',
+		'handle_exists': '<?php echo t("Block Handle is already in use (either by another package, block type, or database table)."); ?>',
 		'fields_required': '<?php echo t("You must add at least 1 field."); ?>',
-		'one_wysiwyg': '<?php echo t("You cannot have more than 1 WYSIWYG Editor in a block."); ?>',
+		'one_wysiwyg': '<?php echo t("You cannot have more than 1 WYSIWYG Editor in a block type."); ?>',
 		'labels_required': '<?php echo t("All fields must have an Editor Label."); ?>',
 		'widths_numeric': '<?php echo t("Image Widths must be valid numbers."); ?>',
 		'heights_numeric': '<?php echo t("Image heights must be valid numbers."); ?>',
