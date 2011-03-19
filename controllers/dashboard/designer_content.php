@@ -54,6 +54,8 @@ class DashboardDesignerContentController extends Controller {
 				$block->add_text_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]));
 			} else if ($type == 'image') {
 				$block->add_image_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]), $field_widths[$id], $field_heights[$id]);
+			} else if ($type == 'link') {
+				$block->add_link_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]));
 			} else if ($type == 'wysiwyg') {
 				$block->add_wysiwyg_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id]);
 			}

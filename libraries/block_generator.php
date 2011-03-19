@@ -14,7 +14,15 @@ class DesignerContentBlockGenerator {
 
 	private $outpath;
 	private $tplpath;
-	
+
+	public function add_static_field($static_content) {
+		$this->fields[] = array(
+			'num' => count($this->fields) + 1,
+			'type' => 'static',
+			'static' => $static_content,
+		);
+	}
+
 	public function add_text_field($label, $prefix = '', $suffix = '', $required = false) {
 		$this->fields[] = array(
 			'num' => count($this->fields) + 1,
@@ -39,6 +47,17 @@ class DesignerContentBlockGenerator {
 		);
 	}
 	
+	public function add_link_field($label, $prefix = '', $suffix = '', $required = false) {
+		$this->fields[] = array(
+			'num' => count($this->fields) + 1,
+			'type' => 'link',
+			'label' => $label,
+			'prefix' => $prefix,
+			'suffix' => $suffix,
+			'required' => $required,
+		);
+	}
+	
 	public function add_wysiwyg_field($label, $prefix = '', $suffix = '') {
 		$this->fields[] = array(
 			'num' => count($this->fields) + 1,
@@ -46,14 +65,6 @@ class DesignerContentBlockGenerator {
 			'label' => $label,
 			'prefix' => $prefix,
 			'suffix' => $suffix,
-		);
-	}
-
-	public function add_static_field($static_content) {
-		$this->fields[] = array(
-			'num' => count($this->fields) + 1,
-			'type' => 'static',
-			'static' => $static_content,
 		);
 	}
 
@@ -109,6 +120,12 @@ class DesignerContentBlockGenerator {
 				$code .= "\t\tccm_addError(ccm_t('image-required') + ': ".$this->addslashes_single($field['label'])."');\n";
 				$code .= "\t}\n\n";
 			}
+			
+			if ($field['type'] == 'link' && $field['required']) {
+				$code .= "\tif (\$('#field_{$field['num']}_link_cID').val() == '' || \$('#field_{$field['num']}_link_cID').val() == 0) {\n";
+				$code .= "\t\tccm_addError(ccm_t('link-required') + ': ".$this->addslashes_single($field['label'])."');\n";
+				$code .= "\t}\n\n";
+			}
 		}
 		$token = '[[[GENERATOR_REPLACE_VALIDATIONRULES]]]';
 		$template = str_replace($token, $code, $template);
@@ -152,6 +169,7 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'wysiwyg') {
 				$code .= "\t\t\$content .= \$this->field_{$field['num']}_wysiwyg_content;\n";
 			}
+			//Intentionally leaving out image alt text and link text (doesn't make sense for those to come up in search results)
 		}
 		$token = '[[[GENERATOR_REPLACE_GETSEARCHABLECONTENT]]]';
 		$template = str_replace($token, $code, $template);
@@ -159,13 +177,13 @@ class DesignerContentBlockGenerator {
 		//Replace view() function
 		$code = '';
 		foreach ($this->fields as $field) {
-			if ($field['type'] == 'wysiwyg') {
-				$code .= "\t\t\$this->set('field_{$field['num']}_wysiwyg_content', \$this->translateFrom(\$this->field_{$field['num']}_wysiwyg_content));\n";
-			}
 			if ($field['type'] == 'image') {
 				$width = empty($field['width']) ? 0 : $field['width'];
 				$height = empty($field['height']) ? 0 : $field['height'];
 				$code .= "\t\t\$this->set('field_{$field['num']}_image', \$this->get_image_object(\$this->field_{$field['num']}_image_fID, {$width}, {$height}));\n";
+			}
+			if ($field['type'] == 'wysiwyg') {
+				$code .= "\t\t\$this->set('field_{$field['num']}_wysiwyg_content', \$this->translateFrom(\$this->field_{$field['num']}_wysiwyg_content));\n";
 			}
 		}
 		$token = '[[[GENERATOR_REPLACE_VIEW]]]';
@@ -184,11 +202,14 @@ class DesignerContentBlockGenerator {
 		//Replace save() function
 		$code = '';
 		foreach ($this->fields as $field) {
-			if ($field['type'] == 'wysiwyg') {
-				$code .= "\t\t\$args['field_{$field['num']}_wysiwyg_content'] = \$this->translateTo(\$args['field_{$field['num']}_wysiwyg_content']);\n";
-			}
 			if ($field['type'] == 'image') {
 				$code .= "\t\t\$args['field_{$field['num']}_image_fID'] = (\$args['field_{$field['num']}_image_fID'] != '') ? \$args['field_{$field['num']}_image_fID'] : 0;\n";
+			}
+			if ($field['type'] == 'link') {
+				$code .= "\t\t\$args['field_{$field['num']}_link_cID'] = (\$args['field_{$field['num']}_link_cID'] != '') ? \$args['field_{$field['num']}_link_cID'] : 0;\n";
+			}
+			if ($field['type'] == 'wysiwyg') {
+				$code .= "\t\t\$args['field_{$field['num']}_wysiwyg_content'] = \$this->translateTo(\$args['field_{$field['num']}_wysiwyg_content']);\n";
 			}
 		}
 		$token = '[[[GENERATOR_REPLACE_SAVE]]]';
@@ -213,13 +234,17 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'text') {
 				$code .= "\t\t<field name=\"field_{$field['num']}_textbox_text\" type=\"X\"></field>\n\n";
 			}
-			if ($field['type'] == 'wysiwyg') {
-				$code .= "\t\t<field name=\"field_{$field['num']}_wysiwyg_content\" type=\"X2\"></field>\n\n";
-			}
 			if ($field['type'] == 'image') {
 				$code .= "\t\t<field name=\"field_{$field['num']}_image_fID\" type=\"I\"></field>\n";
-				$code .= "\t\t<field name=\"field_{$field['num']}_image_externalLink\" type=\"C\" size=\"255\"></field>\n";
 				$code .= "\t\t<field name=\"field_{$field['num']}_image_altText\" type=\"C\" size=\"255\"></field>\n\n";
+				$code .= "\t\t<field name=\"field_{$field['num']}_image_externalLink\" type=\"C\" size=\"255\"></field>\n";
+			}
+			if ($field['type'] == 'link') {
+				$code .= "\t\t<field name=\"field_{$field['num']}_link_cID\" type=\"I\"></field>\n";
+				$code .= "\t\t<field name=\"field_{$field['num']}_link_text\" type=\"C\" size=\"255\"></field>\n\n";
+			}
+			if ($field['type'] == 'wysiwyg') {
+				$code .= "\t\t<field name=\"field_{$field['num']}_wysiwyg_content\" type=\"X2\"></field>\n\n";
 			}
 		}
 		$token = '[[[GENERATOR_REPLACE_FIELDS]]]';
@@ -255,14 +280,6 @@ class DesignerContentBlockGenerator {
 				$code .= "</div>\n\n";
 			}
 			
-			if ($field['type'] == 'wysiwyg') {
-				$code .= "<div class=\"ccm-block-field-group\" id=\"ccm-editor-pane\">\n";
-				$code .= "\t<h2>{$field['label']}</h2>\n";
-				$code .= "\t<?php \$this->inc('editor_init.php'); ?>\n";
-				$code .= "\t<textarea id=\"field_{$field['num']}_wysiwyg_content\" name=\"field_{$field['num']}_wysiwyg_content\" class=\"advancedEditor ccm-advanced-editor\"><?php echo \$field_{$field['num']}_wysiwyg_content; ?></textarea>\n";
-				$code .= "</div>\n\n";
-			}
-			
 			if ($field['type'] == 'image') {
 				$code .= "<div class=\"ccm-block-field-group\">\n";
 				$code .= "\t<h2>{$field['label']}</h2>\n";
@@ -270,14 +287,30 @@ class DesignerContentBlockGenerator {
 				$code .= "\n";
 				$code .= "\t<table border=\"0\" cellspacing=\"3\" cellpadding=\"0\" style=\"width: 95%;\">\n";
 				$code .= "\t\t<tr>\n";
-				$code .= "\t\t\t<td align=\"right\" style=\"width: 150px;\"><label for=\"field_{$field['num']}_image_externalLink\"><?php echo t('Image Links to URL'); ?>:</label>&nbsp;</td>\n";
-				$code .= "\t\t\t<td align=\"left\"><?php echo \$form->text('field_{$field['num']}_image_externalLink', \$field_{$field['num']}_image_externalLink, array('style' => 'width: 100%;')); ?></td>\n";
-				$code .= "\t\t</tr>\n";
-				$code .= "\t\t<tr>\n";
 				$code .= "\t\t\t<td align=\"right\" style=\"width: 150px;\"><label for=\"field_{$field['num']}_image_altText\"><?php echo t('Alt Text'); ?>:</label>&nbsp;</td>\n";
 				$code .= "\t\t\t<td align=\"left\"><?php echo \$form->text('field_{$field['num']}_image_altText', \$field_{$field['num']}_image_externalLink, array('style' => 'width: 100%;')); ?></td>\n";
 				$code .= "\t\t</tr>\n";
+				$code .= "\t\t<tr>\n";
+				$code .= "\t\t\t<td align=\"right\" style=\"width: 150px;\"><label for=\"field_{$field['num']}_image_externalLink\"><?php echo t('Image Links to URL'); ?>:</label>&nbsp;</td>\n";
+				$code .= "\t\t\t<td align=\"left\"><?php echo \$form->text('field_{$field['num']}_image_externalLink', \$field_{$field['num']}_image_externalLink, array('style' => 'width: 100%;')); ?></td>\n";
+				$code .= "\t\t</tr>\n";
 				$code .= "\t</table>\n";
+				$code .= "</div>\n\n";
+			}
+			
+			if ($field['type'] == 'link') {
+				$code .= "<div class=\"ccm-block-field-group\">\n";
+				$code .= "\t<h2>{$field['label']}</h2>\n";
+				$code .= "\t<?php echo \$ps->selectPage('field_{$field['num']}_link_cID', \$field_{$field['num']}_link_cID); ?>\n";
+				$code .= "\t<?php echo \$form->text('field_{$field['num']}_link_text', \$field_{$field['num']}_link_text, array('style' => 'width: 95%;')); ?>\n";
+				$code .= "</div>\n\n";
+			}
+			
+			if ($field['type'] == 'wysiwyg') {
+				$code .= "<div class=\"ccm-block-field-group\" id=\"ccm-editor-pane\">\n";
+				$code .= "\t<h2>{$field['label']}</h2>\n";
+				$code .= "\t<?php \$this->inc('editor_init.php'); ?>\n";
+				$code .= "\t<textarea id=\"field_{$field['num']}_wysiwyg_content\" name=\"field_{$field['num']}_wysiwyg_content\" class=\"advancedEditor ccm-advanced-editor\"><?php echo \$field_{$field['num']}_wysiwyg_content; ?></textarea>\n";
 				$code .= "</div>\n\n";
 			}
 		}
@@ -335,35 +368,51 @@ class DesignerContentBlockGenerator {
 		//Replace html
 		$code = '';
 		foreach ($this->fields as $field) {
-			if ($field['type'] == 'text') {
-				$code .= "<?php if (!empty(\$field_{$field['num']}_textbox_text)): ?>\n";
-				$code .= empty($field['prefix']) ? '' : $field['prefix'] . "\n";
-				$code .= "\t<?php echo htmlspecialchars(\$field_{$field['num']}_textbox_text, ENT_QUOTES, 'UTF-8'); ?>\n";
-				$code .= empty($field['suffix']) ? '' : $field['suffix'] . "\n";
-				$code .= "<?php endif; ?>\n\n";
-			}
-			
-			if ($field['type'] == 'wysiwyg') {
-				$code .= "<?php if (!empty(\$field_{$field['num']}_wysiwyg_content)): ?>\n";
-				$code .= empty($field['prefix']) ? '' : $field['prefix'] . "\n";
-				$code .= "\t<?php echo \$field_{$field['num']}_wysiwyg_content; ?>\n";
-				$code .= empty($field['suffix']) ? '' : $field['suffix'] . "\n";
-				$code .= "<?php endif; ?>\n\n";
-			}
-			
-			if ($field['type'] == 'image') {
-				$code .= "<?php if (!empty(\$field_{$field['num']}_image)): ?>\n";
-				$code .= empty($field['prefix']) ? '' : $field['prefix'] . "\n";
-				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLink)) { ?><a href=\"<?php echo \$field_{$field['num']}_image_externalLink; ?>\"><?php } ?>\n";
-				$code .= "\t<img src=\"<?php echo \$field_{$field['num']}_image->src; ?>\" width=\"<?php echo \$field_{$field['num']}_image->width; ?>\" height=\"<?php echo \$field_{$field['num']}_image->height; ?>\" alt=\"<?php echo \$field_{$field['num']}_image_altText; ?>\" />\n";
-				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLink)) { ?></a><?php } ?>\n";
-				$code .= empty($field['suffix']) ? '' : $field['suffix'] . "\n";
-				$code .= "<?php endif; ?>\n\n";
-			}
 			
 			if ($field['type'] == 'static') {
 				$code .= $field['static'];
 			}
+
+			if ($field['type'] == 'text') {
+				$code .= "<?php if (!empty(\$field_{$field['num']}_textbox_text)): ?>\n";
+				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
+				$code .= "\t<?php echo htmlspecialchars(\$field_{$field['num']}_textbox_text, ENT_QUOTES, APP_CHARSET); ?>\n";
+				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
+				$code .= "<?php endif; ?>\n\n";
+			}
+
+			if ($field['type'] == 'image') {
+				$code .= "<?php if (!empty(\$field_{$field['num']}_image)): ?>\n";
+				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
+				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLink)) { ?><a href=\"<?php echo \$field_{$field['num']}_image_externalLink; ?>\"><?php } ?>\n";
+				$code .= "\t<img src=\"<?php echo \$field_{$field['num']}_image->src; ?>\" width=\"<?php echo \$field_{$field['num']}_image->width; ?>\" height=\"<?php echo \$field_{$field['num']}_image->height; ?>\" alt=\"<?php echo \$field_{$field['num']}_image_altText; ?>\" />\n";
+				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLink)) { ?></a><?php } ?>\n";
+				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
+				$code .= "<?php endif; ?>\n\n";
+			}
+
+			if ($field['type'] == 'link') {
+				$code .= "<?php if (!empty(\$field_{$field['num']}_link_cID)): ?>\n";
+				$code .= "\t<?php\n";
+				$code .= "\t\$nh = Loader::helper('navigation');\n";
+				$code .= "\t\$link_page = Page::getByID(\$field_{$field['num']}_link_cID);\n";
+				$code .= "\t\$link_url = \$nh->getLinkToCollection(\$link_page, true);\n";
+				$code .= "\t\$link_text = empty(\$field_{$field['num']}_link_text) ? \$link_url : htmlspecialchars(\$field_{$field['num']}_link_text, ENT_QUOTES, APP_CHARSET);\n"
+				$code .= "\t?>\n";
+				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
+				$code .= "\t<a href=\"<?php echo $link_url; ?>\"><?php echo $link_text; ?></a>\n";
+				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
+				$code .= "<?php endif; ?>\n\n";
+			}
+
+			if ($field['type'] == 'wysiwyg') {
+				$code .= "<?php if (!empty(\$field_{$field['num']}_wysiwyg_content)): ?>\n";
+				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
+				$code .= "\t<?php echo \$field_{$field['num']}_wysiwyg_content; ?>\n";
+				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
+				$code .= "<?php endif; ?>\n\n";
+			}
+			
 		}
 		$token = '[[[GENERATOR_REPLACE_HTML]]]';
 		$template = str_replace($token, $code, $template);

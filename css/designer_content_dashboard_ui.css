@@ -61,11 +61,21 @@ input#name {
 
 .designer-content-field-html {
 	float: left;
-	 width: 32%;
+	 width: 31%;
 	padding: 5px;
 }
 .designer-content-field-html textarea {
 	width: 95%;
+}
+
+.designer-content-field-image-required {
+	float: left;
+	padding-top: 4px;
+}
+
+.designer-content-field-image-size {
+	float: left;
+	padding-left: 20px;
 }
 
 .static-html-field textarea {
