@@ -36,6 +36,10 @@ class DesignerContentPackage extends Package {
 		Loader::model('single_page');
 		$p = SinglePage::add('/dashboard/designer_content', $pkg);
 		$p->update(array('cDescription' => t('Create custom content block types')));
+
+		//Update permissions so only super-user can see the dashboard page
+		// (leaving this commented out for now because it doesn't seem safe -- how do advanced permissions work?)
+		//$p->updatePermissions(array('cInheritPermissionsFrom' => 'OVERRIDE', 'cOverrideTemplatePermissions' => 1));
 	}
 	
 }

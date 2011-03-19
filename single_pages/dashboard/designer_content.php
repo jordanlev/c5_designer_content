@@ -2,12 +2,12 @@
 
 <h1><span><?php echo t('Designer Content'); ?></span></h1>
 
-<?php if ($generated): ?>
+<?php if ($is_generated): ?>
 
 <div class="ccm-dashboard-inner">
 	<?php echo t('Success!'); ?><br />
 	<br />
-	<?php echo t("The new block type has been created and installed, and is ready to be added to pages."); ?><br />
+	<?php echo t('%s has been created and installed.', "<b>{$generated_name}</b>"); ?><br />
 	<br />
 	<a href="<?php echo View::url('/dashboard/designer_content'); ?>"><?php echo t('Create another block type &raquo;'); ?></a><br />
 </div>

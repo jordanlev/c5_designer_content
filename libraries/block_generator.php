@@ -122,7 +122,7 @@ class DesignerContentBlockGenerator {
 			}
 			
 			if ($field['type'] == 'link' && $field['required']) {
-				$code .= "\tif (\$('#field_{$field['num']}_link_cID').val() == '' || \$('#field_{$field['num']}_link_cID').val() == 0) {\n";
+				$code .= "\tif (\$('input[name=field_{$field['num']}_link_cID]').val() == '' || \$('input[name=field_{$field['num']}_link_cID]').val() == 0) {\n";
 				$code .= "\t\tccm_addError(ccm_t('link-required') + ': ".$this->addslashes_single($field['label'])."');\n";
 				$code .= "\t}\n\n";
 			}
@@ -287,12 +287,12 @@ class DesignerContentBlockGenerator {
 				$code .= "\n";
 				$code .= "\t<table border=\"0\" cellspacing=\"3\" cellpadding=\"0\" style=\"width: 95%;\">\n";
 				$code .= "\t\t<tr>\n";
-				$code .= "\t\t\t<td align=\"right\" style=\"width: 150px;\"><label for=\"field_{$field['num']}_image_altText\"><?php echo t('Alt Text'); ?>:</label>&nbsp;</td>\n";
-				$code .= "\t\t\t<td align=\"left\"><?php echo \$form->text('field_{$field['num']}_image_altText', \$field_{$field['num']}_image_externalLink, array('style' => 'width: 100%;')); ?></td>\n";
+				$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_image_altText\"><?php echo t('Alt Text'); ?>:</label>&nbsp;</td>\n";
+				$code .= "\t\t\t<td align=\"left\" style=\"width: 100%;\"><?php echo \$form->text('field_{$field['num']}_image_altText', \$field_{$field['num']}_image_externalLink, array('style' => 'width: 100%;')); ?></td>\n";
 				$code .= "\t\t</tr>\n";
 				$code .= "\t\t<tr>\n";
-				$code .= "\t\t\t<td align=\"right\" style=\"width: 150px;\"><label for=\"field_{$field['num']}_image_externalLink\"><?php echo t('Image Links to URL'); ?>:</label>&nbsp;</td>\n";
-				$code .= "\t\t\t<td align=\"left\"><?php echo \$form->text('field_{$field['num']}_image_externalLink', \$field_{$field['num']}_image_externalLink, array('style' => 'width: 100%;')); ?></td>\n";
+				$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_image_externalLink\"><?php echo t('Link to URL'); ?>:</label>&nbsp;</td>\n";
+				$code .= "\t\t\t<td align=\"left\" style=\"width: 100%;\"><?php echo \$form->text('field_{$field['num']}_image_externalLink', \$field_{$field['num']}_image_externalLink, array('style' => 'width: 100%;')); ?></td>\n";
 				$code .= "\t\t</tr>\n";
 				$code .= "\t</table>\n";
 				$code .= "</div>\n\n";
@@ -302,7 +302,12 @@ class DesignerContentBlockGenerator {
 				$code .= "<div class=\"ccm-block-field-group\">\n";
 				$code .= "\t<h2>{$field['label']}</h2>\n";
 				$code .= "\t<?php echo \$ps->selectPage('field_{$field['num']}_link_cID', \$field_{$field['num']}_link_cID); ?>\n";
-				$code .= "\t<?php echo \$form->text('field_{$field['num']}_link_text', \$field_{$field['num']}_link_text, array('style' => 'width: 95%;')); ?>\n";
+				$code .= "\t<table border=\"0\" cellspacing=\"3\" cellpadding=\"0\" style=\"width: 95%;\">\n";
+				$code .= "\t\t<tr>\n";
+				$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_link_text\"><?php echo t('Link Text'); ?>:</label>&nbsp;</td>\n";
+				$code .= "\t\t\t<td align=\"left\" style=\"width: 100%;\"><?php echo \$form->text('field_{$field['num']}_link_text', \$field_{$field['num']}_link_text, array('style' => 'width: 100%;')); ?></td>\n";
+				$code .= "\t\t</tr>\n";
+				$code .= "\t</table>\n";
 				$code .= "</div>\n\n";
 			}
 			
@@ -397,10 +402,10 @@ class DesignerContentBlockGenerator {
 				$code .= "\t\$nh = Loader::helper('navigation');\n";
 				$code .= "\t\$link_page = Page::getByID(\$field_{$field['num']}_link_cID);\n";
 				$code .= "\t\$link_url = \$nh->getLinkToCollection(\$link_page, true);\n";
-				$code .= "\t\$link_text = empty(\$field_{$field['num']}_link_text) ? \$link_url : htmlspecialchars(\$field_{$field['num']}_link_text, ENT_QUOTES, APP_CHARSET);\n"
+				$code .= "\t\$link_text = empty(\$field_{$field['num']}_link_text) ? \$link_url : htmlspecialchars(\$field_{$field['num']}_link_text, ENT_QUOTES, APP_CHARSET);\n";
 				$code .= "\t?>\n";
 				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
-				$code .= "\t<a href=\"<?php echo $link_url; ?>\"><?php echo $link_text; ?></a>\n";
+				$code .= "\t<a href=\"<?php echo \$link_url; ?>\"><?php echo \$link_text; ?></a>\n";
 				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
 				$code .= "<?php endif; ?>\n\n";
 			}

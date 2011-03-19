@@ -14,9 +14,21 @@ class DashboardDesignerContentController extends Controller {
 		$th = Loader::helper('concrete/urls'); 
 		$this->set('validate_handle_url', $th->getToolsURL('validate_handle', 'designer_content'));
 		
-		$this->set('generated', $this->get('generated'));
+		$generated_handle = $this->get('generated');
+		$generated_name = $this->block_name_for_handle($generated_handle);
+		$this->set('is_generated', !empty($generated_handle));
+		$this->set('generated_name', $generated_name);
 		
 		$this->set('can_write', is_writable(DIR_FILES_BLOCK_TYPES));
+	}
+	
+	private function block_name_for_handle($handle) {
+		if (empty($handle)) {
+			return '';
+		} else {
+			$bt = BlockType::getByHandle($handle);
+			return is_object($bt) ? $bt->getBlockTypeName() : '';
+		}
 	}
 	
 	public function generate_block() { //In single_pages, do not prepend "action_" (unlike blocks)
@@ -67,7 +79,7 @@ class DashboardDesignerContentController extends Controller {
 		BlockType::installBlockType($handle);
 		
 		//Redirect back to view page so browser refresh doesn't trigger a re-generation
-		header('Location: ' . View::url('/dashboard/designer_content/?generated=1'));
+		header('Location: ' . View::url("/dashboard/designer_content/?generated={$handle}"));
 		exit;
 	}
 	
