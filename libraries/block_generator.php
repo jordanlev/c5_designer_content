@@ -291,7 +291,7 @@ class DesignerContentBlockGenerator {
 				$code .= "\t<table border=\"0\" cellspacing=\"3\" cellpadding=\"0\" style=\"width: 95%;\">\n";
 				$code .= "\t\t<tr>\n";
 				$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_image_altText\"><?php echo t('Alt Text'); ?>:</label>&nbsp;</td>\n";
-				$code .= "\t\t\t<td align=\"left\" style=\"width: 100%;\"><?php echo \$form->text('field_{$field['num']}_image_altText', \$field_{$field['num']}_image_externalLink, array('style' => 'width: 100%;')); ?></td>\n";
+				$code .= "\t\t\t<td align=\"left\" style=\"width: 100%;\"><?php echo \$form->text('field_{$field['num']}_image_altText', \$field_{$field['num']}_image_altText, array('style' => 'width: 100%;')); ?></td>\n";
 				$code .= "\t\t</tr>\n";
 				$code .= "\t\t<tr>\n";
 				$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_image_externalLink\"><?php echo t('Link to URL'); ?>:</label>&nbsp;</td>\n";
