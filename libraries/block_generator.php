@@ -189,9 +189,22 @@ class DesignerContentBlockGenerator {
 		$token = '[[[GENERATOR_REPLACE_VIEW]]]';
 		$template = str_replace($token, $code, $template);
 		
+		//Replace add() function
+		$code = '';
+		foreach ($this->fields as $field) {
+			if ($field['type'] == 'image') {
+				$code .= "\t\t\$this->set('field_{$field['num']}_image', (empty(\$this->field_{$field['num']}_image_fID) ? null : File::getByID(\$this->field_{$field['num']}_image_fID)));\n";
+			}
+		}
+		$token = '[[[GENERATOR_REPLACE_ADD]]]';
+		$template = str_replace($token, $code, $template);
+		
 		//Replace edit() function
 		$code = '';
 		foreach ($this->fields as $field) {
+			if ($field['type'] == 'image') {
+				$code .= "\t\t\$this->set('field_{$field['num']}_image', (empty(\$this->field_{$field['num']}_image_fID) ? null : File::getByID(\$this->field_{$field['num']}_image_fID)));\n";
+			}
 			if ($field['type'] == 'wysiwyg') {
 				$code .= "\t\t\$this->set('field_{$field['num']}_wysiwyg_content', \$this->translateFromEditMode(\$this->field_{$field['num']}_wysiwyg_content));\n";
 			}
@@ -259,16 +272,6 @@ class DesignerContentBlockGenerator {
 		
 		//Load template
 		$template = file_get_contents($this->tplpath.$filename);
-		
-		//Replace file prep stuff
-		$code = '';
-		foreach ($this->fields as $field) {
-			if ($field['type'] == 'image') {
-				$code .= "\n\$field_{$field['num']}_image = empty(\$field_{$field['num']}_image_fID) ? null : File::getByID(\$field_{$field['num']}_image_fID);";
-			}
-		}
-		$token = '[[[GENERATOR_REPLACE_IMAGEPREP]]]';
-		$template = str_replace($token, $code, $template);
 		
 		//Replace html form fields
 		$code = '';

@@ -6,7 +6,9 @@ Loader::block('library_file');
 class [[[GENERATOR_REPLACE_CLASSNAME]]] extends BlockController {
 	
 	var $pobj;
-	
+
+	protected $btName = '[[[GENERATOR_REPLACE_NAME]]]';
+	protected $btDescription = '[[[GENERATOR_REPLACE_DESCRIPTION]]]';
 	protected $btTable = '[[[GENERATOR_REPLACE_TABLENAME]]]';
 	protected $btInterfaceWidth = "700";
 	protected $btInterfaceHeight = "450";
@@ -16,15 +18,7 @@ class [[[GENERATOR_REPLACE_CLASSNAME]]] extends BlockController {
 	protected $btCacheBlockOutputOnPost = true;
 	protected $btCacheBlockOutputForRegisteredUsers = true;
 	protected $btCacheBlockOutputLifetime = 300;
-	
-	public function getBlockTypeName() {
-		return '[[[GENERATOR_REPLACE_NAME]]]';
-	}
-
-	public function getBlockTypeDescription() {
-		return '[[[GENERATOR_REPLACE_DESCRIPTION]]]';
-	}
-	
+		
 	public function getSearchableContent() {
 		$content = '';
 [[[GENERATOR_REPLACE_GETSEARCHABLECONTENT]]]
@@ -56,6 +50,10 @@ class [[[GENERATOR_REPLACE_CLASSNAME]]] extends BlockController {
 		}
 		
 		return $image;
+	}
+	
+	public function add() {
+[[[GENERATOR_REPLACE_ADD]]]
 	}
 	
 	public function edit() {
