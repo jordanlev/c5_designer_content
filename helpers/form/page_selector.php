@@ -30,16 +30,22 @@ class FormPageSelectorHelper {
 		}
 		
 		$unique_js_function_name = "ccm_selectSitemapNode_{$fieldName}";
+		$unique_wrapper_id = "pageSelector{$fieldName}";
 		
 		$html = '';
-		$html .= '<div class="ccm-summary-selected-item"><div class="ccm-summary-selected-item-inner"><strong class="ccm-summary-selected-item-label">';
+		$html .= '<div id="'.$unique_wrapper_id.'">';
+		$html .= '<div class="ccm-summary-selected-item"><div class="ccm-summary-selected-item-inner" style="display: inline;"><strong class="ccm-summary-selected-item-label">';
 		if ($selectedCID > 0) {
 			$oc = Page::getByID($selectedCID);
 			$html .= $oc->getCollectionName();
 		}
 		$html .= '</strong></div>';
-		$html .= '<a onclick="ccm_selectSitemapNode = ' . $unique_js_function_name . ';" class="ccm-sitemap-select-page" dialog-sender="' . $fieldName . '" dialog-width="90%" dialog-height="70%" dialog-modal="false" dialog-title="' . t('Choose Page') . '" href="' . REL_DIR_FILES_TOOLS_REQUIRED . '/sitemap_search_selector.php?sitemap_select_mode=select_page&cID=' . $selectedCID . '">' . t('Select Page') . '</a>';		$html .= '<input type="hidden" name="' . $fieldName . '" value="' . $selectedCID . '">';
-		$html .= '</div>'; 
+		$html .= '<span class="spacer" style="' . (($selectedCID > 0) ? '' : 'display: none;') . '">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>';
+		$html .= '[<a onclick="ccm_selectSitemapNode = ' . $unique_js_function_name . ';" class="ccm-sitemap-select-page" dialog-sender="' . $fieldName . '" dialog-width="90%" dialog-height="70%" dialog-modal="false" dialog-title="' . t('Choose Page') . '" href="' . REL_DIR_FILES_TOOLS_REQUIRED . '/sitemap_search_selector.php?sitemap_select_mode=select_page&cID=' . $selectedCID . '">' . (($selectedCID > 0) ? t('Select New Page') : t('Select Page')) . '</a>]';
+		$html .= '<span class="clearPageSelection" style="' . (empty($selectedCID) ? 'display: none;' : '') . '">&nbsp;&nbsp;&nbsp;&nbsp;[<a href="#" onclick="$(\'#' . $unique_wrapper_id. ' input\').val(0); $(\'#' . $unique_wrapper_id . ' strong\').html(\'\'); $(\'#' . $unique_wrapper_id . ' .spacer\').hide(); $(this).parent().hide(); return false;">'. t('Clear Selection'). '</a>]</span>';
+		$html .= '<input type="hidden" name="' . $fieldName . '" value="' . $selectedCID . '">';
+		$html .= '</div>'; //end .ccm-summary-selected-item
+		$html .= '</div>'; //end #$unique_wrapper_id
 		$html .= '<script type="text/javascript"> 
 		var ccmActivePageField;
 		$(function() {
@@ -56,6 +62,9 @@ class FormPageSelectorHelper {
 		var pari = $(ccmActivePageField).parent().find("[name=\'"+fieldName+"\']");
 		par.html(cName);
 		pari.val(cID);
+		$(ccmActivePageField).text(((cID > 0) ? "' . t('Select New Page') . '" : "' . t('Select Page') . '"));
+		$("#' . $unique_wrapper_id . ' .spacer").toggle(cID > 0);
+		$("#' . $unique_wrapper_id . ' .clearPageSelection").toggle(cID > 0);
 		';
 		$html .= "} \r\n </script>";
 		return $html;
