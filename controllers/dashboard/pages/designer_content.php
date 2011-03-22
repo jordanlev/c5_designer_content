@@ -1,9 +1,9 @@
 <?php   
 defined('C5_EXECUTE') or die(_("Access Denied."));
 
-class DashboardDesignerContentController extends Controller {
+class DashboardPagesDesignerContentController extends Controller {
 	
-	public $helpers = array('form');
+	public $helpers = array('form'); //makes form helper available to the single_page
 
 	function view() {
 		$html = Loader::helper('html');
@@ -79,7 +79,7 @@ class DashboardDesignerContentController extends Controller {
 		BlockType::installBlockType($handle);
 		
 		//Redirect back to view page so browser refresh doesn't trigger a re-generation
-		header('Location: ' . View::url("/dashboard/designer_content/?generated={$handle}"));
+		header('Location: ' . View::url("/dashboard/pages/designer_content/?generated={$handle}"));
 		exit;
 	}
 	

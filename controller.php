@@ -12,7 +12,7 @@ class DesignerContentPackage extends Package {
 	}	
 	
 	public function getPackageDescription() {
-		return t('A block type generator for designers and developers. Allows you to easily create block types which display rich content, images, links and text in just the right way.');
+		return t('A block type generator for designers and developers. Designer Content lets you quickly create new kinds of blocks that will make it easy for users to add pieces of content to their site (while maintaining complex layouts).');
 	}
 
 	public function on_start() {
@@ -34,12 +34,7 @@ class DesignerContentPackage extends Package {
 		
 		//Install dashboard page
 		Loader::model('single_page');
-		$p = SinglePage::add('/dashboard/designer_content', $pkg);
-		$p->update(array('cDescription' => t('Create custom content block types')));
-
-		//Update permissions so only super-user can see the dashboard page
-		// (leaving this commented out for now because it doesn't seem safe -- how do advanced permissions work?)
-		//$p->updatePermissions(array('cInheritPermissionsFrom' => 'OVERRIDE', 'cOverrideTemplatePermissions' => 1));
+		SinglePage::add('/dashboard/pages/designer_content', $pkg);
 	}
 	
 }

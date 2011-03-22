@@ -3,7 +3,6 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 
 // NOTE: WE DO NO VALIDATION HERE!!!
 // MAKE SURE YOU VALIDATE THAT NOTHING IMPORTANT IS GETTING OVERWRITTEN BEFORE USING THIS!!!!!
-
 class DesignerContentBlockGenerator {
 	
 	private $fields = array();
@@ -82,12 +81,15 @@ class DesignerContentBlockGenerator {
 		$this->generate_controller_php();
 		$this->generate_db_xml();
 		$this->generate_edit_php();
-		$this->generate_editor_config_php();
-		$this->generate_editor_controls_php();
-		$this->generate_editor_init_php();
+		if ($this->has_wysiwyg()) {
+			$this->generate_editor_config_php();
+			$this->generate_editor_controls_php();
+			$this->generate_editor_init_php();
+		}
 		$this->generate_icon_png();
 		$this->generate_view_php();
 	}
+		
 	
 /*** GENERATORS ***/
 	private function create_block_directory() {
@@ -189,16 +191,6 @@ class DesignerContentBlockGenerator {
 		$token = '[[[GENERATOR_REPLACE_VIEW]]]';
 		$template = str_replace($token, $code, $template);
 		
-		//Replace add() function
-		$code = '';
-		foreach ($this->fields as $field) {
-			if ($field['type'] == 'image') {
-				$code .= "\t\t\$this->set('field_{$field['num']}_image', (empty(\$this->field_{$field['num']}_image_fID) ? null : File::getByID(\$this->field_{$field['num']}_image_fID)));\n";
-			}
-		}
-		$token = '[[[GENERATOR_REPLACE_ADD]]]';
-		$template = str_replace($token, $code, $template);
-		
 		//Replace edit() function
 		$code = '';
 		foreach ($this->fields as $field) {
@@ -216,10 +208,10 @@ class DesignerContentBlockGenerator {
 		$code = '';
 		foreach ($this->fields as $field) {
 			if ($field['type'] == 'image') {
-				$code .= "\t\t\$args['field_{$field['num']}_image_fID'] = (\$args['field_{$field['num']}_image_fID'] != '') ? \$args['field_{$field['num']}_image_fID'] : 0;\n";
+				$code .= "\t\t\$args['field_{$field['num']}_image_fID'] = empty(\$args['field_{$field['num']}_image_fID']) ? 0 : \$args['field_{$field['num']}_image_fID'];\n";
 			}
 			if ($field['type'] == 'link') {
-				$code .= "\t\t\$args['field_{$field['num']}_link_cID'] = (\$args['field_{$field['num']}_link_cID'] != '') ? \$args['field_{$field['num']}_link_cID'] : 0;\n";
+				$code .= "\t\t\$args['field_{$field['num']}_link_cID'] = empty(\$args['field_{$field['num']}_link_cID']) ? 0 : \$args['field_{$field['num']}_link_cID'];\n";
 			}
 			if ($field['type'] == 'wysiwyg') {
 				$code .= "\t\t\$args['field_{$field['num']}_wysiwyg_content'] = \$this->translateTo(\$args['field_{$field['num']}_wysiwyg_content']);\n";
@@ -328,7 +320,7 @@ class DesignerContentBlockGenerator {
 		//Output file
 		file_put_contents($this->outpath.$filename, $template);
 	}
-	
+		
 	private function generate_editor_config_php() {
 		//No replacements
 		$filename = 'editor_config.php';
@@ -378,7 +370,7 @@ class DesignerContentBlockGenerator {
 		foreach ($this->fields as $field) {
 			
 			if ($field['type'] == 'static') {
-				$code .= $field['static'];
+				$code .= $field['static'] . "\n\n";
 			}
 
 			if ($field['type'] == 'text') {
@@ -449,6 +441,15 @@ class DesignerContentBlockGenerator {
 		$s = str_replace("\\", "\\\\", $s);
 		$s = str_replace("'", "\\'", $s);
 		return $s;
+	}
+
+	private function has_wysiwyg() {
+		foreach ($this->fields as $field) {
+			if ($field['type'] == 'wysiwyg') {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 }

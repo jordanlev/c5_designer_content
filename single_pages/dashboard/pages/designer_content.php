@@ -7,9 +7,9 @@
 <div class="ccm-dashboard-inner">
 	<?php echo t('Success!'); ?><br />
 	<br />
-	<?php echo t('%s has been created and installed.', "<b>{$generated_name}</b>"); ?><br />
+	<?php echo t('%s has been installed, and will now be available in the "Add Blocks" list when pages are edited.', "<b>{$generated_name}</b>"); ?><br />
 	<br />
-	<a href="<?php echo View::url('/dashboard/designer_content'); ?>"><?php echo t('Create another block type &raquo;'); ?></a><br />
+	<a href="<?php echo View::url('/dashboard/pages/designer_content'); ?>"><?php echo t('Create another block type'); ?> &raquo;</a><br />
 </div>
 
 <?php else: ?>
@@ -21,7 +21,7 @@
 
 	<?php if (!$can_write): ?>
 	<div id="write_permissions_warning">
-		<?php echo t('Warning: The blocks directory is not writeable. Block types cannot be created until this is fixed!'); ?>
+		<?php echo t('Warning: The blocks directory is not writeable. Blocks cannot be created from this page until permissions are changed on your server.'); ?>
 	</div>
 	<?php endif; ?>
 
@@ -46,10 +46,13 @@
 				</td>
 			</tr>
 			<tr>
-				<td align="right" valign="top"><h2><label for="description"><?php echo t('Block Description'); ?>:</label></h2></td>
+				<td align="right" valign="top">
+					<h2><label for="description"><?php echo t('Block Description'); ?>:</label></h2>
+					<span id="description-sublabel"><?php echo t('(optional)'); ?></span>
+				</td>
 				<td align="left" valign="top">
 					<?php echo $form->textarea('description', $description, array('rows' => '3', 'cols' => '50')); ?>
-					<span id="description-note"><?php echo t('optional (appears in dashboard)'); ?></span>
+					<span id="description-note"><?php echo t('for dashboard "Add Functionality" list'); ?></span>
 				</td>
 			</tr>
 		</table>
@@ -148,15 +151,23 @@
 		<hr />
 		
 		<?php if ($can_write): ?>
-		<center>
+		<div id="designer-content-submit-wrapper">
 			<div id="designer-content-submit" class="button white">
-				<?php echo t('Make The Block Type!'); ?>
+				<?php echo t('Make The Block!'); ?>
 			</div>
 			<div id="designer-content-submit-loading" class="button white" style="display: none;">
 				<?php echo t('Processing...'); ?>
 			</div>
-		</center>
+		</div>
 		<?php endif; ?>
+		
+		<div id="designer-content-credits">
+			<?php echo t('code + ui'); ?>: <a href="http://www.concrete5.org/profile/-/view/9756/" target="_blank">Jordan Lev</a>
+			<br />
+			<?php echo t('icon design'); ?>: <a href="http://kirkrobertsdesign.com/" target="_blank">Kirk Roberts</a>
+		</div>
+		
+		<div style="clear: both;"></div>
 		
 	</form>
 
@@ -177,7 +188,7 @@
 		'handle_lowercase': '<?php echo t("Block Handle can only contain lowercase letters and underscores."); ?>',
 		'handle_exists': '<?php echo t("Block Handle is already in use (either by another package, block type, or database table)."); ?>',
 		'fields_required': '<?php echo t("You must add at least 1 field."); ?>',
-		'one_wysiwyg': '<?php echo t("You cannot have more than 1 WYSIWYG Editor in a block type."); ?>',
+		'one_wysiwyg': '<?php echo t("You cannot have more than 1 WYSIWYG Editor in a block."); ?>',
 		'labels_required': '<?php echo t("All fields must have an Editor Label."); ?>',
 		'widths_numeric': '<?php echo t("Image Max Widths must be valid numbers."); ?>',
 		'heights_numeric': '<?php echo t("Image Max Heights must be valid numbers."); ?>',

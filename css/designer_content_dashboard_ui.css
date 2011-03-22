@@ -18,6 +18,11 @@ input#name {
 	line-height: 20px;
 }
 
+#description-sublabel {
+	color: #457DA5;
+	font-style: italic;
+}
+
 .designer-content-field {
 	float: left;
 	width: 100%;
@@ -105,8 +110,19 @@ input#name {
 	font-weight: bold;
 }
 
+#designer-content-submit-wrapper {
+	float: left;
+ 	margin: 5px 0 5px 15%;
+}
 #designer-content-submit {
 	text-align: center;
+}
+
+#designer-content-credits {
+	float: right;
+	text-align: right;
+	font-style: italic;
+	margin: 5px 5px 0 0;
 }
 
 /* Button styles from http://webdesignerwall.com/tutorials/css3-gradient-buttons */

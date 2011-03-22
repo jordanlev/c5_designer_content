@@ -20,7 +20,7 @@ $(document).ready(function() {
 		// 	$.ajax({
 		// 		type: 'POST',
 		// 		async: false,
-		// 		url: CCM_REL + '/index.php/dashboard/designer_content/generate_block/',
+		// 		url: CCM_REL + '/index.php/dashboard/pages/designer_content/generate_block/',
 		// 		data: $('#designer-content-form').serialize(),
 		// 		success: function() {
 		// 			alert('ok!');

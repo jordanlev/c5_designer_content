@@ -1,8 +1,6 @@
 <?php 
 defined('C5_EXECUTE') or die("Access Denied.");
 
-Loader::block('library_file');
-
 class [[[GENERATOR_REPLACE_CLASSNAME]]] extends BlockController {
 	
 	var $pobj;
@@ -50,10 +48,6 @@ class [[[GENERATOR_REPLACE_CLASSNAME]]] extends BlockController {
 		}
 		
 		return $image;
-	}
-	
-	public function add() {
-[[[GENERATOR_REPLACE_ADD]]]
 	}
 	
 	public function edit() {
