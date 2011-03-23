@@ -74,8 +74,7 @@ class DashboardPagesDesignerContentController extends Controller {
 		}
 		
 		//Make+install block
-		$pkg = Package::getByHandle('designer_content');
-		$block->generate($handle, $name, $this->post('description'), $pkg->getPackageVersion());
+		$block->generate($handle, $name, $this->post('description'));
 		BlockType::installBlockType($handle);
 		
 		//Redirect back to view page so browser refresh doesn't trigger a re-generation

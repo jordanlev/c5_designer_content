@@ -67,7 +67,7 @@ class DesignerContentBlockGenerator {
 		);
 	}
 
-	public function generate($handle, $name, $description = '', $package_version) {
+	public function generate($handle, $name, $description = '') {
 		$this->handle = $handle;
 		$this->name = $name;
 		$this->description = $description;
@@ -77,7 +77,7 @@ class DesignerContentBlockGenerator {
 		$this->create_block_directory();
 		$this->generate_add_php();
 		$this->generate_auto_js();
-		$this->generate_changelog($package_version);
+		$this->generate_changelog();
 		$this->generate_controller_php();
 		$this->generate_db_xml();
 		$this->generate_edit_php();
@@ -136,14 +136,14 @@ class DesignerContentBlockGenerator {
 		file_put_contents($this->outpath.$filename, $template);
 	}
 	
-	private function generate_changelog($package_version) {
+	private function generate_changelog() {
 		$filename = 'CHANGELOG';
 		
 		//Load template
 		$template = file_get_contents($this->tplpath.$filename);
 				
 		//Replace html
-		$code = $package_version;
+		$code = Package::getByHandle('designer_content')->getPackageVersion();
 		$token = '[[[GENERATOR_REPLACE_VERSION]]]';
 		$template = str_replace($token, $code, $template);
 		

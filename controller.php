@@ -16,15 +16,16 @@ class DesignerContentPackage extends Package {
 	}
 
 	public function on_start() {
-		Events::extend('on_page_view', 'DesignerContentPackage', 'on_page_view', 'packages/designer_content/controller.php');
+		//NOTE: Don't use the on_page_view event because that doesn't get fired if "Track Page View Statistics" is turned off!
+		Events::extend('on_before_render', 'DesignerContentPackage', 'on_before_render', DIR_PACKAGES . '/designer_content/controller.php');
 	}
-
-	public function on_page_view() {
+	
+	public function on_before_render() {
 		//Override system js IF user is in edit mode (or in the global scrapbook)
 		if (Page::getCurrentPage()->isEditMode() || Page::getCurrentPage()->getCollectionPath() == '/dashboard/scrapbook') {
 			$html = Loader::helper('html');
 			$view = View::getInstance();
-			$view->addHeaderItem($html->javascript(BASE_URL.DIR_REL.'/packages/designer_content/js/ccm.filemanager.js'), 'CONTROLLER');
+			$view->addHeaderItem($html->javascript(BASE_URL.DIR_REL.DIR_PACKAGES.'/designer_content/js/ccm.filemanager.js'), 'CONTROLLER');
 			//Note that we passed the 'CONTROLLER' namespace to addHeaderItem() so that it adds our items AFTER the core items
 		}
 	}
