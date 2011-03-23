@@ -3,18 +3,14 @@ msgstr ""
 "Project-Id-Version: Designer Content 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-22 04:40-0800\n"
-"PO-Revision-Date: 2011-03-22 04:42-0800\n"
-"Last-Translator: Jordan Lev <concrete@jordanlev.com>\n"
-"Language-Team: Jordan Lev <concrete@jordanlev.com>\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Christian Grauer <cgrauer@netscript.net>\n"
+"Language-Team:  <mail@cgrauer.de>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: _;gettext;gettext_noop;t\n"
-"X-Poedit-Basepath: /Users/jordanlev/Sites/concrete5411/packages/designer_content/\n"
-"X-Poedit-Language: English\n"
-"X-Poedit-Country: UNITED STATES\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
 
 #: controller.php:2
 #: controllers/dashboard/pages/designer_content.php:2
@@ -22,282 +18,309 @@ msgstr ""
 #: single_pages/dashboard/pages/designer_content.php:1
 #: tools/validate_handle.php:2
 msgid "Access Denied."
-msgstr ""
+msgstr "Zugriff verweigert."
 
 #: controller.php:11
 #: single_pages/dashboard/pages/designer_content.php:3
 msgid "Designer Content"
-msgstr ""
+msgstr "Designer Content"
 
 #: controller.php:15
 msgid "A block type generator for designers and developers. Designer Content lets you quickly create new kinds of blocks that will make it easy for users to add pieces of content to their site (while maintaining complex layouts)."
-msgstr ""
+msgstr "Erzeugung von Block-Typen für Designer und Entwickler. Designer Content erstellt schnell und einfach neue Block-Typen, die den Benutzern helfen, einzelne Inhalte automatisch im vorgegebenen Layout auf Ihrer Website zu veröffentlichen."
 
 #: controllers/dashboard/pages/designer_content.php:40
 msgid "Error: Blocks directory is not writeable!"
-msgstr ""
+msgstr "Fehler: Verzeichnis \"blocks\" ist nicht beschreibbar!"
 
 #: controllers/dashboard/pages/designer_content.php:42
 msgid "Error: Block handle or name is missing!"
-msgstr ""
+msgstr "Fehler: Blocktyp-Kennung oder Name fehlt!"
 
 #: controllers/dashboard/pages/designer_content.php:44
 msgid "Error: Block Handle is already in use (either by another package, block type, or database table)!"
-msgstr ""
+msgstr "Fehler: die Blocktyp-Kennung ist bereits in Verwendung (durch ein anderes Package, einen Block oder eine Datenbanktabelle)!"
 
 #: generator_templates/controller.php:64
 msgid "Missing required text"
-msgstr ""
+msgstr "Erforderlicher Text fehlt"
 
 #: generator_templates/controller.php:65
 msgid "Missing required image"
-msgstr ""
+msgstr "Erforderliches Bild fehlt"
 
 #: generator_templates/controller.php:66
 msgid "Missing required link"
-msgstr ""
+msgstr "Erforderlicher Link fehlt"
 
 #: generator_templates/editor_controls.php:5
 msgid "Add Image"
-msgstr ""
+msgstr "Bild einfügen"
 
 #: generator_templates/editor_controls.php:6
 msgid "Add File"
-msgstr ""
+msgstr "Datei einfügen"
 
 #: generator_templates/editor_controls.php:8
 #: generator_templates/editor_controls.php:10
 msgid "Insert Link to Page"
-msgstr ""
+msgstr "Link zu einer Seite einfügen"
 
 #: generator_templates/editor_controls.php:12
 msgid "Customize Toolbar"
-msgstr ""
+msgstr "Toolbar anpassen"
 
+# ## Generated block messages...
 #: helpers/form/page_selector.php:44
 msgid "Choose Page"
-msgstr ""
+msgstr "Seite auswählen"
 
 #: helpers/form/page_selector.php:44
 #: helpers/form/page_selector.php:65
 msgid "Select New Page"
-msgstr ""
+msgstr "Neue Seite auswählen"
 
 #: helpers/form/page_selector.php:44
 #: helpers/form/page_selector.php:65
 msgid "Select Page"
-msgstr ""
+msgstr "Seite auswählen"
 
 #: helpers/form/page_selector.php:45
 msgid "Clear Selection"
-msgstr ""
+msgstr "Auswahl aufheben"
 
 #: single_pages/dashboard/pages/designer_content.php:8
 msgid "Success!"
-msgstr ""
+msgstr "Erstellung abgeschlossen!"
 
 #: single_pages/dashboard/pages/designer_content.php:10
 #, php-format
 msgid "%s has been installed, and will now be available in the \"Add Blocks\" list when pages are edited."
-msgstr ""
+msgstr "%s wurde installiert und ist nun bei der Bearbeitung von Seiten in der Liste \"Block hinzufügen\" verfügbar."
 
 #: single_pages/dashboard/pages/designer_content.php:12
 msgid "Create another block type"
-msgstr ""
+msgstr "Einen weiteren Blocktyp erstellen &raquo;"
 
 #: single_pages/dashboard/pages/designer_content.php:19
 msgid "Create a new block type by entering some basic info and adding one or more fields."
-msgstr ""
+msgstr "Erstellen Sie einen neuen Blocktyp. Geben Sie Basisinformationen an und fügen Sie ein oder mehrere Felder hinzu."
 
 #: single_pages/dashboard/pages/designer_content.php:24
 msgid "Warning: The blocks directory is not writeable. Blocks cannot be created from this page until permissions are changed on your server."
-msgstr ""
+msgstr "Achtung: Das Block-Verzeichnis ist nicht beschreibbar. Über diese Seite können keine Blocktypen erstellt werden, solange die Berechtigungen auf Ihrem Server nicht geändert werden."
 
 #: single_pages/dashboard/pages/designer_content.php:35
 msgid "Block Handle"
-msgstr ""
+msgstr "Blocktyp-Kennung"
 
 #: single_pages/dashboard/pages/designer_content.php:38
 msgid "lowercase letters and underscores only"
-msgstr ""
+msgstr "Nur Kleinbuchstaben und Unterstriche"
 
 #: single_pages/dashboard/pages/designer_content.php:42
 msgid "Block Name"
-msgstr ""
+msgstr "Blocktyp Name"
 
 #: single_pages/dashboard/pages/designer_content.php:45
 msgid "human-readable name (appears in the \"Add Block\" list)"
-msgstr ""
+msgstr "Normalsprachlicher Name (erscheint in der Auswahl \"Block einfügen\")"
 
 #: single_pages/dashboard/pages/designer_content.php:50
 msgid "Block Description"
-msgstr ""
+msgstr "Blocktyp Beschreibung"
 
 #: single_pages/dashboard/pages/designer_content.php:51
 msgid "(optional)"
-msgstr ""
+msgstr "(optional)"
 
 #: single_pages/dashboard/pages/designer_content.php:55
 msgid "for dashboard \"Add Functionality\" list"
-msgstr ""
+msgstr "Für die Liste \"Funktionalität hinzufügen\" im Dashboard"
 
 #: single_pages/dashboard/pages/designer_content.php:72
 msgid "delete"
-msgstr ""
+msgstr "löschen"
 
 #: single_pages/dashboard/pages/designer_content.php:72
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: single_pages/dashboard/pages/designer_content.php:72
 msgid "No"
-msgstr ""
+msgstr "Nein"
 
 #: single_pages/dashboard/pages/designer_content.php:76
 msgid "Move Up"
-msgstr ""
+msgstr "Nach oben"
 
 #: single_pages/dashboard/pages/designer_content.php:82
 msgid "Move Down"
-msgstr ""
+msgstr "Nach unten"
 
 #: single_pages/dashboard/pages/designer_content.php:90
 msgid "Anything entered here will be directly outputted to the block view &mdash; users will not be able to edit it."
-msgstr ""
+msgstr "Alles was hier steht wird bei der Blockdarstellung direkt ausgegeben und kann vom Benutzer nicht bearbeitet werden."
 
 #: single_pages/dashboard/pages/designer_content.php:95
 msgid "Editor Label"
-msgstr ""
+msgstr "Feldname"
 
 #: single_pages/dashboard/pages/designer_content.php:99
 #: single_pages/dashboard/pages/designer_content.php:102
 msgid "Required?"
-msgstr ""
+msgstr "Pflichtfeld?"
 
 #: single_pages/dashboard/pages/designer_content.php:106
 msgid "Max Width"
-msgstr ""
+msgstr "Max. Breite"
 
 #: single_pages/dashboard/pages/designer_content.php:110
 msgid "Max Height"
-msgstr ""
+msgstr "Max. Höhe"
 
 #: single_pages/dashboard/pages/designer_content.php:118
 msgid "Opening HTML"
-msgstr ""
+msgstr "HTML davor"
 
 #: single_pages/dashboard/pages/designer_content.php:122
 msgid "Closing HTML"
-msgstr ""
+msgstr "HTML danach"
 
 #: single_pages/dashboard/pages/designer_content.php:131
 msgid "Add Field"
-msgstr ""
+msgstr "Feld einfügen"
 
 #: single_pages/dashboard/pages/designer_content.php:137
 #: single_pages/dashboard/pages/designer_content.php:179
 msgid "Static HTML"
-msgstr ""
+msgstr "Statisches HTML"
 
 #: single_pages/dashboard/pages/designer_content.php:139
 msgid "Textbox"
-msgstr ""
+msgstr "Textfeld"
 
 #: single_pages/dashboard/pages/designer_content.php:141
 msgid "Image"
-msgstr ""
+msgstr "Bild"
 
 #: single_pages/dashboard/pages/designer_content.php:143
 msgid "Page Link"
-msgstr ""
+msgstr "Link zu einer Seite"
 
 #: single_pages/dashboard/pages/designer_content.php:146
 #: single_pages/dashboard/pages/designer_content.php:183
 msgid "WYSIWYG Editor"
-msgstr ""
+msgstr "WYSIWYG Editor"
 
 #: single_pages/dashboard/pages/designer_content.php:156
 msgid "Make The Block!"
-msgstr ""
+msgstr "Block erzeugen!"
 
 #: single_pages/dashboard/pages/designer_content.php:159
 msgid "Processing..."
-msgstr ""
+msgstr "In Arbeit..."
 
 #: single_pages/dashboard/pages/designer_content.php:165
 msgid "code + ui"
-msgstr ""
+msgstr "code + ui"
 
 #: single_pages/dashboard/pages/designer_content.php:167
 msgid "icon design"
-msgstr ""
+msgstr "icon design"
 
 #: single_pages/dashboard/pages/designer_content.php:180
 msgid "Textbox Field"
-msgstr ""
+msgstr "Textfeld"
 
 #: single_pages/dashboard/pages/designer_content.php:181
 msgid "Image Field"
-msgstr ""
+msgstr "Bild-Feld"
 
 #: single_pages/dashboard/pages/designer_content.php:182
 msgid "Page Link Field"
-msgstr ""
+msgstr "Seitenlink-Feld"
 
 #: single_pages/dashboard/pages/designer_content.php:186
 msgid "Block Name is required."
-msgstr ""
+msgstr "Blocktyp Name erforderlich."
 
 #: single_pages/dashboard/pages/designer_content.php:187
 msgid "Block Handle is required."
-msgstr ""
+msgstr "Blocktyp-Kennung erforderlich."
 
 #: single_pages/dashboard/pages/designer_content.php:188
 msgid "Block Handle can only contain lowercase letters and underscores."
-msgstr ""
+msgstr "Die Blocktyp-Kennung darf nur Kleinbuchstaben und Unterstriche enthalten."
 
 #: single_pages/dashboard/pages/designer_content.php:189
 msgid "Block Handle is already in use (either by another package, block type, or database table)."
-msgstr ""
+msgstr "Die Blocktyp-Kennung ist bereits in Verwendung (durch ein anderes Package, einen Block oder eine Datenbanktabelle)."
 
 #: single_pages/dashboard/pages/designer_content.php:190
 msgid "You must add at least 1 field."
-msgstr ""
+msgstr "Sie müssen mindestens 1 Feld einfügen."
 
 #: single_pages/dashboard/pages/designer_content.php:191
 msgid "You cannot have more than 1 WYSIWYG Editor in a block."
-msgstr ""
+msgstr "Jeder Blocktyp kann maximal 1 WYSIWYG-Editor enthalten."
 
 #: single_pages/dashboard/pages/designer_content.php:192
 msgid "All fields must have an Editor Label."
-msgstr ""
+msgstr "Jedes Feld braucht einen Feldnamen."
 
 #: single_pages/dashboard/pages/designer_content.php:193
 msgid "Image Max Widths must be valid numbers."
-msgstr ""
+msgstr "Die Bildbreite muss eine Zahl sein."
 
 #: single_pages/dashboard/pages/designer_content.php:194
 msgid "Image Max Heights must be valid numbers."
-msgstr ""
+msgstr "Die Bildhöhe muss eine Zahl sein."
 
 #: single_pages/dashboard/pages/designer_content.php:195
 msgid "Cannot proceed! Please correct the following errors:"
-msgstr ""
+msgstr "Verarbeitung abgebrochen! Bitte beheben Sie die folgenden Fehler:"
 
+# ## Generated block messages...
 #: manually added messages for block generator:
-
 #: libraries/block_generator:281
 msgid "Choose Image"
-msgstr ""
+msgstr "Bild auswählen"
 
 #: libraries/block_generator:285
 msgid "Alt Text"
-msgstr ""
+msgstr "Alt-Text"
 
 #: libraries/block_generator:289
 msgid "Link to URL"
-msgstr ""
+msgstr "URL des Links"
 
 #: libraries/block_generator:302
 msgid "Link Text"
-msgstr ""
+msgstr "Link-Text"
+
+#~ msgid ""
+#~ "A content block generator for designers and developers. Allows you to "
+#~ "easily create blocks which display rich content, images, and/or text in "
+#~ "just the right way."
+#~ msgstr ""
+#~ "Ein Tool für Designer und Entwickler zur Erzeugung von Blocktypen für "
+#~ "Inhalte. Ermöglicht das einfache Erstellen von Blocktypen, die "
+#~ "formatierte Inhalte, Bilder oder Text einheitlich darstellen."
+#~ msgid "Create custom content blocks"
+#~ msgstr "Eigene Blocktypen erzeugen"
+#~ msgid ""
+#~ "The new block has been created and installed, and is ready to be added to "
+#~ "pages."
+#~ msgstr ""
+#~ "Der neue Blocktyp wurde erzeugt und installiert. Er kann jetzt auf den "
+#~ "Seiten verwendet werden."
+#~ msgid ""
+#~ "human-readable description (only appears in the dashboard \"Add "
+#~ "Functionality\" page)"
+#~ msgstr ""
+#~ "Normalsprachliche Beschreibung (erscheint nur auf der Seite "
+#~ "\"Funktionalität hinzufügen\" im Dashboard)"
+#~ msgid "Are you sure?"
+#~ msgstr "Sind Sie sicher?"
+
