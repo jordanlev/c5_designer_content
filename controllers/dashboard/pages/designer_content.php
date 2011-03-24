@@ -54,6 +54,7 @@ class DashboardPagesDesignerContentController extends Controller {
 		$fields_required = $this->post('fieldsRequired');
 		$field_widths = $this->post('fieldWidths');
 		$field_heights = $this->post('fieldHeights');
+		$field_default_contents = $this->post('fieldDefaultContents');
 		
 		//Set up the code generator
 		Loader::library('block_generator', 'designer_content');
@@ -69,7 +70,7 @@ class DashboardPagesDesignerContentController extends Controller {
 			} else if ($type == 'link') {
 				$block->add_link_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]));
 			} else if ($type == 'wysiwyg') {
-				$block->add_wysiwyg_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id]);
+				$block->add_wysiwyg_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], $field_default_contents[$id]);
 			}
 		}
 		

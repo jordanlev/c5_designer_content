@@ -111,15 +111,18 @@
 								<td align="left"><input type="text" name="fieldHeights[${id}]" id="fieldHeights[${id}]" class="designer-content-field-height" size="3" maxlength="4" />px</td>
 							</tr>
 						</table>
+					{{else type == 'wysiwyg'}}
+						<label for="fieldDefaultContents[${id}]"><?php echo t('Default HTML Content'); ?></label><br />
+						<textarea rows="4" name="fieldDefaultContents[${id}]" id="fieldDefaultContents[${id}]"></textarea>
 					{{/if}}
 				</div>
 
 				<div class="designer-content-field-html">
-					<label for="fieldPrefixes[${id}]"><?php echo t('Opening HTML'); ?></label><br />
+					<label for="fieldPrefixes[${id}]"><?php echo t('Wrapper HTML Open'); ?> <i>(&lt;div class="abc"&gt;)</i></label><br />
 					<textarea rows="3" name="fieldPrefixes[${id}]" id="fieldPrefixes[${id}]"></textarea>
 				</div>
 				<div class="designer-content-field-html">
-					<label for="fieldSuffixes[${id}]"><?php echo t('Closing HTML'); ?></label><br />
+					<label for="fieldSuffixes[${id}]"><?php echo t('Wrapper HTML Close'); ?> <i>(&lt;/div&gt;)</i></label><br />
 					<textarea rows="3" name="fieldSuffixes[${id}]" id="fieldSuffixes[${id}]"></textarea>
 				</div>
 				{{/if}}

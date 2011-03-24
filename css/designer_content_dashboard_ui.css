@@ -55,11 +55,15 @@ input#name {
 	padding: 5px;
 }
 
+.designer-content-field-options textarea {
+	width: 95%;
+}
+
 .static-html-field {
 	width: 100%;
 }
 
-.designer-content-field-editorlabel{
+.designer-content-field-editorlabel {
 	width: 95%;
 	margin-bottom: 10px;
 }

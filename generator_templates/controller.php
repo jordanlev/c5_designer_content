@@ -50,6 +50,11 @@ class [[[GENERATOR_REPLACE_CLASSNAME]]] extends BlockController {
 		return $image;
 	}
 	
+	public function add() {
+		//Set default values for new blocks
+[[[GENERATOR_REPLACE_ADD]]]
+	}
+	
 	public function edit() {
 [[[GENERATOR_REPLACE_EDIT]]]
 	}

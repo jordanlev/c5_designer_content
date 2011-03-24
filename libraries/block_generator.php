@@ -57,13 +57,14 @@ class DesignerContentBlockGenerator {
 		);
 	}
 	
-	public function add_wysiwyg_field($label, $prefix = '', $suffix = '') {
+	public function add_wysiwyg_field($label, $prefix = '', $suffix = '', $default = '') {
 		$this->fields[] = array(
 			'num' => count($this->fields) + 1,
 			'type' => 'wysiwyg',
 			'label' => $label,
 			'prefix' => $prefix,
 			'suffix' => $suffix,
+			'default' => $default,
 		);
 	}
 
@@ -189,6 +190,19 @@ class DesignerContentBlockGenerator {
 			}
 		}
 		$token = '[[[GENERATOR_REPLACE_VIEW]]]';
+		$template = str_replace($token, $code, $template);
+		
+		//Replace add() function
+		$code = '';
+		foreach ($this->fields as $field) {
+			if ($field['type'] == 'wysiwyg') {
+				if (!empty($field['default'])) {
+					$code .= "\t\t\$field_{$field['num']}_default_content = '" . $this->addslashes_single($field['default']) . "';\n";
+					$code .= "\t\t\$this->set('field_{$field['num']}_wysiwyg_content', \$field_{$field['num']}_default_content);\n";
+				}
+			}
+		}
+		$token = '[[[GENERATOR_REPLACE_ADD]]]';
 		$template = str_replace($token, $code, $template);
 		
 		//Replace edit() function
