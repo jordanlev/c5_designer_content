@@ -292,15 +292,18 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'image') {
 				$code .= "<div class=\"ccm-block-field-group\">\n";
 				$code .= "\t<h2>{$field['label']}</h2>\n";
-				$code .= "\t<?php echo \$al->image('field_{$field['num']}_image_fID', 'field_{$field['num']}_image_fID', t('Choose Image'), \$field_{$field['num']}_image); ?>\n";
+				$translated_label = $this->addslashes_single( t('Choose Image') );
+				$code .= "\t<?php echo \$al->image('field_{$field['num']}_image_fID', 'field_{$field['num']}_image_fID', '{$translated_label}', \$field_{$field['num']}_image); ?>\n";
 				$code .= "\n";
 				$code .= "\t<table border=\"0\" cellspacing=\"3\" cellpadding=\"0\" style=\"width: 95%;\">\n";
 				$code .= "\t\t<tr>\n";
-				$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_image_altText\"><?php echo t('Alt Text'); ?>:</label>&nbsp;</td>\n";
+				$translated_label = t('Alt Text');
+				$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_image_altText\">{$translated_label}:</label>&nbsp;</td>\n";
 				$code .= "\t\t\t<td align=\"left\" style=\"width: 100%;\"><?php echo \$form->text('field_{$field['num']}_image_altText', \$field_{$field['num']}_image_altText, array('style' => 'width: 100%;')); ?></td>\n";
 				$code .= "\t\t</tr>\n";
 				$code .= "\t\t<tr>\n";
-				$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_image_externalLink\"><?php echo t('Link to URL'); ?>:</label>&nbsp;</td>\n";
+				$translated_label = t('Link to URL');
+				$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_image_externalLink\">{$translated_label}:</label>&nbsp;</td>\n";
 				$code .= "\t\t\t<td align=\"left\" style=\"width: 100%;\"><?php echo \$form->text('field_{$field['num']}_image_externalLink', \$field_{$field['num']}_image_externalLink, array('style' => 'width: 100%;')); ?></td>\n";
 				$code .= "\t\t</tr>\n";
 				$code .= "\t</table>\n";
@@ -313,7 +316,8 @@ class DesignerContentBlockGenerator {
 				$code .= "\t<?php echo \$ps->selectPage('field_{$field['num']}_link_cID', \$field_{$field['num']}_link_cID); ?>\n";
 				$code .= "\t<table border=\"0\" cellspacing=\"3\" cellpadding=\"0\" style=\"width: 95%;\">\n";
 				$code .= "\t\t<tr>\n";
-				$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_link_text\"><?php echo t('Link Text'); ?>:</label>&nbsp;</td>\n";
+				$translated_label = t('Link Text');
+				$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_link_text\">{$translated_label}:</label>&nbsp;</td>\n";
 				$code .= "\t\t\t<td align=\"left\" style=\"width: 100%;\"><?php echo \$form->text('field_{$field['num']}_link_text', \$field_{$field['num']}_link_text, array('style' => 'width: 100%;')); ?></td>\n";
 				$code .= "\t\t</tr>\n";
 				$code .= "\t</table>\n";

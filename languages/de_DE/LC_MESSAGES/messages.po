@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-22 04:40-0800\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Christian Grauer <cgrauer@netscript.net>\n"
+"Last-Translator: Jordan Lev <concrete@jordanlev.com>\n"
 "Language-Team:  <mail@cgrauer.de>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -179,12 +179,16 @@ msgstr "Max. Breite"
 msgid "Max Height"
 msgstr "Max. Höhe"
 
+#: single_pages/dashboard/pages/designer_content.php:115
+msgid "Default HTML Content"
+msgstr "Default HTML Inhalte"
+
 #: single_pages/dashboard/pages/designer_content.php:118
-msgid "Opening HTML"
+msgid "Wrapper HTML Open"
 msgstr "HTML davor"
 
 #: single_pages/dashboard/pages/designer_content.php:122
-msgid "Closing HTML"
+msgid "Wrapper HTML Close"
 msgstr "HTML danach"
 
 #: single_pages/dashboard/pages/designer_content.php:131
@@ -307,20 +311,23 @@ msgstr "Link-Text"
 #~ "Ein Tool für Designer und Entwickler zur Erzeugung von Blocktypen für "
 #~ "Inhalte. Ermöglicht das einfache Erstellen von Blocktypen, die "
 #~ "formatierte Inhalte, Bilder oder Text einheitlich darstellen."
+
 #~ msgid "Create custom content blocks"
 #~ msgstr "Eigene Blocktypen erzeugen"
+
 #~ msgid ""
 #~ "The new block has been created and installed, and is ready to be added to "
 #~ "pages."
 #~ msgstr ""
 #~ "Der neue Blocktyp wurde erzeugt und installiert. Er kann jetzt auf den "
 #~ "Seiten verwendet werden."
+
 #~ msgid ""
 #~ "human-readable description (only appears in the dashboard \"Add "
 #~ "Functionality\" page)"
 #~ msgstr ""
 #~ "Normalsprachliche Beschreibung (erscheint nur auf der Seite "
 #~ "\"Funktionalität hinzufügen\" im Dashboard)"
+
 #~ msgid "Are you sure?"
 #~ msgstr "Sind Sie sicher?"
-

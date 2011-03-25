@@ -2,18 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Designer Content 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-22 04:40-0800\n"
-"PO-Revision-Date: 2011-03-22 04:42-0800\n"
+"POT-Creation-Date: 2011-03-24 17:27-0800\n"
+"PO-Revision-Date: 2011-03-24 17:29-0800\n"
 "Last-Translator: Jordan Lev <concrete@jordanlev.com>\n"
-"Language-Team: Jordan Lev <concrete@jordanlev.com>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;t\n"
 "X-Poedit-Basepath: /Users/jordanlev/Sites/concrete5411/packages/designer_content/\n"
-"X-Poedit-Language: English\n"
-"X-Poedit-Country: UNITED STATES\n"
-"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: controller.php:2
@@ -45,15 +43,15 @@ msgstr ""
 msgid "Error: Block Handle is already in use (either by another package, block type, or database table)!"
 msgstr ""
 
-#: generator_templates/controller.php:64
+#: generator_templates/controller.php:69
 msgid "Missing required text"
 msgstr ""
 
-#: generator_templates/controller.php:65
+#: generator_templates/controller.php:70
 msgid "Missing required image"
 msgstr ""
 
-#: generator_templates/controller.php:66
+#: generator_templates/controller.php:71
 msgid "Missing required link"
 msgstr ""
 
@@ -90,6 +88,22 @@ msgstr ""
 
 #: helpers/form/page_selector.php:45
 msgid "Clear Selection"
+msgstr ""
+
+#: libraries/block_generator.php:295
+msgid "Choose Image"
+msgstr ""
+
+#: libraries/block_generator.php:300
+msgid "Alt Text"
+msgstr ""
+
+#: libraries/block_generator.php:305
+msgid "Link to URL"
+msgstr ""
+
+#: libraries/block_generator.php:319
+msgid "Link Text"
 msgstr ""
 
 #: single_pages/dashboard/pages/designer_content.php:8
@@ -182,122 +196,109 @@ msgstr ""
 msgid "Max Height"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:118
-msgid "Opening HTML"
+#: single_pages/dashboard/pages/designer_content.php:115
+msgid "Default HTML Content"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:122
-msgid "Closing HTML"
+#: single_pages/dashboard/pages/designer_content.php:121
+msgid "Wrapper HTML Open"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:131
+#: single_pages/dashboard/pages/designer_content.php:125
+msgid "Wrapper HTML Close"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:134
 msgid "Add Field"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:137
-#: single_pages/dashboard/pages/designer_content.php:179
+#: single_pages/dashboard/pages/designer_content.php:140
+#: single_pages/dashboard/pages/designer_content.php:182
 msgid "Static HTML"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:139
+#: single_pages/dashboard/pages/designer_content.php:142
 msgid "Textbox"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:141
+#: single_pages/dashboard/pages/designer_content.php:144
 msgid "Image"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:143
+#: single_pages/dashboard/pages/designer_content.php:146
 msgid "Page Link"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:146
-#: single_pages/dashboard/pages/designer_content.php:183
+#: single_pages/dashboard/pages/designer_content.php:149
+#: single_pages/dashboard/pages/designer_content.php:186
 msgid "WYSIWYG Editor"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:156
+#: single_pages/dashboard/pages/designer_content.php:159
 msgid "Make The Block!"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:159
+#: single_pages/dashboard/pages/designer_content.php:162
 msgid "Processing..."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:165
+#: single_pages/dashboard/pages/designer_content.php:168
 msgid "code + ui"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:167
+#: single_pages/dashboard/pages/designer_content.php:170
 msgid "icon design"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:180
+#: single_pages/dashboard/pages/designer_content.php:183
 msgid "Textbox Field"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:181
+#: single_pages/dashboard/pages/designer_content.php:184
 msgid "Image Field"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:182
+#: single_pages/dashboard/pages/designer_content.php:185
 msgid "Page Link Field"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:186
+#: single_pages/dashboard/pages/designer_content.php:189
 msgid "Block Name is required."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:187
+#: single_pages/dashboard/pages/designer_content.php:190
 msgid "Block Handle is required."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:188
+#: single_pages/dashboard/pages/designer_content.php:191
 msgid "Block Handle can only contain lowercase letters and underscores."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:189
+#: single_pages/dashboard/pages/designer_content.php:192
 msgid "Block Handle is already in use (either by another package, block type, or database table)."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:190
+#: single_pages/dashboard/pages/designer_content.php:193
 msgid "You must add at least 1 field."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:191
+#: single_pages/dashboard/pages/designer_content.php:194
 msgid "You cannot have more than 1 WYSIWYG Editor in a block."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:192
+#: single_pages/dashboard/pages/designer_content.php:195
 msgid "All fields must have an Editor Label."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:193
+#: single_pages/dashboard/pages/designer_content.php:196
 msgid "Image Max Widths must be valid numbers."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:194
+#: single_pages/dashboard/pages/designer_content.php:197
 msgid "Image Max Heights must be valid numbers."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:195
+#: single_pages/dashboard/pages/designer_content.php:198
 msgid "Cannot proceed! Please correct the following errors:"
 msgstr ""
 
-#: manually added messages for block generator:
-
-#: libraries/block_generator:281
-msgid "Choose Image"
-msgstr ""
-
-#: libraries/block_generator:285
-msgid "Alt Text"
-msgstr ""
-
-#: libraries/block_generator:289
-msgid "Link to URL"
-msgstr ""
-
-#: libraries/block_generator:302
-msgid "Link Text"
-msgstr ""
