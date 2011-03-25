@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Designer Content 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-24 17:27-0800\n"
-"PO-Revision-Date: 2011-03-24 17:29-0800\n"
+"POT-Creation-Date: 2011-03-25 00:10-0800\n"
+"PO-Revision-Date: 2011-03-25 00:10-0800\n"
 "Last-Translator: Jordan Lev <concrete@jordanlev.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -119,186 +119,194 @@ msgstr ""
 msgid "Create another block type"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:19
+#: single_pages/dashboard/pages/designer_content.php:20
 msgid "Create a new block type by entering some basic info and adding one or more fields."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:24
+#: single_pages/dashboard/pages/designer_content.php:21
+msgid "Documentation"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:22
+msgid "Help Forum"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:28
 msgid "Warning: The blocks directory is not writeable. Blocks cannot be created from this page until permissions are changed on your server."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:35
+#: single_pages/dashboard/pages/designer_content.php:39
 msgid "Block Handle"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:38
+#: single_pages/dashboard/pages/designer_content.php:42
 msgid "lowercase letters and underscores only"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:42
+#: single_pages/dashboard/pages/designer_content.php:46
 msgid "Block Name"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:45
+#: single_pages/dashboard/pages/designer_content.php:49
 msgid "human-readable name (appears in the \"Add Block\" list)"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:50
+#: single_pages/dashboard/pages/designer_content.php:54
 msgid "Block Description"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:51
+#: single_pages/dashboard/pages/designer_content.php:55
 msgid "(optional)"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:55
+#: single_pages/dashboard/pages/designer_content.php:59
 msgid "for dashboard \"Add Functionality\" list"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:72
+#: single_pages/dashboard/pages/designer_content.php:76
 msgid "delete"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:72
+#: single_pages/dashboard/pages/designer_content.php:76
 msgid "Yes"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:72
+#: single_pages/dashboard/pages/designer_content.php:76
 msgid "No"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:76
+#: single_pages/dashboard/pages/designer_content.php:80
 msgid "Move Up"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:82
+#: single_pages/dashboard/pages/designer_content.php:86
 msgid "Move Down"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:90
+#: single_pages/dashboard/pages/designer_content.php:94
 msgid "Anything entered here will be directly outputted to the block view &mdash; users will not be able to edit it."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:95
+#: single_pages/dashboard/pages/designer_content.php:99
 msgid "Editor Label"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:99
-#: single_pages/dashboard/pages/designer_content.php:102
+#: single_pages/dashboard/pages/designer_content.php:103
+#: single_pages/dashboard/pages/designer_content.php:106
 msgid "Required?"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:106
+#: single_pages/dashboard/pages/designer_content.php:110
 msgid "Max Width"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:110
+#: single_pages/dashboard/pages/designer_content.php:114
 msgid "Max Height"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:115
+#: single_pages/dashboard/pages/designer_content.php:119
 msgid "Default HTML Content"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:121
+#: single_pages/dashboard/pages/designer_content.php:125
 msgid "Wrapper HTML Open"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:125
+#: single_pages/dashboard/pages/designer_content.php:129
 msgid "Wrapper HTML Close"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:134
+#: single_pages/dashboard/pages/designer_content.php:138
 msgid "Add Field"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:140
-#: single_pages/dashboard/pages/designer_content.php:182
+#: single_pages/dashboard/pages/designer_content.php:144
+#: single_pages/dashboard/pages/designer_content.php:186
 msgid "Static HTML"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:142
+#: single_pages/dashboard/pages/designer_content.php:146
 msgid "Textbox"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:144
+#: single_pages/dashboard/pages/designer_content.php:148
 msgid "Image"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:146
+#: single_pages/dashboard/pages/designer_content.php:150
 msgid "Page Link"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:149
-#: single_pages/dashboard/pages/designer_content.php:186
+#: single_pages/dashboard/pages/designer_content.php:153
+#: single_pages/dashboard/pages/designer_content.php:190
 msgid "WYSIWYG Editor"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:159
+#: single_pages/dashboard/pages/designer_content.php:163
 msgid "Make The Block!"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:162
+#: single_pages/dashboard/pages/designer_content.php:166
 msgid "Processing..."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:168
+#: single_pages/dashboard/pages/designer_content.php:172
 msgid "code + ui"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:170
+#: single_pages/dashboard/pages/designer_content.php:174
 msgid "icon design"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:183
+#: single_pages/dashboard/pages/designer_content.php:187
 msgid "Textbox Field"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:184
+#: single_pages/dashboard/pages/designer_content.php:188
 msgid "Image Field"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:185
+#: single_pages/dashboard/pages/designer_content.php:189
 msgid "Page Link Field"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:189
+#: single_pages/dashboard/pages/designer_content.php:193
 msgid "Block Name is required."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:190
+#: single_pages/dashboard/pages/designer_content.php:194
 msgid "Block Handle is required."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:191
+#: single_pages/dashboard/pages/designer_content.php:195
 msgid "Block Handle can only contain lowercase letters and underscores."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:192
+#: single_pages/dashboard/pages/designer_content.php:196
 msgid "Block Handle is already in use (either by another package, block type, or database table)."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:193
+#: single_pages/dashboard/pages/designer_content.php:197
 msgid "You must add at least 1 field."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:194
+#: single_pages/dashboard/pages/designer_content.php:198
 msgid "You cannot have more than 1 WYSIWYG Editor in a block."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:195
+#: single_pages/dashboard/pages/designer_content.php:199
 msgid "All fields must have an Editor Label."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:196
+#: single_pages/dashboard/pages/designer_content.php:200
 msgid "Image Max Widths must be valid numbers."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:197
+#: single_pages/dashboard/pages/designer_content.php:201
 msgid "Image Max Heights must be valid numbers."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:198
+#: single_pages/dashboard/pages/designer_content.php:202
 msgid "Cannot proceed! Please correct the following errors:"
 msgstr ""
 

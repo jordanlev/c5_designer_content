@@ -16,7 +16,11 @@
 
 <div class="ccm-dashboard-inner">
 	<div>
-		<h4><?php echo t('Create a new block type by entering some basic info and adding one or more fields.'); ?></h4>
+		<h4>
+			<?php echo t('Create a new block type by entering some basic info and adding one or more fields.'); ?>
+			<span class="help-link">[<a href="http://www.concrete5.org/marketplace/addons/designer-content/documentation/" target="_blank"><?php echo t('Documentation'); ?></a>]</span>
+			<span class="help-link">[<a href="http://www.concrete5.org/marketplace/addons/designer-content/forums/" target="_blank"><?php echo t('Help Forum'); ?></a>]</span>
+		</h4>
 	</div>
 
 	<?php if (!$can_write): ?>
@@ -169,7 +173,7 @@
 			<br />
 			<?php echo t('icon design'); ?>: <a href="http://kirkrobertsdesign.com/" target="_blank">Kirk Roberts</a>
 		</div>
-		
+
 		<div style="clear: both;"></div>
 		
 	</form>

@@ -1,3 +1,7 @@
+.help-link {
+	margin-left: 10px;
+}
+
 #write_permissions_warning {
 	color: red;
 	font-weight: bold;

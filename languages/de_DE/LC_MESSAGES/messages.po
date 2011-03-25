@@ -106,6 +106,14 @@ msgstr "Einen weiteren Blocktyp erstellen &raquo;"
 msgid "Create a new block type by entering some basic info and adding one or more fields."
 msgstr "Erstellen Sie einen neuen Blocktyp. Geben Sie Basisinformationen an und fügen Sie ein oder mehrere Felder hinzu."
 
+#: single_pages/dashboard/pages/designer_content.php:20
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: single_pages/dashboard/pages/designer_content.php:21
+msgid "Help Forum"
+msgstr "Hilfe"
+
 #: single_pages/dashboard/pages/designer_content.php:24
 msgid "Warning: The blocks directory is not writeable. Blocks cannot be created from this page until permissions are changed on your server."
 msgstr "Achtung: Das Block-Verzeichnis ist nicht beschreibbar. Über diese Seite können keine Blocktypen erstellt werden, solange die Berechtigungen auf Ihrem Server nicht geändert werden."
