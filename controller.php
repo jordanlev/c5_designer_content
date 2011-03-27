@@ -25,7 +25,7 @@ class DesignerContentPackage extends Package {
 		if (Page::getCurrentPage()->isEditMode() || Page::getCurrentPage()->getCollectionPath() == '/dashboard/scrapbook') {
 			$html = Loader::helper('html');
 			$view = View::getInstance();
-			$view->addHeaderItem($html->javascript(BASE_URL.DIR_REL.DIR_PACKAGES.'/designer_content/js/ccm.filemanager.js'), 'CONTROLLER');
+			$view->addHeaderItem($html->javascript(BASE_URL.DIR_REL.'/'.DIRNAME_PACKAGES.'/designer_content/js/ccm.filemanager.js'), 'CONTROLLER');
 			//Note that we passed the 'CONTROLLER' namespace to addHeaderItem() so that it adds our items AFTER the core items
 		}
 	}
