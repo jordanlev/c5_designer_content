@@ -1,1 +1,2 @@
+1.0.1 - Added Japanese translation (thanks Tao!), now call strip_tags on the block name/description in dashboard (prior to validation), block generation no longer creates CHANGELOG files, fixed newline output in generated db.xml files.
 1.0.0 - Initial Version
