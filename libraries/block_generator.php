@@ -255,8 +255,8 @@ class DesignerContentBlockGenerator {
 			}
 			if ($field['type'] == 'image') {
 				$code .= "\t\t<field name=\"field_{$field['num']}_image_fID\" type=\"I\"></field>\n";
-				$code .= "\t\t<field name=\"field_{$field['num']}_image_altText\" type=\"C\" size=\"255\"></field>\n\n";
-				$code .= "\t\t<field name=\"field_{$field['num']}_image_externalLink\" type=\"C\" size=\"255\"></field>\n";
+				$code .= "\t\t<field name=\"field_{$field['num']}_image_altText\" type=\"C\" size=\"255\"></field>\n";
+				$code .= "\t\t<field name=\"field_{$field['num']}_image_externalLink\" type=\"C\" size=\"255\"></field>\n\n";
 			}
 			if ($field['type'] == 'link') {
 				$code .= "\t\t<field name=\"field_{$field['num']}_link_cID\" type=\"I\"></field>\n";
