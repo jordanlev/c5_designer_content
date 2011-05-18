@@ -1,0 +1,314 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Designer Content 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-25 00:10-0800\n"
+"PO-Revision-Date: 2011-05-17 01:42+0900\n"
+"Last-Translator: Tao Sasaki <tao@xross-cube.com>\n"
+"Language-Team: Tao Sasaki <tao@xross-cube.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;t\n"
+"X-Poedit-Basepath: /Users/jordanlev/Sites/concrete5411/packages/designer_content/\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Language: Japanese\n"
+"X-Poedit-Country: JAPAN\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: controller.php:2
+#: controllers/dashboard/pages/designer_content.php:2
+#: libraries/block_generator.php:2
+#: single_pages/dashboard/pages/designer_content.php:1
+#: tools/validate_handle.php:2
+msgid "Access Denied."
+msgstr ""
+
+#: controller.php:11
+#: single_pages/dashboard/pages/designer_content.php:3
+msgid "Designer Content"
+msgstr ""
+
+#: controller.php:15
+msgid "A block type generator for designers and developers. Designer Content lets you quickly create new kinds of blocks that will make it easy for users to add pieces of content to their site (while maintaining complex layouts)."
+msgstr "デザイナーや開発者の為に新しいブロックを簡単に生成します。"
+
+#: controllers/dashboard/pages/designer_content.php:40
+msgid "Error: Blocks directory is not writeable!"
+msgstr "エラー：/blocks に書き込めません。"
+
+#: controllers/dashboard/pages/designer_content.php:42
+msgid "Error: Block handle or name is missing!"
+msgstr "エラー：ブロックハンドルが空です。"
+
+#: controllers/dashboard/pages/designer_content.php:44
+msgid "Error: Block Handle is already in use (either by another package, block type, or database table)!"
+msgstr "エラー：このブロックハンドルは既に利用されています。他のハンドルを指定してください。"
+
+#: generator_templates/controller.php:69
+msgid "Missing required text"
+msgstr "テキストを指定してください。"
+
+#: generator_templates/controller.php:70
+msgid "Missing required image"
+msgstr "画像を指定してください。"
+
+#: generator_templates/controller.php:71
+msgid "Missing required link"
+msgstr "リンクを指定してください。"
+
+#: generator_templates/editor_controls.php:5
+msgid "Add Image"
+msgstr "画像を追加"
+
+#: generator_templates/editor_controls.php:6
+msgid "Add File"
+msgstr "ファイルを追加"
+
+#: generator_templates/editor_controls.php:8
+#: generator_templates/editor_controls.php:10
+msgid "Insert Link to Page"
+msgstr "ページへのリンクを追加"
+
+#: generator_templates/editor_controls.php:12
+msgid "Customize Toolbar"
+msgstr "ツールバーをカスタマイズ"
+
+#: helpers/form/page_selector.php:44
+msgid "Choose Page"
+msgstr "ページを選択"
+
+#: helpers/form/page_selector.php:44
+#: helpers/form/page_selector.php:65
+msgid "Select New Page"
+msgstr "新しいページを選択"
+
+#: helpers/form/page_selector.php:44
+#: helpers/form/page_selector.php:65
+msgid "Select Page"
+msgstr "ページを選択し"
+
+#: helpers/form/page_selector.php:45
+msgid "Clear Selection"
+msgstr "セクションをクリア"
+
+#: libraries/block_generator.php:295
+msgid "Choose Image"
+msgstr "画像を選択"
+
+#: libraries/block_generator.php:300
+msgid "Alt Text"
+msgstr "ALTテキスト"
+
+#: libraries/block_generator.php:305
+msgid "Link to URL"
+msgstr "URLへリンク"
+
+#: libraries/block_generator.php:319
+msgid "Link Text"
+msgstr "テキストへリンク"
+
+#: single_pages/dashboard/pages/designer_content.php:8
+msgid "Success!"
+msgstr "完了!"
+
+#: single_pages/dashboard/pages/designer_content.php:10
+#, php-format
+msgid "%s has been installed, and will now be available in the \"Add Blocks\" list when pages are edited."
+msgstr "%s のインストールが有効になりました。 ページ編集時の「ブロックを追加」に表示されます。"
+
+#: single_pages/dashboard/pages/designer_content.php:12
+msgid "Create another block type"
+msgstr "他のブロックタイプを作成"
+
+#: single_pages/dashboard/pages/designer_content.php:20
+msgid "Create a new block type by entering some basic info and adding one or more fields."
+msgstr "1つ以上のフィールドを追加することで、新しいブロックのタイプを作成します。"
+
+#: single_pages/dashboard/pages/designer_content.php:21
+msgid "Documentation"
+msgstr "ドキュメント"
+
+#: single_pages/dashboard/pages/designer_content.php:22
+msgid "Help Forum"
+msgstr "ヘルプフォーラム"
+
+#: single_pages/dashboard/pages/designer_content.php:28
+msgid "Warning: The blocks directory is not writeable. Blocks cannot be created from this page until permissions are changed on your server."
+msgstr "警告：ブロックディレクトリに書き込めません。サーバ上のブロックディレクトリのパーミッション（書込権限）を確認してください。"
+
+#: single_pages/dashboard/pages/designer_content.php:39
+msgid "Block Handle"
+msgstr "ブロックハンドル"
+
+#: single_pages/dashboard/pages/designer_content.php:42
+msgid "lowercase letters and underscores only"
+msgstr "英小文字と_のみ"
+
+#: single_pages/dashboard/pages/designer_content.php:46
+msgid "Block Name"
+msgstr "ブロック名"
+
+#: single_pages/dashboard/pages/designer_content.php:49
+msgid "human-readable name (appears in the \"Add Block\" list)"
+msgstr "ブロック名（人間用）"
+
+#: single_pages/dashboard/pages/designer_content.php:54
+msgid "Block Description"
+msgstr "ブロック説明"
+
+#: single_pages/dashboard/pages/designer_content.php:55
+msgid "(optional)"
+msgstr "（オプション）"
+
+#: single_pages/dashboard/pages/designer_content.php:59
+msgid "for dashboard \"Add Functionality\" list"
+msgstr "管理画面の「機能を追加」に表示されます。"
+
+#: single_pages/dashboard/pages/designer_content.php:76
+msgid "delete"
+msgstr "削除"
+
+#: single_pages/dashboard/pages/designer_content.php:76
+msgid "Yes"
+msgstr "はい"
+
+#: single_pages/dashboard/pages/designer_content.php:76
+msgid "No"
+msgstr "いいえ"
+
+#: single_pages/dashboard/pages/designer_content.php:80
+msgid "Move Up"
+msgstr "上へ"
+
+#: single_pages/dashboard/pages/designer_content.php:86
+msgid "Move Down"
+msgstr "下へ"
+
+#: single_pages/dashboard/pages/designer_content.php:94
+msgid "Anything entered here will be directly outputted to the block view &mdash; users will not be able to edit it."
+msgstr "直接ブロックビューに出力されます。&mdash;ユーザーは編集できません。"
+
+#: single_pages/dashboard/pages/designer_content.php:99
+msgid "Editor Label"
+msgstr "ラベル"
+
+#: single_pages/dashboard/pages/designer_content.php:103
+#: single_pages/dashboard/pages/designer_content.php:106
+msgid "Required?"
+msgstr "必須項目？"
+
+#: single_pages/dashboard/pages/designer_content.php:110
+msgid "Max Width"
+msgstr "最大横幅"
+
+#: single_pages/dashboard/pages/designer_content.php:114
+msgid "Max Height"
+msgstr "最大高さ"
+
+#: single_pages/dashboard/pages/designer_content.php:119
+msgid "Default HTML Content"
+msgstr "デフォルトHTMLコンテンツ"
+
+#: single_pages/dashboard/pages/designer_content.php:125
+msgid "Wrapper HTML Open"
+msgstr "前に挿入するHTML"
+
+#: single_pages/dashboard/pages/designer_content.php:129
+msgid "Wrapper HTML Close"
+msgstr "後に挿入するHTML"
+
+#: single_pages/dashboard/pages/designer_content.php:138
+msgid "Add Field"
+msgstr "フィルドを追加"
+
+#: single_pages/dashboard/pages/designer_content.php:144
+#: single_pages/dashboard/pages/designer_content.php:186
+msgid "Static HTML"
+msgstr "固定HTML"
+
+#: single_pages/dashboard/pages/designer_content.php:146
+msgid "Textbox"
+msgstr "テキスト"
+
+#: single_pages/dashboard/pages/designer_content.php:148
+msgid "Image"
+msgstr "画像"
+
+#: single_pages/dashboard/pages/designer_content.php:150
+msgid "Page Link"
+msgstr "リンク"
+
+#: single_pages/dashboard/pages/designer_content.php:153
+#: single_pages/dashboard/pages/designer_content.php:190
+msgid "WYSIWYG Editor"
+msgstr "WYSIWYGエディタ"
+
+#: single_pages/dashboard/pages/designer_content.php:163
+msgid "Make The Block!"
+msgstr "ブロックを作成！"
+
+#: single_pages/dashboard/pages/designer_content.php:166
+msgid "Processing..."
+msgstr "生成中..."
+
+#: single_pages/dashboard/pages/designer_content.php:172
+msgid "code + ui"
+msgstr "コード + UI"
+
+#: single_pages/dashboard/pages/designer_content.php:174
+msgid "icon design"
+msgstr "アイコンデザイン"
+
+#: single_pages/dashboard/pages/designer_content.php:187
+msgid "Textbox Field"
+msgstr "テキストフィールド"
+
+#: single_pages/dashboard/pages/designer_content.php:188
+msgid "Image Field"
+msgstr "画像フィールド"
+
+#: single_pages/dashboard/pages/designer_content.php:189
+msgid "Page Link Field"
+msgstr "リンクフィールド"
+
+#: single_pages/dashboard/pages/designer_content.php:193
+msgid "Block Name is required."
+msgstr "ブロック名は必須です。"
+
+#: single_pages/dashboard/pages/designer_content.php:194
+msgid "Block Handle is required."
+msgstr "ブロックハンドルは必須です。"
+
+#: single_pages/dashboard/pages/designer_content.php:195
+msgid "Block Handle can only contain lowercase letters and underscores."
+msgstr "ブロックハンドルは英小文字と_のみ利用可能です。"
+
+#: single_pages/dashboard/pages/designer_content.php:196
+msgid "Block Handle is already in use (either by another package, block type, or database table)."
+msgstr "このブロックハンドルは既に利用されています。"
+
+#: single_pages/dashboard/pages/designer_content.php:197
+msgid "You must add at least 1 field."
+msgstr "1つはフィールドを設定する必要があります。"
+
+#: single_pages/dashboard/pages/designer_content.php:198
+msgid "You cannot have more than 1 WYSIWYG Editor in a block."
+msgstr "WYSIWYGエディタは1つだけ設定出来ます。"
+
+#: single_pages/dashboard/pages/designer_content.php:199
+msgid "All fields must have an Editor Label."
+msgstr "全てのフィールドにはラベルが必要です。"
+
+#: single_pages/dashboard/pages/designer_content.php:200
+msgid "Image Max Widths must be valid numbers."
+msgstr "画像の最大横幅は数字で入力してください。"
+
+#: single_pages/dashboard/pages/designer_content.php:201
+msgid "Image Max Heights must be valid numbers."
+msgstr "画像の最大高さは数字で入力してください。"
+
+#: single_pages/dashboard/pages/designer_content.php:202
+msgid "Cannot proceed! Please correct the following errors:"
+msgstr "生成出来ませんでした。以下のエラーを確認してください："
+

@@ -36,6 +36,7 @@ class DashboardPagesDesignerContentController extends Controller {
 		//But just in case... re-validate a few key things (especially that we're not going to overwrite something that already exists)
 		$handle = $this->post('handle');
 		$name = $this->post('name');
+		$name = strip_tags($name);
 		if (!is_writable(DIR_FILES_BLOCK_TYPES)) {
 			die(t('Error: Blocks directory is not writeable!'));
 		} else if (empty($handle) || empty($name)) {
@@ -75,7 +76,7 @@ class DashboardPagesDesignerContentController extends Controller {
 		}
 		
 		//Make+install block
-		$block->generate($handle, $name, $this->post('description'));
+		$block->generate($handle, $name, strip_tags($this->post('description')));
 		BlockType::installBlockType($handle);
 		
 		//Redirect back to view page so browser refresh doesn't trigger a re-generation
