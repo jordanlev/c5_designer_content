@@ -102,25 +102,72 @@
 					{{if type == 'text' || type == 'link'}}
 						<input type="checkbox" name="fieldsRequired[${id}]" id="fieldsRequired[${id}]" /><label for="fieldsRequired[${id}]"><?php echo t('Required?'); ?></label>
 					{{else type == 'image'}}
-						<div class="designer-content-field-image-required">
-							<input type="checkbox" name="fieldsRequired[${id}]" id="fieldsRequired[${id}]" /><label for="fieldsRequired[${id}]"><?php echo t('Required?'); ?></label>
-						</div>
-						<table class="designer-content-field-image-size" border="0" cellpadding="3" cellspacing="0">
-							<tr>
-								<td align="right"><label for="fieldWidths[${id}]"><?php echo t('Max Width'); ?>:</label></td>
-								<td align="left"><input type="text" name="fieldWidths[${id}]" id="fieldWidths[${id}]" class="designer-content-field-width" size="3" maxlength="4" />px</td>
-							</tr>
-							<tr>
-								<td align="right"><label for="fieldHeights[${id}]"><?php echo t('Max Height'); ?>:</label></td>
-								<td align="left"><input type="text" name="fieldHeights[${id}]" id="fieldHeights[${id}]" class="designer-content-field-height" size="3" maxlength="4" />px</td>
-							</tr>
-						</table>
+						
+						<table border="0" class="designer-content-field-image-options"><tr><td valign="top">
+
+							<input type="checkbox" name="fieldsRequired[${id}]" id="fieldsRequired[${id}]" />
+						
+						</td><td valign="top">
+						
+							<label for="fieldsRequired[${id}]"><?php echo t('Required?'); ?></label>
+
+						</td><td align="right">
+						
+							<label for="fieldImageLinks[${id}]"><?php echo t('Link&nbsp;Field'); ?>:</label>
+
+						</td><td>
+
+							<select name="fieldImageLinks[${id}]" id="fieldImageLinks[${id}]">
+								<option value="0"><?php echo t('None'); ?></option>
+								<option value="1"><?php echo t('Site Page'); ?></option>
+								<option value="2"><?php echo t('External URL'); ?></option>
+							</select>
+
+						</td></tr><tr><td valign="top">
+						
+							<input type="checkbox" name="fieldImagesShowAltText[${id}]" id="fieldImagesShowAltText[${id}]" />
+							
+						</td><td valign="top">
+
+							<label for="fieldImagesShowAltText[${id}]"><?php echo t('Show<br />Alt&nbsp;Text<br />Field?'); ?></label>
+						
+						</td><td align="right">
+							
+							<label for="fieldImageSizings[${id}]"><?php echo t('Image&nbsp;Sizing'); ?>:</label>
+							
+						</td><td>
+
+							<select name="fieldImageSizings[${id}]" id="fieldImageSizings[${id}]" class="designer-content-field-image-sizing-dropdown" data-id="${id}">
+								<option value="0"><?php echo t('None'); ?></option>
+								<option value="1"><?php echo t('Resize'); ?></option>
+								<option value="2"><?php echo t('Crop'); ?></option>
+							</select>
+
+						</td></tr>
+						
+						<tr><td></td><td></td><td align="right">
+							
+							<label for="fieldWidths[${id}]" class="designer-content-field-image-resize-label" data-id="${id}" style="display: none;"><?php echo t('Max&nbsp;Width'); ?>:</label>
+							<label for="fieldWidths[${id}]" class="designer-content-field-image-crop-label" data-id="${id}" style="display: none;"><?php echo t('Crop&nbsp;Width'); ?>:</label>
+							
+						</td><td>
+						
+							<div class="designer-content-field-image-size" data-id="${id}" style="display: none;">
+								<input type="text" name="fieldWidths[${id}]" id="fieldWidths[${id}]" class="designer-content-field-width" size="3" maxlength="4" /> px
+								&nbsp;&nbsp;&nbsp;
+								<label for="fieldHeights[${id}]" class="designer-content-field-image-resize-label" data-id="${id}"><?php echo t('Max&nbsp;Height'); ?>:</label>
+								<label for="fieldHeights[${id}]" class="designer-content-field-image-crop-label" data-id="${id}"><?php echo t('Crop&nbsp;Height'); ?>:</label>
+								<input type="text" name="fieldHeights[${id}]" id="fieldHeights[${id}]" class="designer-content-field-height" size="3" maxlength="4" /> px
+							</div>
+						
+						</td></tr></table>
+
 					{{else type == 'wysiwyg'}}
 						<label for="fieldDefaultContents[${id}]"><?php echo t('Default HTML Content'); ?></label><br />
 						<textarea rows="4" name="fieldDefaultContents[${id}]" id="fieldDefaultContents[${id}]"></textarea>
 					{{/if}}
 				</div>
-
+				
 				<div class="designer-content-field-html">
 					<label for="fieldPrefixes[${id}]"><?php echo t('Wrapper HTML Open'); ?> <i>(&lt;div class="abc"&gt;)</i></label><br />
 					<textarea rows="3" name="fieldPrefixes[${id}]" id="fieldPrefixes[${id}]"></textarea>
