@@ -33,7 +33,7 @@ class DesignerContentBlockGenerator {
 		);
 	}
 	
-	public function add_image_field($label, $prefix = '', $suffix = '', $required = false, $width = 0, $height = 0) {
+	public function add_image_field($label, $prefix = '', $suffix = '', $required = false, $link_type = 0, $show_alt_text = false, $sizing_type = 0, $width = 0, $height = 0) {
 		$this->fields[] = array(
 			'num' => count($this->fields) + 1,
 			'type' => 'image',
@@ -41,6 +41,9 @@ class DesignerContentBlockGenerator {
 			'prefix' => $prefix,
 			'suffix' => $suffix,
 			'required' => $required,
+			'link' => $link_type,
+			'alt' => $show_alt_text,
+			'sizing' => $sizing_type,
 			'width' => $width,
 			'height' => $height,
 		);
@@ -165,9 +168,10 @@ class DesignerContentBlockGenerator {
 		$code = '';
 		foreach ($this->fields as $field) {
 			if ($field['type'] == 'image') {
-				$width = empty($field['width']) ? 0 : $field['width'];
-				$height = empty($field['height']) ? 0 : $field['height'];
-				$code .= "\t\t\$this->set('field_{$field['num']}_image', \$this->get_image_object(\$this->field_{$field['num']}_image_fID, {$width}, {$height}));\n";
+				$width = ($field['sizing'] > 0 && !empty($field['width'])) ? $field['width'] : 0;
+				$height = ($field['sizing'] > 0 && !empty($field['height'])) ? $field['height'] : 0;
+				$crop = ($field['sizing'] == 2) ? 'true' : 'false';
+				$code .= "\t\t\$this->set('field_{$field['num']}_image', \$this->get_image_object(\$this->field_{$field['num']}_image_fID, {$width}, {$height}, {$crop}));\n";
 			}
 			if ($field['type'] == 'wysiwyg') {
 				$code .= "\t\t\$this->set('field_{$field['num']}_wysiwyg_content', \$this->translateFrom(\$this->field_{$field['num']}_wysiwyg_content));\n";
@@ -207,6 +211,7 @@ class DesignerContentBlockGenerator {
 		foreach ($this->fields as $field) {
 			if ($field['type'] == 'image') {
 				$code .= "\t\t\$args['field_{$field['num']}_image_fID'] = empty(\$args['field_{$field['num']}_image_fID']) ? 0 : \$args['field_{$field['num']}_image_fID'];\n";
+				$code .= ($field['link'] == 1) ? "\t\t\$args['field_{$field['num']}_image_internalLinkCID'] = empty(\$args['field_{$field['num']}_image_internalLinkCID']) ? 0 : \$args['field_{$field['num']}_image_internalLinkCID'];\n" : '';
 			}
 			if ($field['type'] == 'link') {
 				$code .= "\t\t\$args['field_{$field['num']}_link_cID'] = empty(\$args['field_{$field['num']}_link_cID']) ? 0 : \$args['field_{$field['num']}_link_cID'];\n";
@@ -239,8 +244,9 @@ class DesignerContentBlockGenerator {
 			}
 			if ($field['type'] == 'image') {
 				$code .= "\t\t<field name=\"field_{$field['num']}_image_fID\" type=\"I\"></field>\n";
-				$code .= "\t\t<field name=\"field_{$field['num']}_image_altText\" type=\"C\" size=\"255\"></field>\n";
-				$code .= "\t\t<field name=\"field_{$field['num']}_image_externalLink\" type=\"C\" size=\"255\"></field>\n\n";
+				$code .= ($field['link'] == 1) ? "\t\t<field name=\"field_{$field['num']}_image_internalLinkCID\" type=\"I\"></field>\n" : '';
+				$code .= ($field['link'] == 2) ? "\t\t<field name=\"field_{$field['num']}_image_externalLinkURL\" type=\"C\" size=\"255\"></field>\n\n" : '';
+				$code .= $field['alt'] ? "\t\t<field name=\"field_{$field['num']}_image_altText\" type=\"C\" size=\"255\"></field>\n" : '';
 			}
 			if ($field['type'] == 'link') {
 				$code .= "\t\t<field name=\"field_{$field['num']}_link_cID\" type=\"I\"></field>\n";
@@ -278,19 +284,32 @@ class DesignerContentBlockGenerator {
 				$code .= "\t<h2>{$field['label']}</h2>\n";
 				$translated_label = $this->addslashes_single( t('Choose Image') );
 				$code .= "\t<?php echo \$al->image('field_{$field['num']}_image_fID', 'field_{$field['num']}_image_fID', '{$translated_label}', \$field_{$field['num']}_image); ?>\n";
-				$code .= "\n";
-				$code .= "\t<table border=\"0\" cellspacing=\"3\" cellpadding=\"0\" style=\"width: 95%;\">\n";
-				$code .= "\t\t<tr>\n";
-				$translated_label = t('Alt Text');
-				$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_image_altText\">{$translated_label}:</label>&nbsp;</td>\n";
-				$code .= "\t\t\t<td align=\"left\" style=\"width: 100%;\"><?php echo \$form->text('field_{$field['num']}_image_altText', \$field_{$field['num']}_image_altText, array('style' => 'width: 100%;')); ?></td>\n";
-				$code .= "\t\t</tr>\n";
-				$code .= "\t\t<tr>\n";
-				$translated_label = t('Link to URL');
-				$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_image_externalLink\">{$translated_label}:</label>&nbsp;</td>\n";
-				$code .= "\t\t\t<td align=\"left\" style=\"width: 100%;\"><?php echo \$form->text('field_{$field['num']}_image_externalLink', \$field_{$field['num']}_image_externalLink, array('style' => 'width: 100%;')); ?></td>\n";
-				$code .= "\t\t</tr>\n";
-				$code .= "\t</table>\n";
+				if ($field['link'] > 0 || $field['alt']) {
+					$code .= "\n";
+					$code .= "\t<table border=\"0\" cellspacing=\"3\" cellpadding=\"0\" style=\"width: 95%;\">\n";
+					if ($field['link'] == 1) {
+						$translated_label = t('Link to Page');
+						$code .= "\t\t<tr>\n";
+						$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_image_internalLinkCID\">{$translated_label}:</label>&nbsp;</td>\n";
+						$code .= "\t\t\t<td align=\"left\" style=\"width: 100%;\"><?php echo \$ps->selectPage('field_{$field['num']}_image_internalLinkCID', \$field_{$field['num']}_image_internalLinkCID); ?></td>\n";
+						$code .= "\t\t</tr>\n";
+					}
+					if ($field['link'] == 2) {
+						$translated_label = t('Link to URL');
+						$code .= "\t\t<tr>\n";
+						$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_image_externalLinkURL\">{$translated_label}:</label>&nbsp;</td>\n";
+						$code .= "\t\t\t<td align=\"left\" style=\"width: 100%;\"><?php echo \$form->text('field_{$field['num']}_image_externalLinkURL', \$field_{$field['num']}_image_externalLinkURL, array('style' => 'width: 100%;')); ?></td>\n";
+						$code .= "\t\t</tr>\n";
+					}
+					if ($field['alt']) {
+						$translated_label = t('Alt Text');
+						$code .= "\t\t<tr>\n";
+						$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_image_altText\">{$translated_label}:</label>&nbsp;</td>\n";
+						$code .= "\t\t\t<td align=\"left\" style=\"width: 100%;\"><?php echo \$form->text('field_{$field['num']}_image_altText', \$field_{$field['num']}_image_altText, array('style' => 'width: 100%;')); ?></td>\n";
+						$code .= "\t\t</tr>\n";
+					}
+					$code .= "\t</table>\n";
+				}
 				$code .= "</div>\n\n";
 			}
 			
@@ -386,9 +405,11 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'image') {
 				$code .= "<?php if (!empty(\$field_{$field['num']}_image)): ?>\n";
 				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
-				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLink)) { ?><a href=\"<?php echo \$field_{$field['num']}_image_externalLink; ?>\"><?php } ?>\n";
-				$code .= "\t<img src=\"<?php echo \$field_{$field['num']}_image->src; ?>\" width=\"<?php echo \$field_{$field['num']}_image->width; ?>\" height=\"<?php echo \$field_{$field['num']}_image->height; ?>\" alt=\"<?php echo \$field_{$field['num']}_image_altText; ?>\" />\n";
-				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLink)) { ?></a><?php } ?>\n";
+				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_internalLinkCID)) { ?><a href=\"<?php echo \$nh->getLinkToCollection(Page::getByID(\$field_{$field['num']}_image_internalLinkCID), true); ?>\"><?php } ?>\n";
+				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLinkURL)) { ?><a href=\"<?php echo \$field_{$field['num']}_image_externalLinkURL; ?>\"><?php } ?>\n";
+				$code .= "\t<img src=\"<?php echo \$field_{$field['num']}_image->src; ?>\" width=\"<?php echo \$field_{$field['num']}_image->width; ?>\" height=\"<?php echo \$field_{$field['num']}_image->height; ?>\" alt=\"" . ($field['alt'] ? "<?php echo \$field_{$field['num']}_image_altText; ?>" : '') . "\" />\n";
+				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLinkURL)) { ?></a><?php } ?>\n";
+				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_internalLinkCID)) { ?></a><?php } ?>\n";
 				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
 				$code .= "<?php endif; ?>\n\n";
 			}
@@ -396,9 +417,7 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'link') {
 				$code .= "<?php if (!empty(\$field_{$field['num']}_link_cID)): ?>\n";
 				$code .= "\t<?php\n";
-				$code .= "\t\$nh = Loader::helper('navigation');\n";
-				$code .= "\t\$link_page = Page::getByID(\$field_{$field['num']}_link_cID);\n";
-				$code .= "\t\$link_url = \$nh->getLinkToCollection(\$link_page, true);\n";
+				$code .= "\t\$link_url = \$nh->getLinkToCollection(Page::getByID(\$field_{$field['num']}_link_cID), true);\n";
 				$code .= "\t\$link_text = empty(\$field_{$field['num']}_link_text) ? \$link_url : htmlspecialchars(\$field_{$field['num']}_link_text, ENT_QUOTES, APP_CHARSET);\n";
 				$code .= "\t?>\n";
 				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
