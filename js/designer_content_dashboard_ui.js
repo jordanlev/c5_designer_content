@@ -10,25 +10,27 @@ $(document).ready(function() {
 	$('a.designer-content-field-delete-no').live('click', toggle_delete_confirmation);
 	$('a.designer-content-field-delete-yes').live('click', delete_field);
 	
+	$('.designer-content-field-image-sizing-dropdown').live('click', toggle_field_image_sizes);
+	
 	$('#designer-content-submit').click(function() {
 		$('#designer-content-form').submit(); //We use a div instead of a submit button because we don't want the "enter" key triggering the form
 	});
 	$('#designer-content-form').submit(function() {
-		// //TEST MODE (posts form via ajax so you don't lose data entry):
-		// var valid = validate_form();
-		// if (valid) {
-		// 	$.ajax({
-		// 		type: 'POST',
-		// 		async: false,
-		// 		url: CCM_REL + '/index.php/dashboard/pages/designer_content/generate_block/',
-		// 		data: $('#designer-content-form').serialize(),
-		// 		success: function() {
-		// 			alert('ok!');
-		// 		}
-		// 	});
-		// }
-		// return false;
-		// //END TEST MODE
+		//TEST MODE (posts form via ajax so you don't lose data entry):
+		var valid = validate_form();
+		if (valid) {
+			$.ajax({
+				type: 'POST',
+				async: false,
+				url: CCM_REL + '/index.php/dashboard/pages/designer_content/generate_block/',
+				data: $('#designer-content-form').serialize(),
+				success: function() {
+					alert('ok!');
+				}
+			});
+		}
+		return false;
+		//END TEST MODE
 		
 		$('#designer-content-submit').hide();
 		$('#designer-content-submit-loading').show();
@@ -135,6 +137,15 @@ function delete_field() {
 	});
 	
 	return false;
+}
+
+function toggle_field_image_sizes() {
+	var id = $(this).attr('data-id');
+	var sizing = parseInt($(this).val());
+	
+	$('.designer-content-field-image-size[data-id='+id+']').toggle(sizing > 0);
+	$('.designer-content-field-image-resize-label[data-id='+id+']').toggle(sizing == 1);	
+	$('.designer-content-field-image-crop-label[data-id='+id+']').toggle(sizing == 2);	
 }
 
 function validate_form() {
