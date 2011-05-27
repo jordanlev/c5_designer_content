@@ -56,8 +56,11 @@ class DashboardPagesDesignerContentController extends Controller {
 		$field_suffixes = $this->post('fieldSuffixes');
 		$field_static_html = $this->post('fieldStaticHtml');
 		$fields_required = $this->post('fieldsRequired');
-		$field_widths = $this->post('fieldWidths');
-		$field_heights = $this->post('fieldHeights');
+		$field_image_links = $this->post('fieldImageLinks');
+		$field_images_show_alt_text = $this->post('fieldImagesShowAltText');
+		$field_image_sizings = $this->post('fieldImageSizings');
+		$field_image_widths = $this->post('fieldImageWidths');
+		$field_image_heights = $this->post('fieldImageHeights');
 		$field_default_contents = $this->post('fieldDefaultContents');
 		
 		//Set up the code generator
@@ -70,7 +73,7 @@ class DashboardPagesDesignerContentController extends Controller {
 			} else if ($type == 'text') {
 				$block->add_text_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]));
 			} else if ($type == 'image') {
-				$block->add_image_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]), $field_widths[$id], $field_heights[$id]);
+				$block->add_image_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]), $field_image_links[$id], $field_images_show_alt_text[$id], $field_image_sizings[$id], $field_image_widths[$id], $field_image_heights[$id]);
 			} else if ($type == 'link') {
 				$block->add_link_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]));
 			} else if ($type == 'wysiwyg') {

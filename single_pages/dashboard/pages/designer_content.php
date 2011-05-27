@@ -119,7 +119,7 @@
 
 							<select name="fieldImageLinks[${id}]" id="fieldImageLinks[${id}]">
 								<option value="0"><?php echo t('None'); ?></option>
-								<option value="1"><?php echo t('Site Page'); ?></option>
+								<option value="1"><?php echo t('Sitemap Page'); ?></option>
 								<option value="2"><?php echo t('External URL'); ?></option>
 							</select>
 
@@ -147,17 +147,17 @@
 						
 						<tr><td></td><td></td><td align="right">
 							
-							<label for="fieldWidths[${id}]" class="designer-content-field-image-resize-label" data-id="${id}" style="display: none;"><?php echo t('Max&nbsp;Width'); ?>:</label>
-							<label for="fieldWidths[${id}]" class="designer-content-field-image-crop-label" data-id="${id}" style="display: none;"><?php echo t('Crop&nbsp;Width'); ?>:</label>
+							<label for="fieldImageWidths[${id}]" class="designer-content-field-image-resize-label" data-id="${id}" style="display: none;"><?php echo t('Max&nbsp;Width'); ?>:</label>
+							<label for="fieldImageWidths[${id}]" class="designer-content-field-image-crop-label" data-id="${id}" style="display: none;"><?php echo t('Crop&nbsp;Width'); ?>:</label>
 							
 						</td><td>
 						
 							<div class="designer-content-field-image-size" data-id="${id}" style="display: none;">
-								<input type="text" name="fieldWidths[${id}]" id="fieldWidths[${id}]" class="designer-content-field-width" size="3" maxlength="4" /> px
+								<input type="text" name="fieldImageWidths[${id}]" id="fieldImageWidths[${id}]" class="designer-content-field-image-width" size="3" maxlength="4" /> px
 								&nbsp;&nbsp;&nbsp;
-								<label for="fieldHeights[${id}]" class="designer-content-field-image-resize-label" data-id="${id}"><?php echo t('Max&nbsp;Height'); ?>:</label>
-								<label for="fieldHeights[${id}]" class="designer-content-field-image-crop-label" data-id="${id}"><?php echo t('Crop&nbsp;Height'); ?>:</label>
-								<input type="text" name="fieldHeights[${id}]" id="fieldHeights[${id}]" class="designer-content-field-height" size="3" maxlength="4" /> px
+								<label for="fieldImageHeights[${id}]" class="designer-content-field-image-resize-label" data-id="${id}"><?php echo t('Max&nbsp;Height'); ?>:</label>
+								<label for="fieldImageHeights[${id}]" class="designer-content-field-image-crop-label" data-id="${id}"><?php echo t('Crop&nbsp;Height'); ?>:</label>
+								<input type="text" name="fieldImageHeights[${id}]" id="fieldImageHeights[${id}]" class="designer-content-field-image-height" size="3" maxlength="4" /> px
 							</div>
 						
 						</td></tr></table>
@@ -244,8 +244,8 @@
 		'fields_required': '<?php echo t("You must add at least 1 field."); ?>',
 		'one_wysiwyg': '<?php echo t("You cannot have more than 1 WYSIWYG Editor in a block."); ?>',
 		'labels_required': '<?php echo t("All fields must have an Editor Label."); ?>',
-		'widths_numeric': '<?php echo t("Image Max Widths must be valid numbers."); ?>',
-		'heights_numeric': '<?php echo t("Image Max Heights must be valid numbers."); ?>',
+		'widths_numeric': '<?php echo t("Image Widths must be valid numbers."); ?>',
+		'heights_numeric': '<?php echo t("Image Heights must be valid numbers."); ?>',
 		'error_header': '<?php echo t("Cannot proceed! Please correct the following errors:"); ?>'
 	};
 	</script>

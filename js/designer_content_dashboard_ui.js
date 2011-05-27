@@ -164,8 +164,8 @@ function validate_form() {
 	var fieldCount = $('.designer-content-field').length;
 	var wysiwygCount = wysiwyg_count();
 	var fieldLabels = $.map($('.designer-content-field-editorlabel'), function(element, index) { return $(element).val(); });
-	var fieldWidths = $.map($('.designer-content-field-width'), function(element, index) { return $(element).val(); });
-	var fieldHeights = $.map($('.designer-content-field-height'), function(element, index) { return $(element).val(); });
+	var fieldImageWidths = $.map($('.designer-content-field-image-width'), function(element, index) { return $(element).val(); });
+	var fieldImageHeights = $.map($('.designer-content-field-image-height'), function(element, index) { return $(element).val(); });
 	
 	if (handle.length == 0) {
 		errors.push(ERROR_MESSAGES['handle_required']);
@@ -198,7 +198,7 @@ function validate_form() {
 	}
 
 	var invalid_widths = false;
-	$.each(fieldWidths, function(index, width) {
+	$.each(fieldImageWidths, function(index, width) {
 		if (width.length > 0 && (isNaN(width) || (width < 1) || (parseInt(width) != width))) {
 			invalid_widths = true;
 		}
@@ -208,7 +208,7 @@ function validate_form() {
 	}
 	
 	var invalid_heights = false;
-	$.each(fieldHeights, function(index, height) {
+	$.each(fieldImageHeights, function(index, height) {
 		if (height.length > 0 && (isNaN(height) || (height < 1) || (parseInt(height) != height))) {
 			invalid_heights = true;
 		}
