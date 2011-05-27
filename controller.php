@@ -5,14 +5,14 @@ class DesignerContentPackage extends Package {
 	
 	protected $pkgHandle = 'designer_content';
 	protected $appVersionRequired = '5.4.1';
-	protected $pkgVersion = '1.0.1';
+	protected $pkgVersion = '1.9.1';
 	
 	public function getPackageName() {
 		return t("Designer Content"); 
 	}	
 	
 	public function getPackageDescription() {
-		return t('A block type generator for designers and developers. Designer Content lets you quickly create new kinds of blocks that will make it easy for users to add pieces of content to their site (while maintaining complex layouts).');
+		return t('Provides supporting code for custom content blocks.');
 	}
 
 	public function on_start() {

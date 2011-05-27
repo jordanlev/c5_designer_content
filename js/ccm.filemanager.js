@@ -1,5 +1,7 @@
-//Override this function in concrete's ccm.filemanager.js file.
-//We only need to change one thing -- the "Choose New Image" link (search code for "HACK" to find the change).
+/* Designer Content Note:
+ * Override this function in concrete's ccm.filemanager.js file.
+ * We only need to change one thing -- the "Choose New Image" link (search code for "HACK" to find the change).
+ */
 
 ccm_alActivateMenu = function(obj, e) {
 	
