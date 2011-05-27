@@ -102,13 +102,15 @@
 					{{if type == 'text' || type == 'link'}}
 						<input type="checkbox" name="fieldsRequired[${id}]" id="fieldsRequired[${id}]" /><label for="fieldsRequired[${id}]"><?php echo t('Required?'); ?></label>
 					{{else type == 'image'}}
-
+						
+						<br />
+						
 						<input type="checkbox" name="fieldsRequired[${id}]" id="fieldsRequired[${id}]" />
 						<label for="fieldsRequired[${id}]"><?php echo t('Required?'); ?></label>
 
 						<br />
 						
-						<table border="0"><tr><td nowrap="nowrap" align="right">
+						<table border="0" class="designer-content-field-image-settings"><tr><td nowrap="nowrap" align="right">
 							<label for="fieldImageLinks[${id}]"><?php echo t('Show Link Field'); ?>:</label>
 						</td><td nowrap="nowrap">
 							<select name="fieldImageLinks[${id}]" id="fieldImageLinks[${id}]">
@@ -126,7 +128,7 @@
 						</td></tr><tr><td nowrap="nowrap" align="right">
 							<label for="fieldImageSizings[${id}]"><?php echo t('Image Sizing'); ?>:</label>
 						</td><td nowrap="nowrap">
-							<div style="width: 500px;">
+							<div class="designer-content-field-image-sizing">
 								<select name="fieldImageSizings[${id}]" id="fieldImageSizings[${id}]" class="designer-content-field-image-sizing-dropdown" data-id="${id}">
 									<option value="0"><?php echo t('None'); ?></option>
 									<option value="1"><?php echo t('Resize'); ?></option>
@@ -134,12 +136,13 @@
 								</select>
 						
 								<span style="display: none;" class="designer-content-field-image-sizes" data-id="${id}">
-									<label for="fieldImageWidths[${id}]" class="designer-content-field-image-resize-label" data-id="${id}" style="display: none;"><?php echo t('Max&nbsp;Width'); ?>:</label>
-									<label for="fieldImageWidths[${id}]" class="designer-content-field-image-crop-label" data-id="${id}" style="display: none;"><?php echo t('Crop&nbsp;Width'); ?>:</label>
+									&nbsp;&nbsp;
+									<label for="fieldImageWidths[${id}]" class="designer-content-field-image-resize-label" data-id="${id}" style="display: none;"><?php echo t('Max Width'); ?>:</label>
+									<label for="fieldImageWidths[${id}]" class="designer-content-field-image-crop-label" data-id="${id}" style="display: none;"><?php echo t('Crop Width'); ?>:</label>
 									<input type="text" name="fieldImageWidths[${id}]" id="fieldImageWidths[${id}]" class="designer-content-field-image-width" size="3" maxlength="4" /> px
-									&nbsp;&nbsp;&nbsp;
-									<label for="fieldImageHeights[${id}]" class="designer-content-field-image-resize-label" data-id="${id}"><?php echo t('Max&nbsp;Height'); ?>:</label>
-									<label for="fieldImageHeights[${id}]" class="designer-content-field-image-crop-label" data-id="${id}"><?php echo t('Crop&nbsp;Height'); ?>:</label>
+									&nbsp;&nbsp;
+									<label for="fieldImageHeights[${id}]" class="designer-content-field-image-resize-label" data-id="${id}"><?php echo t('Max Height'); ?>:</label>
+									<label for="fieldImageHeights[${id}]" class="designer-content-field-image-crop-label" data-id="${id}"><?php echo t('Crop Height'); ?>:</label>
 									<input type="text" name="fieldImageHeights[${id}]" id="fieldImageHeights[${id}]" class="designer-content-field-image-height" size="3" maxlength="4" /> px
 								</span>
 							</div>
