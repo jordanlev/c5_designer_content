@@ -63,15 +63,6 @@ input#name {
 	width: 95%;
 }
 
-.designer-content-field-image-options {
-	float: left;
-}
-
-.designer-content-field-image-size {
-	clear: both;
-	width: 250px;
-}
-
 .static-html-field {
 	width: 100%;
 }

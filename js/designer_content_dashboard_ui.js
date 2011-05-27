@@ -143,7 +143,7 @@ function toggle_field_image_sizes() {
 	var id = $(this).attr('data-id');
 	var sizing = parseInt($(this).val());
 	
-	$('.designer-content-field-image-size[data-id='+id+']').toggle(sizing > 0);
+	$('.designer-content-field-image-sizes[data-id='+id+']').toggle(sizing > 0);
 	$('.designer-content-field-image-resize-label[data-id='+id+']').toggle(sizing == 1);	
 	$('.designer-content-field-image-crop-label[data-id='+id+']').toggle(sizing == 2);	
 }
