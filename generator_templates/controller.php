@@ -27,10 +27,10 @@ class [[[GENERATOR_REPLACE_CLASSNAME]]] extends BlockController {
 [[[GENERATOR_REPLACE_VIEW]]]
 	}
 	
-	private function get_image_object($fID, $max_width = 0, $max_height = 0) {
+	private function get_image_object($fID, $width = 0, $height = 0, $crop = false) {
 		if (empty($fID)) {
 			$image = null;
-		} else if (empty($max_width) && empty($max_height)) {
+		} else if (empty($width) && empty($height)) {
 			//Show image at full size (do not generate a thumbnail)
 			$file = File::getByID($fID);
 			$size = @getimagesize($file->getPath());
@@ -40,11 +40,11 @@ class [[[GENERATOR_REPLACE_CLASSNAME]]] extends BlockController {
 			$image->height = $size[1];
 		} else {
 			//Generate a thumbnail
-			$max_width = empty($max_width) ? 9999 : $max_width;
-			$max_height = empty($max_height) ? 9999 : $max_height;
+			$width = empty($width) ? 9999 : $width;
+			$height = empty($height) ? 9999 : $height;
 			$file = File::getByID($fID);
 			$ih = Loader::helper('image');
-			$image = $ih->getThumbnail($file, $max_width, $max_height);
+			$image = $ih->getThumbnail($file, $width, $height, $crop);
 		}
 		
 		return $image;
