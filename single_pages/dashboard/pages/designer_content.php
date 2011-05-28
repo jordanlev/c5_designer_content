@@ -130,19 +130,19 @@
 						</td><td nowrap="nowrap">
 							<div class="designer-content-field-image-sizing">
 								<select name="fieldImageSizings[${id}]" id="fieldImageSizings[${id}]" class="designer-content-field-image-sizing-dropdown" data-id="${id}">
-									<option value="0"><?php echo t('None'); ?></option>
-									<option value="1"><?php echo t('Resize'); ?></option>
-									<option value="2"><?php echo t('Crop'); ?></option>
+									<option value="0"><?php echo t('Keep Original Size'); ?></option>
+									<option value="1"><?php echo t('Resize Proportionally'); ?></option>
+									<option value="2"><?php echo t('Resize+Crop To Fit'); ?></option>
 								</select>
 						
 								<span style="display: none;" class="designer-content-field-image-sizes" data-id="${id}">
 									&nbsp;&nbsp;
 									<label for="fieldImageWidths[${id}]" class="designer-content-field-image-resize-label" data-id="${id}" style="display: none;"><?php echo t('Max Width'); ?>:</label>
-									<label for="fieldImageWidths[${id}]" class="designer-content-field-image-crop-label" data-id="${id}" style="display: none;"><?php echo t('Crop Width'); ?>:</label>
+									<label for="fieldImageWidths[${id}]" class="designer-content-field-image-crop-label" data-id="${id}" style="display: none;"><?php echo t('Target Width'); ?>:</label>
 									<input type="text" name="fieldImageWidths[${id}]" id="fieldImageWidths[${id}]" class="designer-content-field-image-width" size="3" maxlength="4" /> px
 									&nbsp;&nbsp;
 									<label for="fieldImageHeights[${id}]" class="designer-content-field-image-resize-label" data-id="${id}"><?php echo t('Max Height'); ?>:</label>
-									<label for="fieldImageHeights[${id}]" class="designer-content-field-image-crop-label" data-id="${id}"><?php echo t('Crop Height'); ?>:</label>
+									<label for="fieldImageHeights[${id}]" class="designer-content-field-image-crop-label" data-id="${id}"><?php echo t('Target Height'); ?>:</label>
 									<input type="text" name="fieldImageHeights[${id}]" id="fieldImageHeights[${id}]" class="designer-content-field-image-height" size="3" maxlength="4" /> px
 								</span>
 							</div>
