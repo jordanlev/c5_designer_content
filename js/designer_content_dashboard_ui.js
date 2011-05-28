@@ -10,7 +10,8 @@ $(document).ready(function() {
 	$('a.designer-content-field-delete-no').live('click', toggle_delete_confirmation);
 	$('a.designer-content-field-delete-yes').live('click', delete_field);
 	
-	$('.designer-content-field-image-sizing-dropdown').live('click', toggle_field_image_sizes);
+	$('.designer-content-field-image-sizing-dropdown').live('click', toggle_field_image_sizing);
+	$('.designer-content-field-image-link-dropdown').live('click', toggle_field_image_link);
 	
 	$('#designer-content-submit').click(function() {
 		$('#designer-content-form').submit(); //We use a div instead of a submit button because we don't want the "enter" key triggering the form
@@ -139,14 +140,22 @@ function delete_field() {
 	return false;
 }
 
-function toggle_field_image_sizes() {
+function toggle_field_image_sizing() {
 	var id = $(this).attr('data-id');
 	var sizing = parseInt($(this).val());
 	
-	$('.designer-content-field-image-sizes[data-id='+id+']').toggle(sizing > 0);
+	$('.designer-content-field-image-sizing-options[data-id='+id+']').toggle(sizing > 0);
 	$('.designer-content-field-image-resize-label[data-id='+id+']').toggle(sizing == 1);	
 	$('.designer-content-field-image-crop-label[data-id='+id+']').toggle(sizing == 2);	
 }
+
+function toggle_field_image_link() {
+	var id = $(this).attr('data-id');
+	var link = parseInt($(this).val());
+	
+	$('.designer-content-field-image-link-options[data-id='+id+']').toggle(link == 2);
+}
+
 
 function validate_form() {
 	//Name and handle are required
