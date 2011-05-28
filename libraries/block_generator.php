@@ -33,7 +33,7 @@ class DesignerContentBlockGenerator {
 		);
 	}
 	
-	public function add_image_field($label, $prefix = '', $suffix = '', $required = false, $link_type = 0, $show_alt_text = false, $sizing_type = 0, $width = 0, $height = 0) {
+	public function add_image_field($label, $prefix = '', $suffix = '', $required = false, $link_type = 0, $link_target_blank = false, $show_alt_text = false, $sizing_type = 0, $width = 0, $height = 0) {
 		$this->fields[] = array(
 			'num' => count($this->fields) + 1,
 			'type' => 'image',
@@ -42,6 +42,7 @@ class DesignerContentBlockGenerator {
 			'suffix' => $suffix,
 			'required' => $required,
 			'link' => $link_type,
+			'target' => $link_target_blank,
 			'alt' => $show_alt_text,
 			'sizing' => $sizing_type,
 			'width' => $width,
@@ -245,8 +246,9 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'image') {
 				$code .= "\t\t<field name=\"field_{$field['num']}_image_fID\" type=\"I\"></field>\n";
 				$code .= ($field['link'] == 1) ? "\t\t<field name=\"field_{$field['num']}_image_internalLinkCID\" type=\"I\"></field>\n" : '';
-				$code .= ($field['link'] == 2) ? "\t\t<field name=\"field_{$field['num']}_image_externalLinkURL\" type=\"C\" size=\"255\"></field>\n\n" : '';
+				$code .= ($field['link'] == 2) ? "\t\t<field name=\"field_{$field['num']}_image_externalLinkURL\" type=\"C\" size=\"255\"></field>\n" : '';
 				$code .= $field['alt'] ? "\t\t<field name=\"field_{$field['num']}_image_altText\" type=\"C\" size=\"255\"></field>\n" : '';
+				$code .= "\n";
 			}
 			if ($field['type'] == 'link') {
 				$code .= "\t\t<field name=\"field_{$field['num']}_link_cID\" type=\"I\"></field>\n";
@@ -406,7 +408,7 @@ class DesignerContentBlockGenerator {
 				$code .= "<?php if (!empty(\$field_{$field['num']}_image)): ?>\n";
 				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
 				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_internalLinkCID)) { ?><a href=\"<?php echo \$nh->getLinkToCollection(Page::getByID(\$field_{$field['num']}_image_internalLinkCID), true); ?>\"><?php } ?>\n";
-				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLinkURL)) { ?><a href=\"<?php echo \$field_{$field['num']}_image_externalLinkURL; ?>\"><?php } ?>\n";
+				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLinkURL)) { ?><a href=\"<?php echo \$field_{$field['num']}_image_externalLinkURL; ?>\"" . ($field['target'] ? ' target="_blank"' : '') . "><?php } ?>\n";
 				$code .= "\t<img src=\"<?php echo \$field_{$field['num']}_image->src; ?>\" width=\"<?php echo \$field_{$field['num']}_image->width; ?>\" height=\"<?php echo \$field_{$field['num']}_image->height; ?>\" alt=\"" . ($field['alt'] ? "<?php echo \$field_{$field['num']}_image_altText; ?>" : '') . "\" />\n";
 				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLinkURL)) { ?></a><?php } ?>\n";
 				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_internalLinkCID)) { ?></a><?php } ?>\n";

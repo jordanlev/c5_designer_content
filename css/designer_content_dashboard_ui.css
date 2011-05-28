@@ -68,7 +68,11 @@ input#name {
 }
 
 .designer-content-field-image-sizing {
-	width: 500px;
+	width: 500px; /* allows us to force option fields to extend past the right edge of their table cell */
+}
+
+.designer-content-field-image-link {
+	width: 400px; /* allows us to force option fields to extend past the right edge of their table cell */
 }
 
 .static-html-field {

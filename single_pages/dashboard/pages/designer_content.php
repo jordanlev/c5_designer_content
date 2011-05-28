@@ -111,20 +111,28 @@
 						<br />
 						
 						<table border="0" class="designer-content-field-image-settings"><tr><td nowrap="nowrap" align="right">
-							<label for="fieldImageLinks[${id}]"><?php echo t('Show Link Field'); ?>:</label>
-						</td><td nowrap="nowrap">
-							<select name="fieldImageLinks[${id}]" id="fieldImageLinks[${id}]">
-								<option value="0"><?php echo t('None'); ?></option>
-								<option value="1"><?php echo t('Sitemap Page'); ?></option>
-								<option value="2"><?php echo t('External URL'); ?></option>
-							</select>
-						</td></tr><tr><td nowrap="nowrap" align="right">
 							<label for="fieldImagesShowAltText[${id}]"><?php echo t('Show Alt Text Field:'); ?></label>
 						</td><td nowrap="nowrap">
 							<select name="fieldImagesShowAltText[${id}]" id="fieldImagesShowAltText[${id}]">
 								<option value="0"><?php echo t('No'); ?></option>
 								<option value="1"><?php echo t('Yes'); ?></option>
 							</select>
+						</td></tr><tr><td nowrap="nowrap" align="right">
+							<label for="fieldImageLinks[${id}]"><?php echo t('Show Link Field'); ?>:</label>
+						</td><td nowrap="nowrap">
+							<div class="designer-content-field-image-link">
+								<select name="fieldImageLinks[${id}]" id="fieldImageLinks[${id}]" class="designer-content-field-image-link-dropdown" data-id="${id}">
+									<option value="0"><?php echo t('None'); ?></option>
+									<option value="1"><?php echo t('Sitemap Page'); ?></option>
+									<option value="2"><?php echo t('External URL'); ?></option>
+								</select>
+								
+								<span style="display: none;" class="designer-content-field-image-link-options" data-id="${id}">
+									&nbsp;&nbsp;&nbsp;
+									<input type="checkbox" name="fieldImageLinkTargets[${id}]" id="fieldImageLinkTargets[${id}]" />
+									<label for="fieldImageLinkTargets[${id}]"><?php echo t('Links Open In New Window'); ?></label>
+								</span>
+							</div>
 						</td></tr><tr><td nowrap="nowrap" align="right">
 							<label for="fieldImageSizings[${id}]"><?php echo t('Image Sizing'); ?>:</label>
 						</td><td nowrap="nowrap">
@@ -135,7 +143,7 @@
 									<option value="2"><?php echo t('Resize+Crop To Fit'); ?></option>
 								</select>
 						
-								<span style="display: none;" class="designer-content-field-image-sizes" data-id="${id}">
+								<span style="display: none;" class="designer-content-field-image-sizing-options" data-id="${id}">
 									&nbsp;&nbsp;
 									<label for="fieldImageWidths[${id}]" class="designer-content-field-image-resize-label" data-id="${id}" style="display: none;"><?php echo t('Max Width'); ?>:</label>
 									<label for="fieldImageWidths[${id}]" class="designer-content-field-image-crop-label" data-id="${id}" style="display: none;"><?php echo t('Target Width'); ?>:</label>
