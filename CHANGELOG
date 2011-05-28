@@ -1,2 +1,3 @@
+1.9.1 - Currently in development for version 2.0 (there will be no official version 1.9, but using it for the time being so c5 upgrade routines don't get screwy for beta testers when 2.0 is finally launched)
 1.0.1 - Added Japanese translation (thanks Tao!), now call strip_tags on the block name/description in dashboard (prior to validation), block generation no longer creates CHANGELOG files, fixed newline output in generated db.xml files.
 1.0.0 - Initial Version
