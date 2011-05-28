@@ -21,7 +21,7 @@
  */
 
 defined('C5_EXECUTE') or die("Access Denied.");
-class ImageHelper {
+class ImageCropHelper {
 
 		
 	/**
