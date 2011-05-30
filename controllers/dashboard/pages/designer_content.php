@@ -71,9 +71,11 @@ class DashboardPagesDesignerContentController extends Controller {
 			$type = $field_types[$id];
 			if ($type == 'static') {
 				$block->add_static_field($field_static_html[$id]);
-			} else if ($type == 'text') {
-				$block->add_text_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]));
-			} else if ($type == 'image') {
+			} else if ($type == 'textbox') {
+				$block->add_textbox_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]));
+			} else if ($type == 'textarea') {
+				$block->add_textarea_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]));
+		    } else if ($type == 'image') {
 				$block->add_image_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]), $field_image_links[$id], $field_image_link_targets[$id], $field_images_show_alt_text[$id], $field_image_sizings[$id], $field_image_widths[$id], $field_image_heights[$id]);
 			} else if ($type == 'link') {
 				$block->add_link_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]));
