@@ -61,6 +61,17 @@ class DesignerContentBlockGenerator {
 		);
 	}
 	
+	public function add_file_field($label, $prefix = '', $suffix = '', $required = false) {
+		$this->fields[] = array(
+			'num' => count($this->fields) + 1,
+			'type' => 'file',
+			'label' => $label,
+			'prefix' => $prefix,
+			'suffix' => $suffix,
+			'required' => $required,
+		);
+	}
+	
 	public function add_link_field($label, $prefix = '', $suffix = '', $required = false) {
 		$this->fields[] = array(
 			'num' => count($this->fields) + 1,
@@ -131,6 +142,7 @@ class DesignerContentBlockGenerator {
 				$code .= "\t\tccm_addError(ccm_t('text-required') + ': ".$this->addslashes_single($field['label'])."');\n";
 				$code .= "\t}\n\n";
 			}
+			
 			if ($field['type'] == 'textarea' && $field['required']) {
 				$code .= "\tif (\$('#field_{$field['num']}_textarea_text').val() == '') {\n";
 				$code .= "\t\tccm_addError(ccm_t('text-required') + ': ".$this->addslashes_single($field['label'])."');\n";
@@ -140,6 +152,12 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'image' && $field['required']) {
 				$code .= "\tif (\$('#field_{$field['num']}_image_fID-fm-value').val() == '' || \$('#field_{$field['num']}_image_fID-fm-value').val() == 0) {\n";
 				$code .= "\t\tccm_addError(ccm_t('image-required') + ': ".$this->addslashes_single($field['label'])."');\n";
+				$code .= "\t}\n\n";
+			}
+			
+			if ($field['type'] == 'file' && $field['required']) {
+				$code .= "\tif (\$('#field_{$field['num']}_file_fID-fm-value').val() == '' || \$('#field_{$field['num']}_file_fID-fm-value').val() == 0) {\n";
+				$code .= "\t\tccm_addError(ccm_t('file-required') + ': ".$this->addslashes_single($field['label'])."');\n";
 				$code .= "\t}\n\n";
 			}
 			
@@ -176,6 +194,9 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'textarea') {
 				$code .= "\t\t\$content .= \$this->field_{$field['num']}_textarea_text;\n";
 			}
+			if ($field['type'] == 'file') {
+				$code .= "\t\t\$content .= \$this->field_{$field['num']}_file_linkText;\n";
+			}
 			if ($field['type'] == 'wysiwyg') {
 				$code .= "\t\t\$content .= \$this->field_{$field['num']}_wysiwyg_content;\n";
 			}
@@ -192,6 +213,9 @@ class DesignerContentBlockGenerator {
 				$height = ($field['sizing'] > 0 && !empty($field['height'])) ? $field['height'] : 0;
 				$crop = ($field['sizing'] == 2) ? 'true' : 'false';
 				$code .= "\t\t\$this->set('field_{$field['num']}_image', \$this->get_image_object(\$this->field_{$field['num']}_image_fID, {$width}, {$height}, {$crop}));\n";
+			}
+			if ($field['type'] == 'file') {
+				$code .= "\t\t\$this->set('field_{$field['num']}_file', File::getByID(\$this->field_{$field['num']}_file_fID));\n";
 			}
 			if ($field['type'] == 'wysiwyg') {
 				$code .= "\t\t\$this->set('field_{$field['num']}_wysiwyg_content', \$this->translateFrom(\$this->field_{$field['num']}_wysiwyg_content));\n";
@@ -219,6 +243,9 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'image') {
 				$code .= "\t\t\$this->set('field_{$field['num']}_image', (empty(\$this->field_{$field['num']}_image_fID) ? null : File::getByID(\$this->field_{$field['num']}_image_fID)));\n";
 			}
+			if ($field['type'] == 'file') {
+				$code .= "\t\t\$this->set('field_{$field['num']}_file', (empty(\$this->field_{$field['num']}_file_fID) ? null : File::getByID(\$this->field_{$field['num']}_file_fID)));\n";
+			}
 			if ($field['type'] == 'wysiwyg') {
 				$code .= "\t\t\$this->set('field_{$field['num']}_wysiwyg_content', \$this->translateFromEditMode(\$this->field_{$field['num']}_wysiwyg_content));\n";
 			}
@@ -232,6 +259,9 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'image') {
 				$code .= "\t\t\$args['field_{$field['num']}_image_fID'] = empty(\$args['field_{$field['num']}_image_fID']) ? 0 : \$args['field_{$field['num']}_image_fID'];\n";
 				$code .= ($field['link'] == 1) ? "\t\t\$args['field_{$field['num']}_image_internalLinkCID'] = empty(\$args['field_{$field['num']}_image_internalLinkCID']) ? 0 : \$args['field_{$field['num']}_image_internalLinkCID'];\n" : '';
+			}
+			if ($field['type'] == 'file') {
+				$code .= "\t\t\$args['field_{$field['num']}_file_fID'] = empty(\$args['field_{$field['num']}_file_fID']) ? 0 : \$args['field_{$field['num']}_file_fID'];\n";
 			}
 			if ($field['type'] == 'link') {
 				$code .= "\t\t\$args['field_{$field['num']}_link_cID'] = empty(\$args['field_{$field['num']}_link_cID']) ? 0 : \$args['field_{$field['num']}_link_cID'];\n";
@@ -271,6 +301,10 @@ class DesignerContentBlockGenerator {
 				$code .= ($field['link'] == 2) ? "\t\t<field name=\"field_{$field['num']}_image_externalLinkURL\" type=\"C\" size=\"255\"></field>\n" : '';
 				$code .= $field['alt'] ? "\t\t<field name=\"field_{$field['num']}_image_altText\" type=\"C\" size=\"255\"></field>\n" : '';
 				$code .= "\n";
+			}
+			if ($field['type'] == 'file') {
+				$code .= "\t\t<field name=\"field_{$field['num']}_file_fID\" type=\"I\"></field>\n";
+				$code .= "\t\t<field name=\"field_{$field['num']}_file_linkText\" type=\"C\" size=\"255\"></field>\n\n";
 			}
 			if ($field['type'] == 'link') {
 				$code .= "\t\t<field name=\"field_{$field['num']}_link_cID\" type=\"I\"></field>\n";
@@ -341,6 +375,21 @@ class DesignerContentBlockGenerator {
 					}
 					$code .= "\t</table>\n";
 				}
+				$code .= "</div>\n\n";
+			}
+			
+			if ($field['type'] == 'file') {
+				$code .= "<div class=\"ccm-block-field-group\">\n";
+				$code .= "\t<h2>{$field['label']}</h2>\n";
+				$translated_label = $this->addslashes_single( t('Choose File') );
+				$code .= "\t<?php echo \$al->file('field_{$field['num']}_file_fID', 'field_{$field['num']}_file_fID', '{$translated_label}', \$field_{$field['num']}_file); ?>\n";
+				$code .= "\t<table border=\"0\" cellspacing=\"3\" cellpadding=\"0\" style=\"width: 95%;\">\n";
+				$code .= "\t\t<tr>\n";
+				$translated_label = t('Link Text (or leave blank to use file name)');
+				$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_file_linkText\">{$translated_label}:</label>&nbsp;</td>\n";
+				$code .= "\t\t\t<td align=\"left\" style=\"width: 100%;\"><?php echo \$form->text('field_{$field['num']}_file_linkText', \$field_{$field['num']}_file_linkText, array('style' => 'width: 100%;')); ?></td>\n";
+				$code .= "\t\t</tr>\n";
+				$code .= "\t</table>\n";
 				$code .= "</div>\n\n";
 			}
 			
@@ -452,7 +501,17 @@ class DesignerContentBlockGenerator {
 				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
 				$code .= "<?php endif; ?>\n\n";
 			}
-
+			
+			if ($field['type'] == 'file') {
+				$code .= "<?php if (!empty(\$field_{$field['num']}_file)): ?>\n";
+				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
+				$code .= "\t<a href=\"<?php echo View::url('/download_file', \$field_{$field['num']}_file_fID, Page::getCurrentPage()->getCollectionID()); ?>\" class=\"file-<?php echo \$field_{$field['num']}_file->getExtension(); ?>\">\n";
+				$code .= "\t\t<?php echo empty(\$field_{$field['num']}_file_linkText) ? \$field_{$field['num']}_file->getFileName() : htmlspecialchars(\$field_{$field['num']}_file_linkText, ENT_QUOTES, APP_CHARSET); ?>\n";
+				$code .= "\t</a>\n";
+				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
+				$code .= "<?php endif; ?>\n\n";
+			}
+			
 			if ($field['type'] == 'link') {
 				$code .= "<?php if (!empty(\$field_{$field['num']}_link_cID)): ?>\n";
 				$code .= "\t<?php\n";

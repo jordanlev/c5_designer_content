@@ -99,12 +99,10 @@
 					<label for="fieldLabels[${id}]"><?php echo t('Editor Label'); ?></label><br />
 					<input type="text" class="designer-content-field-editorlabel" name="fieldLabels[${id}]" id="fieldLabels[${id}]" />
 				
-					{{if type == 'textbox' || type == 'textarea' || type == 'link'}}
-						<input type="checkbox" name="fieldsRequired[${id}]" id="fieldsRequired[${id}]" /><label for="fieldsRequired[${id}]"><?php echo t('Required?'); ?></label>
+					{{if type == 'textbox' || type == 'textarea' || type == 'link' || type == 'file'}}
+						<input type="checkbox" name="fieldsRequired[${id}]" id="fieldsRequired[${id}]" />
+						<label for="fieldsRequired[${id}]"><?php echo t('Required?'); ?></label>
 					{{else type == 'image'}}
-						
-						<br />
-						
 						<input type="checkbox" name="fieldsRequired[${id}]" id="fieldsRequired[${id}]" />
 						<label for="fieldsRequired[${id}]"><?php echo t('Required?'); ?></label>
 
@@ -189,6 +187,8 @@
 				&nbsp;&nbsp;
 				[<a href="#" class="add-field-type" data-type="image"><?php echo t('Image'); ?></a>]
 				&nbsp;&nbsp;
+				[<a href="#" class="add-field-type" data-type="file"><?php echo t('File'); ?></a>]
+				&nbsp;&nbsp;
 				[<a href="#" class="add-field-type" data-type="link"><?php echo t('Page Link'); ?></a>]
 				{{if wysiwyg}}
 				&nbsp;&nbsp;
@@ -229,6 +229,7 @@
 		'textbox': '<?php echo t("Textbox Field"); ?>',
 		'textarea': '<?php echo t("Text Area Field"); ?>',
 		'image': '<?php echo t("Image Field"); ?>',
+		'file': '<?php echo t("File Field"); ?>',
 		'link': '<?php echo t("Page Link Field"); ?>',
 		'wysiwyg': '<?php echo t("WYSIWYG Editor"); ?>'
 	};

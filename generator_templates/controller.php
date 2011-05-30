@@ -68,6 +68,7 @@ class [[[GENERATOR_REPLACE_CLASSNAME]]] extends BlockController {
 		return array(
 			'text-required' => t('Missing required text'),
 			'image-required' => t('Missing required image'),
+			'file-required' => t('Missing required file'),
 			'link-required' => t('Missing required link'),
 		);
 	}
