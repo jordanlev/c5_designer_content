@@ -77,6 +77,8 @@ class DashboardPagesDesignerContentController extends Controller {
 				$block->add_textarea_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]));
 		    } else if ($type == 'image') {
 				$block->add_image_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]), $field_image_links[$id], $field_image_link_targets[$id], $field_images_show_alt_text[$id], $field_image_sizings[$id], $field_image_widths[$id], $field_image_heights[$id]);
+			} else if ($type == 'file') {
+				$block->add_file_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]));
 			} else if ($type == 'link') {
 				$block->add_link_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]));
 			} else if ($type == 'wysiwyg') {
