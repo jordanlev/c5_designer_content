@@ -22,10 +22,21 @@ class DesignerContentBlockGenerator {
 		);
 	}
 
-	public function add_text_field($label, $prefix = '', $suffix = '', $required = false) {
+	public function add_textbox_field($label, $prefix = '', $suffix = '', $required = false) {
 		$this->fields[] = array(
 			'num' => count($this->fields) + 1,
-			'type' => 'text',
+			'type' => 'textbox',
+			'label' => $label,
+			'prefix' => $prefix,
+			'suffix' => $suffix,
+			'required' => $required,
+		);
+	}
+	
+	public function add_textarea_field($label, $prefix = '', $suffix = '', $required = false) {
+		$this->fields[] = array(
+			'num' => count($this->fields) + 1,
+			'type' => 'textarea',
 			'label' => $label,
 			'prefix' => $prefix,
 			'suffix' => $suffix,
@@ -115,8 +126,13 @@ class DesignerContentBlockGenerator {
 		//Replace validation rules
 		$code = '';
 		foreach ($this->fields as $field) {
-			if ($field['type'] == 'text' && $field['required']) {
+			if ($field['type'] == 'textbox' && $field['required']) {
 				$code .= "\tif (\$('#field_{$field['num']}_textbox_text').val() == '') {\n";
+				$code .= "\t\tccm_addError(ccm_t('text-required') + ': ".$this->addslashes_single($field['label'])."');\n";
+				$code .= "\t}\n\n";
+			}
+			if ($field['type'] == 'textarea' && $field['required']) {
+				$code .= "\tif (\$('#field_{$field['num']}_textarea_text').val() == '') {\n";
 				$code .= "\t\tccm_addError(ccm_t('text-required') + ': ".$this->addslashes_single($field['label'])."');\n";
 				$code .= "\t}\n\n";
 			}
@@ -154,8 +170,11 @@ class DesignerContentBlockGenerator {
 		//Replace getSearchableContent() function
 		$code = '';
 		foreach ($this->fields as $field) {
-			if ($field['type'] == 'text') {
+			if ($field['type'] == 'textbox') {
 				$code .= "\t\t\$content .= \$this->field_{$field['num']}_textbox_text;\n";
+			}
+			if ($field['type'] == 'textarea') {
+				$code .= "\t\t\$content .= \$this->field_{$field['num']}_textarea_text;\n";
 			}
 			if ($field['type'] == 'wysiwyg') {
 				$code .= "\t\t\$content .= \$this->field_{$field['num']}_wysiwyg_content;\n";
@@ -240,8 +259,11 @@ class DesignerContentBlockGenerator {
 		//Replace Field definitions
 		$code = '';
 		foreach ($this->fields as $field) {
-			if ($field['type'] == 'text') {
+			if ($field['type'] == 'textbox') {
 				$code .= "\t\t<field name=\"field_{$field['num']}_textbox_text\" type=\"X\"></field>\n\n";
+			}
+			if ($field['type'] == 'textarea') {
+				$code .= "\t\t<field name=\"field_{$field['num']}_textarea_text\" type=\"X\"></field>\n\n";
 			}
 			if ($field['type'] == 'image') {
 				$code .= "\t\t<field name=\"field_{$field['num']}_image_fID\" type=\"I\"></field>\n";
@@ -274,10 +296,17 @@ class DesignerContentBlockGenerator {
 		//Replace html form fields
 		$code = '';
 		foreach ($this->fields as $field) {
-			if ($field['type'] == 'text') {
+			if ($field['type'] == 'textbox') {
 				$code .= "<div class=\"ccm-block-field-group\">\n";
 				$code .= "\t<h2>{$field['label']}</h2>\n";
 				$code .= "\t<?php echo \$form->text('field_{$field['num']}_textbox_text', \$field_{$field['num']}_textbox_text, array('style' => 'width: 95%;')); ?>\n";
+				$code .= "</div>\n\n";
+			}
+
+			if ($field['type'] == 'textarea') {
+				$code .= "<div class=\"ccm-block-field-group\">\n";
+				$code .= "\t<h2>{$field['label']}</h2>\n";
+				$code .= "\t<textarea id=\"field_{$field['num']}_textarea_text\" name=\"field_{$field['num']}_textarea_text\" rows=\"5\" style=\"width: 95%;\"><?php echo \$field_{$field['num']}_textarea_text; ?></textarea>\n";
 				$code .= "</div>\n\n";
 			}
 			
@@ -396,10 +425,18 @@ class DesignerContentBlockGenerator {
 				$code .= $field['static'] . "\n\n";
 			}
 
-			if ($field['type'] == 'text') {
+			if ($field['type'] == 'textbox') {
 				$code .= "<?php if (!empty(\$field_{$field['num']}_textbox_text)): ?>\n";
 				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
 				$code .= "\t<?php echo htmlspecialchars(\$field_{$field['num']}_textbox_text, ENT_QUOTES, APP_CHARSET); ?>\n";
+				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
+				$code .= "<?php endif; ?>\n\n";
+			}
+
+			if ($field['type'] == 'textarea') {
+				$code .= "<?php if (!empty(\$field_{$field['num']}_textarea_text)): ?>\n";
+				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
+				$code .= "\t<?php echo nl2br(htmlspecialchars(\$field_{$field['num']}_textarea_text, ENT_QUOTES, APP_CHARSET)); ?>\n";
 				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
 				$code .= "<?php endif; ?>\n\n";
 			}
