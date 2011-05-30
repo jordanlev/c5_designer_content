@@ -10,8 +10,8 @@ $(document).ready(function() {
 	$('a.designer-content-field-delete-no').live('click', toggle_delete_confirmation);
 	$('a.designer-content-field-delete-yes').live('click', delete_field);
 	
-	$('.designer-content-field-image-sizing-dropdown').live('click', toggle_field_image_sizing);
-	$('.designer-content-field-image-link-dropdown').live('click', toggle_field_image_link);
+	$('.designer-content-field-image-sizing-dropdown').live('change', toggle_field_image_sizing);
+	$('.designer-content-field-image-link-dropdown').live('change', toggle_field_image_link);
 	
 	$('#designer-content-submit').click(function() {
 		$('#designer-content-form').submit(); //We use a div instead of a submit button because we don't want the "enter" key triggering the form
