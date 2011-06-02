@@ -83,6 +83,18 @@ class DesignerContentBlockGenerator {
 		);
 	}
 	
+	public function add_date_field($label, $prefix = '', $suffix = '', $required = false, $format = '') {
+		$this->fields[] = array(
+			'num' => count($this->fields) + 1,
+			'type' => 'date',
+			'label' => $label,
+			'prefix' => $prefix,
+			'suffix' => $suffix,
+			'required' => $required,
+			'format' => empty($format) ? 'Y-m-d' : $format,
+		);
+	}
+	
 	public function add_wysiwyg_field($label, $prefix = '', $suffix = '', $default = '') {
 		$this->fields[] = array(
 			'num' => count($this->fields) + 1,
@@ -166,6 +178,12 @@ class DesignerContentBlockGenerator {
 				$code .= "\t\tccm_addError(ccm_t('link-required') + ': ".$this->addslashes_single($field['label'])."');\n";
 				$code .= "\t}\n\n";
 			}
+			
+			if ($field['type'] == 'date' && $field['required']) {
+				$code .= "\tif (\$('input[name=field_{$field['num']}_date_value]').val() == '' || \$('input[name=field_{$field['num']}_date_value]').val() == 0) {\n";
+				$code .= "\t\tccm_addError(ccm_t('date-required') + ': ".$this->addslashes_single($field['label'])."');\n";
+				$code .= "\t}\n\n";
+			}
 		}
 		$token = '[[[GENERATOR_REPLACE_VALIDATIONRULES]]]';
 		$template = str_replace($token, $code, $template);
@@ -187,20 +205,27 @@ class DesignerContentBlockGenerator {
 		
 		//Replace getSearchableContent() function
 		$code = '';
-		foreach ($this->fields as $field) {
-			if ($field['type'] == 'textbox') {
-				$code .= "\t\t\$content .= \$this->field_{$field['num']}_textbox_text;\n";
+		if (count($this->fields) > 0) {
+			$code = "\t\t\$content = array();\n";
+			foreach ($this->fields as $field) {
+				if ($field['type'] == 'textbox') {
+					$code .= "\t\t\$content[] = \$this->field_{$field['num']}_textbox_text;\n";
+				}
+				if ($field['type'] == 'textarea') {
+					$code .= "\t\t\$content[] = \$this->field_{$field['num']}_textarea_text;\n";
+				}
+				if ($field['type'] == 'file') {
+					$code .= "\t\t\$content[] = \$this->field_{$field['num']}_file_linkText;\n";
+				}
+				if ($field['type'] == 'date') {
+					$code .= "\t\t\$content[] = date('{$field['format']}', \$this->field_{$field['num']}_date_value);\n";
+				}
+				if ($field['type'] == 'wysiwyg') {
+					$code .= "\t\t\$content[] = \$this->field_{$field['num']}_wysiwyg_content;\n";
+				}
+				//Intentionally leaving out image alt text and link text (doesn't make sense for those to come up in search results)
 			}
-			if ($field['type'] == 'textarea') {
-				$code .= "\t\t\$content .= \$this->field_{$field['num']}_textarea_text;\n";
-			}
-			if ($field['type'] == 'file') {
-				$code .= "\t\t\$content .= \$this->field_{$field['num']}_file_linkText;\n";
-			}
-			if ($field['type'] == 'wysiwyg') {
-				$code .= "\t\t\$content .= \$this->field_{$field['num']}_wysiwyg_content;\n";
-			}
-			//Intentionally leaving out image alt text and link text (doesn't make sense for those to come up in search results)
+			$code .= "\t\treturn implode(' - ', \$content);\n";
 		}
 		$token = '[[[GENERATOR_REPLACE_GETSEARCHABLECONTENT]]]';
 		$template = str_replace($token, $code, $template);
@@ -227,6 +252,9 @@ class DesignerContentBlockGenerator {
 		//Replace add() function
 		$code = '';
 		foreach ($this->fields as $field) {
+			if ($field['type'] == 'date') {
+				$code .= "\t\t\$this->set('field_{$field['num']}_date_value', date('Y-m-d'));\n";
+			}
 			if ($field['type'] == 'wysiwyg') {
 				if (!empty($field['default'])) {
 					$code .= "\t\t\$field_{$field['num']}_default_content = '" . $this->addslashes_single($field['default']) . "';\n";
@@ -265,6 +293,9 @@ class DesignerContentBlockGenerator {
 			}
 			if ($field['type'] == 'link') {
 				$code .= "\t\t\$args['field_{$field['num']}_link_cID'] = empty(\$args['field_{$field['num']}_link_cID']) ? 0 : \$args['field_{$field['num']}_link_cID'];\n";
+			}
+			if ($field['type'] == 'date') {
+				$code .= "\t\t\$args['field_{$field['num']}_date_value'] = empty(\$args['field_{$field['num']}_date_value']) ? null : Loader::helper('form/date_time')->translate('field_{$field['num']}_date_value', \$args);\n";
 			}
 			if ($field['type'] == 'wysiwyg') {
 				$code .= "\t\t\$args['field_{$field['num']}_wysiwyg_content'] = \$this->translateTo(\$args['field_{$field['num']}_wysiwyg_content']);\n";
@@ -309,6 +340,9 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'link') {
 				$code .= "\t\t<field name=\"field_{$field['num']}_link_cID\" type=\"I\"></field>\n";
 				$code .= "\t\t<field name=\"field_{$field['num']}_link_text\" type=\"C\" size=\"255\"></field>\n\n";
+			}
+			if ($field['type'] == 'date') {
+				$code .= "\t\t<field name=\"field_{$field['num']}_date_value\" type=\"D\"></field>\n\n";
 			}
 			if ($field['type'] == 'wysiwyg') {
 				$code .= "\t\t<field name=\"field_{$field['num']}_wysiwyg_content\" type=\"X2\"></field>\n\n";
@@ -404,6 +438,13 @@ class DesignerContentBlockGenerator {
 				$code .= "\t\t\t<td align=\"left\" style=\"width: 100%;\"><?php echo \$form->text('field_{$field['num']}_link_text', \$field_{$field['num']}_link_text, array('style' => 'width: 100%;')); ?></td>\n";
 				$code .= "\t\t</tr>\n";
 				$code .= "\t</table>\n";
+				$code .= "</div>\n\n";
+			}
+			
+			if ($field['type'] == 'date') {
+				$code .= "<div class=\"ccm-block-field-group\">\n";
+				$code .= "\t<h2>{$field['label']}</h2>\n";
+				$code .= "\t<?php echo \$dt->date('field_{$field['num']}_date_value', \$field_{$field['num']}_date_value); ?>\n";
 				$code .= "</div>\n\n";
 			}
 			
@@ -520,6 +561,14 @@ class DesignerContentBlockGenerator {
 				$code .= "\t?>\n";
 				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
 				$code .= "\t<a href=\"<?php echo \$link_url; ?>\"><?php echo \$link_text; ?></a>\n";
+				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
+				$code .= "<?php endif; ?>\n\n";
+			}
+			
+			if ($field['type'] == 'date') {
+				$code .= "<?php if (!empty(\$field_{$field['num']}_date_value)): ?>\n";
+				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
+				$code .= "\t<?php echo date('{$field['format']}', strtotime(\$field_{$field['num']}_date_value)); ?>\n";
 				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
 				$code .= "<?php endif; ?>\n\n";
 			}
