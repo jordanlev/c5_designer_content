@@ -18,9 +18,7 @@ class [[[GENERATOR_REPLACE_CLASSNAME]]] extends BlockController {
 	protected $btCacheBlockOutputLifetime = 300;
 		
 	public function getSearchableContent() {
-		$content = '';
 [[[GENERATOR_REPLACE_GETSEARCHABLECONTENT]]]
-		return $content;
 	}
 	
 	public function view() {

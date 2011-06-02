@@ -153,6 +153,13 @@
 								</span>
 							</div>
 						</td></tr></table>
+					{{else type == 'date'}}
+						<input type="checkbox" name="fieldsRequired[${id}]" id="fieldsRequired[${id}]" />
+						<label for="fieldsRequired[${id}]"><?php echo t('Required?'); ?></label>
+						<br />
+						<label for="fieldDateFormats[${id}]" data-id="${id}"><?php echo t('Formatting Code'); ?>:</label>
+						<input type="text" name="fieldDateFormats[${id}]" id="fieldDateFormats[${id}]" value="F jS, Y" style="width:75px;" />
+						[<i><?php echo t('<a href="http://php.net/date#refsect1-function.date-parameters" target="_blank">Code Reference</a>'); ?></i>]
 					{{else type == 'wysiwyg'}}
 						<label for="fieldDefaultContents[${id}]"><?php echo t('Default HTML Content'); ?></label><br />
 						<textarea rows="4" name="fieldDefaultContents[${id}]" id="fieldDefaultContents[${id}]"></textarea>
@@ -190,6 +197,8 @@
 				[<a href="#" class="add-field-type" data-type="file"><?php echo t('File'); ?></a>]
 				&nbsp;&nbsp;
 				[<a href="#" class="add-field-type" data-type="link"><?php echo t('Page Link'); ?></a>]
+				&nbsp;&nbsp;
+				[<a href="#" class="add-field-type" data-type="date"><?php echo t('Date Picker'); ?></a>]
 				{{if wysiwyg}}
 				&nbsp;&nbsp;
 				[<a href="#" class="add-field-type" data-type="wysiwyg"><?php echo t('WYSIWYG Editor'); ?></a>]
@@ -231,6 +240,7 @@
 		'image': '<?php echo t("Image Field"); ?>',
 		'file': '<?php echo t("File Field"); ?>',
 		'link': '<?php echo t("Page Link Field"); ?>',
+		'date': '<?php echo t("Date Picker Field"); ?>',
 		'wysiwyg': '<?php echo t("WYSIWYG Editor"); ?>'
 	};
 	var ERROR_MESSAGES = {
