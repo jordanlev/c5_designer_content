@@ -56,6 +56,7 @@ class DashboardPagesDesignerContentController extends Controller {
 		$field_suffixes = $this->post('fieldSuffixes');
 		$field_static_html = $this->post('fieldStaticHtml');
 		$fields_required = $this->post('fieldsRequired');
+		$fields_textbox_maxlengths = $this->post('fieldTextboxMaxlengths');
 		$field_image_links = $this->post('fieldImageLinks');
 		$field_image_link_targets = $this->post('fieldImageLinkTargets');
 		$field_images_show_alt_text = $this->post('fieldImagesShowAltText');
@@ -74,7 +75,7 @@ class DashboardPagesDesignerContentController extends Controller {
 			if ($type == 'static') {
 				$block->add_static_field($field_static_html[$id]);
 			} else if ($type == 'textbox') {
-				$block->add_textbox_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]));
+				$block->add_textbox_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]), $fields_textbox_maxlengths[$id]);
 			} else if ($type == 'textarea') {
 				$block->add_textarea_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]));
 		    } else if ($type == 'image') {
