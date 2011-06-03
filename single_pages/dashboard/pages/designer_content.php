@@ -99,15 +99,21 @@
 					<label for="fieldLabels[${id}]"><?php echo t('Editor Label'); ?></label><br />
 					<input type="text" class="designer-content-field-editorlabel" name="fieldLabels[${id}]" id="fieldLabels[${id}]" />
 				
-					{{if type == 'textbox' || type == 'textarea' || type == 'link' || type == 'file'}}
+					{{if type == 'wysiwyg'}}
+						<label for="fieldDefaultContents[${id}]"><?php echo t('Default HTML Content'); ?></label><br />
+						<textarea rows="4" name="fieldDefaultContents[${id}]" id="fieldDefaultContents[${id}]"></textarea>
+					{{else}}
 						<input type="checkbox" name="fieldsRequired[${id}]" id="fieldsRequired[${id}]" />
 						<label for="fieldsRequired[${id}]"><?php echo t('Required?'); ?></label>
-					{{else type == 'image'}}
-						<input type="checkbox" name="fieldsRequired[${id}]" id="fieldsRequired[${id}]" />
-						<label for="fieldsRequired[${id}]"><?php echo t('Required?'); ?></label>
-
+					{{/if}}
+					
+					{{if type == 'textbox'}}
 						<br />
-						
+
+						<label for="fieldTextboxMaxlengths[${id}]"><?php echo t('Maximum Number Of Characters'); ?>:</label>
+						<input type="text" name="fieldTextboxMaxlengths[${id}]" id="fieldTextboxMaxlengths[${id}]" size="3" maxlength="5" />
+					{{else type == 'image'}}
+						<br />
 						<table border="0" class="designer-content-field-image-settings"><tr><td nowrap="nowrap" align="right">
 							<label for="fieldImagesShowAltText[${id}]"><?php echo t('Show Alt Text Field:'); ?></label>
 						</td><td nowrap="nowrap">
@@ -154,23 +160,14 @@
 							</div>
 						</td></tr></table>
 					{{else type == 'url'}}
-						<input type="checkbox" name="fieldsRequired[${id}]" id="fieldsRequired[${id}]" />
-						<label for="fieldsRequired[${id}]"><?php echo t('Required?'); ?></label>
-
 						<br />
-						
 						<input type="checkbox" name="fieldUrlTargets[${id}]" id="fieldUrlTargets[${id}]" checked="checked" />
 						<label for="fieldUrlTargets[${id}]"><?php echo t('Links Open In New Window'); ?></label>
 					{{else type == 'date'}}
-						<input type="checkbox" name="fieldsRequired[${id}]" id="fieldsRequired[${id}]" />
-						<label for="fieldsRequired[${id}]"><?php echo t('Required?'); ?></label>
 						<br />
 						<label for="fieldDateFormats[${id}]" data-id="${id}"><?php echo t('Formatting Code'); ?>:</label>
 						<input type="text" name="fieldDateFormats[${id}]" id="fieldDateFormats[${id}]" value="F jS, Y" style="width:75px;" />
 						[<i><?php echo t('<a href="http://php.net/date#refsect1-function.date-parameters" target="_blank">Code Reference</a>'); ?></i>]
-					{{else type == 'wysiwyg'}}
-						<label for="fieldDefaultContents[${id}]"><?php echo t('Default HTML Content'); ?></label><br />
-						<textarea rows="4" name="fieldDefaultContents[${id}]" id="fieldDefaultContents[${id}]"></textarea>
 					{{/if}}
 				</div>
 				

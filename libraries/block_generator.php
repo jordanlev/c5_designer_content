@@ -22,7 +22,7 @@ class DesignerContentBlockGenerator {
 		);
 	}
 
-	public function add_textbox_field($label, $prefix = '', $suffix = '', $required = false) {
+	public function add_textbox_field($label, $prefix = '', $suffix = '', $required = false, $maxlength = 0) {
 		$this->fields[] = array(
 			'num' => count($this->fields) + 1,
 			'type' => 'textbox',
@@ -30,6 +30,7 @@ class DesignerContentBlockGenerator {
 			'prefix' => $prefix,
 			'suffix' => $suffix,
 			'required' => $required,
+			'maxlength' => empty($maxlength) ? 0 : $maxlength,
 		);
 	}
 	
@@ -390,7 +391,7 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'textbox') {
 				$code .= "<div class=\"ccm-block-field-group\">\n";
 				$code .= "\t<h2>{$field['label']}</h2>\n";
-				$code .= "\t<?php echo \$form->text('field_{$field['num']}_textbox_text', \$field_{$field['num']}_textbox_text, array('style' => 'width: 95%;')); ?>\n";
+				$code .= "\t<?php echo \$form->text('field_{$field['num']}_textbox_text', \$field_{$field['num']}_textbox_text, array('style' => 'width: 95%;'" . ($field['maxlength'] > 0 ? ", 'maxlength' => '{$field['maxlength']}'" : '') . ")); ?>\n";
 				$code .= "</div>\n\n";
 			}
 
