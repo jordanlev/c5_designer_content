@@ -127,7 +127,7 @@
 								
 								<span style="display: none;" class="designer-content-field-image-link-options" data-id="${id}">
 									&nbsp;&nbsp;&nbsp;
-									<input type="checkbox" name="fieldImageLinkTargets[${id}]" id="fieldImageLinkTargets[${id}]" />
+									<input type="checkbox" name="fieldImageLinkTargets[${id}]" id="fieldImageLinkTargets[${id}]" checked="checked" />
 									<label for="fieldImageLinkTargets[${id}]"><?php echo t('Links Open In New Window'); ?></label>
 								</span>
 							</div>
@@ -153,6 +153,14 @@
 								</span>
 							</div>
 						</td></tr></table>
+					{{else type == 'url'}}
+						<input type="checkbox" name="fieldsRequired[${id}]" id="fieldsRequired[${id}]" />
+						<label for="fieldsRequired[${id}]"><?php echo t('Required?'); ?></label>
+
+						<br />
+						
+						<input type="checkbox" name="fieldUrlTargets[${id}]" id="fieldUrlTargets[${id}]" checked="checked" />
+						<label for="fieldUrlTargets[${id}]"><?php echo t('Links Open In New Window'); ?></label>
 					{{else type == 'date'}}
 						<input type="checkbox" name="fieldsRequired[${id}]" id="fieldsRequired[${id}]" />
 						<label for="fieldsRequired[${id}]"><?php echo t('Required?'); ?></label>
@@ -188,15 +196,17 @@
 				&nbsp;
 				[<a href="#" class="add-field-type" data-type="static"><?php echo t('Static HTML'); ?></a>]
 				&nbsp;&nbsp;
-    			[<a href="#" class="add-field-type" data-type="textbox"><?php echo t('Textbox'); ?></a>]
+    			[<a href="#" class="add-field-type" data-type="textbox"><?php echo t('Text Box'); ?></a>]
 				&nbsp;&nbsp;
 				[<a href="#" class="add-field-type" data-type="textarea"><?php echo t('Text Area'); ?></a>]
 				&nbsp;&nbsp;
 				[<a href="#" class="add-field-type" data-type="image"><?php echo t('Image'); ?></a>]
 				&nbsp;&nbsp;
-				[<a href="#" class="add-field-type" data-type="file"><?php echo t('File'); ?></a>]
+				[<a href="#" class="add-field-type" data-type="file"><?php echo t('File Download'); ?></a>]
 				&nbsp;&nbsp;
 				[<a href="#" class="add-field-type" data-type="link"><?php echo t('Page Link'); ?></a>]
+				&nbsp;&nbsp;
+				[<a href="#" class="add-field-type" data-type="url"><?php echo t('External URL'); ?></a>]
 				&nbsp;&nbsp;
 				[<a href="#" class="add-field-type" data-type="date"><?php echo t('Date Picker'); ?></a>]
 				{{if wysiwyg}}
@@ -238,8 +248,9 @@
 		'textbox': '<?php echo t("Textbox Field"); ?>',
 		'textarea': '<?php echo t("Text Area Field"); ?>',
 		'image': '<?php echo t("Image Field"); ?>',
-		'file': '<?php echo t("File Field"); ?>',
+		'file': '<?php echo t("File Download Field"); ?>',
 		'link': '<?php echo t("Page Link Field"); ?>',
+		'url': '<?php echo t("External URL Field"); ?>',
 		'date': '<?php echo t("Date Picker Field"); ?>',
 		'wysiwyg': '<?php echo t("WYSIWYG Editor"); ?>'
 	};
