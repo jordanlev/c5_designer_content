@@ -62,6 +62,7 @@ class DashboardPagesDesignerContentController extends Controller {
 		$field_image_sizings = $this->post('fieldImageSizings');
 		$field_image_widths = $this->post('fieldImageWidths');
 		$field_image_heights = $this->post('fieldImageHeights');
+		$field_url_targets = $this->post('fieldUrlTargets');
 		$field_date_formats = $this->post('fieldDateFormats');
 		$field_default_contents = $this->post('fieldDefaultContents');
 		
@@ -82,6 +83,8 @@ class DashboardPagesDesignerContentController extends Controller {
 				$block->add_file_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]));
 			} else if ($type == 'link') {
 				$block->add_link_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]));
+			} else if ($type == 'url') {
+				$block->add_url_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]), $field_url_targets[$id]);
 			} else if ($type == 'date') {
 				$block->add_date_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]), $field_date_formats[$id]);
 			} else if ($type == 'wysiwyg') {

@@ -44,7 +44,7 @@ class DesignerContentBlockGenerator {
 		);
 	}
 	
-	public function add_image_field($label, $prefix = '', $suffix = '', $required = false, $link_type = 0, $link_target_blank = false, $show_alt_text = false, $sizing_type = 0, $width = 0, $height = 0) {
+	public function add_image_field($label, $prefix = '', $suffix = '', $required = false, $link_type = 0, $link_target_blank = true, $show_alt_text = false, $sizing_type = 0, $width = 0, $height = 0) {
 		$this->fields[] = array(
 			'num' => count($this->fields) + 1,
 			'type' => 'image',
@@ -83,6 +83,19 @@ class DesignerContentBlockGenerator {
 		);
 	}
 	
+	public function add_url_field($label, $prefix = '', $suffix = '', $required = false, $target_blank = true) {
+		$this->fields[] = array(
+			'num' => count($this->fields) + 1,
+			'type' => 'url',
+			'label' => $label,
+			'prefix' => $prefix,
+			'suffix' => $suffix,
+			'required' => $required,
+			'target' => $target_blank,
+		);
+	}
+	
+
 	public function add_date_field($label, $prefix = '', $suffix = '', $required = false, $format = '') {
 		$this->fields[] = array(
 			'num' => count($this->fields) + 1,
@@ -176,6 +189,12 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'link' && $field['required']) {
 				$code .= "\tif (\$('input[name=field_{$field['num']}_link_cID]').val() == '' || \$('input[name=field_{$field['num']}_link_cID]').val() == 0) {\n";
 				$code .= "\t\tccm_addError(ccm_t('link-required') + ': ".$this->addslashes_single($field['label'])."');\n";
+				$code .= "\t}\n\n";
+			}
+			
+			if ($field['type'] == 'url' && $field['required']) {
+				$code .= "\tif (\$('input[name=field_{$field['num']}_link_url]').val() == '') {\n";
+				$code .= "\t\tccm_addError(ccm_t('url-required') + ': ".$this->addslashes_single($field['label'])."');\n";
 				$code .= "\t}\n\n";
 			}
 			
@@ -341,6 +360,10 @@ class DesignerContentBlockGenerator {
 				$code .= "\t\t<field name=\"field_{$field['num']}_link_cID\" type=\"I\"></field>\n";
 				$code .= "\t\t<field name=\"field_{$field['num']}_link_text\" type=\"C\" size=\"255\"></field>\n\n";
 			}
+			if ($field['type'] == 'url') {
+				$code .= "\t\t<field name=\"field_{$field['num']}_link_url\" type=\"C\" size=\"255\"></field>\n";
+				$code .= "\t\t<field name=\"field_{$field['num']}_link_text\" type=\"C\" size=\"255\"></field>\n\n";
+			}
 			if ($field['type'] == 'date') {
 				$code .= "\t\t<field name=\"field_{$field['num']}_date_value\" type=\"D\"></field>\n\n";
 			}
@@ -432,6 +455,24 @@ class DesignerContentBlockGenerator {
 				$code .= "\t<h2>{$field['label']}</h2>\n";
 				$code .= "\t<?php echo \$ps->selectPage('field_{$field['num']}_link_cID', \$field_{$field['num']}_link_cID); ?>\n";
 				$code .= "\t<table border=\"0\" cellspacing=\"3\" cellpadding=\"0\" style=\"width: 95%;\">\n";
+				$code .= "\t\t<tr>\n";
+				$translated_label = t('Link Text');
+				$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_link_text\">{$translated_label}:</label>&nbsp;</td>\n";
+				$code .= "\t\t\t<td align=\"left\" style=\"width: 100%;\"><?php echo \$form->text('field_{$field['num']}_link_text', \$field_{$field['num']}_link_text, array('style' => 'width: 100%;')); ?></td>\n";
+				$code .= "\t\t</tr>\n";
+				$code .= "\t</table>\n";
+				$code .= "</div>\n\n";
+			}
+			
+			if ($field['type'] == 'url') {
+				$code .= "<div class=\"ccm-block-field-group\">\n";
+				$code .= "\t<h2>{$field['label']}</h2>\n";
+				$code .= "\t<table border=\"0\" cellspacing=\"3\" cellpadding=\"0\" style=\"width: 95%;\">\n";
+				$code .= "\t\t<tr>\n";
+				$translated_label = t('Link to URL');
+				$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_link_url\">{$translated_label}:</label>&nbsp;</td>\n";
+				$code .= "\t\t\t<td align=\"left\" style=\"width: 100%;\"><?php echo \$form->text('field_{$field['num']}_link_url', \$field_{$field['num']}_link_url, array('style' => 'width: 100%;')); ?></td>\n";
+				$code .= "\t\t</tr>\n";
 				$code .= "\t\t<tr>\n";
 				$translated_label = t('Link Text');
 				$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_link_text\">{$translated_label}:</label>&nbsp;</td>\n";
@@ -535,7 +576,7 @@ class DesignerContentBlockGenerator {
 				$code .= "<?php if (!empty(\$field_{$field['num']}_image)): ?>\n";
 				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
 				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_internalLinkCID)) { ?><a href=\"<?php echo \$nh->getLinkToCollection(Page::getByID(\$field_{$field['num']}_image_internalLinkCID), true); ?>\"><?php } ?>\n";
-				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLinkURL)) { ?><a href=\"<?php echo \$field_{$field['num']}_image_externalLinkURL; ?>\"" . ($field['target'] ? ' target="_blank"' : '') . "><?php } ?>\n";
+				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLinkURL)) { ?><a href=\"<?php echo $this->controller->valid_url(\$field_{$field['num']}_image_externalLinkURL); ?>\"" . ($field['target'] ? ' target="_blank"' : '') . "><?php } ?>\n";
 				$code .= "\t<img src=\"<?php echo \$field_{$field['num']}_image->src; ?>\" width=\"<?php echo \$field_{$field['num']}_image->width; ?>\" height=\"<?php echo \$field_{$field['num']}_image->height; ?>\" alt=\"" . ($field['alt'] ? "<?php echo \$field_{$field['num']}_image_altText; ?>" : '') . "\" />\n";
 				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLinkURL)) { ?></a><?php } ?>\n";
 				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_internalLinkCID)) { ?></a><?php } ?>\n";
@@ -561,6 +602,16 @@ class DesignerContentBlockGenerator {
 				$code .= "\t?>\n";
 				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
 				$code .= "\t<a href=\"<?php echo \$link_url; ?>\"><?php echo \$link_text; ?></a>\n";
+				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
+				$code .= "<?php endif; ?>\n\n";
+			}
+			
+			if ($field['type'] == 'url') {
+				$code .= "<?php if (!empty(\$field_{$field['num']}_link_url)): ?>\n";
+				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
+				$code .= "\t<a href=\"<?php echo \$this->controller->valid_url(\$field_{$field['num']}_link_url); ?>\"" . ($field['target'] ? ' target="_blank"' : '') . ">\n";
+				$code .= "\t\t<?php echo empty(\$field_{$field['num']}_link_text) ? \$field_{$field['num']}_link_url : htmlspecialchars(\$field_{$field['num']}_link_text, ENT_QUOTES, APP_CHARSET); ?>\n";
+				$code .= "\t</a>\n";
 				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
 				$code .= "<?php endif; ?>\n\n";
 			}

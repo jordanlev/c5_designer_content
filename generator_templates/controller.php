@@ -25,6 +25,7 @@ class [[[GENERATOR_REPLACE_CLASSNAME]]] extends BlockController {
 [[[GENERATOR_REPLACE_VIEW]]]
 	}
 	
+	//Helper function for image fields
 	private function get_image_object($fID, $width = 0, $height = 0, $crop = false) {
 		if (empty($fID)) {
 			$image = null;
@@ -48,6 +49,17 @@ class [[[GENERATOR_REPLACE_CLASSNAME]]] extends BlockController {
 		return $image;
 	}
 	
+	//Helper function for external links
+	public function valid_url($url) {
+		if ((strpos($url, 'http') === 0) || (strpos($url, 'mailto') === 0)) {
+			return $url;
+		} else if (strpos($url, '@') !== false) {
+			return 'mailto:' . $url;
+		} else {
+			return 'http://' . $url;
+		}
+	}
+	
 	public function add() {
 		//Set default values for new blocks
 [[[GENERATOR_REPLACE_ADD]]]
@@ -68,6 +80,7 @@ class [[[GENERATOR_REPLACE_CLASSNAME]]] extends BlockController {
 			'image-required' => t('Missing required image'),
 			'file-required' => t('Missing required file'),
 			'link-required' => t('Missing required link'),
+			'url-required' => t('Missing required URL'),
 		);
 	}
 
