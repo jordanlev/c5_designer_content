@@ -208,8 +208,10 @@ class DesignerContentBlockGenerator {
 		$token = '[[[GENERATOR_REPLACE_VALIDATIONRULES]]]';
 		$template = str_replace($token, $code, $template);
 		
-		//Output file
-		file_put_contents($this->outpath.$filename, $template);
+		//Output file (if we have anything to put in it)
+		if (!empty($code)) {
+			file_put_contents($this->outpath.$filename, $template);
+		}
 	}
 		
 	private function generate_controller_php() {
@@ -386,6 +388,9 @@ class DesignerContentBlockGenerator {
 		$template = file_get_contents($this->tplpath.$filename);
 		
 		//Replace html form fields
+		$include_asset_library = false;
+		$include_page_selector = false;
+		$include_date_time = false;
 		$code = '';
 		foreach ($this->fields as $field) {
 			if ($field['type'] == 'textbox') {
@@ -407,6 +412,7 @@ class DesignerContentBlockGenerator {
 				$code .= "\t<h2>{$field['label']}</h2>\n";
 				$translated_label = $this->addslashes_single( t('Choose Image') );
 				$code .= "\t<?php echo \$al->image('field_{$field['num']}_image_fID', 'field_{$field['num']}_image_fID', '{$translated_label}', \$field_{$field['num']}_image); ?>\n";
+				$include_asset_library = true;
 				if ($field['link'] > 0 || $field['alt']) {
 					$code .= "\n";
 					$code .= "\t<table border=\"0\" cellspacing=\"3\" cellpadding=\"0\" style=\"width: 95%;\">\n";
@@ -416,6 +422,7 @@ class DesignerContentBlockGenerator {
 						$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_image_internalLinkCID\">{$translated_label}:</label>&nbsp;</td>\n";
 						$code .= "\t\t\t<td align=\"left\" style=\"width: 100%;\"><?php echo \$ps->selectPage('field_{$field['num']}_image_internalLinkCID', \$field_{$field['num']}_image_internalLinkCID); ?></td>\n";
 						$code .= "\t\t</tr>\n";
+						$include_page_selector = true;
 					}
 					if ($field['link'] == 2) {
 						$translated_label = t('Link to URL');
@@ -441,6 +448,7 @@ class DesignerContentBlockGenerator {
 				$code .= "\t<h2>{$field['label']}</h2>\n";
 				$translated_label = $this->addslashes_single( t('Choose File') );
 				$code .= "\t<?php echo \$al->file('field_{$field['num']}_file_fID', 'field_{$field['num']}_file_fID', '{$translated_label}', \$field_{$field['num']}_file); ?>\n";
+				$include_asset_library = true;
 				$code .= "\t<table border=\"0\" cellspacing=\"3\" cellpadding=\"0\" style=\"width: 95%;\">\n";
 				$code .= "\t\t<tr>\n";
 				$translated_label = t('Link Text (or leave blank to use file name)');
@@ -455,6 +463,7 @@ class DesignerContentBlockGenerator {
 				$code .= "<div class=\"ccm-block-field-group\">\n";
 				$code .= "\t<h2>{$field['label']}</h2>\n";
 				$code .= "\t<?php echo \$ps->selectPage('field_{$field['num']}_link_cID', \$field_{$field['num']}_link_cID); ?>\n";
+				$include_page_selector = true;
 				$code .= "\t<table border=\"0\" cellspacing=\"3\" cellpadding=\"0\" style=\"width: 95%;\">\n";
 				$code .= "\t\t<tr>\n";
 				$translated_label = t('Link Text');
@@ -488,6 +497,7 @@ class DesignerContentBlockGenerator {
 				$code .= "\t<h2>{$field['label']}</h2>\n";
 				$code .= "\t<?php echo \$dt->date('field_{$field['num']}_date_value', \$field_{$field['num']}_date_value); ?>\n";
 				$code .= "</div>\n\n";
+				$include_date_time = true;
 			}
 			
 			if ($field['type'] == 'wysiwyg') {
@@ -499,6 +509,14 @@ class DesignerContentBlockGenerator {
 			}
 		}
 		$token = '[[[GENERATOR_REPLACE_FIELDS]]]';
+		$template = str_replace($token, $code, $template);
+		
+		//Replace helpers (if needed)
+		$code = '';
+		$code .= $include_asset_library ? "\$al = Loader::helper('concrete/asset_library');\n" : '';
+		$code .= $include_page_selector ? "\$ps = Loader::helper('form/page_selector', 'designer_content');\n" : '';
+		$code .= $include_date_time ? "\$dt = Loader::helper('form/date_time');\n" : '';
+		$token = '[[[GENERATOR_REPLACE_HELPERLOADERS]]]';
 		$template = str_replace($token, $code, $template);
 		
 		//Output file
@@ -548,9 +566,10 @@ class DesignerContentBlockGenerator {
 		
 		//Load template
 		$template = file_get_contents($this->tplpath.$filename);
-				
+		
 		//Replace html
 		$code = '';
+		$include_navigation_helper = false;
 		foreach ($this->fields as $field) {
 			
 			if ($field['type'] == 'static') {
@@ -577,6 +596,7 @@ class DesignerContentBlockGenerator {
 				$code .= "<?php if (!empty(\$field_{$field['num']}_image)): ?>\n";
 				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
 				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_internalLinkCID)) { ?><a href=\"<?php echo \$nh->getLinkToCollection(Page::getByID(\$field_{$field['num']}_image_internalLinkCID), true); ?>\"><?php } ?>\n";
+				$include_navigation_helper = true;
 				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLinkURL)) { ?><a href=\"<?php echo $this->controller->valid_url(\$field_{$field['num']}_image_externalLinkURL); ?>\"" . ($field['target'] ? ' target="_blank"' : '') . "><?php } ?>\n";
 				$code .= "\t<img src=\"<?php echo \$field_{$field['num']}_image->src; ?>\" width=\"<?php echo \$field_{$field['num']}_image->width; ?>\" height=\"<?php echo \$field_{$field['num']}_image->height; ?>\" alt=\"" . ($field['alt'] ? "<?php echo \$field_{$field['num']}_image_altText; ?>" : '') . "\" />\n";
 				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLinkURL)) { ?></a><?php } ?>\n";
@@ -599,6 +619,7 @@ class DesignerContentBlockGenerator {
 				$code .= "<?php if (!empty(\$field_{$field['num']}_link_cID)): ?>\n";
 				$code .= "\t<?php\n";
 				$code .= "\t\$link_url = \$nh->getLinkToCollection(Page::getByID(\$field_{$field['num']}_link_cID), true);\n";
+				$include_navigation_helper = true;
 				$code .= "\t\$link_text = empty(\$field_{$field['num']}_link_text) ? \$link_url : htmlspecialchars(\$field_{$field['num']}_link_text, ENT_QUOTES, APP_CHARSET);\n";
 				$code .= "\t?>\n";
 				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
@@ -637,6 +658,12 @@ class DesignerContentBlockGenerator {
 		$token = '[[[GENERATOR_REPLACE_HTML]]]';
 		$template = str_replace($token, $code, $template);
 		
+		//Replace helpers (if needed)
+		$code = '';
+		$code .= $include_navigation_helper ? "\$nh = Loader::helper('navigation');\n" : '';
+		$token = '[[[GENERATOR_REPLACE_HELPERLOADERS]]]';
+		$template = str_replace($token, $code, $template);
+				
 		//Output file
 		file_put_contents($this->outpath.$filename, $template);
 	}

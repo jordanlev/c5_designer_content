@@ -1,5 +1,4 @@
 ccmValidateBlockForm = function() {
-
-[[[GENERATOR_REPLACE_VALIDATIONRULES]]]	
+[[[GENERATOR_REPLACE_VALIDATIONRULES]]]
 	return false;
 }
