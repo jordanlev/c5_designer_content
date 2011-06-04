@@ -219,6 +219,44 @@ class DesignerContentBlockGenerator {
 		//Load template
 		$template = file_get_contents($this->tplpath.$filename);
 		
+		//Replace sub-templates (do this first so tokens inside the subtemplates get replaced properly later on)
+			//Image helper function
+			$include_helper = false;
+			foreach ($this->fields as $field) {
+				if ($field['type'] == 'image') {
+					$include_helper = true;
+					break;
+				}
+			}
+			$code = $include_helper ? file_get_contents($this->tplpath.'controller_image_helper.php') : '';
+			$token = '[[[GENERATOR_REPLACE_IMAGEHELPER]]]';
+			$template = str_replace($token, $code, $template);
+
+			//URL helper function
+			$include_helper = false;
+			foreach ($this->fields as $field) {
+				if ($field['type'] == 'url' || ($field['type'] == 'image' && $field['link'] == 2)) {
+					$include_helper = true;
+					break;
+				}
+			}
+			$code = $include_helper ? file_get_contents($this->tplpath.'controller_url_helper.php') : '';
+			$token = '[[[GENERATOR_REPLACE_URLHELPER]]]';
+			$template = str_replace($token, $code, $template);
+		
+			//WYSIWYG content helper
+			$include_helper = false;
+			foreach ($this->fields as $field) {
+				if ($field['type'] == 'wysiwyg') {
+					$include_helper = true;
+					break;
+				}
+			}
+			$code = $include_helper ? file_get_contents($this->tplpath.'controller_content_helper.php') : '';
+			$token = '[[[GENERATOR_REPLACE_CONTENTHELPER]]]';
+			$template = str_replace($token, $code, $template);
+		//END sub-template replacement
+		
 		//Replace class properties
 		$template = str_replace('[[[GENERATOR_REPLACE_CLASSNAME]]]', $this->controllername($this->handle), $template);
 		$template = str_replace('[[[GENERATOR_REPLACE_TABLENAME]]]', $this->tablename($this->handle), $template);
@@ -227,33 +265,43 @@ class DesignerContentBlockGenerator {
 		
 		//Replace getSearchableContent() function
 		$code = '';
-		if (count($this->fields) > 0) {
-			$code = "\t\t\$content = array();\n";
-			foreach ($this->fields as $field) {
-				if ($field['type'] == 'textbox') {
-					$code .= "\t\t\$content[] = \$this->field_{$field['num']}_textbox_text;\n";
-				}
-				if ($field['type'] == 'textarea') {
-					$code .= "\t\t\$content[] = \$this->field_{$field['num']}_textarea_text;\n";
-				}
-				if ($field['type'] == 'file') {
-					$code .= "\t\t\$content[] = \$this->field_{$field['num']}_file_linkText;\n";
-				}
-				if ($field['type'] == 'date') {
-					$code .= "\t\t\$content[] = date('{$field['format']}', \$this->field_{$field['num']}_date_value);\n";
-				}
-				if ($field['type'] == 'wysiwyg') {
-					$code .= "\t\t\$content[] = \$this->field_{$field['num']}_wysiwyg_content;\n";
-				}
-				//Intentionally leaving out image alt text and link text (doesn't make sense for those to come up in search results)
+		$fieldcount = 0;
+		foreach ($this->fields as $field) {
+			if ($field['type'] == 'textbox') {
+				$code .= "\t\t\$content[] = \$this->field_{$field['num']}_textbox_text;\n";
+				$fieldcount++;
 			}
-			$code .= "\t\treturn implode(' - ', \$content);\n";
+			if ($field['type'] == 'textarea') {
+				$code .= "\t\t\$content[] = \$this->field_{$field['num']}_textarea_text;\n";
+				$fieldcount++;
+			}
+			if ($field['type'] == 'file') {
+				$code .= "\t\t\$content[] = \$this->field_{$field['num']}_file_linkText;\n";
+				$fieldcount++;
+			}
+			if ($field['type'] == 'date') {
+				$code .= "\t\t\$content[] = date('{$field['format']}', \$this->field_{$field['num']}_date_value);\n";
+				$fieldcount++;
+			}
+			if ($field['type'] == 'wysiwyg') {
+				$code .= "\t\t\$content[] = \$this->field_{$field['num']}_wysiwyg_content;\n";
+				$fieldcount++;
+			}
+			//Intentionally leaving out image alt text and link text (doesn't make sense for those to come up in search results)
+		}
+		if ($fieldcount == 1) {
+			$code = str_replace('$content[] =', 'return', $code);
+			$code = "\tpublic function getSearchableContent() {\n" . $code . "\t}\n";
+		} else if ($fieldcount > 1) {
+			$code = "\t\t\$content = array();\n" . $code . "\t\treturn implode(' - ', \$content);\n";
+			$code = "\tpublic function getSearchableContent() {\n" . $code . "\t}\n";
 		}
 		$token = '[[[GENERATOR_REPLACE_GETSEARCHABLECONTENT]]]';
 		$template = str_replace($token, $code, $template);
 
 		//Replace view() function
 		$code = '';
+		$include_image_helper = false;
 		foreach ($this->fields as $field) {
 			if ($field['type'] == 'image') {
 				$width = ($field['sizing'] > 0 && !empty($field['width'])) ? $field['width'] : 0;
@@ -267,6 +315,9 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'wysiwyg') {
 				$code .= "\t\t\$this->set('field_{$field['num']}_wysiwyg_content', \$this->translateFrom(\$this->field_{$field['num']}_wysiwyg_content));\n";
 			}
+		}
+		if (!empty($code)) {
+			$code = "\tpublic function view() {\n" . $code . "\t}\n";
 		}
 		$token = '[[[GENERATOR_REPLACE_VIEW]]]';
 		$template = str_replace($token, $code, $template);
@@ -595,12 +646,20 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'image') {
 				$code .= "<?php if (!empty(\$field_{$field['num']}_image)): ?>\n";
 				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
-				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_internalLinkCID)) { ?><a href=\"<?php echo \$nh->getLinkToCollection(Page::getByID(\$field_{$field['num']}_image_internalLinkCID), true); ?>\"><?php } ?>\n";
-				$include_navigation_helper = true;
-				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLinkURL)) { ?><a href=\"<?php echo $this->controller->valid_url(\$field_{$field['num']}_image_externalLinkURL); ?>\"" . ($field['target'] ? ' target="_blank"' : '') . "><?php } ?>\n";
+				if ($field['link'] == 1) {
+					$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_internalLinkCID)) { ?><a href=\"<?php echo \$nh->getLinkToCollection(Page::getByID(\$field_{$field['num']}_image_internalLinkCID), true); ?>\"><?php } ?>\n";
+					$include_navigation_helper = true;
+				}
+				if ($field['link'] == 2) {
+					$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLinkURL)) { ?><a href=\"<?php echo \$this->controller->valid_url(\$field_{$field['num']}_image_externalLinkURL); ?>\"" . ($field['target'] ? ' target="_blank"' : '') . "><?php } ?>\n";
+				}
 				$code .= "\t<img src=\"<?php echo \$field_{$field['num']}_image->src; ?>\" width=\"<?php echo \$field_{$field['num']}_image->width; ?>\" height=\"<?php echo \$field_{$field['num']}_image->height; ?>\" alt=\"" . ($field['alt'] ? "<?php echo \$field_{$field['num']}_image_altText; ?>" : '') . "\" />\n";
-				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLinkURL)) { ?></a><?php } ?>\n";
-				$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_internalLinkCID)) { ?></a><?php } ?>\n";
+				if ($field['link'] == 2) {
+					$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLinkURL)) { ?></a><?php } ?>\n";
+				}
+				if ($field['link'] == 1) {
+					$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_internalLinkCID)) { ?></a><?php } ?>\n";
+				}
 				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
 				$code .= "<?php endif; ?>\n\n";
 			}
