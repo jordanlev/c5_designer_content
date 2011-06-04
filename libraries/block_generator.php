@@ -163,45 +163,59 @@ class DesignerContentBlockGenerator {
 		//Replace validation rules
 		$code = '';
 		foreach ($this->fields as $field) {
+			$field_label = $this->addslashes_single($field['label']);
 			if ($field['type'] == 'textbox' && $field['required']) {
 				$code .= "\tif (\$('#field_{$field['num']}_textbox_text').val() == '') {\n";
-				$code .= "\t\tccm_addError(ccm_t('text-required') + ': ".$this->addslashes_single($field['label'])."');\n";
+				$translated_error = $this->addslashes_single( t('Missing required text') );
+				$code .= "\t\tccm_addError('{$translated_error}: {$field_label}');\n";
 				$code .= "\t}\n\n";
 			}
 			
 			if ($field['type'] == 'textarea' && $field['required']) {
 				$code .= "\tif (\$('#field_{$field['num']}_textarea_text').val() == '') {\n";
-				$code .= "\t\tccm_addError(ccm_t('text-required') + ': ".$this->addslashes_single($field['label'])."');\n";
+				$translated_error = $this->addslashes_single( t('Missing required text') );
+				$label = $this->addslashes_single($field['label']);
+				$code .= "\t\tccm_addError('{$translated_error}: {$field_label}');\n";
 				$code .= "\t}\n\n";
 			}
 			
 			if ($field['type'] == 'image' && $field['required']) {
 				$code .= "\tif (\$('#field_{$field['num']}_image_fID-fm-value').val() == '' || \$('#field_{$field['num']}_image_fID-fm-value').val() == 0) {\n";
-				$code .= "\t\tccm_addError(ccm_t('image-required') + ': ".$this->addslashes_single($field['label'])."');\n";
+				$translated_error = $this->addslashes_single( t('Missing required image') );
+				$label = $this->addslashes_single($field['label']);
+				$code .= "\t\tccm_addError('{$translated_error}: {$field_label}');\n";
 				$code .= "\t}\n\n";
 			}
 			
 			if ($field['type'] == 'file' && $field['required']) {
 				$code .= "\tif (\$('#field_{$field['num']}_file_fID-fm-value').val() == '' || \$('#field_{$field['num']}_file_fID-fm-value').val() == 0) {\n";
-				$code .= "\t\tccm_addError(ccm_t('file-required') + ': ".$this->addslashes_single($field['label'])."');\n";
+				$translated_error = $this->addslashes_single( t('Missing required file') );
+				$label = $this->addslashes_single($field['label']);
+				$code .= "\t\tccm_addError('{$translated_error}: {$field_label}');\n";
 				$code .= "\t}\n\n";
 			}
 			
 			if ($field['type'] == 'link' && $field['required']) {
 				$code .= "\tif (\$('input[name=field_{$field['num']}_link_cID]').val() == '' || \$('input[name=field_{$field['num']}_link_cID]').val() == 0) {\n";
-				$code .= "\t\tccm_addError(ccm_t('link-required') + ': ".$this->addslashes_single($field['label'])."');\n";
+				$translated_error = $this->addslashes_single( t('Missing required link') );
+				$label = $this->addslashes_single($field['label']);
+				$code .= "\t\tccm_addError('{$translated_error}: {$field_label}');\n";
 				$code .= "\t}\n\n";
 			}
 			
 			if ($field['type'] == 'url' && $field['required']) {
 				$code .= "\tif (\$('input[name=field_{$field['num']}_link_url]').val() == '') {\n";
-				$code .= "\t\tccm_addError(ccm_t('url-required') + ': ".$this->addslashes_single($field['label'])."');\n";
+				$translated_error = $this->addslashes_single( t('Missing required URL') );
+				$label = $this->addslashes_single($field['label']);
+				$code .= "\t\tccm_addError('{$translated_error}: {$field_label}');\n";
 				$code .= "\t}\n\n";
 			}
 			
 			if ($field['type'] == 'date' && $field['required']) {
 				$code .= "\tif (\$('input[name=field_{$field['num']}_date_value]').val() == '' || \$('input[name=field_{$field['num']}_date_value]').val() == 0) {\n";
-				$code .= "\t\tccm_addError(ccm_t('date-required') + ': ".$this->addslashes_single($field['label'])."');\n";
+				$translated_error = $this->addslashes_single( t('Missing required date') );
+				$label = $this->addslashes_single($field['label']);
+				$code .= "\t\tccm_addError('{$translated_error}: {$field_label}');\n";
 				$code .= "\t}\n\n";
 			}
 		}
@@ -298,7 +312,7 @@ class DesignerContentBlockGenerator {
 		}
 		$token = '[[[GENERATOR_REPLACE_GETSEARCHABLECONTENT]]]';
 		$template = str_replace($token, $code, $template);
-
+		
 		//Replace view() function
 		$code = '';
 		$include_image_helper = false;
@@ -335,6 +349,9 @@ class DesignerContentBlockGenerator {
 				}
 			}
 		}
+		if (!empty($code)) {
+			$code = "\tpublic function add() {\n\t\t//Set default values for new blocks\n" . $code . "\t}\n";
+		}
 		$token = '[[[GENERATOR_REPLACE_ADD]]]';
 		$template = str_replace($token, $code, $template);
 		
@@ -350,6 +367,9 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'wysiwyg') {
 				$code .= "\t\t\$this->set('field_{$field['num']}_wysiwyg_content', \$this->translateFromEditMode(\$this->field_{$field['num']}_wysiwyg_content));\n";
 			}
+		}
+		if (!empty($code)) {
+			$code = "\tpublic function edit() {\n" . $code . "\t}\n";
 		}
 		$token = '[[[GENERATOR_REPLACE_EDIT]]]';
 		$template = str_replace($token, $code, $template);
@@ -374,9 +394,12 @@ class DesignerContentBlockGenerator {
 				$code .= "\t\t\$args['field_{$field['num']}_wysiwyg_content'] = \$this->translateTo(\$args['field_{$field['num']}_wysiwyg_content']);\n";
 			}
 		}
+		if (!empty($code)) {
+			$code = "\tpublic function save(\$args) {\n" . $code . "\t\tparent::save(\$args);\n\t}\n";
+		}
 		$token = '[[[GENERATOR_REPLACE_SAVE]]]';
 		$template = str_replace($token, $code, $template);
-
+		
 		//Output file
 		file_put_contents($this->outpath.$filename, $template);
 	}
