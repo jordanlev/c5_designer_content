@@ -96,7 +96,6 @@ class DesignerContentBlockGenerator {
 		);
 	}
 	
-
 	public function add_date_field($label, $prefix = '', $suffix = '', $required = false, $format = '') {
 		$this->fields[] = array(
 			'num' => count($this->fields) + 1,
@@ -106,6 +105,18 @@ class DesignerContentBlockGenerator {
 			'suffix' => $suffix,
 			'required' => $required,
 			'format' => empty($format) ? 'Y-m-d' : $format,
+		);
+	}
+	
+	public function add_select_field($label, $options, $required, $show_header = false, $header_text = '') {
+		$this->fields[] = array(
+			'num' => count($this->fields) + 1,
+			'type' => 'select',
+			'label' => $label,
+			'options' => explode("\n", str_replace("\r", '', trim($options))),
+			'required' => $required,
+			'showheader' => $show_header,
+			'headertext' => $header_text,
 		);
 	}
 	
@@ -214,6 +225,14 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'date' && $field['required']) {
 				$code .= "\tif (\$('input[name=field_{$field['num']}_date_value]').val() == '' || \$('input[name=field_{$field['num']}_date_value]').val() == 0) {\n";
 				$translated_error = $this->addslashes_single( t('Missing required date') );
+				$label = $this->addslashes_single($field['label']);
+				$code .= "\t\tccm_addError('{$translated_error}: {$field_label}');\n";
+				$code .= "\t}\n\n";
+			}
+			
+			if ($field['type'] == 'select' && $field['required']) {
+				$code .= "\tif (\$('select[name=field_{$field['num']}_select_value]').val() == '' || \$('select[name=field_{$field['num']}_select_value]').val() == 0) {\n";
+				$translated_error = $this->addslashes_single( t('Missing required selection') );
 				$label = $this->addslashes_single($field['label']);
 				$code .= "\t\tccm_addError('{$translated_error}: {$field_label}');\n";
 				$code .= "\t}\n\n";
@@ -444,6 +463,9 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'date') {
 				$code .= "\t\t<field name=\"field_{$field['num']}_date_value\" type=\"D\"></field>\n\n";
 			}
+			if ($field['type'] == 'select') {
+				$code .= "\t\t<field name=\"field_{$field['num']}_select_value\" type=\"I\"><default value=\"0\" /></field>\n\n";
+			}
 			if ($field['type'] == 'wysiwyg') {
 				$code .= "\t\t<field name=\"field_{$field['num']}_wysiwyg_content\" type=\"X2\"></field>\n\n";
 			}
@@ -572,6 +594,25 @@ class DesignerContentBlockGenerator {
 				$code .= "\t<?php echo \$dt->date('field_{$field['num']}_date_value', \$field_{$field['num']}_date_value); ?>\n";
 				$code .= "</div>\n\n";
 				$include_date_time = true;
+			}
+			
+			if ($field['type'] == 'select') {
+				$code .= "<div class=\"ccm-block-field-group\">\n";
+				$code .= "\t<h2>{$field['label']}</h2>\n";
+				$code .= "\t<?php\n";
+				$code .= "\t\$options = array(\n";
+				if ($field['showheader']) {
+					$code .= "\t\t'0' => '" . $this->addslashes_single(htmlspecialchars($field['headertext'], ENT_QUOTES, APP_CHARSET)) . "',\n";
+				}
+				$i = 1;
+				foreach ($field['options'] as $option) {
+					$code .= "\t\t'{$i}' => '" . $this->addslashes_single(htmlspecialchars($option, ENT_QUOTES, APP_CHARSET)) . "',\n";
+					$i++;
+				}
+				$code .= "\t);\n";
+				$code .= "\techo \$form->select('field_{$field['num']}_select_value', \$options, \$field_{$field['num']}_select_value);\n";
+				$code .= "\t?>\n";
+				$code .= "</div>\n\n";
 			}
 			
 			if ($field['type'] == 'wysiwyg') {
@@ -726,6 +767,17 @@ class DesignerContentBlockGenerator {
 				$code .= "\t<?php echo date('{$field['format']}', strtotime(\$field_{$field['num']}_date_value)); ?>\n";
 				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
 				$code .= "<?php endif; ?>\n\n";
+			}
+			
+			if ($field['type'] == 'select') {
+				$i = 1;
+				foreach ($field['options'] as $option) {
+					$code .= "<?php if (\$field_{$field['num']}_select_value == {$i}): ?>\n";
+					$translated_comment = t('ENTER MARKUP HERE FOR CHOICE "%s"', $option);
+					$code .= "\t<!-- {$translated_comment} -->\n";
+					$code .= "<?php endif; ?>\n\n";
+					$i++;
+				}
 			}
 
 			if ($field['type'] == 'wysiwyg') {

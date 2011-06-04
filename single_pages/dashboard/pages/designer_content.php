@@ -93,8 +93,32 @@
 					<textarea rows="2" name="fieldStaticHtml[${id}]" id="fieldStaticHtml[${id}]"></textarea>
 					<label><?php echo t('Anything entered here will be directly outputted to the block view &mdash; users will not be able to edit it.'); ?></label>
 				</div>
+				{{else type == 'select'}}
+				<div class="designer-content-field-options">
+					<label for="fieldLabels[${id}]"><?php echo t('Editor Label'); ?></label><br />
+					<input type="text" class="designer-content-field-editorlabel" name="fieldLabels[${id}]" id="fieldLabels[${id}]" />
+					<input type="checkbox" name="fieldsRequired[${id}]" id="fieldsRequired[${id}]" />
+					<label for="fieldsRequired[${id}]"><?php echo t('Required?'); ?></label>
+				</div>
+				<div class="designer-content-field-html">
+					<label for="fieldSelectOptions[${id}]"><?php echo t('Dropdown Choices (one per line)'); ?></label><br />
+					<textarea rows="6" name="fieldSelectOptions[${id}]" id="fieldSelectOptions[${id}]" class="designer-content-field-select-options"></textarea>
+				</div>
+				<div class="designer-content-field-html">
+					<br />
+					<input type="checkbox" name="fieldSelectShowHeaders[${id}]" id="fieldSelectShowHeaders[${id}]" class="designer-content-field-select-header" data-id="${id}" checked="checked" />
+					<label for="fieldSelectShowHeaders[${id}]"><?php echo t('Show List Header?'); ?></label>
+					<div class="designer-content-field-select-header-text" data-id="${id}">
+						<label for="fieldSelectHeaderTexts[${id}]"><?php echo t('Header Text'); ?>:</label>
+						<input type="text" name="fieldSelectHeaderTexts[${id}]" id="fieldSelectHeaderTexts[${id}]" value="<?php echo t('--Choose One--'); ?>" />
+					</div>
+					<table border="0" cellpadding="3" cellspacing="0" style="font-style: italic; border-top: 1px solid #ccc; margin-top: 8px; padding-top: 5px;"><tr><td valign="top">
+						<?php echo t('NOTE'); ?>:
+					</td><td>
+						<?php echo t('After creating this block type, you must edit its "view.php" file to make these choices work!'); ?>
+					</td></tr></table>
+				</div>
 				{{else}}
-
 				<div class="designer-content-field-options">
 					<label for="fieldLabels[${id}]"><?php echo t('Editor Label'); ?></label><br />
 					<input type="text" class="designer-content-field-editorlabel" name="fieldLabels[${id}]" id="fieldLabels[${id}]" />
@@ -115,9 +139,9 @@
 					{{else type == 'image'}}
 						<br />
 						<table border="0" class="designer-content-field-image-settings"><tr><td nowrap="nowrap" align="right">
-							<label for="fieldImagesShowAltText[${id}]"><?php echo t('Show Alt Text Field:'); ?></label>
+							<label for="fieldImageShowAltTexts[${id}]"><?php echo t('Show Alt Text Field:'); ?></label>
 						</td><td nowrap="nowrap">
-							<select name="fieldImagesShowAltText[${id}]" id="fieldImagesShowAltText[${id}]">
+							<select name="fieldImageShowAltTexts[${id}]" id="fieldImageShowAltTexts[${id}]">
 								<option value="0"><?php echo t('No'); ?></option>
 								<option value="1"><?php echo t('Yes'); ?></option>
 							</select>
@@ -185,32 +209,36 @@
 		</div>
 	
 		<div id="designer-content-fields-add">
-			<h2><?php echo t('Add Field');?>:</h2>
-		
-			<div id="add-field-types">
-			</div>
-			<script id="add-field-types-template" type="text/x-jQuery-tmpl">
-				&nbsp;
-				[<a href="#" class="add-field-type" data-type="static"><?php echo t('Static HTML'); ?></a>]
-				&nbsp;&nbsp;
-    			[<a href="#" class="add-field-type" data-type="textbox"><?php echo t('Text Box'); ?></a>]
-				&nbsp;&nbsp;
-				[<a href="#" class="add-field-type" data-type="textarea"><?php echo t('Text Area'); ?></a>]
-				&nbsp;&nbsp;
-				[<a href="#" class="add-field-type" data-type="image"><?php echo t('Image'); ?></a>]
-				&nbsp;&nbsp;
-				[<a href="#" class="add-field-type" data-type="file"><?php echo t('File Download'); ?></a>]
-				&nbsp;&nbsp;
-				[<a href="#" class="add-field-type" data-type="link"><?php echo t('Page Link'); ?></a>]
-				&nbsp;&nbsp;
-				[<a href="#" class="add-field-type" data-type="url"><?php echo t('External URL'); ?></a>]
-				&nbsp;&nbsp;
-				[<a href="#" class="add-field-type" data-type="date"><?php echo t('Date Picker'); ?></a>]
-				{{if wysiwyg}}
-				&nbsp;&nbsp;
-				[<a href="#" class="add-field-type" data-type="wysiwyg"><?php echo t('WYSIWYG Editor'); ?></a>]
-				{{/if}}
-			</script>
+			<table border="0" cellpadding="0" cellspacing="0"><tr><td valign="top">
+				<h2><?php echo t('Add Field');?>:</h2>
+			</td><td>
+				<div id="add-field-types">
+				</div>
+				<script id="add-field-types-template" type="text/x-jQuery-tmpl">
+					&nbsp;
+					[<a href="#" class="add-field-type" data-type="static"><?php echo t('Static HTML'); ?></a>]
+					&nbsp;&nbsp;
+	    			[<a href="#" class="add-field-type" data-type="textbox"><?php echo t('Text Box'); ?></a>]
+					&nbsp;&nbsp;
+					[<a href="#" class="add-field-type" data-type="textarea"><?php echo t('Text Area'); ?></a>]
+					&nbsp;&nbsp;
+					[<a href="#" class="add-field-type" data-type="image"><?php echo t('Image'); ?></a>]
+					&nbsp;&nbsp;
+					[<a href="#" class="add-field-type" data-type="file"><?php echo t('File Download'); ?></a>]
+					&nbsp;&nbsp;
+					[<a href="#" class="add-field-type" data-type="link"><?php echo t('Page Link'); ?></a>]
+					&nbsp;&nbsp;
+					[<a href="#" class="add-field-type" data-type="url"><?php echo t('External URL'); ?></a>]
+					&nbsp;&nbsp;
+					[<a href="#" class="add-field-type" data-type="date"><?php echo t('Date Picker'); ?></a>]
+					&nbsp;&nbsp;
+					[<a href="#" class="add-field-type" data-type="select"><?php echo t('Dropdown List'); ?></a>]
+					{{if wysiwyg}}
+					&nbsp;&nbsp;
+					[<a href="#" class="add-field-type" data-type="wysiwyg"><?php echo t('WYSIWYG Editor'); ?></a>]
+					{{/if}}
+				</script>
+			</td></tr></table>
 		</div>
 
 		<hr />
@@ -249,6 +277,7 @@
 		'link': '<?php echo t("Page Link Field"); ?>',
 		'url': '<?php echo t("External URL Field"); ?>',
 		'date': '<?php echo t("Date Picker Field"); ?>',
+		'select': '<?php echo t("Dropdown List"); ?>',
 		'wysiwyg': '<?php echo t("WYSIWYG Editor"); ?>'
 	};
 	var ERROR_MESSAGES = {
@@ -261,6 +290,7 @@
 		'labels_required': '<?php echo t("All fields must have an Editor Label."); ?>',
 		'widths_numeric': '<?php echo t("Image Widths must be valid numbers."); ?>',
 		'heights_numeric': '<?php echo t("Image Heights must be valid numbers."); ?>',
+		'options_required': '<?php echo t("Dropdown Lists must have one or more choices."); ?>',
 		'error_header': '<?php echo t("Cannot proceed! Please correct the following errors:"); ?>'
 	};
 	</script>

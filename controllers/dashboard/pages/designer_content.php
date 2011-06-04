@@ -59,12 +59,15 @@ class DashboardPagesDesignerContentController extends Controller {
 		$fields_textbox_maxlengths = $this->post('fieldTextboxMaxlengths');
 		$field_image_links = $this->post('fieldImageLinks');
 		$field_image_link_targets = $this->post('fieldImageLinkTargets');
-		$field_images_show_alt_text = $this->post('fieldImagesShowAltText');
+		$field_image_show_alt_texts = $this->post('fieldImageShowAltTexts');
 		$field_image_sizings = $this->post('fieldImageSizings');
 		$field_image_widths = $this->post('fieldImageWidths');
 		$field_image_heights = $this->post('fieldImageHeights');
 		$field_url_targets = $this->post('fieldUrlTargets');
 		$field_date_formats = $this->post('fieldDateFormats');
+		$field_select_options = $this->post('fieldSelectOptions');
+		$field_select_show_headers = $this->post('fieldSelectShowHeaders');
+		$field_select_header_texts = $this->post('fieldSelectHeaderTexts');
 		$field_default_contents = $this->post('fieldDefaultContents');
 		
 		//Set up the code generator
@@ -79,7 +82,7 @@ class DashboardPagesDesignerContentController extends Controller {
 			} else if ($type == 'textarea') {
 				$block->add_textarea_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]));
 		    } else if ($type == 'image') {
-				$block->add_image_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]), $field_image_links[$id], $field_image_link_targets[$id], $field_images_show_alt_text[$id], $field_image_sizings[$id], $field_image_widths[$id], $field_image_heights[$id]);
+				$block->add_image_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]), $field_image_links[$id], $field_image_link_targets[$id], $field_image_show_alt_texts[$id], $field_image_sizings[$id], $field_image_widths[$id], $field_image_heights[$id]);
 			} else if ($type == 'file') {
 				$block->add_file_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]));
 			} else if ($type == 'link') {
@@ -88,6 +91,8 @@ class DashboardPagesDesignerContentController extends Controller {
 				$block->add_url_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]), $field_url_targets[$id]);
 			} else if ($type == 'date') {
 				$block->add_date_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]), $field_date_formats[$id]);
+			} else if ($type == 'select') {
+				$block->add_select_field($field_labels[$id], $field_select_options[$id], !empty($fields_required[$id]), $field_select_show_headers[$id], $field_select_header_texts[$id]);
 			} else if ($type == 'wysiwyg') {
 				$block->add_wysiwyg_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], $field_default_contents[$id]);
 			}

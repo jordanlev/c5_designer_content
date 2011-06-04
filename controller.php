@@ -12,7 +12,7 @@ class DesignerContentPackage extends Package {
 	}	
 	
 	public function getPackageDescription() {
-		return t('Provides supporting code for custom content blocks.');
+		return t('[***2.0 BETA - NOT FOR PRODUCTION USE***] Provides supporting code for custom content blocks.');
 	}
 
 	public function on_start() {

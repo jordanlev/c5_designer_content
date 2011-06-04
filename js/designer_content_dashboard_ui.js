@@ -13,25 +13,27 @@ $(document).ready(function() {
 	$('.designer-content-field-image-sizing-dropdown').live('change', toggle_field_image_sizing);
 	$('.designer-content-field-image-link-dropdown').live('change', toggle_field_image_link);
 	
+	$('.designer-content-field-select-header').live('change', toggle_field_select_header);
+	
 	$('#designer-content-submit').click(function() {
 		$('#designer-content-form').submit(); //We use a div instead of a submit button because we don't want the "enter" key triggering the form
 	});
 	$('#designer-content-form').submit(function() {
-		//TEST MODE (posts form via ajax so you don't lose data entry):
-		var valid = validate_form();
-		if (valid) {
-			$.ajax({
-				type: 'POST',
-				async: false,
-				url: CCM_REL + '/index.php/dashboard/pages/designer_content/generate_block/',
-				data: $('#designer-content-form').serialize(),
-				success: function() {
-					alert('ok!');
-				}
-			});
-		}
-		return false;
-		//END TEST MODE
+		// //TEST MODE (posts form via ajax so you don't lose data entry):
+		// var valid = validate_form();
+		// if (valid) {
+		// 	$.ajax({
+		// 		type: 'POST',
+		// 		async: false,
+		// 		url: CCM_REL + '/index.php/dashboard/pages/designer_content/generate_block/',
+		// 		data: $('#designer-content-form').serialize(),
+		// 		success: function() {
+		// 			alert('ok!');
+		// 		}
+		// 	});
+		// }
+		// return false;
+		// //END TEST MODE
 		
 		$('#designer-content-submit').hide();
 		$('#designer-content-submit-loading').show();
@@ -156,6 +158,11 @@ function toggle_field_image_link() {
 	$('.designer-content-field-image-link-options[data-id='+id+']').toggle(link == 2);
 }
 
+function toggle_field_select_header() {
+	var id = $(this).attr('data-id');
+	var checked = $(this).is(':checked');
+	$('.designer-content-field-select-header-text[data-id='+id+']').toggle(checked);
+}
 
 function validate_form() {
 	//Name and handle are required
@@ -175,6 +182,7 @@ function validate_form() {
 	var fieldLabels = $.map($('.designer-content-field-editorlabel'), function(element, index) { return $(element).val(); });
 	var fieldImageWidths = $.map($('.designer-content-field-image-width'), function(element, index) { return $(element).val(); });
 	var fieldImageHeights = $.map($('.designer-content-field-image-height'), function(element, index) { return $(element).val(); });
+	var fieldSelectOptions = $.map($('.designer-content-field-select-options'), function(element, index) { return $(element).val(); });
 	
 	if (handle.length == 0) {
 		errors.push(ERROR_MESSAGES['handle_required']);
@@ -224,6 +232,16 @@ function validate_form() {
 	});
 	if (invalid_heights) {
 		errors.push(ERROR_MESSAGES['heights_numeric']);
+	}
+	
+	var missing_options = false;
+	$.each(fieldSelectOptions, function(index, options) {
+		if (options.length == 0) {
+			missing_options = true;
+		}
+	});
+	if (missing_options) {
+		errors.push(ERROR_MESSAGES['options_required']);
 	}
 	
 	if (errors.length > 0) {
