@@ -1,4 +1,4 @@
-//CONTENT BLOCK UTILITY FUNCTIONS:
+//WYSIWYG HELPER FUNCTIONS (COPIED FROM "CONTENT" BLOCK):
 	function br2nl($str) {
 		$str = str_replace("\r\n", "\n", $str);
 		$str = str_replace("<br />\n", "\n", $str);
