@@ -3,8 +3,6 @@ defined('C5_EXECUTE') or die("Access Denied.");
 
 class [[[GENERATOR_REPLACE_CLASSNAME]]] extends BlockController {
 	
-	var $pobj;
-
 	protected $btName = '[[[GENERATOR_REPLACE_NAME]]]';
 	protected $btDescription = '[[[GENERATOR_REPLACE_DESCRIPTION]]]';
 	protected $btTable = '[[[GENERATOR_REPLACE_TABLENAME]]]';
