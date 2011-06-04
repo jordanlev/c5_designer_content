@@ -209,13 +209,12 @@
 		</div>
 	
 		<div id="designer-content-fields-add">
-			<table border="0" cellpadding="0" cellspacing="0"><tr><td valign="top">
-				<h2><?php echo t('Add Field');?>:</h2>
+			<table border="0" cellpadding="0" cellspacing="0"><tr><td valign="top" nowrap="nowrap">
+				<h2><?php echo t('Add Field');?>:&nbsp;</h2>
 			</td><td>
 				<div id="add-field-types">
 				</div>
 				<script id="add-field-types-template" type="text/x-jQuery-tmpl">
-					&nbsp;
 					[<a href="#" class="add-field-type" data-type="static"><?php echo t('Static HTML'); ?></a>]
 					&nbsp;&nbsp;
 	    			[<a href="#" class="add-field-type" data-type="textbox"><?php echo t('Text Box'); ?></a>]
