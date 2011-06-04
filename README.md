@@ -5,7 +5,8 @@ The current stable release version is available in the Concrete5 marketplace: <h
 Designer Content is an addon for the Concrete5 CMS that provides an easy-to-use dashboard interface for generating custom block types. See the marketplace link above for a more in-depth explanation of what it's used for, as well as thorough end-user documentation (click the "Documentation" link in the sidebar).
 
 #HOW TO INSTALL:
-0. *NOTE: these instructions are for this 2.0 beta version only -- if you're an end-user you should use the marketplace link above.*
+*NOTE: these instructions are for this 2.0 beta version only -- if you're an end-user you should use the marketplace link above.*
+
 1. If you already have an older version of Designer Content installed, delete the "designer_content" folder from your site's packages directory (but you do *not* need to uninstall the addon in the Concrete5 dashboard).
 2. Click the "Downloads" button near the top of this page (scroll up a bit -- it's over to the right, under where it says "Branch:master").
 3. Click "Download .zip".
