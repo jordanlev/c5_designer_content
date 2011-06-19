@@ -470,6 +470,13 @@ class DesignerContentBlockGenerator {
 				$code .= "\t\t<field name=\"field_{$field['num']}_wysiwyg_content\" type=\"X2\"></field>\n\n";
 			}
 		}
+		
+		//If no fields were added to db.xml, add one "dummy" field.
+		// (Due to a bug in C5, there must be at least TWO fields for each block!)
+		if (empty($code)) {
+			$code .= "\t\t<field name=\"dummy\" type=\"I\"></field>\n\n";
+		}
+		
 		$token = '[[[GENERATOR_REPLACE_FIELDS]]]';
 		$template = str_replace($token, $code, $template);
 		
