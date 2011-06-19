@@ -107,7 +107,7 @@ input#name {
 	font-style: italic;
 }
 
-.designer-content-fields-add {
+#designer-content-fields-add {
 	clear: both;
 	padding-top: 10px;
 }
