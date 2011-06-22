@@ -818,7 +818,11 @@ class DesignerContentBlockGenerator {
 	
 /*** UTILITY FUNCTIONS ***/
 	public static function tablename($handle) {
-		return 'bt' . DesignerContentBlockGenerator::camelcase($handle);
+		//NOTE: As of 2.0, we're pre-pending "DC" to the tablename
+		//		(as a precaution because we now overwrite existing tables,
+		//		 so hopefully this prefix "namespaces" our generated tables
+		//		 enough to avoid conflicting with some other legitemate table).
+		return 'btDC' . DesignerContentBlockGenerator::camelcase($handle);
 	}
 	
 	public static function controllername($handle) {

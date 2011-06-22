@@ -45,7 +45,7 @@ class DashboardPagesDesignerContentController extends Controller {
 		} else if (empty($handle) || empty($name)) {
 			die(t('Error: Block handle or name is missing!'));
 		} else if (!$this->validate_unique_handle($handle)) {
-			die(t('Error: Block Handle is already in use (either by another package, block type, or database table)!'));
+			die(t("Error: Block Handle is already in use by another package or block type (or block files already exist in the \"blocks\" directory of your site)!"));
 		}
 		
 		//Gather all field data
@@ -100,11 +100,18 @@ class DashboardPagesDesignerContentController extends Controller {
 		
 		//Make+install block
 		$block->generate($handle, $name, $description);
+		$this->drop_existing_table($handle);
 		BlockType::installBlockType($handle);
 		
 		//Redirect back to view page so browser refresh doesn't trigger a re-generation
 		header('Location: ' . View::url("/dashboard/pages/designer_content/?generated={$handle}"));
 		exit;
+	}
+	
+	private function drop_existing_table($handle) {
+		Loader::library('block_generator', 'designer_content');
+		$table_name = DesignerContentBlockGenerator::tablename($handle);
+		Loader::db()->Execute("DROP TABLE IF EXISTS {$table_name}"); //cannot use parameterized query here (it surrounds the table name in quotes which is a MySQL error)
 	}
 	
 	public function validate_unique_handle($handle) {
@@ -115,13 +122,16 @@ class DashboardPagesDesignerContentController extends Controller {
 		$block_exists = $db->GetOne("SELECT COUNT(*) from BlockTypes where btHandle = ?", array($handle));
 
 		$dir_exists = is_dir(DIR_FILES_BLOCK_TYPES_CORE . '/' . $handle) || is_dir(DIR_FILES_BLOCK_TYPES . '/' . $handle);
-
+		
+		return (!$pkg_exists && !$block_exists && !$dir_exists);
+	}
+	
+	public function validate_unique_tablename_for_handle($handle) {
 		Loader::library('block_generator', 'designer_content');
-		$tables = $db->MetaTables('TABLES');
+		$tables = Loader::db()->MetaTables('TABLES');
 		$table_name = DesignerContentBlockGenerator::tablename($handle);
 		$table_exists = in_array($table_name, $tables);
-			
-		return (!$pkg_exists && !$block_exists && !$dir_exists && !$table_exists);
+		return !$table_exists;
 	}
 
 }
