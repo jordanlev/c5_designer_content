@@ -700,17 +700,21 @@ class DesignerContentBlockGenerator {
 
 			if ($field['type'] == 'textbox') {
 				$code .= "<?php if (!empty(\$field_{$field['num']}_textbox_text)): ?>\n";
-				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
-				$code .= "\t<?php echo htmlspecialchars(\$field_{$field['num']}_textbox_text, ENT_QUOTES, APP_CHARSET); ?>\n";
-				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
+				$code .= "\t";
+				$code .= empty($field['prefix']) ? '' : $field['prefix'];
+				$code .= "<?php echo htmlspecialchars(\$field_{$field['num']}_textbox_text, ENT_QUOTES, APP_CHARSET); ?>";
+				$code .= empty($field['suffix']) ? '' : $field['suffix'];
+				$code .= "\n";
 				$code .= "<?php endif; ?>\n\n";
 			}
 
 			if ($field['type'] == 'textarea') {
 				$code .= "<?php if (!empty(\$field_{$field['num']}_textarea_text)): ?>\n";
-				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
-				$code .= "\t<?php echo nl2br(htmlspecialchars(\$field_{$field['num']}_textarea_text, ENT_QUOTES, APP_CHARSET)); ?>\n";
-				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
+				$code .= "\t";
+				$code .= empty($field['prefix']) ? '' : $field['prefix'];
+				$code .= "<?php echo nl2br(htmlspecialchars(\$field_{$field['num']}_textarea_text, ENT_QUOTES, APP_CHARSET)); ?>";
+				$code .= empty($field['suffix']) ? '' : $field['suffix'];
+				$code .= "\n";
 				$code .= "<?php endif; ?>\n\n";
 			}
 
@@ -770,9 +774,11 @@ class DesignerContentBlockGenerator {
 			
 			if ($field['type'] == 'date') {
 				$code .= "<?php if (!empty(\$field_{$field['num']}_date_value)): ?>\n";
-				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
-				$code .= "\t<?php echo date('{$field['format']}', strtotime(\$field_{$field['num']}_date_value)); ?>\n";
-				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
+				$code .= "\t";
+				$code .= empty($field['prefix']) ? '' : $field['prefix'];
+				$code .= "<?php echo date('{$field['format']}', strtotime(\$field_{$field['num']}_date_value)); ?>";
+				$code .= empty($field['suffix']) ? '' : $field['suffix'];
+				$code .= "\n";
 				$code .= "<?php endif; ?>\n\n";
 			}
 			
