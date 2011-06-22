@@ -5,14 +5,14 @@ class DesignerContentPackage extends Package {
 	
 	protected $pkgHandle = 'designer_content';
 	protected $appVersionRequired = '5.4.1';
-	protected $pkgVersion = '1.9.1';
+	protected $pkgVersion = '2.0';
 	
 	public function getPackageName() {
 		return t("Designer Content"); 
 	}	
 	
 	public function getPackageDescription() {
-		return t('[***2.0 BETA - NOT FOR PRODUCTION USE***] Provides supporting code for custom content blocks.');
+		return t('Provides supporting code for custom content blocks.');
 	}
 
 	public function on_start() {
