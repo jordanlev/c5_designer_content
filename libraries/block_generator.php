@@ -609,11 +609,11 @@ class DesignerContentBlockGenerator {
 				$code .= "\t<?php\n";
 				$code .= "\t\$options = array(\n";
 				if ($field['showheader']) {
-					$code .= "\t\t'0' => '" . $this->addslashes_single(htmlspecialchars($field['headertext'], ENT_QUOTES, APP_CHARSET)) . "',\n";
+					$code .= "\t\t'0' => '" . $this->addslashes_single(htmlentities($field['headertext'], ENT_QUOTES, APP_CHARSET)) . "',\n";
 				}
 				$i = 1;
 				foreach ($field['options'] as $option) {
-					$code .= "\t\t'{$i}' => '" . $this->addslashes_single(htmlspecialchars($option, ENT_QUOTES, APP_CHARSET)) . "',\n";
+					$code .= "\t\t'{$i}' => '" . $this->addslashes_single(htmlentities($option, ENT_QUOTES, APP_CHARSET)) . "',\n";
 					$i++;
 				}
 				$code .= "\t);\n";
@@ -702,7 +702,7 @@ class DesignerContentBlockGenerator {
 				$code .= "<?php if (!empty(\$field_{$field['num']}_textbox_text)): ?>\n";
 				$code .= "\t";
 				$code .= empty($field['prefix']) ? '' : $field['prefix'];
-				$code .= "<?php echo htmlspecialchars(\$field_{$field['num']}_textbox_text, ENT_QUOTES, APP_CHARSET); ?>";
+				$code .= "<?php echo htmlentities(\$field_{$field['num']}_textbox_text, ENT_QUOTES, APP_CHARSET); ?>";
 				$code .= empty($field['suffix']) ? '' : $field['suffix'];
 				$code .= "\n";
 				$code .= "<?php endif; ?>\n\n";
@@ -712,7 +712,7 @@ class DesignerContentBlockGenerator {
 				$code .= "<?php if (!empty(\$field_{$field['num']}_textarea_text)): ?>\n";
 				$code .= "\t";
 				$code .= empty($field['prefix']) ? '' : $field['prefix'];
-				$code .= "<?php echo nl2br(htmlspecialchars(\$field_{$field['num']}_textarea_text, ENT_QUOTES, APP_CHARSET)); ?>";
+				$code .= "<?php echo nl2br(htmlentities(\$field_{$field['num']}_textarea_text, ENT_QUOTES, APP_CHARSET)); ?>";
 				$code .= empty($field['suffix']) ? '' : $field['suffix'];
 				$code .= "\n";
 				$code .= "<?php endif; ?>\n\n";
@@ -743,7 +743,7 @@ class DesignerContentBlockGenerator {
 				$code .= "<?php if (!empty(\$field_{$field['num']}_file)): ?>\n";
 				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
 				$code .= "\t<a href=\"<?php echo View::url('/download_file', \$field_{$field['num']}_file_fID, Page::getCurrentPage()->getCollectionID()); ?>\" class=\"file-<?php echo \$field_{$field['num']}_file->getExtension(); ?>\">\n";
-				$code .= "\t\t<?php echo empty(\$field_{$field['num']}_file_linkText) ? \$field_{$field['num']}_file->getFileName() : htmlspecialchars(\$field_{$field['num']}_file_linkText, ENT_QUOTES, APP_CHARSET); ?>\n";
+				$code .= "\t\t<?php echo empty(\$field_{$field['num']}_file_linkText) ? \$field_{$field['num']}_file->getFileName() : htmlentities(\$field_{$field['num']}_file_linkText, ENT_QUOTES, APP_CHARSET); ?>\n";
 				$code .= "\t</a>\n";
 				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
 				$code .= "<?php endif; ?>\n\n";
@@ -754,7 +754,7 @@ class DesignerContentBlockGenerator {
 				$code .= "\t<?php\n";
 				$code .= "\t\$link_url = \$nh->getLinkToCollection(Page::getByID(\$field_{$field['num']}_link_cID), true);\n";
 				$include_navigation_helper = true;
-				$code .= "\t\$link_text = empty(\$field_{$field['num']}_link_text) ? \$link_url : htmlspecialchars(\$field_{$field['num']}_link_text, ENT_QUOTES, APP_CHARSET);\n";
+				$code .= "\t\$link_text = empty(\$field_{$field['num']}_link_text) ? \$link_url : htmlentities(\$field_{$field['num']}_link_text, ENT_QUOTES, APP_CHARSET);\n";
 				$code .= "\t?>\n";
 				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
 				$code .= "\t<a href=\"<?php echo \$link_url; ?>\"><?php echo \$link_text; ?></a>\n";
@@ -766,7 +766,7 @@ class DesignerContentBlockGenerator {
 				$code .= "<?php if (!empty(\$field_{$field['num']}_link_url)): ?>\n";
 				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
 				$code .= "\t<a href=\"<?php echo \$this->controller->valid_url(\$field_{$field['num']}_link_url); ?>\"" . ($field['target'] ? ' target="_blank"' : '') . ">\n";
-				$code .= "\t\t<?php echo empty(\$field_{$field['num']}_link_text) ? \$field_{$field['num']}_link_url : htmlspecialchars(\$field_{$field['num']}_link_text, ENT_QUOTES, APP_CHARSET); ?>\n";
+				$code .= "\t\t<?php echo empty(\$field_{$field['num']}_link_text) ? \$field_{$field['num']}_link_url : htmlentities(\$field_{$field['num']}_link_text, ENT_QUOTES, APP_CHARSET); ?>\n";
 				$code .= "\t</a>\n";
 				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
 				$code .= "<?php endif; ?>\n\n";
