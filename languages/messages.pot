@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Designer Content 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-25 00:10-0800\n"
-"PO-Revision-Date: 2011-03-25 00:10-0800\n"
+"POT-Creation-Date: 2011-06-22 02:27-0800\n"
+"PO-Revision-Date: 2011-06-22 02:28-0800\n"
 "Last-Translator: Jordan Lev <concrete@jordanlev.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,6 @@ msgstr ""
 #: controllers/dashboard/pages/designer_content.php:2
 #: libraries/block_generator.php:2
 #: single_pages/dashboard/pages/designer_content.php:1
-#: tools/validate_handle.php:2
 msgid "Access Denied."
 msgstr ""
 
@@ -28,31 +27,19 @@ msgid "Designer Content"
 msgstr ""
 
 #: controller.php:15
-msgid "A block type generator for designers and developers. Designer Content lets you quickly create new kinds of blocks that will make it easy for users to add pieces of content to their site (while maintaining complex layouts)."
-msgstr ""
-
-#: controllers/dashboard/pages/designer_content.php:40
-msgid "Error: Blocks directory is not writeable!"
-msgstr ""
-
-#: controllers/dashboard/pages/designer_content.php:42
-msgid "Error: Block handle or name is missing!"
+msgid "Provides supporting code for custom content blocks."
 msgstr ""
 
 #: controllers/dashboard/pages/designer_content.php:44
-msgid "Error: Block Handle is already in use (either by another package, block type, or database table)!"
+msgid "Error: Blocks directory is not writeable!"
 msgstr ""
 
-#: generator_templates/controller.php:69
-msgid "Missing required text"
+#: controllers/dashboard/pages/designer_content.php:46
+msgid "Error: Block handle or name is missing!"
 msgstr ""
 
-#: generator_templates/controller.php:70
-msgid "Missing required image"
-msgstr ""
-
-#: generator_templates/controller.php:71
-msgid "Missing required link"
+#: controllers/dashboard/pages/designer_content.php:48
+msgid "Error: Block Handle is already in use by another package or block type (or block files already exist in the \"blocks\" directory of your site)!"
 msgstr ""
 
 #: generator_templates/editor_controls.php:5
@@ -90,20 +77,68 @@ msgstr ""
 msgid "Clear Selection"
 msgstr ""
 
-#: libraries/block_generator.php:295
+#: libraries/block_generator.php:180
+#: libraries/block_generator.php:187
+msgid "Missing required text"
+msgstr ""
+
+#: libraries/block_generator.php:195
+msgid "Missing required image"
+msgstr ""
+
+#: libraries/block_generator.php:203
+msgid "Missing required file"
+msgstr ""
+
+#: libraries/block_generator.php:211
+msgid "Missing required link"
+msgstr ""
+
+#: libraries/block_generator.php:219
+msgid "Missing required URL"
+msgstr ""
+
+#: libraries/block_generator.php:227
+msgid "Missing required date"
+msgstr ""
+
+#: libraries/block_generator.php:235
+msgid "Missing required selection"
+msgstr ""
+
+#: libraries/block_generator.php:516
 msgid "Choose Image"
 msgstr ""
 
-#: libraries/block_generator.php:300
-msgid "Alt Text"
+#: libraries/block_generator.php:523
+msgid "Link to Page"
 msgstr ""
 
-#: libraries/block_generator.php:305
+#: libraries/block_generator.php:531
+#: libraries/block_generator.php:585
 msgid "Link to URL"
 msgstr ""
 
-#: libraries/block_generator.php:319
+#: libraries/block_generator.php:538
+msgid "Alt Text"
+msgstr ""
+
+#: libraries/block_generator.php:552
+msgid "Choose File"
+msgstr ""
+
+#: libraries/block_generator.php:557
+msgid "Link Text (or leave blank to use file name)"
+msgstr ""
+
+#: libraries/block_generator.php:572
+#: libraries/block_generator.php:590
 msgid "Link Text"
+msgstr ""
+
+#: libraries/block_generator.php:789
+#, php-format
+msgid "ENTER MARKUP HERE FOR FIELD \"%s\" : CHOICE \"%s\""
 msgstr ""
 
 #: single_pages/dashboard/pages/designer_content.php:8
@@ -168,10 +203,12 @@ msgid "delete"
 msgstr ""
 
 #: single_pages/dashboard/pages/designer_content.php:76
+#: single_pages/dashboard/pages/designer_content.php:146
 msgid "Yes"
 msgstr ""
 
 #: single_pages/dashboard/pages/designer_content.php:76
+#: single_pages/dashboard/pages/designer_content.php:145
 msgid "No"
 msgstr ""
 
@@ -187,126 +224,258 @@ msgstr ""
 msgid "Anything entered here will be directly outputted to the block view &mdash; users will not be able to edit it."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:99
+#: single_pages/dashboard/pages/designer_content.php:98
+#: single_pages/dashboard/pages/designer_content.php:123
 msgid "Editor Label"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:103
-#: single_pages/dashboard/pages/designer_content.php:106
+#: single_pages/dashboard/pages/designer_content.php:101
+#: single_pages/dashboard/pages/designer_content.php:131
 msgid "Required?"
 msgstr ""
 
+#: single_pages/dashboard/pages/designer_content.php:104
+msgid "Dropdown Choices (one per line)"
+msgstr ""
+
 #: single_pages/dashboard/pages/designer_content.php:110
-msgid "Max Width"
+msgid "Show List Header?"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:114
-msgid "Max Height"
+#: single_pages/dashboard/pages/designer_content.php:112
+msgid "Header Text"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:119
+#: single_pages/dashboard/pages/designer_content.php:113
+msgid "--Choose One--"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:116
+msgid "NOTE"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:118
+msgid "After creating this block type, you must edit its \"view.php\" file to make these choices work!"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:127
 msgid "Default HTML Content"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:125
-msgid "Wrapper HTML Open"
+#: single_pages/dashboard/pages/designer_content.php:137
+msgid "Maximum Number Of Characters"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:129
-msgid "Wrapper HTML Close"
+#: single_pages/dashboard/pages/designer_content.php:142
+msgid "Show Alt Text Field:"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:138
-msgid "Add Field"
-msgstr ""
-
-#: single_pages/dashboard/pages/designer_content.php:144
-#: single_pages/dashboard/pages/designer_content.php:186
-msgid "Static HTML"
-msgstr ""
-
-#: single_pages/dashboard/pages/designer_content.php:146
-msgid "Textbox"
-msgstr ""
-
-#: single_pages/dashboard/pages/designer_content.php:148
-msgid "Image"
-msgstr ""
-
-#: single_pages/dashboard/pages/designer_content.php:150
-msgid "Page Link"
+#: single_pages/dashboard/pages/designer_content.php:149
+msgid "Show Link Field"
 msgstr ""
 
 #: single_pages/dashboard/pages/designer_content.php:153
-#: single_pages/dashboard/pages/designer_content.php:190
-msgid "WYSIWYG Editor"
+msgid "None"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:163
-msgid "Make The Block!"
+#: single_pages/dashboard/pages/designer_content.php:154
+msgid "Sitemap Page"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:166
-msgid "Processing..."
+#: single_pages/dashboard/pages/designer_content.php:155
+#: single_pages/dashboard/pages/designer_content.php:230
+msgid "External URL"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:172
-msgid "code + ui"
-msgstr ""
-
-#: single_pages/dashboard/pages/designer_content.php:174
-msgid "icon design"
-msgstr ""
-
-#: single_pages/dashboard/pages/designer_content.php:187
-msgid "Textbox Field"
-msgstr ""
-
-#: single_pages/dashboard/pages/designer_content.php:188
-msgid "Image Field"
-msgstr ""
-
+#: single_pages/dashboard/pages/designer_content.php:161
 #: single_pages/dashboard/pages/designer_content.php:189
-msgid "Page Link Field"
+msgid "Links Open In New Window"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:193
-msgid "Block Name is required."
+#: single_pages/dashboard/pages/designer_content.php:165
+msgid "Image Sizing"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:169
+msgid "Keep Original Size"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:170
+msgid "Resize Proportionally"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:171
+msgid "Resize+Crop To Fit"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:176
+msgid "Max Width"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:177
+msgid "Target Width"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:180
+msgid "Max Height"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:181
+msgid "Target Height"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:192
+msgid "PHP Date Format"
 msgstr ""
 
 #: single_pages/dashboard/pages/designer_content.php:194
-msgid "Block Handle is required."
+msgid "http://php.net/date#refsect1-function.date-parameters"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:195
-msgid "Block Handle can only contain lowercase letters and underscores."
-msgstr ""
-
-#: single_pages/dashboard/pages/designer_content.php:196
-msgid "Block Handle is already in use (either by another package, block type, or database table)."
-msgstr ""
-
-#: single_pages/dashboard/pages/designer_content.php:197
-msgid "You must add at least 1 field."
-msgstr ""
-
-#: single_pages/dashboard/pages/designer_content.php:198
-msgid "You cannot have more than 1 WYSIWYG Editor in a block."
+#: single_pages/dashboard/pages/designer_content.php:194
+msgid "Reference"
 msgstr ""
 
 #: single_pages/dashboard/pages/designer_content.php:199
+msgid "Wrapper HTML Open"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:203
+msgid "Wrapper HTML Close"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:213
+msgid "Add Field"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:218
+#: single_pages/dashboard/pages/designer_content.php:271
+msgid "Static HTML"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:220
+msgid "Text Box"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:222
+msgid "Text Area"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:224
+msgid "Image"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:226
+msgid "File Download"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:228
+msgid "Page Link"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:232
+msgid "Date Picker"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:234
+#: single_pages/dashboard/pages/designer_content.php:279
+msgid "Dropdown List"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:237
+#: single_pages/dashboard/pages/designer_content.php:280
+msgid "WYSIWYG Editor"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:248
+msgid "Make The Block!"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:251
+msgid "Processing..."
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:257
+msgid "code + ui"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:259
+msgid "icon design"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:272
+msgid "Textbox Field"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:273
+msgid "Text Area Field"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:274
+msgid "Image Field"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:275
+msgid "File Download Field"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:276
+msgid "Page Link Field"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:277
+msgid "External URL Field"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:278
+msgid "Date Picker Field"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:283
+msgid "Block Name is required."
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:284
+msgid "Block Handle is required."
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:285
+msgid "Block Handle can only contain lowercase letters and underscores."
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:286
+msgid "Block Handle is already in use by another package or block type (or block files already exist in the \"blocks\" directory of your site)."
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:287
+msgid "WARNING: A table with this Block Handle already exists in your database. If you make this block, the existing table will be overwritten and any content stored in it will be permanently deleted!"
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:288
+msgid "You must add at least 1 field."
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:289
+msgid "You cannot have more than 1 WYSIWYG Editor in a block."
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:290
 msgid "All fields must have an Editor Label."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:200
-msgid "Image Max Widths must be valid numbers."
+#: single_pages/dashboard/pages/designer_content.php:291
+msgid "Image Widths must be valid numbers."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:201
-msgid "Image Max Heights must be valid numbers."
+#: single_pages/dashboard/pages/designer_content.php:292
+msgid "Image Heights must be valid numbers."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:202
+#: single_pages/dashboard/pages/designer_content.php:293
+msgid "Dropdown Lists must have one or more choices."
+msgstr ""
+
+#: single_pages/dashboard/pages/designer_content.php:294
 msgid "Cannot proceed! Please correct the following errors:"
 msgstr ""
 

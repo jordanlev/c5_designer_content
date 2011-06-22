@@ -189,9 +189,9 @@
 						<label for="fieldUrlTargets[${id}]"><?php echo t('Links Open In New Window'); ?></label>
 					{{else type == 'date'}}
 						<br />
-						<label for="fieldDateFormats[${id}]" data-id="${id}"><?php echo t('Formatting Code'); ?>:</label>
+						<label for="fieldDateFormats[${id}]" data-id="${id}"><?php echo t('PHP Date Format'); ?>:</label>
 						<input type="text" name="fieldDateFormats[${id}]" id="fieldDateFormats[${id}]" value="F jS, Y" style="width:75px;" />
-						[<i><?php echo t('<a href="http://php.net/date#refsect1-function.date-parameters" target="_blank">Code Reference</a>'); ?></i>]
+						[<i><a href="<?php echo t('http://php.net/date#refsect1-function.date-parameters'); ?>" target="_blank"><?php echo t('Reference'); ?></a></i>]
 					{{/if}}
 				</div>
 				
