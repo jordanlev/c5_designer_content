@@ -161,7 +161,7 @@ class DesignerContentBlockGenerator {
 		
 	private function generate_add_php() {
 		//No replacements
-		$filename = 'add.php';
+		$filename = FILENAME_BLOCK_ADD;
 		copy($this->tplpath.$filename, $this->outpath.$filename);
 	}
 	
@@ -248,7 +248,7 @@ class DesignerContentBlockGenerator {
 	}
 		
 	private function generate_controller_php() {
-		$filename = 'controller.php';
+		$filename = FILENAME_BLOCK_CONTROLLER;
 		//Load template
 		$template = file_get_contents($this->tplpath.$filename);
 		
@@ -424,7 +424,7 @@ class DesignerContentBlockGenerator {
 	}
 	
 	private function generate_db_xml() {
-		$filename = 'db.xml';
+		$filename = 'FILENAME_BLOCK_DB';
 		
 		//Load template
 		$template = file_get_contents($this->tplpath.$filename);
@@ -485,7 +485,7 @@ class DesignerContentBlockGenerator {
 	}
 	
 	private function generate_edit_php() {
-		$filename = 'edit.php';
+		$filename = FILENAME_BLOCK_EDIT;
 		
 		//Load template
 		$template = file_get_contents($this->tplpath.$filename);
@@ -684,7 +684,7 @@ class DesignerContentBlockGenerator {
 	}
 	
 	private function generate_view_php() {
-		$filename = 'view.php';
+		$filename = FILENAME_BLOCK_VIEW;
 		
 		//Load template
 		$template = file_get_contents($this->tplpath.$filename);
