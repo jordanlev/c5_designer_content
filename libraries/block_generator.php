@@ -786,7 +786,7 @@ class DesignerContentBlockGenerator {
 				$i = 1;
 				foreach ($field['options'] as $option) {
 					$code .= "<?php if (\$field_{$field['num']}_select_value == {$i}): ?>\n";
-					$translated_comment = t('ENTER MARKUP HERE FOR CHOICE "%s"', $option);
+					$translated_comment = t('ENTER MARKUP HERE FOR FIELD "%s" : CHOICE "%s"', $field['label'], $option);
 					$code .= "\t<!-- {$translated_comment} -->\n";
 					$code .= "<?php endif; ?>\n\n";
 					$i++;
