@@ -701,9 +701,11 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'textbox') {
 				$code .= "<?php if (!empty(\$field_{$field['num']}_textbox_text)): ?>\n";
 				$code .= "\t";
+				$code .= "<p>";
 				$code .= empty($field['prefix']) ? '' : $field['prefix'];
 				$code .= "<?php echo htmlentities(\$field_{$field['num']}_textbox_text, ENT_QUOTES, APP_CHARSET); ?>";
 				$code .= empty($field['suffix']) ? '' : $field['suffix'];
+				$code .= "</p>";
 				$code .= "\n";
 				$code .= "<?php endif; ?>\n\n";
 			}
@@ -711,9 +713,11 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'textarea') {
 				$code .= "<?php if (!empty(\$field_{$field['num']}_textarea_text)): ?>\n";
 				$code .= "\t";
+				$code .= "<p>";
 				$code .= empty($field['prefix']) ? '' : $field['prefix'];
 				$code .= "<?php echo nl2br(htmlentities(\$field_{$field['num']}_textarea_text, ENT_QUOTES, APP_CHARSET)); ?>";
 				$code .= empty($field['suffix']) ? '' : $field['suffix'];
+				$code .= "</p>";
 				$code .= "\n";
 				$code .= "<?php endif; ?>\n\n";
 			}
@@ -775,9 +779,11 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'date') {
 				$code .= "<?php if (!empty(\$field_{$field['num']}_date_value)): ?>\n";
 				$code .= "\t";
+				$code .= "<time>";
 				$code .= empty($field['prefix']) ? '' : $field['prefix'];
 				$code .= "<?php echo date('{$field['format']}', strtotime(\$field_{$field['num']}_date_value)); ?>";
 				$code .= empty($field['suffix']) ? '' : $field['suffix'];
+				$code .= "</time>";
 				$code .= "\n";
 				$code .= "<?php endif; ?>\n\n";
 			}
