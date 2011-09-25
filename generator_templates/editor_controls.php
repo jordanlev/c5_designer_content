@@ -1,6 +1,16 @@
-<?php defined('C5_EXECUTE') or die("Access Denied."); ?> 
+<?php defined('C5_EXECUTE') or die("Access Denied.");
+$version_541 = version_compare(APP_VERSION, '5.4.2', '<');
+?>
+
+<?php if ($version_541): ?>
 <div class="ccm-editor-controls">
 <div class="ccm-editor-controls-right-cap">
+<?php else: ?>
+<div class="ccm-editor-controls-left-cap" <?php echo isset($editor_width) ? 'style="width: '.$editor_width.'px;"' : ''; ?>>
+<div class="ccm-editor-controls-right-cap">
+<div class="ccm-editor-controls">
+<?php endif; ?>
+
 <ul>
 <li ccm-file-manager-field="rich-text-editor-image"><a class="ccm-file-manager-launch" onclick="ccm_chooseAsset = ccm_chooseAsset_tinymce; ccm_editorCurrentAuxTool='image'; setBookMark();return false;" href="#"><?php echo t('Add Image')?></a></li>
 <li><a class="ccm-file-manager-launch" onclick="ccm_chooseAsset = ccm_chooseAsset_tinymce; ccm_editorCurrentAuxTool='file'; setBookMark();return false;" href="#"><?php echo t('Add File')?></a></li>
@@ -11,8 +21,11 @@
 <?php  } ?>
 <li><a style="float: right" href="<?php echo View::url('/dashboard/settings')?>"><?php echo t('Customize Toolbar')?></a></li>
 </ul>
+
 </div>
 </div>
+<?php echo $version_541 ? '' : '</div>'; ?>
+
 <div id="rich-text-editor-image-fm-display">
 <input type="hidden" name="fType" class="ccm-file-manager-filter" value="<?php echo FileType::T_IMAGE?>" />
 </div>

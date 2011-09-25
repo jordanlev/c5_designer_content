@@ -97,6 +97,7 @@
 				<div class="designer-content-field-options">
 					<label for="fieldLabels[${id}]"><?php echo t('Editor Label'); ?></label><br />
 					<input type="text" class="designer-content-field-editorlabel" name="fieldLabels[${id}]" id="fieldLabels[${id}]" />
+					<br />
 					<input type="checkbox" name="fieldsRequired[${id}]" id="fieldsRequired[${id}]" />
 					<label for="fieldsRequired[${id}]"><?php echo t('Required?'); ?></label>
 				</div>
@@ -127,6 +128,7 @@
 						<label for="fieldDefaultContents[${id}]"><?php echo t('Default HTML Content'); ?></label><br />
 						<textarea rows="4" name="fieldDefaultContents[${id}]" id="fieldDefaultContents[${id}]"></textarea>
 					{{else}}
+						<br />
 						<input type="checkbox" name="fieldsRequired[${id}]" id="fieldsRequired[${id}]" />
 						<label for="fieldsRequired[${id}]"><?php echo t('Required?'); ?></label>
 					{{/if}}

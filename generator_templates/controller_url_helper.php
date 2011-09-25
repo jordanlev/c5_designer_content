@@ -4,6 +4,8 @@
 			return $url;
 		} else if (strpos($url, '@') !== false) {
 			return 'mailto:' . $url;
+		} else if (strpos($url, '/') === 0) {
+			return View::url($url); //site path (not an external url)
 		} else {
 			return 'http://' . $url;
 		}

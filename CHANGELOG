@@ -1,3 +1,4 @@
+2.1 - September, 2011 - Added new German translation, fixed WYSIWYG toolbar layout in 5.4.2, fixed weird line wrap of "required" checkboxes in dashboard interface on wide screens, added special case to external url helper so it works with internal links (if link starts with a slash)
 2.0 - June, 2011 - New fields (textarea, file, date, external url, dropdown); more options for image field; character limit option for textbox field; "phantom" database tables from deleted blocks that used the same handle will now be overwritten when generating a new block; cleaner generated code; bug fixes.
 1.0.1 - May, 2011 - Added Japanese translation (thanks Tao!), now call strip_tags on the block name/description in dashboard (prior to validation), block generation no longer creates CHANGELOG files, fixed newline output in generated db.xml files.
 1.0.0 - March, 2011 - Initial Version
