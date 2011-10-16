@@ -343,7 +343,7 @@ class DesignerContentBlockGenerator {
 				$code .= "\t\t\$this->set('field_{$field['num']}_image', \$this->get_image_object(\$this->field_{$field['num']}_image_fID, {$width}, {$height}, {$crop}));\n";
 			}
 			if ($field['type'] == 'file') {
-				$code .= "\t\t\$this->set('field_{$field['num']}_file', File::getByID(\$this->field_{$field['num']}_file_fID));\n";
+				$code .= "\t\t\$this->set('field_{$field['num']}_file', (empty(\$this->field_{$field['num']}_file_fID) ? null : File::getByID(\$this->field_{$field['num']}_file_fID)));\n";
 			}
 			if ($field['type'] == 'wysiwyg') {
 				$code .= "\t\t\$this->set('field_{$field['num']}_wysiwyg_content', \$this->translateFrom(\$this->field_{$field['num']}_wysiwyg_content));\n";
