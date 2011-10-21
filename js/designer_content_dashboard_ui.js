@@ -260,9 +260,10 @@ function validate_handle(handle) {
 		'data': {'handle': handle},
 		'async': false, //must be synchronous otherwise outer function returns before response is received from server
 		success: function(response) {
-			if (response == '2') {
+			//dev note: call parseInt on the response because some servers are returning whitespace before/after the number
+			if (parseInt(response) == 2) {
 				valid = confirm(ERROR_MESSAGES['table_exists']);
-			} else if (response == '1') {
+			} else if (parseInt(response) == 1) {
 				valid = true;
 			}
 		}
