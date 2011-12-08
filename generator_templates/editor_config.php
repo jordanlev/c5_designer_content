@@ -17,6 +17,7 @@ tinyMCE.init({
 	document_base_url: '<?php echo BASE_URL . DIR_REL?>/',
 	convert_urls: false,
 	content_css : "<?php echo $theme->getThemeEditorCSS()?>",
+	language : "<?php echo LANGUAGE; ?>",
 	<?php 
 	$txtEditorMode=Config::get('CONTENTS_TXT_EDITOR_MODE');
 	if( $txtEditorMode=='CUSTOM' ){ ?>
