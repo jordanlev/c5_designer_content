@@ -692,6 +692,7 @@ class DesignerContentBlockGenerator {
 		//Replace html
 		$code = '';
 		$include_navigation_helper = false;
+        $hasDropdown = false;
 		foreach ($this->fields as $field) {
 			
 			if ($field['type'] == 'static') {
@@ -791,6 +792,7 @@ class DesignerContentBlockGenerator {
 					$code .= "<?php endif; ?>\n\n";
 					$i++;
 				}
+				$hasDropdown = true;
 			}
 
 			if ($field['type'] == 'wysiwyg') {
@@ -813,6 +815,11 @@ class DesignerContentBlockGenerator {
 				
 		//Output file
 		file_put_contents($this->outpath.$filename, $template);
+		
+		//Permission change for drop down field.
+		if($hasDropdown){
+		  @chmod($this->outpath.$filename,0666);
+		}
 	}
 
 	
