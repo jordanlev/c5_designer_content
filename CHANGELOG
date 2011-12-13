@@ -1,6 +1,4 @@
-2.1.3a3: fixed bug with empty images
-2.1.3a2: added tao's Japanese translation, and assign system language to tinymce editor_config
-2.1.3a1: set generated file permissions if DESIGNER_CONTENT_FILE_CHMOD is set
+2.1.3 - December, 2011 - Set generated file permissions if DESIGNER_CONTENT_FILE_CHMOD is set; Added tao's Japanese translation, and we now assign system language setting to tinymce editor_config; Fixed bug with empty images; Removed all whitespace between link tags and their contents in generated view.php; Cleaned up some markup in generated view.php.
 2.1.2 - October, 2011 - Fixed bug where dashboard was returning a "table already exists" error even when no such table existed
 2.1.1 - October, 2011 - Fixed bug with empty file downloads
 2.1 - September, 2011 - Added new German translation, fixed WYSIWYG toolbar layout in 5.4.2, fixed weird line wrap of "required" checkboxes in dashboard interface on wide screens, added special case to external url helper so it works with internal links (if link starts with a slash)
