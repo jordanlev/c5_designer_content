@@ -73,6 +73,9 @@ class DashboardPagesDesignerContentController extends Controller {
 		//Set up the code generator
 		Loader::library('block_generator', 'designer_content');
 		$block = new DesignerContentBlockGenerator();
+		if (defined('DESIGNER_CONTENT_FILE_CHMOD')) {
+			$block->set_file_chmod(DESIGNER_CONTENT_FILE_CHMOD);
+		}
 		foreach ($field_ids as $id) {
 			$type = $field_types[$id];
 			if ($type == 'static') {

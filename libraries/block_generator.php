@@ -13,7 +13,16 @@ class DesignerContentBlockGenerator {
 
 	private $outpath;
 	private $tplpath;
-
+	
+	private $file_chmod = false; //If this gets set, all written files will be chmod()'ed to it.
+	
+	//Pass in an octal number, e.g. 0666 (see http://php.net/chmod#refsect1-function.chmod-parameters)
+	public function set_file_chmod($chmod) {
+		if (is_int($chmod)) {
+			$this->file_chmod = $chmod;
+		}
+	}
+	
 	public function add_static_field($static_content) {
 		$this->fields[] = array(
 			'num' => count($this->fields) + 1,
@@ -162,7 +171,7 @@ class DesignerContentBlockGenerator {
 	private function generate_add_php() {
 		//No replacements
 		$filename = 'add.php';
-		copy($this->tplpath.$filename, $this->outpath.$filename);
+		$this->copy_file($this->tplpath.$filename, $this->outpath.$filename);
 	}
 	
 	private function generate_auto_js() {
@@ -243,7 +252,7 @@ class DesignerContentBlockGenerator {
 		
 		//Output file (if we have anything to put in it)
 		if (!empty($code)) {
-			file_put_contents($this->outpath.$filename, $template);
+			$this->output_file($this->outpath.$filename, $template);
 		}
 	}
 		
@@ -420,7 +429,7 @@ class DesignerContentBlockGenerator {
 		$template = str_replace($token, $code, $template);
 		
 		//Output file
-		file_put_contents($this->outpath.$filename, $template);
+		$this->output_file($this->outpath.$filename, $template);
 	}
 	
 	private function generate_db_xml() {
@@ -481,7 +490,7 @@ class DesignerContentBlockGenerator {
 		$template = str_replace($token, $code, $template);
 		
 		//Output file
-		file_put_contents($this->outpath.$filename, $template);
+		$this->output_file($this->outpath.$filename, $template);
 	}
 	
 	private function generate_edit_php() {
@@ -642,19 +651,19 @@ class DesignerContentBlockGenerator {
 		$template = str_replace($token, $code, $template);
 		
 		//Output file
-		file_put_contents($this->outpath.$filename, $template);
+		$this->output_file($this->outpath.$filename, $template);
 	}
 		
 	private function generate_editor_config_php() {
 		//No replacements
 		$filename = 'editor_config.php';
-		copy($this->tplpath.$filename, $this->outpath.$filename);
+		$this->copy_file($this->tplpath.$filename, $this->outpath.$filename);
 	}
 	
 	private function generate_editor_controls_php() {
 		//No replacements
 		$filename = 'editor_controls.php';
-		copy($this->tplpath.$filename, $this->outpath.$filename);
+		$this->copy_file($this->tplpath.$filename, $this->outpath.$filename);
 	}
 	
 	private function generate_editor_init_php() {
@@ -674,13 +683,13 @@ class DesignerContentBlockGenerator {
 		$template = str_replace($token, $code, $template);
 		
 		//Output file
-		file_put_contents($this->outpath.$filename, $template);
+		$this->output_file($this->outpath.$filename, $template);
 	}
 
 	private function generate_icon_png() {
 		//No replacements
 		$filename = 'icon.png';
-		copy($this->tplpath.$filename, $this->outpath.$filename);
+		$this->copy_file($this->tplpath.$filename, $this->outpath.$filename);
 	}
 	
 	private function generate_view_php() {
@@ -812,9 +821,27 @@ class DesignerContentBlockGenerator {
 		$template = str_replace($token, $code, $template);
 				
 		//Output file
-		file_put_contents($this->outpath.$filename, $template);
+		$this->output_file($this->outpath.$filename, $template);
 	}
-
+	
+	
+	//Funnel all file writes/copies through one of these so we can apply file permissions if needed...
+	//
+	private function output_file($topath, $contents) {
+		file_put_contents($topath, $contents);
+		$this->set_file_permission($topath);
+	}
+	//
+	private function copy_file($frompath, $topath) {
+		copy($frompath, $topath);
+		$this->set_file_permission($topath);
+	}
+	
+	private function set_file_permission($filepath) {
+		if ($this->file_chmod !== false) {
+			@chmod($filepath, $this->file_chmod);
+		}		
+	}
 	
 /*** UTILITY FUNCTIONS ***/
 	public static function tablename($handle) {

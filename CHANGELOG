@@ -1,3 +1,4 @@
+2.1.3a1: set generated file permissions if DESIGNER_CONTENT_FILE_CHMOD is set
 2.1.2 - October, 2011 - Fixed bug where dashboard was returning a "table already exists" error even when no such table existed
 2.1.1 - October, 2011 - Fixed bug with empty file downloads
 2.1 - September, 2011 - Added new German translation, fixed WYSIWYG toolbar layout in 5.4.2, fixed weird line wrap of "required" checkboxes in dashboard interface on wide screens, added special case to external url helper so it works with internal links (if link starts with a slash)
