@@ -1,3 +1,4 @@
+2.1.3a2: added tao's japanese translation, and assign system language to tinymce editor_config
 2.1.3a1: set generated file permissions if DESIGNER_CONTENT_FILE_CHMOD is set
 2.1.2 - October, 2011 - Fixed bug where dashboard was returning a "table already exists" error even when no such table existed
 2.1.1 - October, 2011 - Fixed bug with empty file downloads
