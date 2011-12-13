@@ -730,37 +730,45 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'image') {
 				$code .= "<?php if (!empty(\$field_{$field['num']}_image)): ?>\n";
 				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
-				if ($field['link'] == 1) {
-					$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_internalLinkCID)) { ?><a href=\"<?php echo \$nh->getLinkToCollection(Page::getByID(\$field_{$field['num']}_image_internalLinkCID), true); ?>\"><?php } ?>\n";
-					$include_navigation_helper = true;
-				}
-				if ($field['link'] == 2) {
-					$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLinkURL)) { ?><a href=\"<?php echo \$this->controller->valid_url(\$field_{$field['num']}_image_externalLinkURL); ?>\"" . ($field['target'] ? ' target="_blank"' : '') . "><?php } ?>\n";
-				}
-				$code .= "\t<img src=\"<?php echo \$field_{$field['num']}_image->src; ?>\" width=\"<?php echo \$field_{$field['num']}_image->width; ?>\" height=\"<?php echo \$field_{$field['num']}_image->height; ?>\" alt=\"" . ($field['alt'] ? "<?php echo \$field_{$field['num']}_image_altText; ?>" : '') . "\" />\n";
-				if ($field['link'] == 2) {
-					$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_externalLinkURL)) { ?></a><?php } ?>\n";
-				}
-				if ($field['link'] == 1) {
-					$code .= "\t<?php if (!empty(\$field_{$field['num']}_image_internalLinkCID)) { ?></a><?php } ?>\n";
+				$tmp_img_tag = "<img src=\"<?php echo \$field_{$field['num']}_image->src; ?>\" width=\"<?php echo \$field_{$field['num']}_image->width; ?>\" height=\"<?php echo \$field_{$field['num']}_image->height; ?>\" alt=\"" . ($field['alt'] ? "<?php echo \$field_{$field['num']}_image_altText; ?>" : '') . "\" />";
+				switch ($field['link']) {
+					case 1:
+						$code .= "\t";
+						$code .= "<?php if (!empty(\$field_{$field['num']}_image_internalLinkCID)) { ?><a href=\"<?php echo \$nh->getLinkToCollection(Page::getByID(\$field_{$field['num']}_image_internalLinkCID), true); ?>\"><?php } ?>";
+						$include_navigation_helper = true;
+						$code .= $tmp_img_tag;
+						$code .= "<?php if (!empty(\$field_{$field['num']}_image_internalLinkCID)) { ?></a><?php } ?>";
+						$code .= "\n";
+						break;
+					case 2:
+						$code .= "\t";
+						$code .= "<?php if (!empty(\$field_{$field['num']}_image_externalLinkURL)) { ?><a href=\"<?php echo \$this->controller->valid_url(\$field_{$field['num']}_image_externalLinkURL); ?>\"" . ($field['target'] ? ' target="_blank"' : '') . "><?php } ?>";
+						$code .= $tmp_img_tag;
+						$code .= "<?php if (!empty(\$field_{$field['num']}_image_externalLinkURL)) { ?></a><?php } ?>";
+						$code .= "\n";
+						break;
+					default:
+						$code .= "\t{$tmp_img_tag}\n";
+						break;
 				}
 				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
 				$code .= "<?php endif; ?>\n\n";
 			}
 			
 			if ($field['type'] == 'file') {
-				$code .= "<?php if (!empty(\$field_{$field['num']}_file)): ?>\n";
+				$code .= "<?php if (!empty(\$field_{$field['num']}_file)):\n";
+				$code .= "\t\$link_url = View::url('/download_file', \$field_{$field['num']}_file_fID, Page::getCurrentPage()->getCollectionID());\n";
+				$code .= "\t\$link_class = 'file-'.\$field_{$field['num']}_file->getExtension();\n";
+				$code .= "\t\$link_text = empty(\$field_{$field['num']}_file_linkText) ? \$field_{$field['num']}_file->getFileName() : htmlentities(\$field_{$field['num']}_file_linkText, ENT_QUOTES, APP_CHARSET);\n";
+				$code .= "\t?>\n";
 				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
-				$code .= "\t<a href=\"<?php echo View::url('/download_file', \$field_{$field['num']}_file_fID, Page::getCurrentPage()->getCollectionID()); ?>\" class=\"file-<?php echo \$field_{$field['num']}_file->getExtension(); ?>\">\n";
-				$code .= "\t\t<?php echo empty(\$field_{$field['num']}_file_linkText) ? \$field_{$field['num']}_file->getFileName() : htmlentities(\$field_{$field['num']}_file_linkText, ENT_QUOTES, APP_CHARSET); ?>\n";
-				$code .= "\t</a>\n";
+				$code .= "\t<a href=\"<?php echo \$link_url; ?>\" class=\"<?php echo \$link_class; ?>\"><?php echo \$link_text; ?></a>\n";
 				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
 				$code .= "<?php endif; ?>\n\n";
 			}
 			
 			if ($field['type'] == 'link') {
-				$code .= "<?php if (!empty(\$field_{$field['num']}_link_cID)): ?>\n";
-				$code .= "\t<?php\n";
+				$code .= "<?php if (!empty(\$field_{$field['num']}_link_cID)):\n";
 				$code .= "\t\$link_url = \$nh->getLinkToCollection(Page::getByID(\$field_{$field['num']}_link_cID), true);\n";
 				$include_navigation_helper = true;
 				$code .= "\t\$link_text = empty(\$field_{$field['num']}_link_text) ? \$link_url : htmlentities(\$field_{$field['num']}_link_text, ENT_QUOTES, APP_CHARSET);\n";
@@ -772,11 +780,12 @@ class DesignerContentBlockGenerator {
 			}
 			
 			if ($field['type'] == 'url') {
-				$code .= "<?php if (!empty(\$field_{$field['num']}_link_url)): ?>\n";
+				$code .= "<?php if (!empty(\$field_{$field['num']}_link_url)):\n";
+				$code .= "\t\$link_url = \$this->controller->valid_url(\$field_{$field['num']}_link_url);\n";
+				$code .= "\t\$link_text = empty(\$field_{$field['num']}_link_text) ? \$field_{$field['num']}_link_url : htmlentities(\$field_{$field['num']}_link_text, ENT_QUOTES, APP_CHARSET);\n";
+				$code .= "\t?>\n";
 				$code .= empty($field['prefix']) ? '' : "\t{$field['prefix']}\n";
-				$code .= "\t<a href=\"<?php echo \$this->controller->valid_url(\$field_{$field['num']}_link_url); ?>\"" . ($field['target'] ? ' target="_blank"' : '') . ">\n";
-				$code .= "\t\t<?php echo empty(\$field_{$field['num']}_link_text) ? \$field_{$field['num']}_link_url : htmlentities(\$field_{$field['num']}_link_text, ENT_QUOTES, APP_CHARSET); ?>\n";
-				$code .= "\t</a>\n";
+				$code .= "\t<a href=\"<?php echo \$link_url; ?>\"" . ($field['target'] ? ' target="_blank"' : '') . "><?php echo \$link_text; ?></a>\n";
 				$code .= empty($field['suffix']) ? '' : "\t{$field['suffix']}\n";
 				$code .= "<?php endif; ?>\n\n";
 			}
