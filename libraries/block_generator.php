@@ -14,12 +14,12 @@ class DesignerContentBlockGenerator {
 	private $outpath;
 	private $tplpath;
 	
-	private $file_chmod = false; //If this gets set, all written files will be chmod()'ed to it.
+	private $chmod = false; //If this gets set, all written files will be chmod()'ed to it.
 	
 	//Pass in an octal number, e.g. 0666 (see http://php.net/chmod#refsect1-function.chmod-parameters)
-	public function set_file_chmod($chmod) {
+	public function set_chmod($chmod) {
 		if (is_int($chmod)) {
-			$this->file_chmod = $chmod;
+			$this->chmod = $chmod;
 		}
 	}
 	
@@ -349,7 +349,7 @@ class DesignerContentBlockGenerator {
 				$width = ($field['sizing'] > 0 && !empty($field['width'])) ? $field['width'] : 0;
 				$height = ($field['sizing'] > 0 && !empty($field['height'])) ? $field['height'] : 0;
 				$crop = ($field['sizing'] == 2) ? 'true' : 'false';
-				$code .= "\t\t\$this->set('field_{$field['num']}_image', \$this->get_image_object(\$this->field_{$field['num']}_image_fID, {$width}, {$height}, {$crop}));\n";
+				$code .= "\t\t\$this->set('field_{$field['num']}_image', (empty(\$this->field_{$field['num']}_image_fID) ? null : \$this->get_image_object(\$this->field_{$field['num']}_image_fID, {$width}, {$height}, {$crop})));\n";
 			}
 			if ($field['type'] == 'file') {
 				$code .= "\t\t\$this->set('field_{$field['num']}_file', (empty(\$this->field_{$field['num']}_file_fID) ? null : File::getByID(\$this->field_{$field['num']}_file_fID)));\n";
@@ -838,8 +838,8 @@ class DesignerContentBlockGenerator {
 	}
 	
 	private function set_file_permission($filepath) {
-		if ($this->file_chmod !== false) {
-			@chmod($filepath, $this->file_chmod);
+		if ($this->chmod !== false) {
+			@chmod($filepath, $this->chmod);
 		}		
 	}
 	
