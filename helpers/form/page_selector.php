@@ -15,7 +15,7 @@
  * Removed the third argument ($javascriptFunc) just to keep things simple (since we know we're not using it).
  *
  * Shuffled the page selector layout around so it's clearer, and added a "remove selection" option
- * so users can un-choose a page after they've already hosen one.
+ * so users can un-choose a page after they've already chosen one.
  */
 
 defined('C5_EXECUTE') or die("Access Denied.");

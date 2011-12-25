@@ -1,62 +1,66 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Designer Content 1.0\n"
+"Project-Id-Version: Designer Content 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-22 02:27-0800\n"
-"PO-Revision-Date: 2011-06-22 02:28-0800\n"
+"POT-Creation-Date: 2011-12-26 10:03-0800\n"
+"PO-Revision-Date: 2011-12-26 10:05-0800\n"
 "Last-Translator: Jordan Lev <concrete@jordanlev.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;t\n"
-"X-Poedit-Basepath: /Users/jordanlev/Sites/concrete5411/packages/designer_content/\n"
+"X-Poedit-Basepath: /Users/jordanlev/Sites/concrete550/packages/designer_content/\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: controller.php:2
-#: controllers/dashboard/pages/designer_content.php:2
+#: controller.php:1
+#: controllers/dashboard/blocks/designer_content.php:1
 #: libraries/block_generator.php:2
-#: single_pages/dashboard/pages/designer_content.php:1
+#: single_pages/dashboard/blocks/designer_content.php:1
+#: tools/validate_handle.php:2
 msgid "Access Denied."
 msgstr ""
 
-#: controller.php:11
-#: single_pages/dashboard/pages/designer_content.php:3
+#: controller.php:10
+#: single_pages/dashboard/blocks/designer_content.php:3
 msgid "Designer Content"
 msgstr ""
 
-#: controller.php:15
+#: controller.php:14
 msgid "Provides supporting code for custom content blocks."
 msgstr ""
 
-#: controllers/dashboard/pages/designer_content.php:44
+#: controllers/dashboard/blocks/designer_content.php:43
 msgid "Error: Blocks directory is not writeable!"
 msgstr ""
 
-#: controllers/dashboard/pages/designer_content.php:46
+#: controllers/dashboard/blocks/designer_content.php:45
 msgid "Error: Block handle or name is missing!"
 msgstr ""
 
-#: controllers/dashboard/pages/designer_content.php:48
+#: controllers/dashboard/blocks/designer_content.php:47
 msgid "Error: Block Handle is already in use by another package or block type (or block files already exist in the \"blocks\" directory of your site)!"
 msgstr ""
 
-#: generator_templates/editor_controls.php:5
+#: generator_templates/editor_controls.php:6
 msgid "Add Image"
 msgstr ""
 
-#: generator_templates/editor_controls.php:6
+#: generator_templates/editor_controls.php:7
 msgid "Add File"
 msgstr ""
 
 #: generator_templates/editor_controls.php:8
-#: generator_templates/editor_controls.php:10
 msgid "Insert Link to Page"
 msgstr ""
 
-#: generator_templates/editor_controls.php:12
+#: generator_templates/editor_controls.php:13
 msgid "Customize Toolbar"
+msgstr ""
+
+#: generator_templates/editor_controls.php:27
+msgid "Choose A Page"
 msgstr ""
 
 #: helpers/form/page_selector.php:44
@@ -77,405 +81,405 @@ msgstr ""
 msgid "Clear Selection"
 msgstr ""
 
-#: libraries/block_generator.php:180
-#: libraries/block_generator.php:187
+#: libraries/block_generator.php:193
+#: libraries/block_generator.php:200
 msgid "Missing required text"
 msgstr ""
 
-#: libraries/block_generator.php:195
+#: libraries/block_generator.php:208
 msgid "Missing required image"
 msgstr ""
 
-#: libraries/block_generator.php:203
+#: libraries/block_generator.php:216
 msgid "Missing required file"
 msgstr ""
 
-#: libraries/block_generator.php:211
+#: libraries/block_generator.php:224
 msgid "Missing required link"
 msgstr ""
 
-#: libraries/block_generator.php:219
+#: libraries/block_generator.php:232
 msgid "Missing required URL"
 msgstr ""
 
-#: libraries/block_generator.php:227
+#: libraries/block_generator.php:240
 msgid "Missing required date"
 msgstr ""
 
-#: libraries/block_generator.php:235
+#: libraries/block_generator.php:248
 msgid "Missing required selection"
 msgstr ""
 
-#: libraries/block_generator.php:516
+#: libraries/block_generator.php:523
 msgid "Choose Image"
 msgstr ""
 
-#: libraries/block_generator.php:523
+#: libraries/block_generator.php:530
 msgid "Link to Page"
 msgstr ""
 
-#: libraries/block_generator.php:531
-#: libraries/block_generator.php:585
+#: libraries/block_generator.php:538
+#: libraries/block_generator.php:592
 msgid "Link to URL"
 msgstr ""
 
-#: libraries/block_generator.php:538
+#: libraries/block_generator.php:545
 msgid "Alt Text"
 msgstr ""
 
-#: libraries/block_generator.php:552
+#: libraries/block_generator.php:559
 msgid "Choose File"
 msgstr ""
 
-#: libraries/block_generator.php:557
+#: libraries/block_generator.php:564
 msgid "Link Text (or leave blank to use file name)"
 msgstr ""
 
-#: libraries/block_generator.php:572
-#: libraries/block_generator.php:590
+#: libraries/block_generator.php:579
+#: libraries/block_generator.php:597
 msgid "Link Text"
 msgstr ""
 
-#: libraries/block_generator.php:789
+#: libraries/block_generator.php:806
 #, php-format
 msgid "ENTER MARKUP HERE FOR FIELD \"%s\" : CHOICE \"%s\""
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:8
+#: single_pages/dashboard/blocks/designer_content.php:8
 msgid "Success!"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:10
+#: single_pages/dashboard/blocks/designer_content.php:10
 #, php-format
 msgid "%s has been installed, and will now be available in the \"Add Blocks\" list when pages are edited."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:12
+#: single_pages/dashboard/blocks/designer_content.php:12
 msgid "Create another block type"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:20
+#: single_pages/dashboard/blocks/designer_content.php:20
 msgid "Create a new block type by entering some basic info and adding one or more fields."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:21
+#: single_pages/dashboard/blocks/designer_content.php:21
 msgid "Documentation"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:22
+#: single_pages/dashboard/blocks/designer_content.php:22
 msgid "Help Forum"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:28
+#: single_pages/dashboard/blocks/designer_content.php:28
 msgid "Warning: The blocks directory is not writeable. Blocks cannot be created from this page until permissions are changed on your server."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:39
+#: single_pages/dashboard/blocks/designer_content.php:39
 msgid "Block Handle"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:42
+#: single_pages/dashboard/blocks/designer_content.php:42
 msgid "lowercase letters and underscores only"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:46
+#: single_pages/dashboard/blocks/designer_content.php:46
 msgid "Block Name"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:49
+#: single_pages/dashboard/blocks/designer_content.php:49
 msgid "human-readable name (appears in the \"Add Block\" list)"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:54
+#: single_pages/dashboard/blocks/designer_content.php:54
 msgid "Block Description"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:55
+#: single_pages/dashboard/blocks/designer_content.php:55
 msgid "(optional)"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:59
+#: single_pages/dashboard/blocks/designer_content.php:59
 msgid "for dashboard \"Add Functionality\" list"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:76
+#: single_pages/dashboard/blocks/designer_content.php:76
 msgid "delete"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:76
-#: single_pages/dashboard/pages/designer_content.php:146
+#: single_pages/dashboard/blocks/designer_content.php:76
+#: single_pages/dashboard/blocks/designer_content.php:148
 msgid "Yes"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:76
-#: single_pages/dashboard/pages/designer_content.php:145
+#: single_pages/dashboard/blocks/designer_content.php:76
+#: single_pages/dashboard/blocks/designer_content.php:147
 msgid "No"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:80
+#: single_pages/dashboard/blocks/designer_content.php:80
 msgid "Move Up"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:86
+#: single_pages/dashboard/blocks/designer_content.php:86
 msgid "Move Down"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:94
+#: single_pages/dashboard/blocks/designer_content.php:94
 msgid "Anything entered here will be directly outputted to the block view &mdash; users will not be able to edit it."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:98
-#: single_pages/dashboard/pages/designer_content.php:123
+#: single_pages/dashboard/blocks/designer_content.php:98
+#: single_pages/dashboard/blocks/designer_content.php:124
 msgid "Editor Label"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:101
-#: single_pages/dashboard/pages/designer_content.php:131
+#: single_pages/dashboard/blocks/designer_content.php:102
+#: single_pages/dashboard/blocks/designer_content.php:133
 msgid "Required?"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:104
+#: single_pages/dashboard/blocks/designer_content.php:105
 msgid "Dropdown Choices (one per line)"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:110
+#: single_pages/dashboard/blocks/designer_content.php:111
 msgid "Show List Header?"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:112
+#: single_pages/dashboard/blocks/designer_content.php:113
 msgid "Header Text"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:113
+#: single_pages/dashboard/blocks/designer_content.php:114
 msgid "--Choose One--"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:116
+#: single_pages/dashboard/blocks/designer_content.php:117
 msgid "NOTE"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:118
+#: single_pages/dashboard/blocks/designer_content.php:119
 msgid "After creating this block type, you must edit its \"view.php\" file to make these choices work!"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:127
+#: single_pages/dashboard/blocks/designer_content.php:128
 msgid "Default HTML Content"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:137
+#: single_pages/dashboard/blocks/designer_content.php:139
 msgid "Maximum Number Of Characters"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:142
+#: single_pages/dashboard/blocks/designer_content.php:144
 msgid "Show Alt Text Field:"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:149
+#: single_pages/dashboard/blocks/designer_content.php:151
 msgid "Show Link Field"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:153
+#: single_pages/dashboard/blocks/designer_content.php:155
 msgid "None"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:154
+#: single_pages/dashboard/blocks/designer_content.php:156
 msgid "Sitemap Page"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:155
-#: single_pages/dashboard/pages/designer_content.php:230
+#: single_pages/dashboard/blocks/designer_content.php:157
+#: single_pages/dashboard/blocks/designer_content.php:232
 msgid "External URL"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:161
-#: single_pages/dashboard/pages/designer_content.php:189
+#: single_pages/dashboard/blocks/designer_content.php:163
+#: single_pages/dashboard/blocks/designer_content.php:191
 msgid "Links Open In New Window"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:165
+#: single_pages/dashboard/blocks/designer_content.php:167
 msgid "Image Sizing"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:169
+#: single_pages/dashboard/blocks/designer_content.php:171
 msgid "Keep Original Size"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:170
+#: single_pages/dashboard/blocks/designer_content.php:172
 msgid "Resize Proportionally"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:171
+#: single_pages/dashboard/blocks/designer_content.php:173
 msgid "Resize+Crop To Fit"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:176
+#: single_pages/dashboard/blocks/designer_content.php:178
 msgid "Max Width"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:177
+#: single_pages/dashboard/blocks/designer_content.php:179
 msgid "Target Width"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:180
+#: single_pages/dashboard/blocks/designer_content.php:182
 msgid "Max Height"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:181
+#: single_pages/dashboard/blocks/designer_content.php:183
 msgid "Target Height"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:192
+#: single_pages/dashboard/blocks/designer_content.php:194
 msgid "PHP Date Format"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:194
+#: single_pages/dashboard/blocks/designer_content.php:196
 msgid "http://php.net/date#refsect1-function.date-parameters"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:194
+#: single_pages/dashboard/blocks/designer_content.php:196
 msgid "Reference"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:199
+#: single_pages/dashboard/blocks/designer_content.php:201
 msgid "Wrapper HTML Open"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:203
+#: single_pages/dashboard/blocks/designer_content.php:205
 msgid "Wrapper HTML Close"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:213
+#: single_pages/dashboard/blocks/designer_content.php:215
 msgid "Add Field"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:218
-#: single_pages/dashboard/pages/designer_content.php:271
+#: single_pages/dashboard/blocks/designer_content.php:220
+#: single_pages/dashboard/blocks/designer_content.php:271
 msgid "Static HTML"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:220
+#: single_pages/dashboard/blocks/designer_content.php:222
 msgid "Text Box"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:222
+#: single_pages/dashboard/blocks/designer_content.php:224
 msgid "Text Area"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:224
+#: single_pages/dashboard/blocks/designer_content.php:226
 msgid "Image"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:226
+#: single_pages/dashboard/blocks/designer_content.php:228
 msgid "File Download"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:228
+#: single_pages/dashboard/blocks/designer_content.php:230
 msgid "Page Link"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:232
+#: single_pages/dashboard/blocks/designer_content.php:234
 msgid "Date Picker"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:234
-#: single_pages/dashboard/pages/designer_content.php:279
+#: single_pages/dashboard/blocks/designer_content.php:236
+#: single_pages/dashboard/blocks/designer_content.php:279
 msgid "Dropdown List"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:237
-#: single_pages/dashboard/pages/designer_content.php:280
+#: single_pages/dashboard/blocks/designer_content.php:238
+#: single_pages/dashboard/blocks/designer_content.php:280
 msgid "WYSIWYG Editor"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:248
+#: single_pages/dashboard/blocks/designer_content.php:248
 msgid "Make The Block!"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:251
+#: single_pages/dashboard/blocks/designer_content.php:251
 msgid "Processing..."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:257
+#: single_pages/dashboard/blocks/designer_content.php:257
 msgid "code + ui"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:259
+#: single_pages/dashboard/blocks/designer_content.php:259
 msgid "icon design"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:272
+#: single_pages/dashboard/blocks/designer_content.php:272
 msgid "Textbox Field"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:273
+#: single_pages/dashboard/blocks/designer_content.php:273
 msgid "Text Area Field"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:274
+#: single_pages/dashboard/blocks/designer_content.php:274
 msgid "Image Field"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:275
+#: single_pages/dashboard/blocks/designer_content.php:275
 msgid "File Download Field"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:276
+#: single_pages/dashboard/blocks/designer_content.php:276
 msgid "Page Link Field"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:277
+#: single_pages/dashboard/blocks/designer_content.php:277
 msgid "External URL Field"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:278
+#: single_pages/dashboard/blocks/designer_content.php:278
 msgid "Date Picker Field"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:283
+#: single_pages/dashboard/blocks/designer_content.php:283
 msgid "Block Name is required."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:284
+#: single_pages/dashboard/blocks/designer_content.php:284
 msgid "Block Handle is required."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:285
+#: single_pages/dashboard/blocks/designer_content.php:285
+msgid "Block Handle cannot exceed 32 characters in length."
+msgstr ""
+
+#: single_pages/dashboard/blocks/designer_content.php:286
 msgid "Block Handle can only contain lowercase letters and underscores."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:286
+#: single_pages/dashboard/blocks/designer_content.php:287
 msgid "Block Handle is already in use by another package or block type (or block files already exist in the \"blocks\" directory of your site)."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:287
+#: single_pages/dashboard/blocks/designer_content.php:288
 msgid "WARNING: A table with this Block Handle already exists in your database. If you make this block, the existing table will be overwritten and any content stored in it will be permanently deleted!"
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:288
+#: single_pages/dashboard/blocks/designer_content.php:289
 msgid "You must add at least 1 field."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:289
-msgid "You cannot have more than 1 WYSIWYG Editor in a block."
-msgstr ""
-
-#: single_pages/dashboard/pages/designer_content.php:290
+#: single_pages/dashboard/blocks/designer_content.php:290
 msgid "All fields must have an Editor Label."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:291
+#: single_pages/dashboard/blocks/designer_content.php:291
 msgid "Image Widths must be valid numbers."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:292
+#: single_pages/dashboard/blocks/designer_content.php:292
 msgid "Image Heights must be valid numbers."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:293
+#: single_pages/dashboard/blocks/designer_content.php:293
 msgid "Dropdown Lists must have one or more choices."
 msgstr ""
 
-#: single_pages/dashboard/pages/designer_content.php:294
+#: single_pages/dashboard/blocks/designer_content.php:294
 msgid "Cannot proceed! Please correct the following errors:"
 msgstr ""
 

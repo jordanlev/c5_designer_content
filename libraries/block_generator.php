@@ -148,18 +148,22 @@ class DesignerContentBlockGenerator {
 		$this->tplpath = DIR_BASE . '/' . DIRNAME_PACKAGES . '/designer_content/generator_templates/';
 
 		$this->create_block_directory();
-		$this->generate_add_php();
-		$this->generate_auto_js();
 		$this->generate_controller_php();
-		$this->generate_db_xml();
-		$this->generate_edit_php();
+		$this->generate_view_php();
+		$this->generate_icon_png();
+		
+		if ($this->has_editable_fields()) {
+			$this->generate_add_php();
+			$this->generate_auto_js();
+			$this->generate_db_xml();
+			$this->generate_edit_php();
+		}
+		
 		if ($this->has_wysiwyg()) {
 			$this->generate_editor_config_php();
 			$this->generate_editor_controls_php();
 			$this->generate_editor_init_php();
 		}
-		$this->generate_icon_png();
-		$this->generate_view_php();
 	}
 		
 	
@@ -301,7 +305,7 @@ class DesignerContentBlockGenerator {
 		
 		//Replace class properties
 		$template = str_replace('[[[GENERATOR_REPLACE_CLASSNAME]]]', $this->controllername($this->handle), $template);
-		$template = str_replace('[[[GENERATOR_REPLACE_TABLENAME]]]', $this->tablename($this->handle), $template);
+		$template = str_replace('[[[GENERATOR_REPLACE_TABLEDEF]]]', ($this->has_editable_fields() ? "\tprotected \$btTable = '".$this->tablename($this->handle)."';\n\t" : "\t"), $template);
 		$template = str_replace('[[[GENERATOR_REPLACE_NAME]]]', $this->addslashes_single($this->name), $template);
 		$template = str_replace('[[[GENERATOR_REPLACE_DESCRIPTION]]]', $this->addslashes_single($this->description), $template);
 		
@@ -480,15 +484,9 @@ class DesignerContentBlockGenerator {
 			}
 		}
 		
-		//If no fields were added to db.xml, add one "dummy" field.
-		// (Due to a bug in C5, there must be at least TWO fields for each block!)
-		if (empty($code)) {
-			$code .= "\t\t<field name=\"dummy\" type=\"I\"></field>\n\n";
-		}
-		
 		$token = '[[[GENERATOR_REPLACE_FIELDS]]]';
 		$template = str_replace($token, $code, $template);
-		
+	
 		//Output file
 		$this->output_file($this->outpath.$filename, $template);
 	}
@@ -527,7 +525,7 @@ class DesignerContentBlockGenerator {
 				$include_asset_library = true;
 				if ($field['link'] > 0 || $field['alt']) {
 					$code .= "\n";
-					$code .= "\t<table border=\"0\" cellspacing=\"3\" cellpadding=\"0\" style=\"width: 95%;\">\n";
+					$code .= "\t<table border=\"0\" cellspacing=\"3\" cellpadding=\"0\" style=\"width: 95%;" . (($field['link'] != 1) ? ' margin-top: 5px;' : '') . "\">\n";
 					if ($field['link'] == 1) {
 						$translated_label = t('Link to Page');
 						$code .= "\t\t<tr>\n";
@@ -561,7 +559,7 @@ class DesignerContentBlockGenerator {
 				$translated_label = $this->addslashes_single( t('Choose File') );
 				$code .= "\t<?php echo \$al->file('field_{$field['num']}_file_fID', 'field_{$field['num']}_file_fID', '{$translated_label}', \$field_{$field['num']}_file); ?>\n";
 				$include_asset_library = true;
-				$code .= "\t<table border=\"0\" cellspacing=\"3\" cellpadding=\"0\" style=\"width: 95%;\">\n";
+				$code .= "\t<table border=\"0\" cellspacing=\"3\" cellpadding=\"0\" style=\"width: 95%; margin-top: 5px;\">\n";
 				$code .= "\t\t<tr>\n";
 				$translated_label = t('Link Text (or leave blank to use file name)');
 				$code .= "\t\t\t<td align=\"right\" nowrap=\"nowrap\"><label for=\"field_{$field['num']}_file_linkText\">{$translated_label}:</label>&nbsp;</td>\n";
@@ -639,9 +637,10 @@ class DesignerContentBlockGenerator {
 				$code .= "</div>\n\n";
 			}
 		}
+		
 		$token = '[[[GENERATOR_REPLACE_FIELDS]]]';
 		$template = str_replace($token, $code, $template);
-		
+	
 		//Replace helpers (if needed)
 		$code = '';
 		$code .= $include_asset_library ? "\$al = Loader::helper('concrete/asset_library');\n" : '';
@@ -649,7 +648,7 @@ class DesignerContentBlockGenerator {
 		$code .= $include_date_time ? "\$dt = Loader::helper('form/date_time');\n" : '';
 		$token = '[[[GENERATOR_REPLACE_HELPERLOADERS]]]';
 		$template = str_replace($token, $code, $template);
-		
+	
 		//Output file
 		$this->output_file($this->outpath.$filename, $template);
 	}
@@ -886,4 +885,13 @@ class DesignerContentBlockGenerator {
 		return false;
 	}
 	
+	private function has_editable_fields() {
+		$nonEditableFieldCount = 0;
+		foreach ($this->fields as $field) {
+			if ($field['type'] == 'static') {
+				$nonEditableFieldCount++;
+			}
+		}
+		return (count($this->fields) > $nonEditableFieldCount);
+	}
 }

@@ -15,7 +15,7 @@
 			$width = empty($width) ? 9999 : $width;
 			$height = empty($height) ? 9999 : $height;
 			$file = File::getByID($fID);
-			$ih = Loader::helper('image_crop', 'designer_content');
+			$ih = Loader::helper('image');
 			$image = $ih->getThumbnail($file, $width, $height, $crop);
 		}
 	

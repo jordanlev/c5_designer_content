@@ -79,6 +79,13 @@ input#name {
 	width: 100%;
 }
 
+.designer-content-field-select-edit-note {
+    font-style: italic;
+    border-top: 1px solid #ccc;
+    margin-top: 8px;
+    padding-top: 5px;
+}
+
 .designer-content-field-editorlabel {
 	width: 95%;
 	margin-bottom: 10px;

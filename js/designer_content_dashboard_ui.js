@@ -19,21 +19,21 @@ $(document).ready(function() {
 		$('#designer-content-form').submit(); //We use a div instead of a submit button because we don't want the "enter" key triggering the form
 	});
 	$('#designer-content-form').submit(function() {
-		// //TEST MODE (posts form via ajax so you don't lose data entry):
-		// var valid = validate_form();
-		// if (valid) {
-		// 	$.ajax({
-		// 		type: 'POST',
-		// 		async: false,
-		// 		url: CCM_REL + '/index.php/dashboard/pages/designer_content/generate_block/',
-		// 		data: $('#designer-content-form').serialize(),
-		// 		success: function() {
-		// 			alert('ok!');
-		// 		}
-		// 	});
-		// }
-		// return false;
-		// //END TEST MODE
+        //TEST MODE (posts form via ajax so you don't lose data entry):
+        var valid = validate_form();
+        if (valid) {
+            $.ajax({
+                type: 'POST',
+                async: false,
+                url: CCM_REL + '/index.php/dashboard/blocks/designer_content/generate_block/',
+                data: $('#designer-content-form').serialize(),
+                success: function() {
+                    alert('ok!');
+                }
+            });
+        }
+        return false;
+        //END TEST MODE
 		
 		$('#designer-content-submit').hide();
 		$('#designer-content-submit-loading').show();
@@ -50,12 +50,7 @@ $(document).ready(function() {
 });
 
 function update_addfield_links() {
-	var wysiwyg = (wysiwyg_count() == 0);
-	$("#add-field-types").html($("#add-field-types-template").tmpl({ 'wysiwyg': wysiwyg }));
-}
-
-function wysiwyg_count() {
-	return $('#designer-content-fields').find('div[data-type=wysiwyg]').length;
+	$("#add-field-types").html($("#add-field-types-template").tmpl());
 }
 
 function add_new_field() {
@@ -169,7 +164,6 @@ function validate_form() {
 	//Handle must not already exist in the system (anywhere -- package, block, etc.)
 	//Handle can only contain lowercase letters and underscores (note that for some reason, having numbers in the handle can totally mess things up -- any page that the block is on won't load (some error with the autoloader?).
 	//must have at least 1 field
-	//no more than 1 wysiwyg field
 	//check that a label is provided for each field (except 'static html' fields)
 	//check that width+height are valid integers if entered
 	
@@ -178,7 +172,6 @@ function validate_form() {
 	var name = $('#name').val();
 	var handle = $('#handle').val();
 	var fieldCount = $('.designer-content-field').length;
-	var wysiwygCount = wysiwyg_count();
 	var fieldLabels = $.map($('.designer-content-field-editorlabel'), function(element, index) { return $(element).val(); });
 	var fieldImageWidths = $.map($('.designer-content-field-image-width'), function(element, index) { return $(element).val(); });
 	var fieldImageHeights = $.map($('.designer-content-field-image-height'), function(element, index) { return $(element).val(); });
@@ -186,6 +179,8 @@ function validate_form() {
 	
 	if (handle.length == 0) {
 		errors.push(ERROR_MESSAGES['handle_required']);
+	} else if (handle.length > 32) {
+	    errors.push(ERROR_MESSAGES['handle_length']);
 	} else if (!/^[a-z_]+$/.test(handle)) {
 		errors.push(ERROR_MESSAGES['handle_lowercase']);
 	} else if (!validate_handle(handle)) {
@@ -198,10 +193,6 @@ function validate_form() {
 	
 	if (fieldCount < 1) {
 		errors.push(ERROR_MESSAGES['fields_required']);
-	}
-	
-	if (wysiwygCount > 1) {
-		errors.push(ERROR_MESSAGES['one_wysiwyg']);
 	}
 	
 	var missing_labels = false;

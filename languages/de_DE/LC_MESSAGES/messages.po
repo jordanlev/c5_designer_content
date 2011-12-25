@@ -16,14 +16,14 @@ msgstr ""
 "X-Poedit-SearchPath-0: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content\n"
 
 #: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/controller.php:2
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/controllers/dashboard/pages/designer_content.php:2
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/controllers/dashboard/blocks/designer_content.php:2
 #: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/libraries/block_generator.php:2
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:1
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:1
 msgid "Access Denied."
 msgstr "Zugriff verweigert."
 
 #: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/controller.php:11
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:3
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:3
 msgid "Designer Content"
 msgstr "Designer Content"
 
@@ -31,15 +31,15 @@ msgstr "Designer Content"
 msgid "Provides supporting code for custom content blocks."
 msgstr "Unterstützt die interaktive Erzeugung von eigenen Blocktypen."
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/controllers/dashboard/pages/designer_content.php:44
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/controllers/dashboard/blocks/designer_content.php:44
 msgid "Error: Blocks directory is not writeable!"
 msgstr "Fehler: Verzeichnis \"blocks\" ist nicht beschreibbar!"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/controllers/dashboard/pages/designer_content.php:46
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/controllers/dashboard/blocks/designer_content.php:46
 msgid "Error: Block handle or name is missing!"
 msgstr "Fehler: Blocktyp-Kennung oder Name fehlt!"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/controllers/dashboard/pages/designer_content.php:48
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/controllers/dashboard/blocks/designer_content.php:48
 msgid "Error: Block Handle is already in use by another package or block type (or block files already exist in the \"blocks\" directory of your site)!"
 msgstr "Fehler: Die Blocktyp-Kennung wird bereits durch ein anderes Package oder einen anderen Blocktyp verwendet (oder die Block-Dateien existieren bereits im \"blocks\"-Ordner der Site)!"
 
@@ -145,342 +145,342 @@ msgstr "Link-Text"
 msgid "ENTER MARKUP HERE FOR FIELD \"%s\" : CHOICE \"%s\""
 msgstr "HIER HTML-CODE FÜR FELD \"%s\", AUSWAHL \"%s\" EINFÜGEN"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:8
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:8
 msgid "Success!"
 msgstr "Erstellung abgeschlossen!"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:10
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:10
 #, php-format
 msgid "%s has been installed, and will now be available in the \"Add Blocks\" list when pages are edited."
 msgstr "%s wurde installiert und ist nun bei der Bearbeitung von Seiten in der Liste \"Block hinzufügen\" verfügbar."
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:12
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:12
 msgid "Create another block type"
 msgstr "Einen weiteren Blocktyp erstellen &raquo;"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:20
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:20
 msgid "Create a new block type by entering some basic info and adding one or more fields."
 msgstr "Erstellen Sie einen neuen Blocktyp. Geben Sie Basisinformationen an und fügen Sie ein oder mehrere Felder hinzu."
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:21
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:21
 msgid "Documentation"
 msgstr "Dokumentation"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:22
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:22
 msgid "Help Forum"
 msgstr "Hilfeforum"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:28
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:28
 msgid "Warning: The blocks directory is not writeable. Blocks cannot be created from this page until permissions are changed on your server."
 msgstr "Achtung: Das Block-Verzeichnis ist nicht beschreibbar. Über diese Seite können keine Blocktypen erstellt werden, solange die Berechtigungen auf Ihrem Server nicht geändert werden."
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:39
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:39
 msgid "Block Handle"
 msgstr "Blocktyp Kennung"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:42
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:42
 msgid "lowercase letters and underscores only"
 msgstr "Nur Kleinbuchstaben und Unterstriche"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:46
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:46
 msgid "Block Name"
 msgstr "Blocktyp Name"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:49
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:49
 msgid "human-readable name (appears in the \"Add Block\" list)"
 msgstr "Normalsprachlicher Name (erscheint in der Auswahl \"Block einfügen\")"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:54
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:54
 msgid "Block Description"
 msgstr "Blocktyp Beschreibung"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:55
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:55
 msgid "(optional)"
 msgstr "(optional)"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:59
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:59
 msgid "for dashboard \"Add Functionality\" list"
 msgstr "Für die Liste \"Funktionalität hinzufügen\" im Dashboard"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:76
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:76
 msgid "delete"
 msgstr "löschen"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:76
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:146
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:76
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:146
 msgid "Yes"
 msgstr "Ja"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:76
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:145
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:76
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:145
 msgid "No"
 msgstr "Nein"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:80
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:80
 msgid "Move Up"
 msgstr "Nach oben"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:86
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:86
 msgid "Move Down"
 msgstr "Nach unten"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:94
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:94
 msgid "Anything entered here will be directly outputted to the block view &mdash; users will not be able to edit it."
 msgstr "Alles was hier steht wird bei der Blockdarstellung direkt ausgegeben und kann vom Benutzer nicht bearbeitet werden."
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:98
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:123
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:98
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:123
 msgid "Editor Label"
 msgstr "Feldname"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:101
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:131
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:101
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:131
 msgid "Required?"
 msgstr "Pflichtfeld?"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:104
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:104
 msgid "Dropdown Choices (one per line)"
 msgstr "Auswahloptionen (jeweils eine Zeile)"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:110
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:110
 msgid "Show List Header?"
 msgstr "Listenüberschrift anzeigen"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:112
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:112
 msgid "Header Text"
 msgstr "Überschrift"
 
 # ## Generated block messages...
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:113
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:113
 msgid "--Choose One--"
 msgstr "--Bitte auswählen--"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:116
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:116
 msgid "NOTE"
 msgstr "ANMERKUNG"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:118
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:118
 msgid "After creating this block type, you must edit its \"view.php\" file to make these choices work!"
 msgstr "Nach Erstellen dieses Blocktyps müssen Sie seine Datei \"view.php\" bearbeiten, damit die Auswahloptionen funktionieren!"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:127
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:127
 msgid "Default HTML Content"
 msgstr "Standard HTML-Inhalt"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:137
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:137
 msgid "Maximum Number Of Characters"
 msgstr "Maximale Anzahl Zeichen"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:142
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:142
 msgid "Show Alt Text Field:"
 msgstr "Feld für Alt-Text anzeigen:"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:149
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:149
 msgid "Show Link Field"
 msgstr "Feld für Link anzeigen:"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:153
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:153
 msgid "None"
 msgstr "Nein"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:154
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:154
 msgid "Sitemap Page"
 msgstr "Interne Seite"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:155
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:230
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:155
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:230
 msgid "External URL"
 msgstr "Externe URL"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:161
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:189
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:161
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:189
 msgid "Links Open In New Window"
 msgstr "Links werden in neuem Fenster geladen"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:165
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:165
 msgid "Image Sizing"
 msgstr "Bildgröße:"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:169
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:169
 msgid "Keep Original Size"
 msgstr "Originalgröße beibehalten"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:170
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:170
 msgid "Resize Proportionally"
 msgstr "Proportional skalieren"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:171
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:171
 msgid "Resize+Crop To Fit"
 msgstr "Skalieren und Beschneiden"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:176
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:176
 msgid "Max Width"
 msgstr "Max. Breite"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:177
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:177
 msgid "Target Width"
 msgstr "gewünschte Breite"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:180
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:180
 msgid "Max Height"
 msgstr "Max. Höhe"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:181
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:181
 msgid "Target Height"
 msgstr "gewünschte Höhe"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:192
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:192
 msgid "PHP Date Format"
 msgstr "PHP Datumsformat"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:194
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:194
 msgid "http://php.net/date#refsect1-function.date-parameters"
 msgstr "http://php.net/date#refsect1-function.date-parameters"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:194
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:194
 msgid "Reference"
 msgstr "Anleitung"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:199
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:199
 msgid "Wrapper HTML Open"
 msgstr "HTML davor"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:203
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:203
 msgid "Wrapper HTML Close"
 msgstr "HTML danach"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:213
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:213
 msgid "Add Field"
 msgstr "Feld hinzufügen"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:218
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:271
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:218
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:271
 msgid "Static HTML"
 msgstr "Statisches HTML"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:220
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:220
 msgid "Text Box"
 msgstr "Textbox"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:222
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:222
 msgid "Text Area"
 msgstr "Fließtext"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:224
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:224
 msgid "Image"
 msgstr "Bild"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:226
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:226
 msgid "File Download"
 msgstr "Datei-Download"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:228
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:228
 msgid "Page Link"
 msgstr "Seitenlink"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:232
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:232
 msgid "Date Picker"
 msgstr "Datumswähler"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:234
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:279
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:234
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:279
 msgid "Dropdown List"
 msgstr "Auswahlliste"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:237
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:280
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:237
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:280
 msgid "WYSIWYG Editor"
 msgstr "WYSIWYG Editor"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:248
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:248
 msgid "Make The Block!"
 msgstr "Block erzeugen!"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:251
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:251
 msgid "Processing..."
 msgstr "In Arbeit..."
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:257
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:257
 msgid "code + ui"
 msgstr "code + ui"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:259
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:259
 msgid "icon design"
 msgstr "icon design"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:272
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:272
 msgid "Textbox Field"
 msgstr "Textbox"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:273
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:273
 msgid "Text Area Field"
 msgstr "Fließtext"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:274
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:274
 msgid "Image Field"
 msgstr "Bild"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:275
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:275
 msgid "File Download Field"
 msgstr "Datei-Download"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:276
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:276
 msgid "Page Link Field"
 msgstr "Seitenlink"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:277
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:277
 msgid "External URL Field"
 msgstr "Externer Link"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:278
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:278
 msgid "Date Picker Field"
 msgstr "Datumsauswahl"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:283
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:283
 msgid "Block Name is required."
 msgstr "Blocktyp Name erforderlich."
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:284
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:284
 msgid "Block Handle is required."
 msgstr "Blocktyp-Kennung erforderlich."
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:285
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:285
 msgid "Block Handle can only contain lowercase letters and underscores."
 msgstr "Die Blocktyp-Kennung darf nur Kleinbuchstaben und Unterstriche enthalten."
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:286
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:286
 msgid "Block Handle is already in use by another package or block type (or block files already exist in the \"blocks\" directory of your site)."
 msgstr "Die Blocktyp-Kennung wird bereits durch ein anderes Package oder einen anderen Blocktyp verwendet (oder die Block-Dateien existieren bereits im \"blocks\"-Ordner der Site)!"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:287
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:287
 msgid "WARNING: A table with this Block Handle already exists in your database. If you make this block, the existing table will be overwritten and any content stored in it will be permanently deleted!"
 msgstr "ACHTUNG: Eine Tabelle mit diesem Block-Handle existiert bereits in der Datenbank. Wenn dieser Block erzeugt wird, überschreibt dies die bestehende Tabelle und alle darin gespeicherten Daten werden unwiederbringlich gelöscht!"
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:288
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:288
 msgid "You must add at least 1 field."
 msgstr "Sie müssen mindestens 1 Feld einfügen."
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:289
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:289
 msgid "You cannot have more than 1 WYSIWYG Editor in a block."
 msgstr "Jeder Blocktyp kann maximal 1 WYSIWYG-Editor enthalten."
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:290
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:290
 msgid "All fields must have an Editor Label."
 msgstr "Jedes Feld braucht einen Feldnamen."
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:291
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:291
 msgid "Image Widths must be valid numbers."
 msgstr "Die Bildbreite muss eine Zahl sein."
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:292
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:292
 msgid "Image Heights must be valid numbers."
 msgstr "Die Bildhöhe muss eine Zahl sein."
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:293
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:293
 msgid "Dropdown Lists must have one or more choices."
 msgstr "Auswahllisten müssen eine oder mehrere Auswahlen enthalten."
 
-#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/pages/designer_content.php:294
+#: /Users/cgrauer/Projekte/Concrete5/c5/packages/designer_content/single_pages/dashboard/blocks/designer_content.php:294
 msgid "Cannot proceed! Please correct the following errors:"
 msgstr "Verarbeitung abgebrochen! Bitte beheben Sie die folgenden Fehler:"
 

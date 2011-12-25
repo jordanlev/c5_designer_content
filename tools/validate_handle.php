@@ -8,7 +8,7 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 if (!empty($_GET['handle'])) {
 	$handle = $_GET['handle'];
 	
-	$c = Loader::controller('/dashboard/pages/designer_content');
+	$c = Loader::controller('/dashboard/blocks/designer_content');
 	if ($c->validate_unique_handle($handle)) {
 		if ($c->validate_unique_tablename_for_handle($handle)) {
 			echo "1";

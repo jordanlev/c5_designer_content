@@ -4,42 +4,32 @@
 		$str = str_replace("<br />\n", "\n", $str);
 		return $str;
 	}
-	
+
 	function translateFromEditMode($text) {
-		// old stuff. Can remove in a later version.
-		$text = str_replace('href="{[CCM:BASE_URL]}', 'href="' . BASE_URL . DIR_REL, $text);
-		$text = str_replace('src="{[CCM:REL_DIR_FILES_UPLOADED]}', 'src="' . BASE_URL . REL_DIR_FILES_UPLOADED, $text);
-
-		// we have the second one below with the backslash due to a screwup in the
-		// 5.1 release. Can remove in a later version.
-
-		$text = preg_replace(
-			array(
-				'/{\[CCM:BASE_URL\]}/i',
-				'/{CCM:BASE_URL}/i'),
-			array(
-				BASE_URL . DIR_REL,
-				BASE_URL . DIR_REL)
-			, $text);
-			
 		// now we add in support for the links
-		
+
 		$text = preg_replace(
 			'/{CCM:CID_([0-9]+)}/i',
 			BASE_URL . DIR_REL . '/' . DISPATCHER_FILENAME . '?cID=\\1',
 			$text);
 
 		// now we add in support for the files
-		
+
 		$text = preg_replace_callback(
 			'/{CCM:FID_([0-9]+)}/i',
 			array('[[[GENERATOR_REPLACE_CLASSNAME]]]', 'replaceFileIDInEditMode'),
 			$text);
-		
+
+
+		$text = preg_replace_callback(
+			'/{CCM:FID_DL_([0-9]+)}/i',
+			array('[[[GENERATOR_REPLACE_CLASSNAME]]]', 'replaceDownloadFileIDInEditMode'),
+			$text);
+
 
 		return $text;
 	}
-	
+
 	function translateFrom($text) {
 		// old stuff. Can remove in a later version.
 		$text = str_replace('href="{[CCM:BASE_URL]}', 'href="' . BASE_URL . DIR_REL, $text);
@@ -56,9 +46,9 @@
 				BASE_URL . DIR_REL,
 				BASE_URL . DIR_REL)
 			, $text);
-			
+
 		// now we add in support for the links
-		
+
 		$text = preg_replace_callback(
 			'/{CCM:CID_([0-9]+)}/i',
 			array('[[[GENERATOR_REPLACE_CLASSNAME]]]', 'replaceCollectionID'),
@@ -69,22 +59,22 @@
 			array('[[[GENERATOR_REPLACE_CLASSNAME]]]', 'replaceImageID'),
 			$text);
 
-		// now we add in support for the files that we view inline			
+		// now we add in support for the files that we view inline
 		$text = preg_replace_callback(
 			'/{CCM:FID_([0-9]+)}/i',
 			array('[[[GENERATOR_REPLACE_CLASSNAME]]]', 'replaceFileID'),
 			$text);
 
 		// now files we download
-		
+
 		$text = preg_replace_callback(
 			'/{CCM:FID_DL_([0-9]+)}/i',
 			array('[[[GENERATOR_REPLACE_CLASSNAME]]]', 'replaceDownloadFileID'),
 			$text);
-		
+
 		return $text;
 	}
-	
+
 	private function replaceFileID($match) {
 		$fID = $match[1];
 		if ($fID > 0) {
@@ -92,7 +82,7 @@
 			return $path;
 		}
 	}
-	
+
 	private function replaceImageID($match) {
 		$fID = $match[1];
 		if ($fID > 0) {
@@ -116,7 +106,19 @@
 		$fID = $match[1];
 		if ($fID > 0) {
 			$c = Page::getCurrentPage();
-			return View::url('/download_file', 'view', $fID, $c->getCollectionID());
+			if (is_object($c)) {
+				return View::url('/download_file', 'view', $fID);
+			} else {
+				return View::url('/download_file', 'view', $fID, $c->getCollectionID());
+			}
+		}
+	}
+
+	private function replaceDownloadFileIDInEditMode($match) {
+		$fID = $match[1];
+		if ($fID > 0) {
+			$c = Page::getCurrentPage();
+			return View::url('/download_file', 'view', $fID);
 		}
 	}
 
@@ -124,7 +126,7 @@
 		$fID = $match[1];
 		return View::url('/download_file', 'view_inline', $fID);
 	}
-	
+
 	private function replaceCollectionID($match) {
 		$cID = $match[1];
 		if ($cID > 0) {
@@ -132,7 +134,7 @@
 			return Loader::helper("navigation")->getLinkToCollection($c);
 		}
 	}
-	
+
 	function translateTo($text) {
 		// keep links valid
 		$url1 = str_replace('/', '\/', BASE_URL . DIR_REL . '/' . DISPATCHER_FILENAME);
@@ -145,9 +147,9 @@
 		$url4 = str_replace('-', '\-', $url4);
 		$text = preg_replace(
 			array(
-				'/' . $url1 . '\?cID=([0-9]+)/i', 
-				'/' . $url3 . '([0-9]+)\//i', 
-				'/' . $url4 . '([0-9]+)\//i', 
+				'/' . $url1 . '\?cID=([0-9]+)/i',
+				'/' . $url3 . '([0-9]+)\//i',
+				'/' . $url4 . '([0-9]+)\//i',
 				'/' . $url2 . '/i'),
 			array(
 				'{CCM:CID_\\1}',

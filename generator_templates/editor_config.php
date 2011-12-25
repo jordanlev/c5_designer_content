@@ -39,7 +39,7 @@ tinyMCE.init({
 		//theme_advanced_styles: "Note=ccm-note",		
 		theme_advanced_toolbar_align : "left",
 		spellchecker_languages : "+English=en"
- 	<?php  }elseif($txtEditorMode=='OFFICE'){ ?> 
+ 	<?php }elseif($txtEditorMode=='OFFICE'){ ?> 
 		editor_selector : "ccm-advanced-editor",		
 		spellchecker_languages : "+English=en",
 		theme : "advanced",
@@ -57,11 +57,11 @@ tinyMCE.init({
 		theme_advanced_statusbar_location : "bottom",
 		//theme_advanced_styles: "Note=ccm-note",		
 		theme_advanced_resizing : true				
-	<?php  }else{ //simple ?>
+	<?php }else{ //simple ?>
 		theme : "concrete", 
 		plugins: "paste,inlinepopups,spellchecker,safari,advlink,advimage,advhr",
 		editor_selector : "ccm-advanced-editor",
 		spellchecker_languages : "+English=en"		
-	<?php  } ?>
+	<?php } ?>
 });
 </script>

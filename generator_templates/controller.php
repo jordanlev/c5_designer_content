@@ -1,11 +1,10 @@
-<?php 
-defined('C5_EXECUTE') or die("Access Denied.");
+<?php defined('C5_EXECUTE') or die("Access Denied.");
 
 class [[[GENERATOR_REPLACE_CLASSNAME]]] extends BlockController {
 	
 	protected $btName = '[[[GENERATOR_REPLACE_NAME]]]';
 	protected $btDescription = '[[[GENERATOR_REPLACE_DESCRIPTION]]]';
-	protected $btTable = '[[[GENERATOR_REPLACE_TABLENAME]]]';
+[[[GENERATOR_REPLACE_TABLEDEF]]]
 	protected $btInterfaceWidth = "700";
 	protected $btInterfaceHeight = "450";
 	
@@ -13,7 +12,7 @@ class [[[GENERATOR_REPLACE_CLASSNAME]]] extends BlockController {
 	protected $btCacheBlockOutput = true;
 	protected $btCacheBlockOutputOnPost = true;
 	protected $btCacheBlockOutputForRegisteredUsers = true;
-	protected $btCacheBlockOutputLifetime = 300;
+	protected $btCacheBlockOutputLifetime = CACHE_LIFETIME;
 	
 [[[GENERATOR_REPLACE_GETSEARCHABLECONTENT]]]
 [[[GENERATOR_REPLACE_VIEW]]]

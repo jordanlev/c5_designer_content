@@ -9,7 +9,7 @@
 	<br />
 	<?php echo t('%s has been installed, and will now be available in the "Add Blocks" list when pages are edited.', "<b>{$generated_name}</b>"); ?><br />
 	<br />
-	<a href="<?php echo View::url('/dashboard/pages/designer_content'); ?>"><?php echo t('Create another block type'); ?> &raquo;</a><br />
+	<a href="<?php echo View::url('/dashboard/blocks/designer_content'); ?>"><?php echo t('Create another block type'); ?> &raquo;</a><br />
 </div>
 
 <?php else: ?>
@@ -38,7 +38,7 @@
 			<tr>
 				<td align="right"><h2><label for="handle"><?php echo t('Block Handle'); ?>:</label></h2></td>
 				<td align="left">
-					<?php echo $form->text('handle', $handle); ?>
+					<?php echo $form->text('handle', $handle, array('maxlength' => '32')); ?>
 					<i><?php echo t('lowercase letters and underscores only'); ?></i>
 				</td>
 			</tr>
@@ -51,7 +51,7 @@
 			</tr>
 			<tr>
 				<td align="right" valign="top">
-					<h2><label for="description"><?php echo t('Block Description'); ?>:</label></h2>
+					<h2 style="margin: 0 0 4px 0;"><label for="description"><?php echo t('Block Description'); ?>:</label></h2>
 					<span id="description-sublabel"><?php echo t('(optional)'); ?></span>
 				</td>
 				<td align="left" valign="top">
@@ -113,7 +113,7 @@
 						<label for="fieldSelectHeaderTexts[${id}]"><?php echo t('Header Text'); ?>:</label>
 						<input type="text" name="fieldSelectHeaderTexts[${id}]" id="fieldSelectHeaderTexts[${id}]" value="<?php echo t('--Choose One--'); ?>" />
 					</div>
-					<table border="0" cellpadding="3" cellspacing="0" style="font-style: italic; border-top: 1px solid #ccc; margin-top: 8px; padding-top: 5px;"><tr><td valign="top">
+					<table border="0" cellpadding="3" cellspacing="0" class="designer-content-field-select-edit-note"><tr><td valign="top">
 						<?php echo t('NOTE'); ?>:
 					</td><td>
 						<?php echo t('After creating this block type, you must edit its "view.php" file to make these choices work!'); ?>
@@ -217,27 +217,25 @@
 				<div id="add-field-types">
 				</div>
 				<script id="add-field-types-template" type="text/x-jQuery-tmpl">
-					[<a href="#" class="add-field-type" data-type="static"><?php echo t('Static HTML'); ?></a>]
+					[<a href="#" class="add-field-type" data-type="static"><?php echo s2nb(t('Static HTML')); ?></a>]
 					&nbsp;&nbsp;
-	    			[<a href="#" class="add-field-type" data-type="textbox"><?php echo t('Text Box'); ?></a>]
+	    			[<a href="#" class="add-field-type" data-type="textbox"><?php echo s2nb(t('Text Box')); ?></a>]
 					&nbsp;&nbsp;
-					[<a href="#" class="add-field-type" data-type="textarea"><?php echo t('Text Area'); ?></a>]
+					[<a href="#" class="add-field-type" data-type="textarea"><?php echo s2nb(t('Text Area')); ?></a>]
 					&nbsp;&nbsp;
-					[<a href="#" class="add-field-type" data-type="image"><?php echo t('Image'); ?></a>]
+					[<a href="#" class="add-field-type" data-type="image"><?php echo s2nb(t('Image')); ?></a>]
 					&nbsp;&nbsp;
-					[<a href="#" class="add-field-type" data-type="file"><?php echo t('File Download'); ?></a>]
+					[<a href="#" class="add-field-type" data-type="file"><?php echo s2nb(t('File Download')); ?></a>]
 					&nbsp;&nbsp;
-					[<a href="#" class="add-field-type" data-type="link"><?php echo t('Page Link'); ?></a>]
+					[<a href="#" class="add-field-type" data-type="link"><?php echo s2nb(t('Page Link')); ?></a>]
 					&nbsp;&nbsp;
-					[<a href="#" class="add-field-type" data-type="url"><?php echo t('External URL'); ?></a>]
+					[<a href="#" class="add-field-type" data-type="url"><?php echo s2nb(t('External URL')); ?></a>]
 					&nbsp;&nbsp;
-					[<a href="#" class="add-field-type" data-type="date"><?php echo t('Date Picker'); ?></a>]
+					[<a href="#" class="add-field-type" data-type="date"><?php echo s2nb(t('Date Picker')); ?></a>]
 					&nbsp;&nbsp;
-					[<a href="#" class="add-field-type" data-type="select"><?php echo t('Dropdown List'); ?></a>]
-					{{if wysiwyg}}
+					[<a href="#" class="add-field-type" data-type="select"><?php echo s2nb(t('Dropdown List')); ?></a>]
 					&nbsp;&nbsp;
-					[<a href="#" class="add-field-type" data-type="wysiwyg"><?php echo t('WYSIWYG Editor'); ?></a>]
-					{{/if}}
+					[<a href="#" class="add-field-type" data-type="wysiwyg"><?php echo s2nb(t('WYSIWYG Editor')); ?></a>]
 				</script>
 			</td></tr></table>
 		</div>
@@ -284,11 +282,11 @@
 	var ERROR_MESSAGES = {
 		'name_required': '<?php echo t("Block Name is required."); ?>',
 		'handle_required': '<?php echo t("Block Handle is required."); ?>',
+		'handle_length': '<?php echo t("Block Handle cannot exceed 32 characters in length."); ?>',
 		'handle_lowercase': '<?php echo t("Block Handle can only contain lowercase letters and underscores."); ?>',
 		'handle_exists': '<?php echo t("Block Handle is already in use by another package or block type (or block files already exist in the \"blocks\" directory of your site)."); ?>',
 		'table_exists': '<?php echo t("WARNING: A table with this Block Handle already exists in your database. If you make this block, the existing table will be overwritten and any content stored in it will be permanently deleted!"); ?>',
 		'fields_required': '<?php echo t("You must add at least 1 field."); ?>',
-		'one_wysiwyg': '<?php echo t("You cannot have more than 1 WYSIWYG Editor in a block."); ?>',
 		'labels_required': '<?php echo t("All fields must have an Editor Label."); ?>',
 		'widths_numeric': '<?php echo t("Image Widths must be valid numbers."); ?>',
 		'heights_numeric': '<?php echo t("Image Heights must be valid numbers."); ?>',
@@ -300,3 +298,7 @@
 </div>
 
 <?php endif; ?>
+
+<?php function s2nb($text) {
+	return str_replace(' ', '&nbsp;', $text);
+} ?>
