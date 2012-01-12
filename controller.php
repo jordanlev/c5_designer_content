@@ -4,7 +4,7 @@ class DesignerContentPackage extends Package {
 	
 	protected $pkgHandle = 'designer_content';
 	protected $appVersionRequired = '5.5';
-	protected $pkgVersion = '3.0';
+	protected $pkgVersion = '3.0.1';
 	
 	public function getPackageName() {
 		return t("Designer Content"); 
@@ -16,8 +16,27 @@ class DesignerContentPackage extends Package {
 	
 	public function install() {
 		$pkg = parent::install();
-		
+		$this->_upgrade($pkg);
+	}
+	
+	public function upgrade() {
+		$pkg = Package::getByHandle('designer_content');
+		$this->upgrade($pkg);
+		parent::upgrade();
+	}
+	
+	private function _upgrade(&$pkg) {
 		Loader::model('single_page');
-		SinglePage::add('/dashboard/blocks/designer_content', $pkg);
+		
+		$oldDashboardPage = Page::getByPath('/dashboard/pages/designer_content');
+		if ($oldDashboardPage && is_object($oldDashboardPage) && $oldDashboardPage->getCollectionID()) {
+			SinglePage::delete($oldDashboardPage);
+		}
+		
+		$newDashboardPage = Page::getByPath('/dashboard/blocks/designer_content');
+		if (!$newDashboardPage || !is_object($newDashboardPage) || !$oldDashboardPage->getCollectionID()) {
+			SinglePage::add('/dashboard/blocks/designer_content', $pkg);
+		}
+		
 	}
 }

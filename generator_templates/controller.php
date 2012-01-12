@@ -11,7 +11,7 @@ class [[[GENERATOR_REPLACE_CLASSNAME]]] extends BlockController {
 	protected $btCacheBlockRecord = true;
 	protected $btCacheBlockOutput = true;
 	protected $btCacheBlockOutputOnPost = true;
-	protected $btCacheBlockOutputForRegisteredUsers = true;
+	protected $btCacheBlockOutputForRegisteredUsers = false;
 	protected $btCacheBlockOutputLifetime = CACHE_LIFETIME;
 	
 [[[GENERATOR_REPLACE_GETSEARCHABLECONTENT]]]
