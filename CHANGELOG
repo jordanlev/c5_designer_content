@@ -1,3 +1,4 @@
+3.0.2 - January, 2010 - Added legacy image cropping helper so blocktypes generated with older versions of Designer Content still work.
 3.0.1 - January, 2012 - Fixed problem when upgrading from older version; reverted old only-one-wysiwyg-editor-per-block functionality due to bugs.
 3.0 - December, 2011 - Concrete5.5.0 compatibility; installs to /dashboard/blocks/ instead of dashboard/pages/; added dashboard validation for block handle length; now allowing more than 1 WYSIWYG field per block (some unknown recent change to core code makes this possible).
 2.1.3 - December, 2011 - Set generated file permissions if DESIGNER_CONTENT_FILE_CHMOD is set; Added tao's Japanese translation, and we now assign system language setting to tinymce editor_config; Fixed bug with empty images; Removed all whitespace between link tags and their contents in generated view.php; Cleaned up some markup in generated view.php.
