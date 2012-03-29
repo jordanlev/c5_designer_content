@@ -158,12 +158,6 @@ class DesignerContentBlockGenerator {
 			$this->generate_db_xml();
 			$this->generate_edit_php();
 		}
-		
-		if ($this->has_wysiwyg()) {
-			$this->generate_editor_config_php();
-			$this->generate_editor_controls_php();
-			$this->generate_editor_init_php();
-		}
 	}
 		
 	
@@ -501,6 +495,7 @@ class DesignerContentBlockGenerator {
 		$include_asset_library = false;
 		$include_page_selector = false;
 		$include_date_time = false;
+		$include_editor_config = false;
 		$code = '';
 		foreach ($this->fields as $field) {
 			if ($field['type'] == 'textbox') {
@@ -630,11 +625,12 @@ class DesignerContentBlockGenerator {
 			}
 			
 			if ($field['type'] == 'wysiwyg') {
-				$code .= "<div class=\"ccm-block-field-group\" id=\"ccm-editor-pane\">\n";
+				$code .= "<div class=\"ccm-block-field-group\">\n";
 				$code .= "\t<h2>{$field['label']}</h2>\n";
-				$code .= "\t<?php \$this->inc('editor_init.php'); ?>\n";
-				$code .= "\t<textarea id=\"field_{$field['num']}_wysiwyg_content\" name=\"field_{$field['num']}_wysiwyg_content\" class=\"advancedEditor ccm-advanced-editor\"><?php echo \$field_{$field['num']}_wysiwyg_content; ?></textarea>\n";
+				$code .= "\t<?php Loader::element('editor_controls'); ?>\n";
+				$code .= "\t<textarea id=\"field_{$field['num']}_wysiwyg_content\" name=\"field_{$field['num']}_wysiwyg_content\" class=\"ccm-advanced-editor\"><?php echo \$field_{$field['num']}_wysiwyg_content; ?></textarea>\n";
 				$code .= "</div>\n\n";
+				$include_editor_config = true;
 			}
 		}
 		
@@ -644,47 +640,16 @@ class DesignerContentBlockGenerator {
 		//Replace helpers (if needed)
 		$code = '';
 		$code .= $include_asset_library ? "\$al = Loader::helper('concrete/asset_library');\n" : '';
-		$code .= $include_page_selector ? "\$ps = Loader::helper('form/page_selector', 'designer_content');\n" : '';
+		$code .= $include_page_selector ? "\$ps = Loader::helper('form/page_selector');\n" : '';
 		$code .= $include_date_time ? "\$dt = Loader::helper('form/date_time');\n" : '';
+		$code .= $include_editor_config ? "Loader::element('editor_config');\n" : '';
 		$token = '[[[GENERATOR_REPLACE_HELPERLOADERS]]]';
 		$template = str_replace($token, $code, $template);
 	
 		//Output file
 		$this->output_file($this->outpath.$filename, $template);
 	}
-		
-	private function generate_editor_config_php() {
-		//No replacements
-		$filename = 'editor_config.php';
-		$this->copy_file($this->tplpath.$filename, $this->outpath.$filename);
-	}
 	
-	private function generate_editor_controls_php() {
-		//No replacements
-		$filename = 'editor_controls.php';
-		$this->copy_file($this->tplpath.$filename, $this->outpath.$filename);
-	}
-	
-	private function generate_editor_init_php() {
-		$filename = 'editor_init.php';
-		
-		//Load template
-		$template = file_get_contents($this->tplpath.$filename);
-		
-		//Replace dom id of the textarea
-		$code = '';
-		foreach ($this->fields as $field) {
-			if ($field['type'] == 'wysiwyg') {
-				$code .= "field_{$field['num']}_wysiwyg_content";
-			}
-		}
-		$token = '[[[GENERATOR_REPLACE_EDITORID]]]';
-		$template = str_replace($token, $code, $template);
-		
-		//Output file
-		$this->output_file($this->outpath.$filename, $template);
-	}
-
 	private function generate_icon_png() {
 		//No replacements
 		$filename = 'icon.png';
@@ -874,15 +839,6 @@ class DesignerContentBlockGenerator {
 		$s = str_replace("\\", "\\\\", $s);
 		$s = str_replace("'", "\\'", $s);
 		return $s;
-	}
-
-	private function has_wysiwyg() {
-		foreach ($this->fields as $field) {
-			if ($field['type'] == 'wysiwyg') {
-				return true;
-			}
-		}
-		return false;
 	}
 	
 	private function has_editable_fields() {

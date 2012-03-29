@@ -235,9 +235,7 @@
 					&nbsp;&nbsp;
 					[<a href="#" class="add-field-type" data-type="select"><?php echo s2nb(t('Dropdown List')); ?></a>]
 					&nbsp;&nbsp;
-					{{if wysiwyg}}<?php /* TODO: Remove the {{if}} and {{/if}} (but keep the line in between) */ ?> 
 					[<a href="#" class="add-field-type" data-type="wysiwyg"><?php echo s2nb(t('WYSIWYG Editor')); ?></a>]
-					{{/if}}
 				</script>
 			</td></tr></table>
 		</div>
@@ -289,7 +287,6 @@
 		'handle_exists': '<?php echo t("Block Handle is already in use by another package or block type (or block files already exist in the \"blocks\" directory of your site)."); ?>',
 		'table_exists': '<?php echo t("WARNING: A table with this Block Handle already exists in your database. If you make this block, the existing table will be overwritten and any content stored in it will be permanently deleted!"); ?>',
 		'fields_required': '<?php echo t("You must add at least 1 field."); ?>',
-		'one_wysiwyg': '<?php echo t("You cannot have more than 1 WYSIWYG Editor in a block."); ?>', //TODO: Remove this line
 		'labels_required': '<?php echo t("All fields must have an Editor Label."); ?>',
 		'widths_numeric': '<?php echo t("Image Widths must be valid numbers."); ?>',
 		'heights_numeric': '<?php echo t("Image Heights must be valid numbers."); ?>',

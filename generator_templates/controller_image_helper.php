@@ -5,11 +5,10 @@
 		} else if (empty($width) && empty($height)) {
 			//Show image at full size (do not generate a thumbnail)
 			$file = File::getByID($fID);
-			$size = @getimagesize($file->getPath());
 			$image = new stdClass;
 			$image->src = $file->getRelativePath();
-			$image->width = $size[0];
-			$image->height = $size[1];
+			$image->width = $file->getAttribute('width');
+			$image->height = $file->getAttribute('height');
 		} else {
 			//Generate a thumbnail
 			$width = empty($width) ? 9999 : $width;

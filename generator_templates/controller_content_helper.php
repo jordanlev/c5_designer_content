@@ -1,10 +1,4 @@
 //WYSIWYG HELPER FUNCTIONS (COPIED FROM "CONTENT" BLOCK):
-	function br2nl($str) {
-		$str = str_replace("\r\n", "\n", $str);
-		$str = str_replace("<br />\n", "\n", $str);
-		return $str;
-	}
-
 	function translateFromEditMode($text) {
 		// now we add in support for the links
 
@@ -107,9 +101,9 @@
 		if ($fID > 0) {
 			$c = Page::getCurrentPage();
 			if (is_object($c)) {
-				return View::url('/download_file', 'view', $fID);
-			} else {
 				return View::url('/download_file', 'view', $fID, $c->getCollectionID());
+			} else {
+				return View::url('/download_file', 'view', $fID);
 			}
 		}
 	}
@@ -117,7 +111,6 @@
 	private function replaceDownloadFileIDInEditMode($match) {
 		$fID = $match[1];
 		if ($fID > 0) {
-			$c = Page::getCurrentPage();
 			return View::url('/download_file', 'view', $fID);
 		}
 	}

@@ -53,20 +53,6 @@ function update_addfield_links() {
 	$("#add-field-types").html($("#add-field-types-template").tmpl());
 }
 
-
-function update_addfield_links() {
-	var wysiwyg = (wysiwyg_count() == 0);
-	$("#add-field-types").html($("#add-field-types-template").tmpl({ 'wysiwyg': wysiwyg }));
-	//TODO: Delete the above 2 lines, add this:
-	//$("#add-field-types").html($("#add-field-types-template").tmpl());
-}
-
-//TODO: Delete this function
-function wysiwyg_count() {
-	return $('#designer-content-fields').find('div[data-type=wysiwyg]').length;
-}
-
-
 function add_new_field() {
 	var type = $(this).attr('data-type');
 	if (type.length > 0) {
@@ -178,7 +164,6 @@ function validate_form() {
 	//Handle must not already exist in the system (anywhere -- package, block, etc.)
 	//Handle can only contain lowercase letters and underscores (note that for some reason, having numbers in the handle can totally mess things up -- any page that the block is on won't load (some error with the autoloader?).
 	//must have at least 1 field
-	//no more than 1 wysiwg field [TODO: DELETE THIS COMMENT]
 	//check that a label is provided for each field (except 'static html' fields)
 	//check that width+height are valid integers if entered
 	
@@ -187,7 +172,6 @@ function validate_form() {
 	var name = $('#name').val();
 	var handle = $('#handle').val();
 	var fieldCount = $('.designer-content-field').length;
-	var wysiwygCount = wysiwyg_count(); //TODO: DELETE THIS LINE
 	var fieldLabels = $.map($('.designer-content-field-editorlabel'), function(element, index) { return $(element).val(); });
 	var fieldImageWidths = $.map($('.designer-content-field-image-width'), function(element, index) { return $(element).val(); });
 	var fieldImageHeights = $.map($('.designer-content-field-image-height'), function(element, index) { return $(element).val(); });
@@ -209,11 +193,6 @@ function validate_form() {
 	
 	if (fieldCount < 1) {
 		errors.push(ERROR_MESSAGES['fields_required']);
-	}
-	
-	//TODO: Delete this "if" block
-	if (wysiwyg_count > 1) {
-		errors.push(ERROR_MESSAGES['one_wysiwyg']);
 	}
 	
 	var missing_labels = false;
