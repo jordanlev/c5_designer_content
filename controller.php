@@ -11,7 +11,7 @@ class DesignerContentPackage extends Package {
 	}	
 	
 	public function getPackageDescription() {
-		return t('Quickly create custom content blocks via an easy dashboard interface.');
+		return t('Create custom content blocks via the dashboard.');
 	}
 	
 	public function install() {
