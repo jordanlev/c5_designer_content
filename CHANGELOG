@@ -1,3 +1,4 @@
+3.1.1 - October, 2012 - Fixed installation/upgrade issues that caused dashboard page to be missing; added dashboard icon for 5.6; fixed dashboard page heading style in 5.6.
 3.1 - March, 2012 - Allows multiple WYSIWYG editors per block (requires Concrete version 5.5.2); code and files for blocks containing WYSIWYG fields are now much cleaner (because we can finally rely on the core system's helpers); added small optimization to controller_image_helper method so that it uses C5's existing image width/height attributes instead of calling getimagesize(); added Spanish translation.
 3.0.2 - January, 2012 - Added legacy image cropping helper so blocktypes generated with older versions of Designer Content still work.
 3.0.1 - January, 2012 - Fixed problem when upgrading from older version; reverted old only-one-wysiwyg-editor-per-block functionality due to bugs.

@@ -4,7 +4,7 @@ class DesignerContentPackage extends Package {
 	
 	protected $pkgHandle = 'designer_content';
 	protected $appVersionRequired = '5.5.2';
-	protected $pkgVersion = '3.1';
+	protected $pkgVersion = '3.1.1';
 	
 	public function getPackageName() {
 		return t("Designer Content"); 
@@ -21,7 +21,7 @@ class DesignerContentPackage extends Package {
 	
 	public function upgrade() {
 		$pkg = Package::getByHandle('designer_content');
-		$this->upgrade($pkg);
+		$this->_upgrade($pkg);
 		parent::upgrade();
 	}
 	
@@ -30,13 +30,23 @@ class DesignerContentPackage extends Package {
 		
 		$oldDashboardPage = Page::getByPath('/dashboard/pages/designer_content');
 		if ($oldDashboardPage && is_object($oldDashboardPage) && $oldDashboardPage->getCollectionID()) {
-			SinglePage::delete($oldDashboardPage);
+			$oldDashboardPage->delete();
 		}
 		
 		$newDashboardPage = Page::getByPath('/dashboard/blocks/designer_content');
-		if (!$newDashboardPage || !is_object($newDashboardPage) || !$oldDashboardPage->getCollectionID()) {
-			SinglePage::add('/dashboard/blocks/designer_content', $pkg);
+		if (!$newDashboardPage || !is_object($newDashboardPage) || !$newDashboardPage->getCollectionID()) {
+			$newDashboardPage = SinglePage::add('/dashboard/blocks/designer_content', $pkg);
 		}
 		
+		$this->_setupDashboardIcon($newDashboardPage, 'icon-gift');
+		
 	}
+	
+	private function _setupDashboardIcon($page, $icon) {
+		$cak = CollectionAttributeKey::getByHandle('icon_dashboard');
+		if (is_object($cak)) {
+			$page->setAttribute('icon_dashboard', $icon);
+		}
+	}
+	
 }
