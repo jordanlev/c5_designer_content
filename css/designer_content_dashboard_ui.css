@@ -53,6 +53,10 @@ input#name {
 	color: red;
 }
 
+.designer-content-field-duplicate-confirm {
+	color: yellow;
+}
+
 .designer-content-field-options {
 	float: left;
 	width: 33%;
