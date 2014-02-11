@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Designer Content 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-12-26 10:03-0800\n"
-"PO-Revision-Date: 2014-02-12 06:56+0900\n"
+"PO-Revision-Date: 2014-02-12 07:34+0900\n"
 "Last-Translator: Tao Sasaki <tao@xross-cube.com>\n"
 "Language-Team: Tao Sasaki <tao@xross-cube.com>\n"
 "Language: ja_JP\n"
@@ -65,7 +65,6 @@ msgid "Customize Toolbar"
 msgstr "ツールバーをカスタマイズ"
 
 #: generator_templates/editor_controls.php:27
-#, fuzzy
 msgid "Choose A Page"
 msgstr "ページを選択"
 
@@ -510,6 +509,14 @@ msgstr "セレクトボックスは少なくとも1つ以上の選択肢を設�
 #: single_pages/dashboard/blocks/designer_content.php:294
 msgid "Cannot proceed! Please correct the following errors:"
 msgstr "生成出来ませんでした。以下のエラーを確認してください："
+
+#: single_pages/dashboard/blocks/designer_content.php:76
+msgid "Block Permission"
+msgstr "ブロック権限"
+
+#: single_pages/dashboard/blocks/designer_content.php:81
+msgid "Create writable block"
+msgstr "作製後に書き込み可能なブロックを作製します。"
 
 #~ msgid "You cannot have more than 1 WYSIWYG Editor in a block."
 #~ msgstr "WYSIWYGエディタは1つだけ設定出来ます。"

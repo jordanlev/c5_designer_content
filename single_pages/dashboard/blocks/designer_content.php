@@ -71,6 +71,16 @@ function s2nb($text) {
 						<span id="description-note"><?php echo t('for dashboard "Add Functionality" list'); ?></span>
 					</td>
 				</tr>
+				<tr>
+					<td align="right" valign="top">
+						<h2 style="margin: 0 0 4px 0;"><?php echo t('Block Permission'); ?>:</h2>
+						<span id="description-sublabel"><?php echo t('(optional)'); ?></span>
+					</td>
+					<td align="left" valign="top">
+						<?php echo $form->checkbox('permission', "0666",false); ?>
+						<label for="permission"><span id="description-note"><?php echo t('Create writable block'); ?></span></label>
+					</td>
+				</tr>
 			</table>
 
 			<hr />
