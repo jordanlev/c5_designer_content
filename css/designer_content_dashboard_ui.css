@@ -49,6 +49,7 @@ input#name {
 	float: right;
 }
 
+.designer-content-field-duplicate-confirm,
 .designer-content-field-delete-confirm {
 	color: red;
 }

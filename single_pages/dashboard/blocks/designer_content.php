@@ -86,6 +86,7 @@ function s2nb($text) {
 							<b>${label}</b>
 							&nbsp;
 							[<a href="#" class="designer-content-field-delete" data-id="${id}"><?php echo t('delete'); ?></a><span class="designer-content-field-delete-confirm" data-id="${id}" style="display: none;">Are you sure? <a href="#" class="designer-content-field-delete-yes" data-id="${id}"><?php echo t('Yes'); ?></a> / <a href="#" class="designer-content-field-delete-no" data-id="${id}"><?php echo t('No'); ?></a></span>]
+							[<a href="#" class="designer-content-field-duplicate" data-id="${id}" data-type="${type}"><?php echo t('duplicate'); ?></a><span class="designer-content-field-duplicate-confirm" data-id="${id}" data-type="${type}" style="display: none;">Duplicate this input? <a href="#" class="designer-content-field-duplicate-yes" data-id="${id}" data-type="${type}"><?php echo t('Yes'); ?></a> / <a href="#" class="designer-content-field-duplicate-no" data-id="${id}" data-type="${type}"><?php echo t('No'); ?></a></span>]
 						</div>
 						<div class="designer-content-field-move" data-id="${id}">
 							<span class="designer-content-field-move-up" data-id="${id}">

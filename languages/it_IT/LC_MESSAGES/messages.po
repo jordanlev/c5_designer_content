@@ -1,0 +1,480 @@
+msgid   ""
+msgstr  "Project-Id-Version: designer_content 3.1.1\n"
+        "Report-Msgid-Bugs-To: \n"
+        "POT-Creation-Date: 2012-11-23 16:24+0000\n"
+        "PO-Revision-Date: 2012-11-23 16:24+0000\n"
+        "Last-Translator: Michele Locati <michele@locati.it>\n"
+        "Language-Team: \n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=UTF-8\n"
+        "Content-Transfer-Encoding: 8bit\n"
+        "Language: it_IT\n"
+        "Plural-Forms: nplurals=2; plural=(n != 1)\n"
+        "X-Poedit-Basepath: ../../../../..\n"
+        "X-Poedit-SourceCharset: UTF-8\n"
+        "X-Language: it_IT\n"
+        "X-Poedit-Language: Italian\n"
+        "X-Poedit-Country: Italy\n"
+
+#: packages/designer_content/controller.php:10
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:16
+msgid   "Designer Content"
+msgstr "Designer di contenuto"
+
+#: packages/designer_content/controller.php:14
+msgid   "Create custom content blocks via the dashboard."
+msgstr "Crea blocchi di contenuto personalizzati dal pannello di controllo."
+
+#: packages/designer_content/controllers/dashboard/blocks/designer_content.php:43
+msgid   "Error: Blocks directory is not writeable!"
+msgstr "Errore: non è possibile scrivere nella cartella dei blocchi!"
+
+#: packages/designer_content/controllers/dashboard/blocks/designer_content.php:45
+msgid   "Error: Block handle or name is missing!"
+msgstr "Errore: manca il nome o l’handle del blocco!"
+
+#: packages/designer_content/controllers/dashboard/blocks/designer_content.php:47
+msgid   "Error: Block Handle is already in use by another package or block type (or block files already exist in the \"blocks\" directory of your site)!"
+msgstr ""
+"Errore: l’handle di blocco è già in uso da un altro pacchetto o tipo di "
+"blocco (oppure i i file del blocco sono già presenti nella cartella “block” "
+"del sito)!"
+
+#: packages/designer_content/helpers/form/page_selector.php:49
+msgid   "Choose Page"
+msgstr "Seleziona pagina"
+
+#: packages/designer_content/helpers/form/page_selector.php:49
+#: packages/designer_content/helpers/form/page_selector.php:70
+msgid   "Select New Page"
+msgstr "Seleziona nuova pagina"
+
+#: packages/designer_content/helpers/form/page_selector.php:49
+#: packages/designer_content/helpers/form/page_selector.php:70
+msgid   "Select Page"
+msgstr "Seleziona nuova pagina"
+
+#: packages/designer_content/helpers/form/page_selector.php:50
+msgid   "Clear Selection"
+msgstr "Annulla selezione"
+
+#: packages/designer_content/libraries/block_generator.php:187
+#: packages/designer_content/libraries/block_generator.php:194
+msgid   "Missing required text"
+msgstr "Manca testo richiesto"
+
+#: packages/designer_content/libraries/block_generator.php:202
+msgid   "Missing required image"
+msgstr "Manca immagine richiesta"
+
+#: packages/designer_content/libraries/block_generator.php:210
+msgid   "Missing required file"
+msgstr "Manca file richiesto"
+
+#: packages/designer_content/libraries/block_generator.php:218
+msgid   "Missing required link"
+msgstr "Manca link richiesto"
+
+#: packages/designer_content/libraries/block_generator.php:226
+msgid   "Missing required URL"
+msgstr "Manca URL richiesto"
+
+#: packages/designer_content/libraries/block_generator.php:234
+msgid   "Missing required date"
+msgstr "Manca data richiesta"
+
+#: packages/designer_content/libraries/block_generator.php:242
+msgid   "Missing required selection"
+msgstr "Manca selezione richiesta"
+
+#: packages/designer_content/libraries/block_generator.php:518
+msgid   "Choose Image"
+msgstr "Seleziona immagine"
+
+#: packages/designer_content/libraries/block_generator.php:525
+msgid   "Link to Page"
+msgstr "Collegamento a pagina"
+
+#: packages/designer_content/libraries/block_generator.php:533
+#: packages/designer_content/libraries/block_generator.php:587
+msgid   "Link to URL"
+msgstr "Collegamento a URL"
+
+#: packages/designer_content/libraries/block_generator.php:540
+msgid   "Alt Text"
+msgstr "Testo alternativo"
+
+#: packages/designer_content/libraries/block_generator.php:554
+msgid   "Choose File"
+msgstr "Seleziona file"
+
+#: packages/designer_content/libraries/block_generator.php:559
+msgid   "Link Text (or leave blank to use file name)"
+msgstr "Testo collegamento (lasciare vuoto per usare il nome del file)"
+
+#: packages/designer_content/libraries/block_generator.php:574
+#: packages/designer_content/libraries/block_generator.php:592
+msgid   "Link Text"
+msgstr "Testo collegamento"
+
+#: packages/designer_content/libraries/block_generator.php:771
+#, php-format
+msgid   "ENTER MARKUP HERE FOR FIELD \"%s\" : CHOICE \"%s\""
+msgstr "Inserire il markup qui per il campo “%s”: scegli “%s”"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:22
+msgid   "Success!"
+msgstr "Successo!"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:24
+#, php-format
+msgid   "%s has been installed, and will now be available in the \"Add Blocks\" list when pages are edited."
+msgstr ""
+"%s è stato installato ed è disponibile nell’elenco “Aggiungi blocco” presente "
+"nelle pagine in fase di modifica."
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:26
+msgid   "Create another block type"
+msgstr "Crea un altro tipo di blocco"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:32
+msgid   "Create a new block type by entering some basic info and adding one or more fields."
+msgstr ""
+"Crea un nuovo tipo di blocco mediante l’inserimento di informazioni di base e "
+"l’aggiunta di uno o più campi."
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:33
+msgid   "Documentation"
+msgstr "Documentazione"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:34
+msgid   "Help Forum"
+msgstr "Forum di assistenza"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:40
+msgid   "Warning: The blocks directory is not writeable. Blocks cannot be created from this page until permissions are changed on your server."
+msgstr ""
+"Attenzione: non è possibile scrivere nella cartella dei blocchi. Non è "
+"possibile creare blocchi da questa pagina finché non verranno impostate le "
+"autorizzazioni sul server web."
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:51
+msgid   "Block Handle"
+msgstr "Handle del blocco"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:54
+msgid   "lowercase letters and underscores only"
+msgstr "Solo lettere miniscole e carattere di sottolineatura"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:58
+msgid   "Block Name"
+msgstr "Nome del blocco"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:61
+msgid   "human-readable name (appears in the \"Add Block\" list)"
+msgstr "nome leggibile (viene visualizzato nell’elenco “Aggiungi blocco”)"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:66
+msgid   "Block Description"
+msgstr "Descrizione del blocco"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:67
+msgid   "(optional)"
+msgstr "(facoltativo)"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:71
+msgid   "for dashboard \"Add Functionality\" list"
+msgstr "per l’elenco del pannello di controllo “Aggiungi funzionalità”"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:88
+msgid   "delete"
+msgstr "elimina"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:88
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:160
+msgid   "Yes"
+msgstr "Sì"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:88
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:159
+msgid   "No"
+msgstr "No"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:92
+msgid   "Move Up"
+msgstr "Sposta su"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:98
+msgid   "Move Down"
+msgstr "Sposta giù"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:106
+msgid   "Anything entered here will be directly outputted to the block view &mdash; users will not be able to edit it."
+msgstr ""
+"Ciò che viene inserito quì verrà reso direttamente nella pagina &mdash; gli "
+"utenti non saranno in grado di modificarlo."
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:110
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:136
+msgid   "Editor Label"
+msgstr "Etichetta editor"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:114
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:145
+msgid   "Required?"
+msgstr "Richiesto?"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:117
+msgid   "Dropdown Choices (one per line)"
+msgstr "Voci selezionabili (una per linea)"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:123
+msgid   "Show List Header?"
+msgstr "Mostra intestazione elenco?"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:125
+msgid   "Header Text"
+msgstr "Testo intestazione"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:126
+msgid   "--Choose One--"
+msgstr "--selezionare--"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:129
+msgid   "NOTE"
+msgstr "NOTA"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:131
+msgid   "After creating this block type, you must edit its \"view.php\" file to make these choices work!"
+msgstr ""
+"Dopo la creazione di questo tipo di blocco è necessario modificare il file "
+"“view.php” per far funzionare queste scelte!"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:140
+msgid   "Default HTML Content"
+msgstr "Contenuto HTML predefinito"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:151
+msgid   "Maximum Number Of Characters"
+msgstr "Numero massimo di caratteri"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:156
+msgid   "Show Alt Text Field:"
+msgstr "Mostra campo testo alternativo:"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:163
+msgid   "Show Link Field"
+msgstr "Mostra campo collegamento"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:167
+msgid   "None"
+msgstr "Nessuno"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:168
+msgid   "Sitemap Page"
+msgstr "Pagina mappa sito"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:169
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:244
+msgid   "External URL"
+msgstr "URL esterno"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:175
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:203
+msgid   "Links Open In New Window"
+msgstr "Apri collegamenti in nuova finestra"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:179
+msgid   "Image Sizing"
+msgstr "Dimensionamento immagine"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:183
+msgid   "Keep Original Size"
+msgstr "Mantieni dimensione originale"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:184
+msgid   "Resize Proportionally"
+msgstr "Mantieni proporzioni"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:185
+msgid   "Resize+Crop To Fit"
+msgstr "Ridimensiona e ritaglia per adattarsi"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:190
+msgid   "Max Width"
+msgstr "Larghezza max"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:191
+msgid   "Target Width"
+msgstr "Larghezza finale"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:194
+msgid   "Max Height"
+msgstr "Altezza max"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:195
+msgid   "Target Height"
+msgstr "Altezza finale"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:206
+msgid   "PHP Date Format"
+msgstr "Formato data PHP"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:208
+msgid   "http://php.net/date#refsect1-function.date-parameters"
+msgstr "http://it1.php.net/manual/it/function.date.php"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:208
+msgid   "Reference"
+msgstr "Riferimenti"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:213
+msgid   "Wrapper HTML Open"
+msgstr "Apertura HTML"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:217
+msgid   "Wrapper HTML Close"
+msgstr "Chiusura HTML"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:227
+msgid   "Add Field"
+msgstr "Aggiungi campo"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:232
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:283
+msgid   "Static HTML"
+msgstr "HTML statico"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:234
+msgid   "Text Box"
+msgstr "Campo di testo"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:236
+msgid   "Text Area"
+msgstr "Area di testo"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:238
+msgid   "Image"
+msgstr "Immagine"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:240
+msgid   "File Download"
+msgstr "Scarica file"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:242
+msgid   "Page Link"
+msgstr "Collegamento a pagina"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:246
+msgid   "Date Picker"
+msgstr "Seleziona data"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:248
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:291
+msgid   "Dropdown List"
+msgstr "Elenco a discesa"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:250
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:292
+msgid   "WYSIWYG Editor"
+msgstr "Editor visuale"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:260
+msgid   "Make The Block!"
+msgstr "Crea il blocco!"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:263
+msgid   "Processing..."
+msgstr "Elaborazione in corso…"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:269
+msgid   "code + ui"
+msgstr "codice + iu"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:271
+msgid   "icon design"
+msgstr "design icona"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:284
+msgid   "Textbox Field"
+msgstr "Campo di testo"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:285
+msgid   "Text Area Field"
+msgstr "Campo area di testo"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:286
+msgid   "Image Field"
+msgstr "Campo immagine"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:287
+msgid   "File Download Field"
+msgstr "Campo download file"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:288
+msgid   "Page Link Field"
+msgstr "Campo collegamento a pagina"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:289
+msgid   "External URL Field"
+msgstr "Campo URL esterno"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:290
+msgid   "Date Picker Field"
+msgstr "Campo selezione data"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:295
+msgid   "Block Name is required."
+msgstr "È necessario indicare il nome del blocck."
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:296
+msgid   "Block Handle is required."
+msgstr "È necessario l’handle del blocco."
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:297
+msgid   "Block Handle cannot exceed 32 characters in length."
+msgstr "La lunghezza massima dell’handle di un blocco è di 32 caratteri."
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:298
+msgid   "Block Handle can only contain lowercase letters and underscores."
+msgstr ""
+"L’handle di un blocco può contenere solo lettere minuscole e il carattere di "
+"sottolineatura."
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:299
+msgid   "Block Handle is already in use by another package or block type (or block files already exist in the \"blocks\" directory of your site)."
+msgstr ""
+"L’handle di blocco è già usato da un altro pacchetto o da un altro tipo di "
+"blocco(o i file del blocco sono già presenti nella cartella “blocks” del sito "
+"web)."
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:300
+msgid   "WARNING: A table with this Block Handle already exists in your database. If you make this block, the existing table will be overwritten and any content stored in it will be permanently deleted!"
+msgstr ""
+"ATTENZIONE: nel database esiste già una tabella per questo handle di blocco. "
+"Se si crea questo blocco tale tabella esistente verrà sovrascritta e "
+"qualsiasi contenuto archiviato in essa verrà eliminato definitivamente!"
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:301
+msgid   "You must add at least 1 field."
+msgstr "È necessario aggiungere almeno 1 campo."
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:302
+msgid   "All fields must have an Editor Label."
+msgstr "Tutti i campi devono avere un’etichetta per l’editor."
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:303
+msgid   "Image Widths must be valid numbers."
+msgstr "Le larghezze dell’immagine devono essere numeri validi."
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:304
+msgid   "Image Heights must be valid numbers."
+msgstr "Le altezze dell’immagine devono essere numeri validi."
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:305
+msgid   "Dropdown Lists must have one or more choices."
+msgstr "Gli elenchi a discesa devono avere una o più scelte."
+
+#: packages/designer_content/single_pages/dashboard/blocks/designer_content.php:306
+msgid   "Cannot proceed! Please correct the following errors:"
+msgstr "Impossibile procedere! Correggere i seguenti errori:"
