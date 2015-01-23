@@ -1,6 +1,4 @@
 $(document).ready(function() {
-	update_addfield_links();
-	
 	$('a.add-field-type').live('click', add_new_field);
 	
 	$('.designer-content-field-move-up a').live('click', move_field_up);
@@ -10,9 +8,7 @@ $(document).ready(function() {
 	$('a.designer-content-field-delete-no').live('click', toggle_delete_confirmation);
 	$('a.designer-content-field-delete-yes').live('click', delete_field);
 
-	$('a.designer-content-field-duplicate').live('click', toggle_duplicate_confirmation);
-	$('a.designer-content-field-duplicate-no').live('click', toggle_duplicate_confirmation);
-	$('a.designer-content-field-duplicate-yes').live('click', duplicate_field);
+	$('a.designer-content-field-duplicate').live('click', duplicate_field);
 	
 	$('.designer-content-field-image-sizing-dropdown').live('change', toggle_field_image_sizing);
 	$('.designer-content-field-image-link-dropdown').live('change', toggle_field_image_link);
@@ -23,22 +19,6 @@ $(document).ready(function() {
 		$('#designer-content-form').submit(); //We use a div instead of a submit button because we don't want the "enter" key triggering the form
 	});
 	$('#designer-content-form').submit(function() {
-		// //TEST MODE (posts form via ajax so you don't lose data entry):
-		// var valid = validate_form();
-		// if (valid) {
-		// 	$.ajax({
-		// 		type: 'POST',
-		// 		async: false,
-		// 		url: CCM_REL + '/index.php/dashboard/blocks/designer_content/generate_block/',
-		// 		data: $('#designer-content-form').serialize(),
-		// 		success: function() {
-		// 			alert('ok!');
-		// 		}
-		// 	});
-		// }
-		// return false;
-		// //END TEST MODE
-		
 		$('#designer-content-submit').hide();
 		$('#designer-content-submit-loading').show();
 		var valid = validate_form(); //function will alert user to problems
@@ -53,10 +33,6 @@ $(document).ready(function() {
 	
 });
 
-function update_addfield_links() {
-	$("#add-field-types").html($("#add-field-types-template").tmpl());
-}
-
 function add_new_field() {
 	var type = $(this).attr('data-type');
 	if (type.length > 0) {
@@ -66,7 +42,6 @@ function add_new_field() {
 			'label': FIELDTYPE_LABELS[type]
 		};
 		$("#field-template").tmpl(data).appendTo("#designer-content-fields").effect("highlight", {}, 500);
-		update_addfield_links();
 		update_move_links();
 	}
 	
@@ -134,17 +109,8 @@ function delete_field() {
 	var id = $(this).attr('data-id');
 	$('.designer-content-field[data-id='+id+']').slideUp('fast', function() {
 		$(this).remove();
-		update_addfield_links();
 		update_move_links();
 	});
-	
-	return false;
-}
-
-function toggle_duplicate_confirmation() {
-	var id = $(this).attr('data-id');
-	$('.designer-content-field-duplicate-confirm[data-id='+id+']').toggle();
-	$('.designer-content-field-duplicate[data-id='+id+']').toggle();
 	
 	return false;
 }
@@ -159,48 +125,66 @@ function duplicate_field() {
 			'type': type,
 			'label': FIELDTYPE_LABELS[type]
 		};
-		$("#field-template").tmpl(data).appendTo("#designer-content-fields").effect("highlight", {}, 500);
-		update_addfield_links();
+		$("#field-template").tmpl(data).insertAfter($(this).closest('.designer-content-field')).effect("highlight", {}, 500);
 		update_move_links();
+		duplicate_field_settings(parentId, data.id);
 	}
-	//copy field values & append ' copy' to the block label
-	if (type == 'static') {
-		document.getElementById('fieldStaticHtml['+data.id+']').value = document.getElementById('fieldStaticHtml['+parentId+']').value
+	return false;
+}
+
+function duplicate_field_settings(fromId, toId) {
+	var $from = $('.designer-content-field[data-id="' + fromId + '"]');
+	var $to = $('.designer-content-field[data-id="' + toId + '"]');
+	
+	var fieldType = $from.attr('data-type');
+	
+	if ($to.attr('data-type') != fieldType) {
+		return;
 	}
-	else {
-		document.getElementById('fieldLabels['+data.id+']').value = document.getElementById('fieldLabels['+parentId+']').value + ' copy' 		
-		if (type == 'select') {
-				// 			$fields_required[$id]), $field_select_show_headers[$id], $field_select_header_texts[$id]);
-			document.getElementById('fieldSelectOptions['+data.id+']').value = document.getElementById('fieldSelectOptions['+parentId+']').value
-			document.getElementById('fieldsRequired['+data.id+']').value = document.getElementById('fieldsRequired['+parentId+']').value		
+	
+	$.each([
+		'fieldStaticHtml',
+		'fieldLabels',
+		'fieldSelectOptions',
+		'fieldSelectShowHeaders',
+		'fieldSelectHeaderTexts',
+		'fieldsRequired',
+		'fieldPrefixes',
+		'fieldSuffixes',
+		'fieldDefaultContents',
+		'fieldTextboxMaxlengths',
+		'fieldUrlTargets',
+		'fieldDateFormats',
+		'fieldImageShowAltTexts',
+		'fieldImageLinks',
+		'fieldImageLinkTargets',
+		'fieldImageSizings',
+		'fieldImageWidths',
+		'fieldImageHeights'
+	], function(i, domId) {
+		var fromSelector = '#' + domId + '\\[' + fromId + '\\]'; //jquery needs double-slashes before square brackets in selectors, otherwise it won't find them
+		var toSelector = '#' + domId + '\\[' + toId + '\\]';     //ditto
+		var $fromField = $from.find(fromSelector);
+		var $toField = $to.find(toSelector);
+		if ($fromField.attr('type') == 'checkbox') {
+			$toField.prop('checked', $fromField.prop('checked'));
+		} else if (domId == 'fieldLabels') {
+			$toField.val($fromField.val() + ' copy');
+		} else {
+			$toField.val($fromField.val());
 		}
-		else {
-			document.getElementById('fieldPrefixes['+data.id+']').value = document.getElementById('fieldPrefixes['+parentId+']').value
-			document.getElementById('fieldSuffixes['+data.id+']').value = document.getElementById('fieldSuffixes['+parentId+']').value
-			if (type == 'wysiwyg') {
-				document.getElementById('fieldDefaultContents['+data.id+']').value = document.getElementById('fieldDefaultContents['+parentId+']').value
-			}
-			else{
-				document.getElementById('fieldsRequired['+data.id+']').value = document.getElementById('fieldsRequired['+parentId+']').value
-				if (type == 'textbox') {
-					document.getElementById('fieldTextboxMaxlengths['+data.id+']').value = document.getElementById('fieldTextboxMaxlengths['+parentId+']').value
-				}
-				if (type == 'url') {
-					document.getElementById('fieldUrlTargets['+data.id+']').value = document.getElementById('fieldUrlTargets['+parentId+']').value
-				}
-				if (type == 'date') {
-					document.getElementById('fieldDateFormats['+data.id+']').value = document.getElementById('fieldDateFormats['+parentId+']').value
-				}
-				if (type == 'image') {
-					document.getElementById('fieldImageShowAltTexts['+data.id+']').value = document.getElementById('fieldImageShowAltTexts['+parentId+']').value
-					document.getElementById('fieldImageLinks['+data.id+']').value = document.getElementById('fieldImageLinks['+parentId+']').value
-					document.getElementById('fieldImageLinkTargets['+data.id+']').value = document.getElementById('fieldImageLinkTargets['+parentId+']').value
-					document.getElementById('fieldImageSizings['+data.id+']').value = document.getElementById('fieldImageSizings['+parentId+']').value
-					document.getElementById('fieldImageWidths['+data.id+']').value = document.getElementById('fieldImageWidths['+parentId+']').value
-					document.getElementById('fieldImageHeights['+data.id+']').value = document.getElementById('fieldImageHeights['+parentId+']').value
-				}
-			}
-		} 
+	});
+	
+	//Call the "toggle" methods on some field types
+	// to show/hide fields based on some dropdown values
+	// (note that we use "call" to explicitly set "this" in the called functions
+	// to the dom element they should operate on -- we do this to simulate
+	// how jQuery does its "on"/"live" event callbacks).
+	if (fieldType == 'image') {
+		toggle_field_image_sizing.call($to.find('.designer-content-field-image-sizing-dropdown').get(0));
+		toggle_field_image_link.call($to.find('.designer-content-field-image-link-dropdown').get(0));
+	} else if (fieldType == 'select') {
+		toggle_field_select_header.call($to.find('.designer-content-field-select-header').get(0));
 	}
 }
 
