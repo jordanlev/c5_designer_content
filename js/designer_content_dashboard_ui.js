@@ -9,6 +9,10 @@ $(document).ready(function() {
 	$('a.designer-content-field-delete').live('click', toggle_delete_confirmation);
 	$('a.designer-content-field-delete-no').live('click', toggle_delete_confirmation);
 	$('a.designer-content-field-delete-yes').live('click', delete_field);
+
+	$('a.designer-content-field-duplicate').live('click', toggle_duplicate_confirmation);
+	$('a.designer-content-field-duplicate-no').live('click', toggle_duplicate_confirmation);
+	$('a.designer-content-field-duplicate-yes').live('click', duplicate_field);
 	
 	$('.designer-content-field-image-sizing-dropdown').live('change', toggle_field_image_sizing);
 	$('.designer-content-field-image-link-dropdown').live('change', toggle_field_image_link);
@@ -135,6 +139,69 @@ function delete_field() {
 	});
 	
 	return false;
+}
+
+function toggle_duplicate_confirmation() {
+	var id = $(this).attr('data-id');
+	$('.designer-content-field-duplicate-confirm[data-id='+id+']').toggle();
+	$('.designer-content-field-duplicate[data-id='+id+']').toggle();
+	
+	return false;
+}
+
+function duplicate_field() {
+	//add block of same type
+	var type = $(this).attr('data-type');
+	var parentId = $(this).attr('data-id')
+	if (type.length > 0) {
+		var data = {
+			'id': new_field_row_id(),
+			'type': type,
+			'label': FIELDTYPE_LABELS[type]
+		};
+		$("#field-template").tmpl(data).appendTo("#designer-content-fields").effect("highlight", {}, 500);
+		update_addfield_links();
+		update_move_links();
+	}
+	//copy field values & append ' copy' to the block label
+	if (type == 'static') {
+		document.getElementById('fieldStaticHtml['+data.id+']').value = document.getElementById('fieldStaticHtml['+parentId+']').value
+	}
+	else {
+		document.getElementById('fieldLabels['+data.id+']').value = document.getElementById('fieldLabels['+parentId+']').value + ' copy' 		
+		if (type == 'select') {
+				// 			$fields_required[$id]), $field_select_show_headers[$id], $field_select_header_texts[$id]);
+			document.getElementById('fieldSelectOptions['+data.id+']').value = document.getElementById('fieldSelectOptions['+parentId+']').value
+			document.getElementById('fieldsRequired['+data.id+']').value = document.getElementById('fieldsRequired['+parentId+']').value		
+		}
+		else {
+			document.getElementById('fieldPrefixes['+data.id+']').value = document.getElementById('fieldPrefixes['+parentId+']').value
+			document.getElementById('fieldSuffixes['+data.id+']').value = document.getElementById('fieldSuffixes['+parentId+']').value
+			if (type == 'wysiwyg') {
+				document.getElementById('fieldDefaultContents['+data.id+']').value = document.getElementById('fieldDefaultContents['+parentId+']').value
+			}
+			else{
+				document.getElementById('fieldsRequired['+data.id+']').value = document.getElementById('fieldsRequired['+parentId+']').value
+				if (type == 'textbox') {
+					document.getElementById('fieldTextboxMaxlengths['+data.id+']').value = document.getElementById('fieldTextboxMaxlengths['+parentId+']').value
+				}
+				if (type == 'url') {
+					document.getElementById('fieldUrlTargets['+data.id+']').value = document.getElementById('fieldUrlTargets['+parentId+']').value
+				}
+				if (type == 'date') {
+					document.getElementById('fieldDateFormats['+data.id+']').value = document.getElementById('fieldDateFormats['+parentId+']').value
+				}
+				if (type == 'image') {
+					document.getElementById('fieldImageShowAltTexts['+data.id+']').value = document.getElementById('fieldImageShowAltTexts['+parentId+']').value
+					document.getElementById('fieldImageLinks['+data.id+']').value = document.getElementById('fieldImageLinks['+parentId+']').value
+					document.getElementById('fieldImageLinkTargets['+data.id+']').value = document.getElementById('fieldImageLinkTargets['+parentId+']').value
+					document.getElementById('fieldImageSizings['+data.id+']').value = document.getElementById('fieldImageSizings['+parentId+']').value
+					document.getElementById('fieldImageWidths['+data.id+']').value = document.getElementById('fieldImageWidths['+parentId+']').value
+					document.getElementById('fieldImageHeights['+data.id+']').value = document.getElementById('fieldImageHeights['+parentId+']').value
+				}
+			}
+		} 
+	}
 }
 
 function toggle_field_image_sizing() {
