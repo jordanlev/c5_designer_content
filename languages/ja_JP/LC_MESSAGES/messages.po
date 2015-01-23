@@ -11,73 +11,67 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;t\n"
-"X-Poedit-Basepath: /Users/jordanlev/Sites/concrete5411/packages/"
-"designer_content/\n"
+"X-Poedit-Basepath: /Users/jordanlev/Sites/concrete5411/packages/designer_content/\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-Language: Japanese\n"
+"X-Poedit-Country: JAPAN\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: controller.php:1 controllers/dashboard/blocks/designer_content.php:1
+#: controller.php:2
+#: controllers/dashboard/blocks/designer_content.php:2
 #: libraries/block_generator.php:2
 #: single_pages/dashboard/blocks/designer_content.php:1
-#: tools/validate_handle.php:2
 msgid "Access Denied."
 msgstr "アクセスできません。"
 
-#: controller.php:10 single_pages/dashboard/blocks/designer_content.php:3
+#: controller.php:11
+#: single_pages/dashboard/blocks/designer_content.php:3
 msgid "Designer Content"
-msgstr "デザイナーコンテント"
+msgstr "Designer Content"
 
-#: controller.php:14
+#: controller.php:15
 msgid "Provides supporting code for custom content blocks."
 msgstr "カスタムコンテンツのブロックのコードをサポートしています。"
 
-#: controllers/dashboard/blocks/designer_content.php:43
+#: controllers/dashboard/blocks/designer_content.php:44
 msgid "Error: Blocks directory is not writeable!"
 msgstr "エラー：/blocks に書き込めません。"
 
-#: controllers/dashboard/blocks/designer_content.php:45
+#: controllers/dashboard/blocks/designer_content.php:46
 msgid "Error: Block handle or name is missing!"
 msgstr "エラー：ブロックハンドルが空です。"
 
-#: controllers/dashboard/blocks/designer_content.php:47
-msgid ""
-"Error: Block Handle is already in use by another package or block type (or "
-"block files already exist in the \"blocks\" directory of your site)!"
-msgstr ""
-"エラー：このブロックハンドルは既に利用されています。他のハンドルを指定してく"
-"ださい。"
+#: controllers/dashboard/blocks/designer_content.php:48
+msgid "Error: Block Handle is already in use by another package or block type (or block files already exist in the \"blocks\" directory of your site)!"
+msgstr "エラー：このブロックハンドルは既に利用されています。他のハンドルを指定してください。"
 
-#: generator_templates/editor_controls.php:6
+#: generator_templates/editor_controls.php:5
 msgid "Add Image"
 msgstr "画像を追加"
 
-#: generator_templates/editor_controls.php:7
+#: generator_templates/editor_controls.php:6
 msgid "Add File"
 msgstr "ファイルを追加"
 
-#: generator_templates/editor_controls.php:8
+#: generator_templates/editor_controls.php:10
 msgid "Insert Link to Page"
 msgstr "ページへのリンクを追加"
 
-#: generator_templates/editor_controls.php:13
+#: generator_templates/editor_controls.php:12
 msgid "Customize Toolbar"
 msgstr "ツールバーをカスタマイズ"
-
-#: generator_templates/editor_controls.php:27
-#, fuzzy
-msgid "Choose A Page"
-msgstr "ページを選択"
 
 #: helpers/form/page_selector.php:44
 msgid "Choose Page"
 msgstr "ページを選択"
 
-#: helpers/form/page_selector.php:44 helpers/form/page_selector.php:65
+#: helpers/form/page_selector.php:44
+#: helpers/form/page_selector.php:65
 msgid "Select New Page"
 msgstr "新しいページを選択"
 
-#: helpers/form/page_selector.php:44 helpers/form/page_selector.php:65
+#: helpers/form/page_selector.php:44
+#: helpers/form/page_selector.php:65
 msgid "Select Page"
 msgstr "ページを選択し"
 
@@ -85,63 +79,66 @@ msgstr "ページを選択し"
 msgid "Clear Selection"
 msgstr "セクションをクリア"
 
-#: libraries/block_generator.php:193 libraries/block_generator.php:200
+#: libraries/block_generator.php:180
+#: libraries/block_generator.php:187
 msgid "Missing required text"
 msgstr "テキストを指定してください。"
 
-#: libraries/block_generator.php:208
+#: libraries/block_generator.php:195
 msgid "Missing required image"
 msgstr "画像を指定してください。"
 
-#: libraries/block_generator.php:216
+#: libraries/block_generator.php:203
 msgid "Missing required file"
 msgstr "要求されたファイルがありません"
 
-#: libraries/block_generator.php:224
+#: libraries/block_generator.php:211
 msgid "Missing required link"
 msgstr "リンクを指定してください。"
 
-#: libraries/block_generator.php:232
+#: libraries/block_generator.php:219
 msgid "Missing required URL"
 msgstr "要求されたURLがありません"
 
-#: libraries/block_generator.php:240
+#: libraries/block_generator.php:227
 msgid "Missing required date"
 msgstr "要求された日付がありません"
 
-#: libraries/block_generator.php:248
+#: libraries/block_generator.php:235
 msgid "Missing required selection"
 msgstr "要求された選択肢がありません"
 
-#: libraries/block_generator.php:523
+#: libraries/block_generator.php:516
 msgid "Choose Image"
 msgstr "画像を選択"
 
-#: libraries/block_generator.php:530
+#: libraries/block_generator.php:523
 msgid "Link to Page"
 msgstr "リンクページ"
 
-#: libraries/block_generator.php:538 libraries/block_generator.php:592
+#: libraries/block_generator.php:531
+#: libraries/block_generator.php:585
 msgid "Link to URL"
 msgstr "リンクURL"
 
-#: libraries/block_generator.php:545
+#: libraries/block_generator.php:538
 msgid "Alt Text"
 msgstr "ALTテキスト"
 
-#: libraries/block_generator.php:559
+#: libraries/block_generator.php:552
 msgid "Choose File"
 msgstr "ファイルを選択"
 
-#: libraries/block_generator.php:564
+#: libraries/block_generator.php:557
 msgid "Link Text (or leave blank to use file name)"
 msgstr "リンクテキスト（空白の場合ファイル名が使用されます）"
 
-#: libraries/block_generator.php:579 libraries/block_generator.php:597
+#: libraries/block_generator.php:572
+#: libraries/block_generator.php:590
 msgid "Link Text"
 msgstr "リンクテキスト"
 
-#: libraries/block_generator.php:806
+#: libraries/block_generator.php:789
 #, php-format
 msgid "ENTER MARKUP HERE FOR FIELD \"%s\" : CHOICE \"%s\""
 msgstr "\"%s\"フィールドの\"%s\"を選択した場合の表示内容を書いてください"
@@ -152,23 +149,16 @@ msgstr "完了!"
 
 #: single_pages/dashboard/blocks/designer_content.php:10
 #, php-format
-msgid ""
-"%s has been installed, and will now be available in the \"Add Blocks\" list "
-"when pages are edited."
-msgstr ""
-"%s のインストールが有効になりました。 ページ編集時の「ブロックを追加」に表示"
-"されます。"
+msgid "%s has been installed, and will now be available in the \"Add Blocks\" list when pages are edited."
+msgstr "%s のインストールが有効になりました。 ページ編集時の「ブロックを追加」に表示されます。"
 
 #: single_pages/dashboard/blocks/designer_content.php:12
 msgid "Create another block type"
 msgstr "他のブロックタイプを作成"
 
 #: single_pages/dashboard/blocks/designer_content.php:20
-msgid ""
-"Create a new block type by entering some basic info and adding one or more "
-"fields."
-msgstr ""
-"1つ以上のフィールドを追加することで、新しいブロックのタイプを作成します。"
+msgid "Create a new block type by entering some basic info and adding one or more fields."
+msgstr "1つ以上のフィールドを追加することで、新しいブロックのタイプを作成します。"
 
 #: single_pages/dashboard/blocks/designer_content.php:21
 msgid "Documentation"
@@ -179,12 +169,8 @@ msgid "Help Forum"
 msgstr "ヘルプフォーラム"
 
 #: single_pages/dashboard/blocks/designer_content.php:28
-msgid ""
-"Warning: The blocks directory is not writeable. Blocks cannot be created "
-"from this page until permissions are changed on your server."
-msgstr ""
-"警告：ブロックディレクトリに書き込めません。サーバ上のブロックディレクトリの"
-"パーミッション（書込権限）を確認してください。"
+msgid "Warning: The blocks directory is not writeable. Blocks cannot be created from this page until permissions are changed on your server."
+msgstr "警告：ブロックディレクトリに書き込めません。サーバ上のブロックディレクトリのパーミッション（書込権限）を確認してください。"
 
 #: single_pages/dashboard/blocks/designer_content.php:39
 msgid "Block Handle"
@@ -219,12 +205,12 @@ msgid "delete"
 msgstr "削除"
 
 #: single_pages/dashboard/blocks/designer_content.php:76
-#: single_pages/dashboard/blocks/designer_content.php:148
+#: single_pages/dashboard/blocks/designer_content.php:146
 msgid "Yes"
 msgstr "はい"
 
 #: single_pages/dashboard/blocks/designer_content.php:76
-#: single_pages/dashboard/blocks/designer_content.php:147
+#: single_pages/dashboard/blocks/designer_content.php:145
 msgid "No"
 msgstr "いいえ"
 
@@ -237,176 +223,168 @@ msgid "Move Down"
 msgstr "下へ"
 
 #: single_pages/dashboard/blocks/designer_content.php:94
-msgid ""
-"Anything entered here will be directly outputted to the block view &mdash; "
-"users will not be able to edit it."
+msgid "Anything entered here will be directly outputted to the block view &mdash; users will not be able to edit it."
 msgstr "直接ブロックビューに出力されます。&mdash;ユーザーは編集できません。"
 
 #: single_pages/dashboard/blocks/designer_content.php:98
-#: single_pages/dashboard/blocks/designer_content.php:124
+#: single_pages/dashboard/blocks/designer_content.php:123
 msgid "Editor Label"
 msgstr "ラベル"
 
-#: single_pages/dashboard/blocks/designer_content.php:102
-#: single_pages/dashboard/blocks/designer_content.php:133
+#: single_pages/dashboard/blocks/designer_content.php:101
+#: single_pages/dashboard/blocks/designer_content.php:131
 msgid "Required?"
 msgstr "必須項目？"
 
-#: single_pages/dashboard/blocks/designer_content.php:105
+#: single_pages/dashboard/blocks/designer_content.php:104
 msgid "Dropdown Choices (one per line)"
 msgstr "選択肢（1行に1個づつ）"
 
-#: single_pages/dashboard/blocks/designer_content.php:111
+#: single_pages/dashboard/blocks/designer_content.php:110
 msgid "Show List Header?"
 msgstr "リストのヘッダーを表示しますか？"
 
-#: single_pages/dashboard/blocks/designer_content.php:113
+#: single_pages/dashboard/blocks/designer_content.php:112
 msgid "Header Text"
 msgstr "ヘッダーテキスト"
 
-#: single_pages/dashboard/blocks/designer_content.php:114
+#: single_pages/dashboard/blocks/designer_content.php:113
 msgid "--Choose One--"
 msgstr "選択してください"
 
-#: single_pages/dashboard/blocks/designer_content.php:117
+#: single_pages/dashboard/blocks/designer_content.php:116
 msgid "NOTE"
 msgstr "ノート"
 
-#: single_pages/dashboard/blocks/designer_content.php:119
-msgid ""
-"After creating this block type, you must edit its \"view.php\" file to make "
-"these choices work!"
-msgstr ""
-"このブロックタイプを作成したら、これらの選択肢を動作させるために、このブロッ"
-"クの\"view.php\"ファイルを編集する必要があります！"
+#: single_pages/dashboard/blocks/designer_content.php:118
+msgid "After creating this block type, you must edit its \"view.php\" file to make these choices work!"
+msgstr "このブロックタイプを作成したら、これらの選択肢を動作させるために、このブロックの\"view.php\"ファイルを編集する必要があります！"
 
-#: single_pages/dashboard/blocks/designer_content.php:128
+#: single_pages/dashboard/blocks/designer_content.php:127
 msgid "Default HTML Content"
 msgstr "デフォルトHTMLコンテンツ"
 
-#: single_pages/dashboard/blocks/designer_content.php:139
+#: single_pages/dashboard/blocks/designer_content.php:137
 msgid "Maximum Number Of Characters"
 msgstr "最大文字数"
 
-#: single_pages/dashboard/blocks/designer_content.php:144
+#: single_pages/dashboard/blocks/designer_content.php:142
 msgid "Show Alt Text Field:"
 msgstr "ALTテキストフィールドを表示:"
 
-#: single_pages/dashboard/blocks/designer_content.php:151
+#: single_pages/dashboard/blocks/designer_content.php:149
 msgid "Show Link Field"
 msgstr "リンクフィールドを表示"
 
-#: single_pages/dashboard/blocks/designer_content.php:155
+#: single_pages/dashboard/blocks/designer_content.php:153
 msgid "None"
 msgstr "無し"
 
-#: single_pages/dashboard/blocks/designer_content.php:156
+#: single_pages/dashboard/blocks/designer_content.php:154
 msgid "Sitemap Page"
 msgstr "サイトマップページ"
 
-#: single_pages/dashboard/blocks/designer_content.php:157
-#: single_pages/dashboard/blocks/designer_content.php:232
+#: single_pages/dashboard/blocks/designer_content.php:155
+#: single_pages/dashboard/blocks/designer_content.php:230
 msgid "External URL"
 msgstr "外部URL"
 
-#: single_pages/dashboard/blocks/designer_content.php:163
-#: single_pages/dashboard/blocks/designer_content.php:191
+#: single_pages/dashboard/blocks/designer_content.php:161
+#: single_pages/dashboard/blocks/designer_content.php:189
 msgid "Links Open In New Window"
 msgstr "リンクを新しいウィンドウで開く"
 
-#: single_pages/dashboard/blocks/designer_content.php:167
+#: single_pages/dashboard/blocks/designer_content.php:165
 msgid "Image Sizing"
 msgstr "画像リサイズ"
 
-#: single_pages/dashboard/blocks/designer_content.php:171
+#: single_pages/dashboard/blocks/designer_content.php:169
 msgid "Keep Original Size"
 msgstr "元のサイズを保持"
 
-#: single_pages/dashboard/blocks/designer_content.php:172
+#: single_pages/dashboard/blocks/designer_content.php:170
 msgid "Resize Proportionally"
 msgstr "縦横比を保持してリサイズ"
 
-#: single_pages/dashboard/blocks/designer_content.php:173
+#: single_pages/dashboard/blocks/designer_content.php:171
 msgid "Resize+Crop To Fit"
 msgstr "リサイズしてサイズに合わせて切り抜き"
 
-#: single_pages/dashboard/blocks/designer_content.php:178
+#: single_pages/dashboard/blocks/designer_content.php:176
 msgid "Max Width"
 msgstr "最大横幅"
 
-#: single_pages/dashboard/blocks/designer_content.php:179
+#: single_pages/dashboard/blocks/designer_content.php:177
 msgid "Target Width"
 msgstr "最大横幅"
 
-#: single_pages/dashboard/blocks/designer_content.php:182
+#: single_pages/dashboard/blocks/designer_content.php:180
 msgid "Max Height"
 msgstr "最大高さ"
 
-#: single_pages/dashboard/blocks/designer_content.php:183
+#: single_pages/dashboard/blocks/designer_content.php:181
 msgid "Target Height"
 msgstr "最大高さ"
 
-#: single_pages/dashboard/blocks/designer_content.php:194
+#: single_pages/dashboard/blocks/designer_content.php:192
 msgid "PHP Date Format"
 msgstr "PHP Date フォーマット"
 
-#: single_pages/dashboard/blocks/designer_content.php:196
+#: single_pages/dashboard/blocks/designer_content.php:194
 msgid "http://php.net/date#refsect1-function.date-parameters"
-msgstr ""
-"http://jp.php.net/manual/ja/function.date.php#refsect1-function.date-"
-"parameters"
+msgstr "http://jp.php.net/manual/ja/function.date.php#refsect1-function.date-parameters"
 
-#: single_pages/dashboard/blocks/designer_content.php:196
+#: single_pages/dashboard/blocks/designer_content.php:194
 msgid "Reference"
 msgstr "リファレンス"
 
-#: single_pages/dashboard/blocks/designer_content.php:201
+#: single_pages/dashboard/blocks/designer_content.php:199
 msgid "Wrapper HTML Open"
 msgstr "前に挿入するHTML"
 
-#: single_pages/dashboard/blocks/designer_content.php:205
+#: single_pages/dashboard/blocks/designer_content.php:203
 msgid "Wrapper HTML Close"
 msgstr "後に挿入するHTML"
 
-#: single_pages/dashboard/blocks/designer_content.php:215
+#: single_pages/dashboard/blocks/designer_content.php:213
 msgid "Add Field"
 msgstr "フィールドを追加"
 
-#: single_pages/dashboard/blocks/designer_content.php:220
+#: single_pages/dashboard/blocks/designer_content.php:218
 #: single_pages/dashboard/blocks/designer_content.php:271
 msgid "Static HTML"
 msgstr "固定HTML"
 
-#: single_pages/dashboard/blocks/designer_content.php:222
+#: single_pages/dashboard/blocks/designer_content.php:220
 msgid "Text Box"
 msgstr "テキスト"
 
-#: single_pages/dashboard/blocks/designer_content.php:224
+#: single_pages/dashboard/blocks/designer_content.php:222
 msgid "Text Area"
 msgstr "テキストエリア"
 
-#: single_pages/dashboard/blocks/designer_content.php:226
+#: single_pages/dashboard/blocks/designer_content.php:224
 msgid "Image"
 msgstr "画像"
 
-#: single_pages/dashboard/blocks/designer_content.php:228
+#: single_pages/dashboard/blocks/designer_content.php:226
 msgid "File Download"
 msgstr "ファイルダウンロード"
 
-#: single_pages/dashboard/blocks/designer_content.php:230
+#: single_pages/dashboard/blocks/designer_content.php:228
 msgid "Page Link"
 msgstr "リンク"
 
-#: single_pages/dashboard/blocks/designer_content.php:234
+#: single_pages/dashboard/blocks/designer_content.php:232
 msgid "Date Picker"
 msgstr "日付ピッカー"
 
-#: single_pages/dashboard/blocks/designer_content.php:236
+#: single_pages/dashboard/blocks/designer_content.php:234
 #: single_pages/dashboard/blocks/designer_content.php:279
 msgid "Dropdown List"
 msgstr "セレクトボックス"
 
-#: single_pages/dashboard/blocks/designer_content.php:238
+#: single_pages/dashboard/blocks/designer_content.php:237
 #: single_pages/dashboard/blocks/designer_content.php:280
 msgid "WYSIWYG Editor"
 msgstr "WYSIWYGエディタ"
@@ -464,32 +442,24 @@ msgid "Block Handle is required."
 msgstr "ブロックハンドルは必須です。"
 
 #: single_pages/dashboard/blocks/designer_content.php:285
-msgid "Block Handle cannot exceed 32 characters in length."
-msgstr "ブロックハンドルは32文字以上は使えません。"
-
-#: single_pages/dashboard/blocks/designer_content.php:286
 msgid "Block Handle can only contain lowercase letters and underscores."
 msgstr "ブロックハンドルは英小文字と_のみ利用可能です。"
 
-#: single_pages/dashboard/blocks/designer_content.php:287
-msgid ""
-"Block Handle is already in use by another package or block type (or block "
-"files already exist in the \"blocks\" directory of your site)."
+#: single_pages/dashboard/blocks/designer_content.php:286
+msgid "Block Handle is already in use by another package or block type (or block files already exist in the \"blocks\" directory of your site)."
 msgstr "このブロックハンドルは既に利用されています。"
 
-#: single_pages/dashboard/blocks/designer_content.php:288
-msgid ""
-"WARNING: A table with this Block Handle already exists in your database. If "
-"you make this block, the existing table will be overwritten and any content "
-"stored in it will be permanently deleted!"
-msgstr ""
-"警告：このブロックのハンドルを持つテーブルがデータベースに既に存在している場"
-"合、既存のテーブルは上書きされ、そこに格納されているすべてのコンテンツは完全"
-"に削除されます！"
+#: single_pages/dashboard/blocks/designer_content.php:287
+msgid "WARNING: A table with this Block Handle already exists in your database. If you make this block, the existing table will be overwritten and any content stored in it will be permanently deleted!"
+msgstr "警告：このブロックのハンドルを持つテーブルがデータベースに既に存在している場合、既存のテーブルは上書きされ、そこに格納されているすべてのコンテンツは完全に削除されます！"
 
-#: single_pages/dashboard/blocks/designer_content.php:289
+#: single_pages/dashboard/blocks/designer_content.php:288
 msgid "You must add at least 1 field."
 msgstr "1つはフィールドを設定する必要があります。"
+
+#: single_pages/dashboard/blocks/designer_content.php:289
+msgid "You cannot have more than 1 WYSIWYG Editor in a block."
+msgstr "WYSIWYGエディタは1つだけ設定出来ます。"
 
 #: single_pages/dashboard/blocks/designer_content.php:290
 msgid "All fields must have an Editor Label."
@@ -510,9 +480,6 @@ msgstr "セレクトボックスは少なくとも1つ以上の選択肢を設�
 #: single_pages/dashboard/blocks/designer_content.php:294
 msgid "Cannot proceed! Please correct the following errors:"
 msgstr "生成出来ませんでした。以下のエラーを確認してください："
-
-#~ msgid "You cannot have more than 1 WYSIWYG Editor in a block."
-#~ msgstr "WYSIWYGエディタは1つだけ設定出来ます。"
 
 #~ msgid ""
 #~ "A block type generator for designers and developers. Designer Content "
