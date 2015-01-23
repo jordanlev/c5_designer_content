@@ -38,6 +38,11 @@ class DashboardBlocksDesignerContentController extends Controller {
 		$name = empty($name) ? '' : strip_tags($name);
 		$description = $this->post('description');
 		$description = empty($description) ? '' : strip_tags($description);
+		if($this->post('permission') == "0666"){
+            if(!defined('DESIGNER_CONTENT_FILE_CHMOD')){
+                define('DESIGNER_CONTENT_FILE_CHMOD',0666);
+            }
+		}
 		
 		if (!is_writable(DIR_FILES_BLOCK_TYPES)) {
 			die(t('Error: Blocks directory is not writeable!'));

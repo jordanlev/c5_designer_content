@@ -146,7 +146,11 @@ class DesignerContentBlockGenerator {
 		$this->description = $description;
 		$this->outpath = DIR_FILES_BLOCK_TYPES . "/{$handle}/";
 		$this->tplpath = DIR_BASE . '/' . DIRNAME_PACKAGES . '/designer_content/generator_templates/';
-
+        
+        if($this->chmod == 0666){
+            $umask = umask();
+            @umask(000);   
+        }
 		$this->create_block_directory();
 		$this->generate_controller_php();
 		$this->generate_view_php();
@@ -158,12 +162,18 @@ class DesignerContentBlockGenerator {
 			$this->generate_db_xml();
 			$this->generate_edit_php();
 		}
+        if($this->chmod == 0666){
+            @umask($umask);   
+        }
 	}
 		
 	
 /*** GENERATORS ***/
 	private function create_block_directory() {
-		mkdir(rtrim($this->outpath, '/'));
+        mkdir(rtrim($this->outpath, '/'));    		
+		if($this->chmod == 0666){
+            chmod($filepath, 0777);
+		}
 	}
 		
 	private function generate_add_php() {
