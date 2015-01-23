@@ -93,6 +93,8 @@ class DashboardBlocksDesignerContentController extends Controller {
 				$block->add_url_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]), $field_url_targets[$id]);
 			} else if ($type == 'date') {
 				$block->add_date_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]), $field_date_formats[$id]);
+			} else if ($type == 'color') {
+				$block->add_color_field($field_labels[$id], $field_prefixes[$id], $field_suffixes[$id], !empty($fields_required[$id]));
 			} else if ($type == 'select') {
 				$block->add_select_field($field_labels[$id], $field_select_options[$id], !empty($fields_required[$id]), $field_select_show_headers[$id], $field_select_header_texts[$id]);
 			} else if ($type == 'wysiwyg') {

@@ -117,6 +117,17 @@ class DesignerContentBlockGenerator {
 		);
 	}
 	
+	public function add_color_field($label, $prefix = '', $suffix = '', $required = false) {
+		$this->fields[] = array(
+			'num' => count($this->fields) + 1,
+			'type' => 'color',
+			'label' => $label,
+			'prefix' => $prefix,
+			'suffix' => $suffix,
+			'required' => $required
+		);
+	}
+	
 	public function add_select_field($label, $options, $required, $show_header = false, $header_text = '') {
 		$this->fields[] = array(
 			'num' => count($this->fields) + 1,
@@ -237,6 +248,14 @@ class DesignerContentBlockGenerator {
 				$code .= "\t}\n\n";
 			}
 			
+			if ($field['type'] == 'color' && $field['required']) {
+				$code .= "\tif (\$('input[name=field_{$field['num']}_color_value]').val() == '' || \$('input[name=field_{$field['num']}_color_value]').val() == 0) {\n";
+				$translated_error = $this->addslashes_single( t('Missing required color') );
+				$label = $this->addslashes_single($field['label']);
+				$code .= "\t\tccm_addError('{$translated_error}: {$field_label}');\n";
+				$code .= "\t}\n\n";
+			}
+			
 			if ($field['type'] == 'select' && $field['required']) {
 				$code .= "\tif (\$('select[name=field_{$field['num']}_select_value]').val() == '' || \$('select[name=field_{$field['num']}_select_value]').val() == 0) {\n";
 				$translated_error = $this->addslashes_single( t('Missing required selection') );
@@ -321,6 +340,10 @@ class DesignerContentBlockGenerator {
 			}
 			if ($field['type'] == 'date') {
 				$code .= "\t\t\$content[] = date('{$field['format']}', \$this->field_{$field['num']}_date_value);\n";
+				$fieldcount++;
+			}
+			if ($field['type'] == 'color') {
+				$code .= "\t\t\$content[] = \$this->field_{$field['num']}_color_value;\n";
 				$fieldcount++;
 			}
 			if ($field['type'] == 'wysiwyg') {
@@ -470,6 +493,9 @@ class DesignerContentBlockGenerator {
 			if ($field['type'] == 'date') {
 				$code .= "\t\t<field name=\"field_{$field['num']}_date_value\" type=\"D\"></field>\n\n";
 			}
+			if ($field['type'] == 'color') {
+				$code .= "\t\t<field name=\"field_{$field['num']}_color_value\" type=\"X\"></field>\n\n";
+			}
 			if ($field['type'] == 'select') {
 				$code .= "\t\t<field name=\"field_{$field['num']}_select_value\" type=\"I\"><default value=\"0\" /></field>\n\n";
 			}
@@ -605,6 +631,14 @@ class DesignerContentBlockGenerator {
 				$include_date_time = true;
 			}
 			
+			if ($field['type'] == 'color') {
+				$code .= "<div class=\"ccm-block-field-group\">\n";
+				$code .= "\t<h2>{$field['label']}</h2>\n";
+				$code .= "\t<?php echo \$fh->output('field_{$field['num']}_color_value', '', \$field_{$field['num']}_color_value); ?>\n";
+				$code .= "</div>\n\n";
+				$include_color = true;
+			}
+			
 			if ($field['type'] == 'select') {
 				$code .= "<div class=\"ccm-block-field-group\">\n";
 				$code .= "\t<h2>{$field['label']}</h2>\n";
@@ -642,6 +676,7 @@ class DesignerContentBlockGenerator {
 		$code .= $include_asset_library ? "\$al = Loader::helper('concrete/asset_library');\n" : '';
 		$code .= $include_page_selector ? "\$ps = Loader::helper('form/page_selector');\n" : '';
 		$code .= $include_date_time ? "\$dt = Loader::helper('form/date_time');\n" : '';
+		$code .= $include_color ? "\$fh = Loader::helper('form/color');\n" : '';
 		$code .= $include_editor_config ? "Loader::element('editor_config');\n" : '';
 		$token = '[[[GENERATOR_REPLACE_HELPERLOADERS]]]';
 		$template = str_replace($token, $code, $template);
@@ -759,6 +794,16 @@ class DesignerContentBlockGenerator {
 				$code .= "\t";
 				$code .= empty($field['prefix']) ? '' : $field['prefix'];
 				$code .= "<?php echo date('{$field['format']}', strtotime(\$field_{$field['num']}_date_value)); ?>";
+				$code .= empty($field['suffix']) ? '' : $field['suffix'];
+				$code .= "\n";
+				$code .= "<?php endif; ?>\n\n";
+			}
+			
+			if ($field['type'] == 'color') {
+				$code .= "<?php if (!empty(\$field_{$field['num']}_color_value)): ?>\n";
+				$code .= "\t";
+				$code .= empty($field['prefix']) ? '' : $field['prefix'];
+				$code .= "<?php echo \$field_{$field['num']}_color_value; ?>";
 				$code .= empty($field['suffix']) ? '' : $field['suffix'];
 				$code .= "\n";
 				$code .= "<?php endif; ?>\n\n";
