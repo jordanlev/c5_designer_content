@@ -4,7 +4,7 @@ class DesignerContentPackage extends Package {
 	
 	protected $pkgHandle = 'designer_content';
 	protected $appVersionRequired = '5.5.2';
-	protected $pkgVersion = '3.1.1';
+	protected $pkgVersion = '3.2';
 	
 	public function getPackageName() {
 		return t("Designer Content"); 
