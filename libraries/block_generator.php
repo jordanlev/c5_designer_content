@@ -675,8 +675,8 @@ class DesignerContentBlockGenerator {
 		$code = '';
 		$code .= $include_asset_library ? "\$al = Loader::helper('concrete/asset_library');\n" : '';
 		$code .= $include_page_selector ? "\$ps = Loader::helper('form/page_selector');\n" : '';
-		$code .= $include_date_time ? "\$dt = Loader::helper('form/date_time');\n" : '';
-		$code .= $include_color ? "\$fh = Loader::helper('form/color');\n" : '';
+		$code .= $include_date_time ? "\$dt = Loader::helper('form/date_time');\n" : '';;
+		$code .= $include_color ? "\$fh = Package::getByHandle('jl_spectrum_color_picker') ? Loader::helper('spectrum_color', 'jl_spectrum_color_picker') : Loader::helper('form/color');\n" : '';
 		$code .= $include_editor_config ? "Loader::element('editor_config');\n" : '';
 		$token = '[[[GENERATOR_REPLACE_HELPERLOADERS]]]';
 		$template = str_replace($token, $code, $template);
