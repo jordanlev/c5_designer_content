@@ -244,6 +244,8 @@ function s2nb($text) {
 						&nbsp;&nbsp;
 						[<a href="#" class="add-field-type" data-type="date"><?php echo s2nb(t('Date Picker')); ?></a>]
 						&nbsp;&nbsp;
+						[<a href="#" class="add-field-type" data-type="color"><?php echo s2nb(t('Color Picker')); ?></a>]
+						&nbsp;&nbsp;
 						[<a href="#" class="add-field-type" data-type="select"><?php echo s2nb(t('Dropdown List')); ?></a>]
 						&nbsp;&nbsp;
 						[<a href="#" class="add-field-type" data-type="wysiwyg"><?php echo s2nb(t('WYSIWYG Editor')); ?></a>]
@@ -287,6 +289,7 @@ function s2nb($text) {
 			'link': '<?php echo t("Page Link Field"); ?>',
 			'url': '<?php echo t("External URL Field"); ?>',
 			'date': '<?php echo t("Date Picker Field"); ?>',
+			'color': '<?php echo t("Color Picker Field"); ?>',
 			'select': '<?php echo t("Dropdown List"); ?>',
 			'wysiwyg': '<?php echo t("WYSIWYG Editor"); ?>'
 		};
